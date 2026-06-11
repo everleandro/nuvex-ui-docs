@@ -1,0 +1,21 @@
+{
+  "name": "nuvex-ui-docs",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev --port 3000 --strictPort",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "nuvex-ui": "file:../drocket/nuvex-ui-1.0.0.tgz",
+    "nuxt": "^4.4.7",
+    "vue": "^3.5.35",
+    "vue-router": "^5.1.0"
+  },
+  "devDependencies": {
+    "sass": "^1.100.0"
+  }
+}
