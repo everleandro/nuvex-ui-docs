@@ -1,6 +1,6 @@
 <template>
   <EApp>
-    <EBar app clipped>
+    <EBar app clipped outlined>
       <EButton :icon="$icon.menu" @click="drawerModel = !drawerModel" />
       <AppLogo class="mx-3" />
       <ESpacer />
