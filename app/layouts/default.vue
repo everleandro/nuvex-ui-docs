@@ -9,9 +9,10 @@
       <EButton :icon="$icon.gitHub" @click="drawerModel = !drawerModel" />
     </EBar>
     <NavigationDrawer v-model="drawerModel" />
+    <AsidePageContent/>
     <NuxtRouteAnnouncer />
     <EMain>
-      <EContainer>
+      <EContainer class="p-4">
         <slot />
       </EContainer>
     </EMain>
