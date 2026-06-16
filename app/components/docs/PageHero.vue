@@ -1,0 +1,69 @@
+<template>
+  <section class="docs-page-hero p-3">
+    <h1 class="docs-page-hero__title">{{ title }}</h1>
+    <p class="docs-page-hero__description">
+      {{ description }}
+    </p>
+
+    <div v-if="actions.length" class="docs-page-hero__actions">
+      <EButton
+        v-for="action in actions"
+        :key="action.label"
+        :to="action.to"
+        :variant="action.variant"
+        :outlined="action.outlined"
+      >
+        {{ action.label }}
+      </EButton>
+    </div>
+  </section>
+</template>
+
+<script setup lang="ts">
+export interface DocsPageHeroAction {
+  label: string
+  to: string
+  variant?: 'text' | 'outlined' | 'flat' | 'tonal' | 'elevated'
+  outlined?: boolean
+}
+
+const props = withDefaults(defineProps<{
+  title: string
+  description: string
+  actions?: DocsPageHeroAction[]
+}>(), {
+  actions: () => [],
+})
+
+const actions = computed(() => props.actions)
+</script>
+
+<style scoped>
+.docs-page-hero {
+  display: grid;
+  gap: 1rem;
+}
+
+.docs-page-hero__title,
+.docs-page-hero__description {
+  margin: 0;
+}
+
+.docs-page-hero__description {
+  max-width: 64ch;
+  opacity: 0.82;
+}
+
+.docs-page-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@media (max-width: 640px) {
+  .docs-page-hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>

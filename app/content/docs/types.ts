@@ -1,0 +1,54 @@
+export type DocsActionVariant = 'text' | 'outlined' | 'flat' | 'tonal' | 'elevated'
+
+export interface DocsPageAction {
+  label: string
+  to: string
+  variant?: DocsActionVariant
+  outlined?: boolean
+}
+
+export interface DocsCardItem {
+  title: string
+  description: string
+}
+
+export interface DocsCardGridSection {
+  type: 'card-grid'
+  key: string
+  title: string
+  description: string
+  items: DocsCardItem[]
+  cols?: {
+    md?: number
+    lg?: number
+  }
+}
+
+export interface DocsListSection {
+  type: 'list'
+  key: string
+  title: string
+  description: string
+  ordered: boolean
+  items: string[]
+}
+
+export type DocsSection = DocsCardGridSection | DocsListSection
+
+export interface DocsPageContent {
+  seo: {
+    title: string
+    description: string
+  }
+  hero: {
+    title: string
+    description: string
+    actions: DocsPageAction[]
+  }
+  sections: DocsSection[]
+}
+
+export interface DocsSecondaryNavItem {
+  id: string
+  label: string
+}

@@ -150,6 +150,12 @@ export interface ResolvedNavigationItem {
   item: NavigationLeafItem;
 }
 
+export interface DocsFooterLink {
+  title: string;
+  description: string;
+  to: string;
+}
+
 export const navigationItems = navigationGroups.flatMap((group) =>
   group.children.map((item) => ({
     group,
@@ -167,4 +173,31 @@ export const findOpenGroupIdsByPath = (path: string): string[] => {
   if (!resolvedItem) return [];
 
   return [resolvedItem.group.id];
+};
+
+export const getDocsFooterContent = (path: string) => {
+  const resolvedItem = findNavigationItemByPath(path);
+
+  if (!resolvedItem) {
+    return {
+      title: 'Next steps',
+      description: 'Continue exploring the documentation from here.',
+      items: [] as DocsFooterLink[],
+    };
+  }
+
+  const siblings = resolvedItem.group.children;
+  const currentIndex = siblings.findIndex((item) => item.to === path);
+  const candidateItems = currentIndex >= 0 ? siblings.slice(currentIndex + 1, currentIndex + 4) : [];
+  const items = (candidateItems.length ? candidateItems : siblings.slice(0, 3)).map((item) => ({
+    title: item.title,
+    description: `Continue with ${item.title} in ${resolvedItem.group.title}.`,
+    to: item.to,
+  }));
+
+  return {
+    title: 'Next steps',
+    description: 'Continue exploring the documentation from here.',
+    items,
+  };
 };
