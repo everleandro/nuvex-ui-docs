@@ -21,10 +21,7 @@
           :md="section.cols?.md ?? 6"
           :lg="section.cols?.lg ?? 4"
         >
-          <ECard class="docs-page__card p-3 d-grid gap-2">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
-          </ECard>
+          <ECard class="docs-page__card" :title="item.title" :description="item.description" outlined/>
         </ECol>
       </ERow>
 
@@ -57,12 +54,6 @@ useSeoMeta({
 
 .docs-page__card {
   height: 100%;
-  border: 1px solid var(--e-color-border);
-}
-
-.docs-page__card h3,
-.docs-page__card p {
-  margin: 0;
 }
 
 .docs-page__steps,

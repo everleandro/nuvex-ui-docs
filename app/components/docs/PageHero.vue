@@ -9,7 +9,7 @@
       <EButton
         v-for="action in actions"
         :key="action.label"
-        :to="action.to"
+        :to="withLocalePrefix(action.to, locale)"
         :variant="action.variant"
         :outlined="action.outlined"
       >
@@ -20,6 +20,9 @@
 </template>
 
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+import { withLocalePrefix } from '~/utils/locale-path'
+
 export interface DocsPageHeroAction {
   label: string
   to: string
@@ -36,6 +39,7 @@ const props = withDefaults(defineProps<{
 })
 
 const actions = computed(() => props.actions)
+const { locale } = useI18n()
 </script>
 
 <style scoped>

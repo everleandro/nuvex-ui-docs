@@ -35,6 +35,19 @@ export interface DocsListSection {
 
 export type DocsSection = DocsCardGridSection | DocsListSection
 
+export interface DocsFooterLink {
+  title: string
+  description: string
+  to: string
+  icon: string
+}
+
+export interface DocsFooterContent {
+  title: string
+  description: string
+  items: DocsFooterLink[]
+}
+
 export interface DocsPageContent {
   seo: {
     title: string
@@ -46,6 +59,7 @@ export interface DocsPageContent {
     actions: DocsPageAction[]
   }
   sections: DocsSection[]
+  footer?: DocsFooterContent
 }
 
 export interface DocsSecondaryNavItem {
