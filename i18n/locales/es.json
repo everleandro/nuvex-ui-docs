@@ -37,61 +37,83 @@
       "community": "Comunidad"
     },
     "items": {
-      "getting_started.introduction": "Introduccion",
-      "getting_started.installation": "Instalacion",
-      "getting_started.quick_start": "Inicio rapido",
-      "getting_started.nuxt_integration": "Integracion con Nuxt",
-      "design_system.colors": "Colores",
-      "design_system.typography": "Tipografia",
-      "design_system.icons": "Iconos",
-      "design_system.spacing": "Espaciado",
-      "design_system.surfaces": "Superficies",
-      "theming.overview": "Resumen",
-      "theming.runtime_theme_api": "API de tema en runtime",
-      "theming.design_tokens": "Tokens de diseno",
-      "theming.css_variables": "Variables CSS",
-      "theming.light_and_dark_themes": "Temas claro y oscuro",
-      "theming.custom_themes": "Temas personalizados",
-      "layout.app_shell": "App shell",
-      "layout.bar": "Barra",
-      "layout.drawer": "Drawer",
-      "layout.container": "Contenedor",
-      "layout.divider": "Divisor",
-      "layout.responsive_patterns": "Patrones responsivos",
-      "utilities.flexbox": "Flexbox",
-      "utilities.spacing_helpers": "Helpers de espaciado",
-      "utilities.display_helpers": "Helpers de display",
-      "utilities.elevation": "Elevacion",
-      "utilities.positioning": "Posicionamiento",
-      "forms.overview": "Resumen",
-      "forms.text_field": "TextField",
-      "forms.textarea": "Textarea",
-      "forms.select": "Select",
-      "forms.checkbox": "Checkbox",
-      "forms.radio": "Radio",
-      "forms.switch": "Switch",
-      "forms.validation_patterns": "Patrones de validacion",
-      "navigation.list": "Lista",
-      "navigation.menu": "Menu",
-      "navigation.tabs": "Tabs",
-      "navigation.routing_patterns": "Patrones de ruteo",
-      "feedback_overlays.dialog": "Dialog",
-      "feedback_overlays.progress": "Progress",
-      "feedback_overlays.overlay_service": "Servicio de overlay",
-      "feedback_overlays.focus_and_accessibility": "Foco y accesibilidad",
-      "data_scheduling.card": "Card",
-      "data_scheduling.date_picker": "Date Picker",
-      "data_scheduling.time_picker": "Time Picker",
-      "data_scheduling.schedule": "Schedule",
-      "advanced.plugin_api": "API de plugin",
-      "advanced.ssr": "SSR",
-      "advanced.composables": "Composables",
-      "advanced.directives": "Directivas",
-      "advanced.extending_the_library": "Extender la libreria",
-      "community.changelog": "Changelog",
-      "community.roadmap": "Roadmap",
-      "community.contributing": "Contribuir",
-      "community.sponsors": "Sponsors"
+      "getting_started": {
+        "introduction": "Introduccion",
+        "installation": "Instalacion",
+        "quick_start": "Inicio rapido",
+        "nuxt_integration": "Integracion con Nuxt"
+      },
+      "design_system": {
+        "colors": "Colores",
+        "typography": "Tipografia",
+        "icons": "Iconos",
+        "spacing": "Espaciado",
+        "surfaces": "Superficies"
+      },
+      "theming": {
+        "overview": "Resumen",
+        "runtime_theme_api": "API de tema en runtime",
+        "design_tokens": "Tokens de diseno",
+        "css_variables": "Variables CSS",
+        "light_and_dark_themes": "Temas claro y oscuro",
+        "custom_themes": "Temas personalizados"
+      },
+      "layout": {
+        "app_shell": "App shell",
+        "bar": "Barra",
+        "drawer": "Drawer",
+        "container": "Contenedor",
+        "divider": "Divisor",
+        "responsive_patterns": "Patrones responsivos"
+      },
+      "utilities": {
+        "flexbox": "Flexbox",
+        "spacing_helpers": "Helpers de espaciado",
+        "display_helpers": "Helpers de display",
+        "elevation": "Elevacion",
+        "positioning": "Posicionamiento"
+      },
+      "forms": {
+        "overview": "Resumen",
+        "text_field": "TextField",
+        "textarea": "Textarea",
+        "select": "Select",
+        "checkbox": "Checkbox",
+        "radio": "Radio",
+        "switch": "Switch",
+        "validation_patterns": "Patrones de validacion"
+      },
+      "navigation": {
+        "list": "Lista",
+        "menu": "Menu",
+        "tabs": "Tabs",
+        "routing_patterns": "Patrones de ruteo"
+      },
+      "feedback_overlays": {
+        "dialog": "Dialog",
+        "progress": "Progress",
+        "overlay_service": "Servicio de overlay",
+        "focus_and_accessibility": "Foco y accesibilidad"
+      },
+      "data_scheduling": {
+        "card": "Card",
+        "date_picker": "Date Picker",
+        "time_picker": "Time Picker",
+        "schedule": "Schedule"
+      },
+      "advanced": {
+        "plugin_api": "API de plugin",
+        "ssr": "SSR",
+        "composables": "Composables",
+        "directives": "Directivas",
+        "extending_the_library": "Extender la libreria"
+      },
+      "community": {
+        "changelog": "Changelog",
+        "roadmap": "Roadmap",
+        "contributing": "Contribuir",
+        "sponsors": "Sponsors"
+      }
     }
   }
 }

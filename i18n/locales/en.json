@@ -37,61 +37,83 @@
       "community": "Community"
     },
     "items": {
-      "getting_started.introduction": "Introduction",
-      "getting_started.installation": "Installation",
-      "getting_started.quick_start": "Quick Start",
-      "getting_started.nuxt_integration": "Nuxt Integration",
-      "design_system.colors": "Colors",
-      "design_system.typography": "Typography",
-      "design_system.icons": "Icons",
-      "design_system.spacing": "Spacing",
-      "design_system.surfaces": "Surfaces",
-      "theming.overview": "Overview",
-      "theming.runtime_theme_api": "Runtime Theme API",
-      "theming.design_tokens": "Design Tokens",
-      "theming.css_variables": "CSS Variables",
-      "theming.light_and_dark_themes": "Light and Dark Themes",
-      "theming.custom_themes": "Custom Themes",
-      "layout.app_shell": "App Shell",
-      "layout.bar": "Bar",
-      "layout.drawer": "Drawer",
-      "layout.container": "Container",
-      "layout.divider": "Divider",
-      "layout.responsive_patterns": "Responsive Patterns",
-      "utilities.flexbox": "Flexbox",
-      "utilities.spacing_helpers": "Spacing Helpers",
-      "utilities.display_helpers": "Display Helpers",
-      "utilities.elevation": "Elevation",
-      "utilities.positioning": "Positioning",
-      "forms.overview": "Overview",
-      "forms.text_field": "TextField",
-      "forms.textarea": "Textarea",
-      "forms.select": "Select",
-      "forms.checkbox": "Checkbox",
-      "forms.radio": "Radio",
-      "forms.switch": "Switch",
-      "forms.validation_patterns": "Validation Patterns",
-      "navigation.list": "List",
-      "navigation.menu": "Menu",
-      "navigation.tabs": "Tabs",
-      "navigation.routing_patterns": "Routing Patterns",
-      "feedback_overlays.dialog": "Dialog",
-      "feedback_overlays.progress": "Progress",
-      "feedback_overlays.overlay_service": "Overlay Service",
-      "feedback_overlays.focus_and_accessibility": "Focus and Accessibility",
-      "data_scheduling.card": "Card",
-      "data_scheduling.date_picker": "Date Picker",
-      "data_scheduling.time_picker": "Time Picker",
-      "data_scheduling.schedule": "Schedule",
-      "advanced.plugin_api": "Plugin API",
-      "advanced.ssr": "SSR",
-      "advanced.composables": "Composables",
-      "advanced.directives": "Directives",
-      "advanced.extending_the_library": "Extending the Library",
-      "community.changelog": "Changelog",
-      "community.roadmap": "Roadmap",
-      "community.contributing": "Contributing",
-      "community.sponsors": "Sponsors"
+      "getting_started": {
+        "introduction": "Introduction",
+        "installation": "Installation",
+        "quick_start": "Quick Start",
+        "nuxt_integration": "Nuxt Integration"
+      },
+      "design_system": {
+        "colors": "Colors",
+        "typography": "Typography",
+        "icons": "Icons",
+        "spacing": "Spacing",
+        "surfaces": "Surfaces"
+      },
+      "theming": {
+        "overview": "Overview",
+        "runtime_theme_api": "Runtime Theme API",
+        "design_tokens": "Design Tokens",
+        "css_variables": "CSS Variables",
+        "light_and_dark_themes": "Light and Dark Themes",
+        "custom_themes": "Custom Themes"
+      },
+      "layout": {
+        "app_shell": "App Shell",
+        "bar": "Bar",
+        "drawer": "Drawer",
+        "container": "Container",
+        "divider": "Divider",
+        "responsive_patterns": "Responsive Patterns"
+      },
+      "utilities": {
+        "flexbox": "Flexbox",
+        "spacing_helpers": "Spacing Helpers",
+        "display_helpers": "Display Helpers",
+        "elevation": "Elevation",
+        "positioning": "Positioning"
+      },
+      "forms": {
+        "overview": "Overview",
+        "text_field": "TextField",
+        "textarea": "Textarea",
+        "select": "Select",
+        "checkbox": "Checkbox",
+        "radio": "Radio",
+        "switch": "Switch",
+        "validation_patterns": "Validation Patterns"
+      },
+      "navigation": {
+        "list": "List",
+        "menu": "Menu",
+        "tabs": "Tabs",
+        "routing_patterns": "Routing Patterns"
+      },
+      "feedback_overlays": {
+        "dialog": "Dialog",
+        "progress": "Progress",
+        "overlay_service": "Overlay Service",
+        "focus_and_accessibility": "Focus and Accessibility"
+      },
+      "data_scheduling": {
+        "card": "Card",
+        "date_picker": "Date Picker",
+        "time_picker": "Time Picker",
+        "schedule": "Schedule"
+      },
+      "advanced": {
+        "plugin_api": "Plugin API",
+        "ssr": "SSR",
+        "composables": "Composables",
+        "directives": "Directives",
+        "extending_the_library": "Extending the Library"
+      },
+      "community": {
+        "changelog": "Changelog",
+        "roadmap": "Roadmap",
+        "contributing": "Contributing",
+        "sponsors": "Sponsors"
+      }
     }
   }
 }
