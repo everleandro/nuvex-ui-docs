@@ -1,0 +1,97 @@
+{
+  "ui": {
+    "theme": {
+      "toggle": "Toggle theme",
+      "toLight": "Switch to light theme",
+      "toDark": "Switch to dark theme"
+    },
+    "language": {
+      "toggle": "Toggle language",
+      "switchTo": "Switch to {locale}"
+    }
+  },
+  "docs": {
+    "secondaryNav": {
+      "title": "On this page",
+      "empty": "No sections available."
+    },
+    "footer": {
+      "title": "Navigation",
+      "description": "Continue with the previous or next topic.",
+      "previous": "Previous",
+      "next": "Next"
+    }
+  },
+  "navigation": {
+    "groups": {
+      "getting_started": "Getting Started",
+      "design_system": "Design System",
+      "theming": "Theming",
+      "layout": "Layout",
+      "utilities": "Utilities",
+      "forms": "Forms",
+      "navigation": "Navigation",
+      "feedback_overlays": "Feedback and Overlays",
+      "data_scheduling": "Data and Scheduling",
+      "advanced": "Advanced",
+      "community": "Community"
+    },
+    "items": {
+      "getting_started.introduction": "Introduction",
+      "getting_started.installation": "Installation",
+      "getting_started.quick_start": "Quick Start",
+      "getting_started.nuxt_integration": "Nuxt Integration",
+      "design_system.colors": "Colors",
+      "design_system.typography": "Typography",
+      "design_system.icons": "Icons",
+      "design_system.spacing": "Spacing",
+      "design_system.surfaces": "Surfaces",
+      "theming.overview": "Overview",
+      "theming.runtime_theme_api": "Runtime Theme API",
+      "theming.design_tokens": "Design Tokens",
+      "theming.css_variables": "CSS Variables",
+      "theming.light_and_dark_themes": "Light and Dark Themes",
+      "theming.custom_themes": "Custom Themes",
+      "layout.app_shell": "App Shell",
+      "layout.bar": "Bar",
+      "layout.drawer": "Drawer",
+      "layout.container": "Container",
+      "layout.divider": "Divider",
+      "layout.responsive_patterns": "Responsive Patterns",
+      "utilities.flexbox": "Flexbox",
+      "utilities.spacing_helpers": "Spacing Helpers",
+      "utilities.display_helpers": "Display Helpers",
+      "utilities.elevation": "Elevation",
+      "utilities.positioning": "Positioning",
+      "forms.overview": "Overview",
+      "forms.text_field": "TextField",
+      "forms.textarea": "Textarea",
+      "forms.select": "Select",
+      "forms.checkbox": "Checkbox",
+      "forms.radio": "Radio",
+      "forms.switch": "Switch",
+      "forms.validation_patterns": "Validation Patterns",
+      "navigation.list": "List",
+      "navigation.menu": "Menu",
+      "navigation.tabs": "Tabs",
+      "navigation.routing_patterns": "Routing Patterns",
+      "feedback_overlays.dialog": "Dialog",
+      "feedback_overlays.progress": "Progress",
+      "feedback_overlays.overlay_service": "Overlay Service",
+      "feedback_overlays.focus_and_accessibility": "Focus and Accessibility",
+      "data_scheduling.card": "Card",
+      "data_scheduling.date_picker": "Date Picker",
+      "data_scheduling.time_picker": "Time Picker",
+      "data_scheduling.schedule": "Schedule",
+      "advanced.plugin_api": "Plugin API",
+      "advanced.ssr": "SSR",
+      "advanced.composables": "Composables",
+      "advanced.directives": "Directives",
+      "advanced.extending_the_library": "Extending the Library",
+      "community.changelog": "Changelog",
+      "community.roadmap": "Roadmap",
+      "community.contributing": "Contributing",
+      "community.sponsors": "Sponsors"
+    }
+  }
+}

@@ -1,3 +1,5 @@
+import { normalizeDocsPath } from '~/utils/docs-path';
+
 export interface NavigationLeafItem {
   title: string;
   to: string;
@@ -150,10 +152,9 @@ export interface ResolvedNavigationItem {
   item: NavigationLeafItem;
 }
 
-export interface DocsFooterLink {
-  title: string;
-  description: string;
-  to: string;
+export interface NavigationSiblings {
+  previous?: NavigationLeafItem;
+  next?: NavigationLeafItem;
 }
 
 export const navigationItems = navigationGroups.flatMap((group) =>
@@ -164,7 +165,40 @@ export const navigationItems = navigationGroups.flatMap((group) =>
 );
 
 export const findNavigationItemByPath = (path: string): ResolvedNavigationItem | undefined => {
-  return navigationItems.find(({ item }) => item.to === path);
+  const normalizedPath = normalizeDocsPath(path);
+  return navigationItems.find(({ item }) => item.to === normalizedPath);
+};
+
+const toTranslationKeySuffix = (path: string): string => {
+  return normalizeDocsPath(path)
+    .replace(/^\/docs\//, '')
+    .replace(/\//g, '.')
+    .replace(/-/g, '_');
+};
+
+export const getNavigationGroupTitleKey = (group: NavigationGroupItem): string => {
+  return `navigation.groups.${group.id.replace(/-/g, '_')}`;
+};
+
+export const getNavigationItemTitleKey = (item: NavigationLeafItem): string => {
+  return `navigation.items.${toTranslationKeySuffix(item.to)}`;
+};
+
+export const findNavigationSiblingsByPath = (path: string): NavigationSiblings => {
+  const resolvedItem = findNavigationItemByPath(path);
+
+  if (!resolvedItem) return {};
+
+  const normalizedPath = normalizeDocsPath(path);
+  const { children } = resolvedItem.group;
+  const currentIndex = children.findIndex((item) => item.to === normalizedPath);
+
+  if (currentIndex < 0) return {};
+
+  return {
+    previous: currentIndex > 0 ? children[currentIndex - 1] : undefined,
+    next: currentIndex < children.length - 1 ? children[currentIndex + 1] : undefined,
+  };
 };
 
 export const findOpenGroupIdsByPath = (path: string): string[] => {
@@ -173,31 +207,4 @@ export const findOpenGroupIdsByPath = (path: string): string[] => {
   if (!resolvedItem) return [];
 
   return [resolvedItem.group.id];
-};
-
-export const getDocsFooterContent = (path: string) => {
-  const resolvedItem = findNavigationItemByPath(path);
-
-  if (!resolvedItem) {
-    return {
-      title: 'Next steps',
-      description: 'Continue exploring the documentation from here.',
-      items: [] as DocsFooterLink[],
-    };
-  }
-
-  const siblings = resolvedItem.group.children;
-  const currentIndex = siblings.findIndex((item) => item.to === path);
-  const candidateItems = currentIndex >= 0 ? siblings.slice(currentIndex + 1, currentIndex + 4) : [];
-  const items = (candidateItems.length ? candidateItems : siblings.slice(0, 3)).map((item) => ({
-    title: item.title,
-    description: `Continue with ${item.title} in ${resolvedItem.group.title}.`,
-    to: item.to,
-  }));
-
-  return {
-    title: 'Next steps',
-    description: 'Continue exploring the documentation from here.',
-    items,
-  };
 };
