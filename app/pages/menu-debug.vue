@@ -5,17 +5,8 @@
     <section class="case-row">
       <h2>1. Slot activator</h2>
       <EMenu v-model="slotOpen" close-on-content-click>
-        <template #activator="activator">
-          <EButton
-            color="primary"
-            :ref="activator.ref"
-            :aria-haspopup="activator.ariaHaspopup"
-            :aria-expanded="activator.ariaExpanded"
-            :aria-controls="activator.ariaControls"
-            :aria-disabled="activator.ariaDisabled"
-            @click="activator.onClick"
-            @keydown="activator.onKeydown"
-          >
+        <template #activator="{ attrs }">
+          <EButton color="primary" v-bind="attrs">
             Slot activator
           </EButton>
         </template>

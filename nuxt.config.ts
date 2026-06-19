@@ -10,7 +10,9 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+      siteUrl:
+        (globalThis as { process?: { env?: Record<string, string | undefined> } })
+          .process?.env?.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000',
     },
   },
   i18n: {
@@ -20,7 +22,6 @@ export default defineNuxtConfig({
       { code: 'en', name: 'English', file: 'en.json' },
       { code: 'es', name: 'Espanol', file: 'es.json' },
     ],
-    lazy: true,
     langDir: 'locales',
     detectBrowserLanguage: {
       useCookie: true,
