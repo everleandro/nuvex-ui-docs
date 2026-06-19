@@ -7,14 +7,18 @@
       <EButton :icon="$icon.themeDarkLight" :aria-label="themeToggleLabel" :title="themeToggleLabel"
         @click="toggleTheme()" />
       <EButton :icon="$icon.gitHub" />
-      <EButton
-        :ref="setLanguageButtonRef"
-        :icon="$icon.language"
-        :aria-label="lngToggleLabel"
-        :title="lngToggleLabel"
-      />
-      <EMenu :activator="languageButtonEl">
-        <p>placeholder</p>
+
+      <EMenu origin="bottom right" transition="scale">
+        <template #activator="{ attrs }">
+          <EButton v-bind="attrs" :icon="$icon.lng" :aria-label="lngToggleLabel" :title="lngToggleLabel" />
+        </template>
+        <div class="p-2">
+          <EList dense>
+            <EListItem v-for="localeOption in resolvedLocales" :key="localeOption.code" @click="toggleLanguage()">
+              {{ localeOption.name }}
+            </EListItem>
+          </EList>
+        </div>
       </EMenu>
     </EBar>
     <AppNavigationDrawer v-model="drawerModel" />
@@ -40,22 +44,6 @@ const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 const { t, locale } = useI18n()
 const isHydrated = ref(false)
-const languageButtonEl = ref<HTMLElement | null>(null)
-
-const setLanguageButtonRef = (value: unknown) => {
-  if (value instanceof HTMLElement) {
-    languageButtonEl.value = value
-    return
-  }
-
-  if (value && typeof value === 'object' && '$el' in (value as Record<string, unknown>)) {
-    const element = (value as { $el?: unknown }).$el
-    languageButtonEl.value = element instanceof HTMLElement ? element : null
-    return
-  }
-
-  languageButtonEl.value = null
-}
 
 onMounted(() => {
   isHydrated.value = true
@@ -96,7 +84,6 @@ const lngToggleLabel = computed(() => {
 
 const toggleLanguage = async () => {
   const targetLocaleCode = alternateLocale.value?.code
-
   if (!targetLocaleCode) {
     return
   }
