@@ -4,9 +4,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxtjs/i18n'],
   css: [
-    'nuvex-ui/styles.css',
     'nuvex-ui/framework.scss',
-    '~/assets/styles/nuvex-ui-theme-overrides.css',
+    'nuvex-ui/styles.css',
+    '~/assets/styles/app.scss',
   ],
   runtimeConfig: {
     public: {

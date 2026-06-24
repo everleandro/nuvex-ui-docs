@@ -80,6 +80,7 @@ export const navigationGroups: NavigationGroupItem[] = [
     icon: 'forms',
     children: [
       { title: 'Overview', to: '/docs/forms/overview' },
+      { title: 'Button', to: '/docs/forms/button' },
       { title: 'TextField', to: '/docs/forms/text-field' },
       { title: 'Textarea', to: '/docs/forms/textarea' },
       { title: 'Select', to: '/docs/forms/select' },

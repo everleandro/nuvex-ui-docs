@@ -1,0 +1,20 @@
+Quiero crear la página de documentación para [NOMBRE_COMPONENTE] en la familia [FAMILIA].
+
+Usa obligatoriamente estos estándares:
+
+docs-page-standard-rfc.md
+component-page-template-v1.md
+Instrucciones:
+
+Implementa la página completa siguiendo la plantilla (secciones requeridas y opcionales según familia).
+Mantén arquitectura content-driven y paridad en/en-es.
+FAQ debe usar faqItems (question + answerHtml) y renderizarse con el componente reusable de FAQ.
+Evita hardcode editorial en el template de página.
+Snippets deben ser consistentes con demos; para SFC snippets usa el helper compartido.
+Mantén secondary nav por ids estables.
+Valida y corrige errores de tipo/template antes de terminar.
+Entrega:
+
+Lista de archivos modificados.
+Resumen de decisiones.
+Estado final de validación.

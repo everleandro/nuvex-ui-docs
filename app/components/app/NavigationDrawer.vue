@@ -1,20 +1,13 @@
 <template>
     <EDrawer v-model="drawerModel" nav>
-        <EList v-model:group="nestedGroupModel" class="mx-3" dense>
+        <EList v-model:group="nestedGroupModel" inset dense >
             <EListGroup v-for="group in navigationGroups" :key="group.id" :value="group.id">
                 <template #activator="{ attrs }">
-                    <EListItem
-                        v-bind="attrs"
-                        :title="t(getNavigationGroupTitleKey(group))"
-                        :prepend-icon="$icon[group.icon]"
-                    />
+                    <EListItem v-bind="attrs" :title="t(getNavigationGroupTitleKey(group))"
+                        :prepend-icon="$icon[group.icon]" />
                 </template>
-                <EListItem
-                    v-for="item in group.children"
-                    :key="item.to"
-                    :title="t(getNavigationItemTitleKey(item))"
-                    :to="withLocalePrefix(item.to, locale)"
-                />
+                <EListItem v-for="item in group.children" :key="item.to" active-color="primary" :title="t(getNavigationItemTitleKey(item))"
+                    :to="withLocalePrefix(item.to, locale)" />
             </EListGroup>
         </EList>
     </EDrawer>
@@ -50,4 +43,5 @@ watch(
     },
     { immediate: true },
 )
+
 </script>

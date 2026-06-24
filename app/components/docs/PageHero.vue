@@ -1,9 +1,11 @@
 <template>
   <section class="docs-page-hero p-3">
     <h1 class="docs-page-hero__title">{{ title }}</h1>
-    <p class="docs-page-hero__description">
-      {{ description }}
-    </p>
+    <div v-if="hasDescriptionContent" class="docs-page-hero__description">
+      <slot v-if="hasDescriptionSlot" name="description" />
+      <p v-else-if="descriptionHtml" v-html="descriptionHtml" />
+      <p v-else>{{ description }}</p>
+    </div>
 
     <div v-if="actions.length" class="docs-page-hero__actions">
       <EButton
@@ -20,6 +22,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed, useSlots } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { withLocalePrefix } from '~/utils/locale-path'
 
@@ -32,13 +35,20 @@ export interface DocsPageHeroAction {
 
 const props = withDefaults(defineProps<{
   title: string
-  description: string
+  description?: string
+  descriptionHtml?: string
   actions?: DocsPageHeroAction[]
 }>(), {
+  description: '',
   actions: () => [],
 })
 
+const slots = useSlots()
 const actions = computed(() => props.actions)
+const hasDescriptionSlot = computed(() => Boolean(slots.description))
+const hasDescriptionContent = computed(
+  () => hasDescriptionSlot.value || Boolean(props.descriptionHtml) || Boolean(props.description)
+)
 const { locale } = useI18n()
 </script>
 
@@ -56,6 +66,10 @@ const { locale } = useI18n()
 .docs-page-hero__description {
   max-width: 64ch;
   opacity: 0.82;
+}
+
+.docs-page-hero__description p {
+  margin: 0;
 }
 
 .docs-page-hero__actions {

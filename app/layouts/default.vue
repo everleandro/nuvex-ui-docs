@@ -10,22 +10,21 @@
 
       <EMenu origin="bottom right" transition="scale">
         <template #activator="{ attrs }">
-          <EButton v-bind="attrs" :icon="$icon.lng" :aria-label="lngToggleLabel" :title="lngToggleLabel" />
+          <EButton v-bind="attrs" :icon="$icon.lng" :aria-label="languageToggleLabel" :title="languageToggleLabel" />
         </template>
-        <div class="p-2">
-          <EList dense>
-            <EListItem v-for="localeOption in resolvedLocales" :key="localeOption.code" @click="toggleLanguage()">
-              {{ localeOption.name }}
-            </EListItem>
-          </EList>
-        </div>
+        <EList>
+          <EListItem v-for="localeOption in locales" :key="localeOption.code"
+            :is-active="isCurrentLocale(localeOption.code)" @click="toggleLanguage(localeOption.code)">
+            {{ localeOption.name }}
+          </EListItem>
+        </EList>
       </EMenu>
     </EBar>
     <AppNavigationDrawer v-model="drawerModel" />
     <AppSecondaryNav />
     <NuxtRouteAnnouncer />
     <EMain>
-      <EContainer class="p-4">
+      <EContainer class="p-4" max-width="980px">
         <slot />
         <DocsPageFooter />
       </EContainer>
@@ -59,20 +58,16 @@ const themeToggleLabel = computed(() =>
 
 type LayoutLocale = { code: string; name: string }
 
-const supportedLocales: LayoutLocale[] = [
+const locales: LayoutLocale[] = [
   { code: 'en', name: 'English' },
   { code: 'es', name: 'Espanol' },
 ]
 
-const resolvedLocales = computed<LayoutLocale[]>(() => {
-  return supportedLocales
-})
-
 const alternateLocale = computed<LayoutLocale | undefined>(() => {
-  return resolvedLocales.value.find((value) => value.code !== locale.value)
+  return locales.find((value) => value.code !== locale.value)
 })
 
-const lngToggleLabel = computed(() => {
+const languageToggleLabel = computed(() => {
   const targetLocaleName = alternateLocale.value?.name
 
   if (!targetLocaleName) {
@@ -82,13 +77,12 @@ const lngToggleLabel = computed(() => {
   return t('ui.language.switchTo', { locale: targetLocaleName })
 })
 
-const toggleLanguage = async () => {
-  const targetLocaleCode = alternateLocale.value?.code
-  if (!targetLocaleCode) {
-    return
-  }
+const isCurrentLocale = (localeCode: string): boolean => {
+  return locale.value === localeCode
+}
 
-  const targetPath = withLocalePrefix(route.path, targetLocaleCode)
+const toggleLanguage = async (localeCode: string) => {
+  const targetPath = withLocalePrefix(route.path, localeCode)
   if (!targetPath) {
     return
   }
@@ -103,7 +97,7 @@ const canonicalPath = computed(() => {
 })
 
 const alternateHeadLinks = computed<{ rel: string; hreflang: string; href: string }[]>(() => {
-  const links = resolvedLocales.value
+  const links = locales
     .map((value) => {
       const localizedPath = withLocalePrefix(route.path, value.code)
 

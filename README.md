@@ -73,3 +73,7 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## Documentation Architecture
+
+- Docs page standard RFC: [docs/architecture/docs-page-standard-rfc.md](docs/architecture/docs-page-standard-rfc.md)

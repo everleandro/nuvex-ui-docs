@@ -1,4 +1,5 @@
 export type DocsActionVariant = 'text' | 'outlined' | 'flat' | 'tonal' | 'elevated'
+export type DocsLocaleCode = 'en' | 'es'
 
 export interface DocsPageAction {
   label: string
@@ -65,4 +66,59 @@ export interface DocsPageContent {
 export interface DocsSecondaryNavItem {
   id: string
   label: string
+}
+
+export interface DocsComponentSection {
+  key: string
+  title: string
+  description?: string
+  descriptionHtml?: string
+  faqItems?: DocsFaqItem[]
+}
+
+export interface DocsFaqItem {
+  question: string
+  answerHtml: string
+}
+
+export interface DocsComponentControlLabel {
+  key: string
+  label: string
+}
+
+export interface DocsComponentPageLabels {
+  tabs: {
+    design: string
+    template: string
+    example: string
+    ts: string
+  }
+  controls: DocsComponentControlLabel[]
+  links?: {
+    iconsPage: string
+    iconGuidePrefix: string
+    iconGuideSuffix: string
+  }
+  buttonText?: {
+    preview: string
+    delete: string
+    send: string
+    warning: string
+    stop: string
+  }
+}
+
+export interface DocsComponentPageContent {
+  kind: 'component'
+  seo: {
+    title: string
+    description: string
+  }
+  hero: {
+    title: string
+    description?: string
+    descriptionHtml?: string
+  }
+  sections: DocsComponentSection[]
+  labels: DocsComponentPageLabels
 }

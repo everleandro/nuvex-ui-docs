@@ -1,7 +1,11 @@
 <template>
-  <DocsScaffoldPage
-    section="Forms"
-    title="Checkbox"
-    doc-path="/docs/forms/checkbox"
-  />
+  <article class="docs-checkbox-page">
+    
+  </article>
 </template>
+
+<script setup lang="ts">
+</script>
+
+<style scoped>
+</style>

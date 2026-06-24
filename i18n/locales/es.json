@@ -75,6 +75,7 @@
       },
       "forms": {
         "overview": "Resumen",
+        "button": "Button",
         "text_field": "TextField",
         "textarea": "Textarea",
         "select": "Select",

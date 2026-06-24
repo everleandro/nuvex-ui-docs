@@ -1,5 +1,5 @@
 /* Runtime CSS variable overrides for Nuvex UI docs. */
 :root {
   --e-border-radius-root: 4px;
-  /* --e-list-item-border-radius: 4px; */
+  --e-list-item-border-radius: 4px;
 }

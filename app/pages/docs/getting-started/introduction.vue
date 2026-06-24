@@ -38,11 +38,25 @@
 </template>
 
 <script setup lang="ts">
-import { introductionContent as content } from '~/content/docs/getting-started/introduction'
+import { useI18n } from 'vue-i18n'
+import { getDocsPageContent } from '~/content/docs'
+
+const route = useRoute()
+const { locale } = useI18n()
+
+const content = computed(() => {
+  const resolvedContent = getDocsPageContent(route.path, locale.value)
+
+  if (!resolvedContent) {
+    throw createError({ statusCode: 404, statusMessage: 'Documentation page content not found' })
+  }
+
+  return resolvedContent
+})
 
 useSeoMeta({
-  title: content.seo.title,
-  description: content.seo.description,
+  title: computed(() => content.value.seo.title),
+  description: computed(() => content.value.seo.description),
 })
 </script>
 

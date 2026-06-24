@@ -1,26 +1,83 @@
 import { introductionContent } from './getting-started/introduction'
-import type { DocsFooterContent, DocsPageContent, DocsSecondaryNavItem } from './types'
+import { introductionContentEs } from './getting-started/introduction-es'
+import { buttonComponentContent } from './forms/button'
+import { buttonComponentContentEs } from './forms/button-es'
+import { textFieldComponentContent } from './forms/text-field'
+import { textFieldComponentContentEs } from './forms/text-field-es'
+import type {
+  DocsComponentPageContent,
+  DocsFooterContent,
+  DocsLocaleCode,
+  DocsPageContent,
+  DocsSecondaryNavItem,
+} from './types'
 import { normalizeDocsPath } from '~/utils/docs-path'
 
-const docsContentByPath: Record<string, DocsPageContent> = {
-  '/docs/getting-started/introduction': introductionContent,
+const DEFAULT_DOCS_LOCALE: DocsLocaleCode = 'en'
+
+const docsContentByLocale: Record<DocsLocaleCode, Record<string, DocsPageContent>> = {
+  en: {
+    '/docs/getting-started/introduction': introductionContent,
+  },
+  es: {
+    '/docs/getting-started/introduction': introductionContentEs,
+  },
 }
 
-export const getDocsPageContent = (path: string): DocsPageContent | undefined => {
-  return docsContentByPath[normalizeDocsPath(path)]
+const docsComponentContentByLocale: Record<DocsLocaleCode, Record<string, DocsComponentPageContent>> = {
+  en: {
+    '/docs/forms/button': buttonComponentContent,
+    '/docs/forms/text-field': textFieldComponentContent,
+  },
+  es: {
+    '/docs/forms/button': buttonComponentContentEs,
+    '/docs/forms/text-field': textFieldComponentContentEs,
+  },
 }
 
-export const getDocsSecondaryNavItems = (path: string): DocsSecondaryNavItem[] => {
-  const content = getDocsPageContent(path)
-  if (!content) return []
+export const resolveDocsLocale = (locale: string): DocsLocaleCode => {
+  if (locale === 'es') return 'es'
+  return DEFAULT_DOCS_LOCALE
+}
 
-  return content.sections.map((section) => ({
+export const getDocsPageContent = (path: string, locale: string = DEFAULT_DOCS_LOCALE): DocsPageContent | undefined => {
+  const normalizedPath = normalizeDocsPath(path)
+  const localeCode = resolveDocsLocale(locale)
+
+  return docsContentByLocale[localeCode][normalizedPath]
+    ?? docsContentByLocale[DEFAULT_DOCS_LOCALE][normalizedPath]
+}
+
+export const getDocsComponentPageContent = (
+  path: string,
+  locale: string = DEFAULT_DOCS_LOCALE,
+): DocsComponentPageContent | undefined => {
+  const normalizedPath = normalizeDocsPath(path)
+  const localeCode = resolveDocsLocale(locale)
+
+  return docsComponentContentByLocale[localeCode][normalizedPath]
+    ?? docsComponentContentByLocale[DEFAULT_DOCS_LOCALE][normalizedPath]
+}
+
+export const getDocsSecondaryNavItems = (path: string, locale: string = DEFAULT_DOCS_LOCALE): DocsSecondaryNavItem[] => {
+  const docsPageContent = getDocsPageContent(path, locale)
+  if (docsPageContent) {
+    return docsPageContent.sections.map((section) => ({
+      id: section.key,
+      label: section.title,
+    }))
+  }
+
+  const componentPageContent = getDocsComponentPageContent(path, locale)
+  if (!componentPageContent) return []
+
+  return componentPageContent.sections.map((section) => ({
     id: section.key,
     label: section.title,
   }))
 }
 
-export const getDocsFooterContent = (path: string): DocsFooterContent | undefined => {
-  const content = getDocsPageContent(path)
+export const getDocsFooterContent = (path: string, locale: string = DEFAULT_DOCS_LOCALE): DocsFooterContent | undefined => {
+  const content = getDocsPageContent(path, locale)
   return content?.footer
 }

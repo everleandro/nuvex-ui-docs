@@ -6,9 +6,9 @@
                 <span class="text-h6">{{ t('docs.secondaryNav.title') }}</span>
             </div>
         </template>
-
         <div v-if="navItems.length" ref="tabGroupContainer" class="ml-3">
-            <ETabGroup v-model="activeSection" vertical tab-align="start" track color="primary" inactive-color="secondary">
+            <ETabGroup v-model="activeSection" vertical tab-align="start" track color="primary"
+                inactive-color="secondary">
                 <ETab v-for="item in navItems" :key="item.id" :value="item.id">
                     {{ item.label }}
                 </ETab>
@@ -22,17 +22,20 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { getDocsSecondaryNavItems } from '~/content/docs'
+import { useBreakpoint } from "nuvex-ui"
+const { viewport } = useBreakpoint()
 
 const route = useRoute()
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const activeSection = ref('')
 const topOffset = 92
 const tabGroupContainer = ref<HTMLElement | null>(null)
 let isSyncingFromScroll = false
 let scrollFrame: number | null = null
 
-const navItems = computed(() => getDocsSecondaryNavItems(route.path))
-const isVisible = computed(() => route.path.startsWith('/docs/') && navItems.value.length > 0)
+const navItems = computed(() => getDocsSecondaryNavItems(route.path, locale.value))
+const isLargeScreen = computed(() => viewport.lg || viewport.xl)
+const isVisible = computed(() => navItems.value.length > 0 && isLargeScreen.value)
 
 const scrollToSection = (id: string) => {
     if (!id) return
