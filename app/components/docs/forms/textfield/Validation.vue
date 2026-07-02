@@ -32,11 +32,7 @@ import { getDocsComponentPageContent } from '~/content/docs'
 
 interface IntegrationFormLabels {
     submit: string
-    cancel: string
-    idle: string
     submitting: string
-    success: string
-    canceled: string
     cardTitle: string
     cardSubtitle: string
     firstNameLabel: string
@@ -65,11 +61,7 @@ const labels = computed<IntegrationFormLabels>(() => {
 
     return {
         submit: raw?.submit ?? 'Log in',
-        cancel: raw?.cancel ?? 'Cancel',
-        idle: raw?.idle ?? 'Enter credentials to enable login',
         submitting: raw?.submitting ?? 'Signing in...',
-        success: raw?.success ?? 'Login successful',
-        canceled: raw?.canceled ?? 'Login form reset',
         cardTitle: raw?.cardTitle ?? 'Registration Form',
         cardSubtitle: raw?.cardSubtitle ?? 'Basic details',
         firstNameLabel: raw?.firstNameLabel ?? 'First name',
@@ -89,8 +81,6 @@ const lastName = ref('')
 const password = ref('')
 const formIsValid = ref(false)
 const submitting = ref(false)
-const submitted = ref(false)
-const wasCanceled = ref(false)
 
 const {
     requiredRule,
@@ -102,35 +92,16 @@ const canSubmit = computed(() => {
     return formIsValid.value && !submitting.value
 })
 
-const statusMessage = computed(() => {
-    if (submitting.value) return labels.value.submitting
-    if (wasCanceled.value) return labels.value.canceled
-    if (submitted.value) return labels.value.success
-    return labels.value.idle
-})
-
 const submitForm = async () => {
     if (!canSubmit.value) return
 
     submitting.value = true
-    submitted.value = false
-    wasCanceled.value = false
 
     try {
         await new Promise((resolve) => setTimeout(resolve, 900))
-        submitted.value = true
     } finally {
         submitting.value = false
     }
-}
-
-const resetForm = () => {
-    email.value = ''
-    password.value = ''
-    formIsValid.value = false
-    submitting.value = false
-    submitted.value = false
-    wasCanceled.value = true
 }
 </script>
 <style scoped lang="scss">
