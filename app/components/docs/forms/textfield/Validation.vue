@@ -32,7 +32,6 @@ import { getDocsComponentPageContent } from '~/content/docs'
 
 interface IntegrationFormLabels {
     submit: string
-    submitting: string
     cardTitle: string
     cardSubtitle: string
     firstNameLabel: string
@@ -61,7 +60,6 @@ const labels = computed<IntegrationFormLabels>(() => {
 
     return {
         submit: raw?.submit ?? 'Log in',
-        submitting: raw?.submitting ?? 'Signing in...',
         cardTitle: raw?.cardTitle ?? 'Registration Form',
         cardSubtitle: raw?.cardSubtitle ?? 'Basic details',
         firstNameLabel: raw?.firstNameLabel ?? 'First name',
