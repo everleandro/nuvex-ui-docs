@@ -3,95 +3,52 @@ import type { DocsComponentPageContent } from '../types'
 export const textFieldComponentContent: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'TextField',
-    description: 'TextField component documentation for Nuvex UI, including playground, input types, states, and props.',
+    title: 'Textfield',
+    description: 'Textfield component documentation for Nuvex UI, including playground, variants, and props.',
   },
   hero: {
-    title: 'TextField',
+    title: 'Textfield',
     descriptionHtml:
-      "The <code class='green--text mx-2 title'>e-text-field</code> component is the base text input for forms, supporting validation, states, icons, and formatting helpers.",
+      "The <code class='green--text mx-2 title'>e-text-field</code> component is the base text input for forms and structured data capture across Nuvex UI. It supports visual variants, inner icons, prefix/suffix content, label behavior, and key states such as <code class='green--text mx-1 title'>readonly</code>, <code class='green--text mx-1 title'>disabled</code>, and <code class='green--text mx-1 title'>clearable</code>.<br><br>Use this page to compare interaction patterns quickly, compose richer inputs with named slots, and apply validation rules that keep forms clear, actionable, and production-ready.",
   },
   sections: [
     {
       key: 'usage',
       title: 'Usage',
-      description: 'Start with the default text field and configure behavior using state and visual props.',
+      description: 'Use this baseline playground to configure a Text Field in context: adjust color, outlined, clearable, counter/limit, readonly, disabled, and retain-color from one control panel.',
     },
     {
-      key: 'input-types',
-      title: 'Input types',
-      descriptionHtml: "Use native input types like <code class='green--text'>text</code>, <code class='green--text'>email</code>, and <code class='green--text'>password</code> based on content intent.",
+      key: 'icons',
+      title: 'Icons',
+      descriptionHtml: "Compare <code class='ma-2 green--text'>prependIcon</code> and <code class='ma-2 green--text'>appendIcon</code> with <code class='ma-2 green--text'>prependInnerIcon</code> and <code class='ma-2 green--text'>appendInnerIcon</code> in filled and outlined fields to choose the right visual weight for context, actions, and scanning.",
     },
     {
-      key: 'prefix-suffix-counter',
-      title: 'Prefix, suffix, and counter',
-      description: 'Add contextual prefixes/suffixes and character limits for structured text input.',
+      key: 'visual-variants',
+      title: 'Visual variants',
+      description: 'Compare filled and outlined fields across interactive, readonly, and disabled states, then evaluate retain-color and floating-label behavior to define hierarchy and readability in real forms.',
     },
     {
-      key: 'inner-icons',
-      title: 'Inner icons',
-      description: 'Use prepend/append inner icons for search, identity, or hint affordances inside the field frame.',
+      key: 'slots',
+      title: 'Named slots',
+      descriptionHtml: "Compose task-focused inputs with <code class='ma-2 green--text'>prepend</code>, <code class='ma-2 green--text'>prepend-inner</code>, <code class='ma-2 green--text'>append-inner</code>, and <code class='ma-2 green--text'>append</code> to place identity cues, quick actions, and secondary controls without losing field clarity.",
     },
     {
-      key: 'states',
-      title: 'States and validation',
-      description: 'Document disabled, readonly, and validation feedback states with clear visual and semantic cues.',
+      key: 'prepend-append-icons',
+      title: 'Prefix and suffix',
+      descriptionHtml: "Use <code class='ma-2 green--text'>prefix</code> and <code class='ma-2 green--text'>suffix</code> to anchor fixed tokens like currency symbols, IDs, and units, so users read expected format at a glance and enter values with fewer errors.",
     },
     {
-      key: 'accessibility',
-      title: 'Accessibility',
-      description: 'Always pair inputs with clear labels, provide helpful placeholder text only as supporting hint, and preserve visible focus states for keyboard navigation.',
-    },
-    {
-      key: 'integration',
-      title: 'Integration patterns',
-      description: 'Combine text fields with form validation and async submit flows while preserving consistent UX feedback.',
-    },
-    {
-      key: 'do-dont',
-      title: "Do and don't",
-      description: 'Prefer clear labels, concise helper text, and explicit constraints. Avoid placeholders as primary labels or hidden validation rules.',
-    },
-    {
-      key: 'composition-patterns',
-      title: 'Composition patterns',
-      description: 'Use text fields in grouped layouts such as search bars, filter rows, and profile forms with aligned actions.',
-    },
-    {
-      key: 'faq',
-      title: 'FAQ and troubleshooting',
-      description: 'Address common issues around validation timing, readonly versus disabled, and counter/limit behavior.',
-      faqItems: [
-        {
-          question: 'When should I use readonly instead of disabled?',
-          answerHtml:
-            "Use <code class='ma-2 green--text'>readonly</code> when users should still be able to focus and copy the value, and <code class='ma-2 green--text'>disabled</code> when the field must be fully inactive.",
-        },
-        {
-          question: 'How can I show validation only after submit?',
-          answerHtml:
-            "Gate <code class='ma-2 green--text'>error-messages</code> behind a submitted state flag so validation appears after first submit attempt.",
-        },
-        {
-          question: 'How should counter and limit be configured?',
-          answerHtml:
-            "Use <code class='ma-2 green--text'>counter</code> with <code class='ma-2 green--text'>:limit</code> to expose constraints early and prevent overflow surprises.",
-        },
-      ],
+      key: 'validation',
+      title: 'Validation',
+      descriptionHtml: "Build end-to-end validation flows with rule-based feedback, error visibility, and submit-state control. This example uses a full registration card to show how field rules and action readiness work together in production forms.",
     },
     {
       key: 'props',
       title: 'Props',
-      description: 'Explore the available props for the TextField component.',
+      description: 'Use the API table as the source of truth for props, accepted types, defaults, and behavioral notes when implementing Text Field variants in production.',
     },
   ],
   labels: {
-    tabs: {
-      design: 'Design',
-      template: 'Template',
-      example: 'Playground',
-      ts: 'TS',
-    },
     controls: [
       { key: 'color', label: 'color' },
       { key: 'outlined', label: 'outlined' },
@@ -101,5 +58,24 @@ export const textFieldComponentContent: DocsComponentPageContent = {
       { key: 'counter', label: 'counter' },
       { key: 'required', label: 'required' },
     ],
+    integrationText: {
+      form: {
+        submit: 'Complete registration',
+        idle: 'Complete all required fields to continue',
+        submitting: 'Submitting registration...',
+        success: 'Registration completed successfully',
+        canceled: 'Registration form reset',
+        firstNameLabel: 'First name',
+        firstNamePlaceholder: 'Jane',
+        lastNameLabel: 'Last name',
+        lastNamePlaceholder: 'Doe',
+        emailLabel: 'Email',
+        emailPlaceholder: 'name@company.com',
+        passwordLabel: 'Password',
+        passwordPlaceholder: 'At least 6 characters',
+        cardTitle: 'Registration Form',
+        cardSubtitle: 'Basic details',
+      },
+    },
   },
 }

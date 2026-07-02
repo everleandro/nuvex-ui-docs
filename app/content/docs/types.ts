@@ -87,12 +87,6 @@ export interface DocsComponentControlLabel {
 }
 
 export interface DocsComponentPageLabels {
-  tabs: {
-    design: string
-    template: string
-    example: string
-    ts: string
-  }
   controls: DocsComponentControlLabel[]
   links?: {
     iconsPage: string
@@ -105,6 +99,60 @@ export interface DocsComponentPageLabels {
     send: string
     warning: string
     stop: string
+  }
+  stateText?: {
+    save: string
+    saving: string
+    disabledAction: string
+    idle: string
+    savingState: string
+    saved: string
+  }
+  accessibilityText?: {
+    iconOnlySend: string
+    publish: string
+    ready: string
+    sent: string
+    published: string
+  }
+  integrationText?: {
+    form?: {
+      submit?: string
+      cancel?: string
+      idle?: string
+      submitting?: string
+      success?: string
+      canceled?: string
+      projectNameLabel?: string
+      projectNamePlaceholder?: string
+      firstNameLabel?: string
+      firstNamePlaceholder?: string
+      lastNameLabel?: string
+      lastNamePlaceholder?: string
+      emailLabel?: string
+      emailPlaceholder?: string
+      passwordLabel?: string
+      passwordPlaceholder?: string
+      cardTitle?: string
+      cardSubtitle?: string
+    }
+    async?: {
+      success: string
+      error: string
+      idle: string
+      loading: string
+      successState: string
+      errorState: string
+    }
+    hierarchy?: {
+      cancel: string
+      draft: string
+      publish: string
+      idle: string
+      cancelState: string
+      draftState: string
+      publishState: string
+    }
   }
 }
 

@@ -1,105 +1,89 @@
-import type { DocsComponentPageContent } from '../types'
+import type { DocsComponentPageContent } from "../types";
 
 export const textFieldComponentContentEs: DocsComponentPageContent = {
-  kind: 'component',
+  kind: "component",
   seo: {
-    title: 'TextField',
-    description: 'Documentacion del componente TextField de Nuvex UI con playground, tipos de entrada, estados y props.',
+    title: "Textfield",
+    description:
+      "Documentación del componente Textfield de Nuvex UI con playground, variantes y props.",
   },
   hero: {
-    title: 'TextField',
+    title: "Textfield",
     descriptionHtml:
-      "El componente <code class='green--text mx-2 title'>e-text-field</code> es el input base de texto para formularios, con soporte de validacion, estados, iconos y utilidades de formato.",
+      "El componente <code class='green--text mx-2 title'>e-text-field</code> es el input base para formularios y captura de datos estructurados en Nuvex UI. Soporta variantes visuales, iconos internos, prefijos/sufijos, comportamiento de etiqueta y estados clave como <code class='green--text mx-1 title'>readonly</code>, <code class='green--text mx-1 title'>disabled</code> y <code class='green--text mx-1 title'>clearable</code>.<br><br>Usa esta página para comparar patrones de interacción rápidamente, componer inputs más ricos con slots nombrados y aplicar reglas de validación que mantengan formularios claros, accionables y listos para producción.",
   },
   sections: [
     {
-      key: 'usage',
-      title: 'Uso',
-      description: 'Comienza con el text field por defecto y ajusta su comportamiento con props de estado y estilo.',
+      key: "usage",
+      title: "Uso",
+      description:
+        "Usa este playground base para configurar el Text Field en contexto: ajusta color, outlined, clearable, counter/limit, readonly, disabled y retain-color desde un solo panel de control.",
     },
     {
-      key: 'input-types',
-      title: 'Tipos de entrada',
-      descriptionHtml: "Usa tipos nativos como <code class='green--text'>text</code>, <code class='green--text'>email</code> y <code class='green--text'>password</code> segun el contexto.",
+      key: "icons",
+      title: "Íconos",
+      descriptionHtml:
+        "Compara <code class='ma-2 green--text'>prependIcon</code> y <code class='ma-2 green--text'>appendIcon</code> con <code class='ma-2 green--text'>prependInnerIcon</code> y <code class='ma-2 green--text'>appendInnerIcon</code> en campos filled y outlined para elegir el peso visual correcto en contexto, acciones y escaneo.",
     },
     {
-      key: 'prefix-suffix-counter',
-      title: 'Prefix, suffix y contador',
-      description: 'Agrega prefijos/sufijos contextuales y limites de caracteres para entradas estructuradas.',
+      key: "visual-variants",
+      title: "Variantes visuales",
+      description:
+        "Compara campos filled y outlined en estados interactivo, readonly y disabled, y evalúa el comportamiento de retain-color y floating-label para definir jerarquía y legibilidad en formularios reales.",
     },
     {
-      key: 'inner-icons',
-      title: 'Iconos internos',
-      description: 'Usa iconos internos al inicio o final para busqueda, identidad o ayudas visuales.',
+      key: "slots",
+      title: "Slots nombrados",
+      descriptionHtml:
+        "Compone inputs orientados a tareas con <code class='ma-2 green--text'>prepend</code>, <code class='ma-2 green--text'>prepend-inner</code>, <code class='ma-2 green--text'>append-inner</code> y <code class='ma-2 green--text'>append</code> para incluir contexto, acciones rápidas y controles secundarios sin perder claridad.",
     },
     {
-      key: 'states',
-      title: 'Estados y validacion',
-      description: 'Documenta estados disabled, readonly y feedback de validacion con senales visuales y semanticas claras.',
+      key: "prepend-append-icons",
+      title: "Prefijos y sufijos",
+      descriptionHtml:
+        "Usa <code class='ma-2 green--text'>prefix</code> y <code class='ma-2 green--text'>suffix</code> para fijar tokens como símbolos monetarios, IDs y unidades; así los usuarios entienden el formato esperado de inmediato y cometen menos errores de entrada.",
     },
     {
-      key: 'accessibility',
-      title: 'Accesibilidad',
-      description: 'Asegura etiquetas claras para cada campo, usa placeholder solo como apoyo y mantén estados de foco visibles para navegacion con teclado.',
+      key: "validation",
+      title: "Validación",
+      descriptionHtml:
+        "Construye flujos de validación de extremo a extremo con reglas, visibilidad de errores y control del estado de envío. Este ejemplo usa un card de registro completo para mostrar cómo reglas de campo y disponibilidad de acciones trabajan juntas en formularios de producción.",
     },
     {
-      key: 'integration',
-      title: 'Patrones de integracion',
-      description: 'Combina text fields con validacion de formularios y flujos de envio asincrono manteniendo feedback consistente.',
-    },
-    {
-      key: 'do-dont',
-      title: 'Buenas y malas practicas',
-      description: 'Prefiere etiquetas claras, helper text conciso y restricciones explicitas. Evita placeholders como etiqueta principal o validaciones ocultas.',
-    },
-    {
-      key: 'composition-patterns',
-      title: 'Patrones de composicion',
-      description: 'Usa text fields en layouts agrupados como barras de busqueda, filas de filtros y formularios de perfil con acciones alineadas.',
-    },
-    {
-      key: 'faq',
-      title: 'FAQ y troubleshooting',
-      description: 'Resuelve dudas comunes sobre timing de validacion, readonly frente a disabled y comportamiento de counter/limit.',
-      faqItems: [
-        {
-          question: 'Cuando debo usar readonly en lugar de disabled?',
-          answerHtml:
-            "Usa <code class='ma-2 green--text'>readonly</code> cuando el usuario deba poder enfocar y copiar el valor, y <code class='ma-2 green--text'>disabled</code> cuando el campo deba quedar totalmente inactivo.",
-        },
-        {
-          question: 'Como muestro validacion solo despues de enviar?',
-          answerHtml:
-            "Controla <code class='ma-2 green--text'>error-messages</code> con una bandera de envio para mostrar errores tras el primer intento de submit.",
-        },
-        {
-          question: 'Como configuro counter y limit correctamente?',
-          answerHtml:
-            "Usa <code class='ma-2 green--text'>counter</code> junto con <code class='ma-2 green--text'>:limit</code> para hacer visibles las restricciones desde el inicio.",
-        },
-      ],
-    },
-    {
-      key: 'props',
-      title: 'Props',
-      description: 'Explora las props disponibles para el componente TextField.',
+      key: "props",
+      title: "Props",
+      description:
+        "Usa la tabla de API como fuente de verdad para props, tipos permitidos, valores por defecto y notas de comportamiento al implementar variantes de Text Field en producción.",
     },
   ],
   labels: {
-    tabs: {
-      design: 'Diseno',
-      template: 'Template',
-      example: 'Playground',
-      ts: 'TS',
-    },
     controls: [
-      { key: 'color', label: 'color' },
-      { key: 'outlined', label: 'outlined' },
-      { key: 'disabled', label: 'disabled' },
-      { key: 'readonly', label: 'readonly' },
-      { key: 'clearable', label: 'clearable' },
-      { key: 'counter', label: 'counter' },
-      { key: 'required', label: 'required' },
+      { key: "color", label: "color" },
+      { key: "outlined", label: "outlined" },
+      { key: "disabled", label: "disabled" },
+      { key: "readonly", label: "readonly" },
+      { key: "clearable", label: "clearable" },
+      { key: "counter", label: "counter" },
+      { key: "required", label: "required" },
     ],
+    integrationText: {
+      form: {
+        submit: "Finalizar registro",
+        idle: "Completa todos los campos obligatorios para continuar",
+        submitting: "Enviando registro...",
+        success: "Registro completado correctamente",
+        canceled: "Formulario de registro reiniciado",
+        firstNameLabel: "Nombre",
+        firstNamePlaceholder: "Ana",
+        lastNameLabel: "Apellido",
+        lastNamePlaceholder: "Pérez",
+        emailLabel: "Correo electrónico",
+        emailPlaceholder: "nombre@empresa.com",
+        passwordLabel: "Contraseña",
+        passwordPlaceholder: "Mínimo 6 caracteres",
+        cardTitle: "Formulario de registro",
+        cardSubtitle: "Datos básicos",
+      },
+    },
   },
-}
+};
