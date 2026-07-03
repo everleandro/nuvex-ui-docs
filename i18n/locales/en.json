@@ -1,5 +1,9 @@
 {
   "ui": {
+    "copy": {
+      "code": "Copy code",
+      "copied": "Copied"
+    },
     "theme": {
       "toggle": "Toggle theme",
       "toLight": "Switch to light theme",
@@ -14,6 +18,18 @@
     "secondaryNav": {
       "title": "On this page",
       "empty": "No sections available."
+    },
+    "playgroundTabs": {
+      "design": "Design",
+      "template": "Template",
+      "example": "Playground",
+      "ts": "TS",
+      "css": "CSS"
+    },
+    "apiTable": {
+      "property": "Property",
+      "type": "Type",
+      "default": "Default"
     },
     "footer": {
       "title": "Navigation",
@@ -76,7 +92,7 @@
       "forms": {
         "overview": "Overview",
         "button": "Button",
-        "text_field": "TextField",
+        "text_field": "Textfield",
         "textarea": "Textarea",
         "select": "Select",
         "checkbox": "Checkbox",
@@ -116,5 +132,12 @@
         "sponsors": "Sponsors"
       }
     }
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": {
+      "invalid": "Enter a valid email"
+    },
+    "minLength": "Must be at least {min} characters"
   }
 }

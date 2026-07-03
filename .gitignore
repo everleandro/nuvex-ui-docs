@@ -17,6 +17,7 @@ logs
 .DS_Store
 .fleet
 .idea
+nuvex-ui-1.0.0.tgz
 
 # Local env files
 .env

@@ -14,13 +14,12 @@
     <ERow gap="0">
       <ECol :lg="showForm ? 7 : 12" cols="12" class="code-box__window-contaier p-4">
         <EWindow v-model="tab" :data-tab-model="tab">
-          <CodeCopyButton v-if="autoCopy && tab !== 'design'" only-visible/>
           <slot name="window-item"></slot>
         </EWindow>
       </ECol>
       <template v-if="showForm">
         <ECol lg="5" class="code-box__form-container d-flex">
-          <EDivider class="m-0" vertical />
+          <EDivider class="m-0 d-none d-md-block" vertical />
           <div class="p-4 d-flex flex-grow">
             <slot name="form"></slot>
           </div>
@@ -43,11 +42,9 @@ interface githubInterface {
 export interface Props {
   color?: string;
   github?: githubInterface;
-  autoCopy?: boolean;
   initialTab?: string;
 }
 const props = withDefaults(defineProps<Props>(), {
-  autoCopy: true,
   initialTab: "design",
 });
 const tab = ref(props.initialTab);

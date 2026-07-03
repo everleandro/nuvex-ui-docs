@@ -2,9 +2,11 @@
   <section :id="id" class="docs-section p-3">
     <header v-if="eyebrow || title || hasDescriptionContent" class="docs-section__header">
       <p v-if="eyebrow" class="docs-section__eyebrow">{{ eyebrow }}</p>
-      <h2 v-if="title" class="docs-section__title">{{ title }}</h2>
-      <div v-if="hasDescriptionContent" class="docs-section__description">
-        <slot v-if="hasDescriptionSlot" name="description" />
+      <h2 v-if="title" class="docs-section__title text-h4">{{ title }}</h2>
+      <div v-if="hasDescriptionContent" class="docs-section__description text-body">
+        <p v-if="hasDescriptionSlot">
+          <slot name="description" />
+        </p>
         <p v-else-if="descriptionHtml" v-html="descriptionHtml" />
         <p v-else>{{ description }}</p>
       </div>
@@ -57,8 +59,10 @@ const hasDescriptionContent = computed(
 }
 
 .docs-section__eyebrow {
-  font-size: 0.875rem;
-  letter-spacing: 0.08em;
+  font-size: var(--e-typography-label-font-size-lg, 0.875rem);
+  line-height: var(--e-typography-label-line-height-lg, 1.25rem);
+  font-weight: var(--e-typography-label-font-weight-lg, 500);
+  letter-spacing: var(--e-typography-label-letter-spacing-lg, 0.08em);
   text-transform: uppercase;
   opacity: 0.7;
 }

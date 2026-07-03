@@ -12,27 +12,83 @@ Basado en: docs/architecture/docs-page-standard-rfc.md
 - Responsables:
 - Estado (draft | review | published):
 
-## 2) Secciones Obligatorias por Familia
+## 1.1) Estandar Base (v1)
 
-Marca cada seccion como `done` o `pending`.
+Este template adopta Button como baseline para paginas de componente personalizado.
 
-| Seccion | Estado | Notas |
+Estructura minima esperada:
+
+1. Hero (proposito + alcance del componente).
+2. Playground principal.
+3. 5 secciones de ejemplos/variantes (minimo).
+4. Al menos 1 seccion de uso comun (composicion real).
+5. Tabla de props (API).
+6. Navegacion inferior prev/next.
+7. Navegacion lateral "En esta pagina" (anchors por id estable).
+
+Notas:
+
+- El baseline define piso minimo, no techo editorial.
+- Si el componente requiere mas secciones (accesibilidad, estados avanzados, eventos, slots), se agregan sin romper el orden base.
+
+## 2) Matriz de Secciones (Baseline + Familia)
+
+La version anterior de esta seccion era rigida y asumia que todas las paginas debian incluir exactamente los mismos bloques.
+Desde v1, el estandar se compone de:
+
+- Baseline obligatorio para toda pagina de componente.
+- Modulos por familia con regla Req/Opt.
+
+## 2.1) Checklist Baseline (siempre obligatorio)
+
+Marca cada bloque como `done` o `pending`.
+
+| Bloque baseline | Estado | Notas |
 | --- | --- | --- |
-| Overview | pending | |
+| Hero (proposito + alcance) | pending | |
 | Playground principal | pending | |
-| Variants | pending | |
-| States | pending | |
-| Accessibility | pending | |
-| Composition patterns | pending | |
-| Integration | pending | |
-| API reference | pending | |
-| Do / Don't | pending | |
+| Secciones de ejemplo (minimo 5) | pending | |
+| Caso de uso comun (minimo 1) | pending | |
+| API table de props | pending | |
+| Secondary nav (En esta pagina) | pending | |
+| Footer nav (prev/next) | pending | |
+
+## 2.2) Modulos por Familia (Req/Opt)
+
+Usar esta matriz para decidir que secciones adicionales incluir.
+
+| Modulo editorial | Core Actions | Form Inputs | Feedback/Overlay | Data Display | Navigation | Layout/Utility |
+| --- | --- | --- | --- | --- | --- | --- |
+| Overview | Req | Req | Req | Req | Req | Req |
+| Variants | Req | Req | Req | Req | Req | Opt |
+| States | Req | Req | Req | Opt | Req | Opt |
+| Accessibility | Req | Req | Req | Req | Req | Req |
+| Composition patterns | Req | Req | Opt | Req | Req | Opt |
+| Integration | Opt | Req | Req | Opt | Req | Opt |
+| Do / Don't | Opt | Opt | Opt | Opt | Opt | Opt |
+| FAQ / Troubleshooting | Opt | Opt | Opt | Opt | Opt | Opt |
+
+## 2.3) Regla de Flexibilidad
+
+No todos los componentes son iguales. Aplicar estas reglas:
+
+- Regla A: mantener siempre el baseline (hero + playground + ejemplos + uso comun + API + navegaciones).
+- Regla B: adaptar secciones al dominio del componente (form, layout, overlay, data, utility).
+- Regla C: si una seccion marcada como Req no aplica, justificar explicitamente la excepcion en Notas.
+- Regla D: priorizar decisiones de implementacion sobre texto descriptivo.
 
 ## 3) Secciones Opcionales
 
 | Seccion | Estado | Notas |
 | --- | --- | --- |
 | FAQ / Troubleshooting | pending | |
+
+Opcionales recomendadas para v1.1:
+
+- Accessibility checklist operativo.
+- Do / Don't.
+- Integration patterns.
+- FAQ basada en incidencias reales.
 
 ## 4) Estructura Recomendada de Contenido
 
@@ -42,6 +98,11 @@ Objetivo:
 
 - Explicar que problema resuelve.
 - Delimitar cuando usarlo y cuando no usarlo.
+
+Minimo de calidad:
+
+- Debe ayudar a decidir, no solo describir.
+- Evitar frases vacias tipo "este componente permite..." sin contexto.
 
 Snippet minimo sugerido:
 
@@ -56,11 +117,21 @@ Objetivo:
 - Mostrar caso de uso principal con controles.
 - Snippet sincronizado con estado actual.
 
+Contrato minimo recomendado:
+
+- Tab de diseno/preview.
+- Tab de template/snippet.
+- Controles que representen las props mas usadas.
+
 ### 4.3 Variants
 
 Objetivo:
 
 - Mostrar variantes visuales y/o de comportamiento.
+
+Regla baseline:
+
+- Este bloque puede dividirse en varias secciones hasta cubrir minimo 5 secciones de ejemplo en total.
 
 ### 4.4 States
 
@@ -89,6 +160,10 @@ Objetivo:
 
 - Enseñar uso en layout real con componentes relacionados.
 
+Regla baseline:
+
+- Al menos 1 caso comun obligatorio.
+
 ### 4.7 Integration
 
 Objetivo:
@@ -100,6 +175,11 @@ Objetivo:
 Objetivo:
 
 - Documentar props, eventos, slots y defaults.
+
+Regla baseline:
+
+- Si solo existe props en v1, es valido.
+- Eventos/slots pueden entrar en v1.1 si el componente los expone y son relevantes.
 
 ### 4.9 Do / Don't
 
@@ -144,25 +224,32 @@ faqItems: [
 
 ## 5) Checklist de Publicacion
 
-1. Cumple secciones requeridas para su familia.
+1. Cumple todos los bloques del baseline v1.
 2. Incluye al menos 3 snippets de casos reales.
-3. Seccion Accessibility contiene reglas accionables.
-4. Seccion Do / Don't tiene minimo 3 ejemplos por lado.
-5. API incluye props, eventos y slots (si aplican).
-6. Existe paridad en en/es para hero, secciones y labels.
-7. Secondary nav refleja todos los ids de seccion.
+3. Cumple modulos Req para su familia (matriz 2.2).
+4. Seccion Accessibility (cuando aplica como Req) contiene reglas accionables.
+5. Seccion Do / Don't (si existe) tiene minimo 3 ejemplos por lado.
+6. API incluye props y, cuando aplique, eventos/slots.
+7. Existe paridad en en/es para hero, secciones y labels.
+8. Secondary nav refleja todos los ids de seccion.
+9. Cada seccion agrega valor de decision para implementacion.
 
 ## 6) Plantilla de Gap Report Rapido
 
-| Seccion | Requerida para la familia | Estado actual | Gap | Prioridad |
+| Bloque/Modulo | Baseline o Familia | Estado actual | Gap | Prioridad |
 | --- | --- | --- | --- | --- |
-| Overview | Yes | | | |
-| Playground principal | Yes | | | |
-| Variants | Yes | | | |
-| States | Yes | | | |
-| Accessibility | Yes | | | |
-| Composition patterns | Yes | | | |
-| Integration | Yes | | | |
-| API reference | Yes | | | |
-| Do / Don't | Yes | | | |
-| FAQ / Troubleshooting | No/Yes | | | |
+| Hero | Baseline (Req) | | | |
+| Playground principal | Baseline (Req) | | | |
+| Secciones de ejemplo (>=5) | Baseline (Req) | | | |
+| Caso de uso comun | Baseline (Req) | | | |
+| API table de props | Baseline (Req) | | | |
+| Secondary nav | Baseline (Req) | | | |
+| Footer nav | Baseline (Req) | | | |
+| Overview | Familia (Req/Opt segun 2.2) | | | |
+| Variants | Familia (Req/Opt segun 2.2) | | | |
+| States | Familia (Req/Opt segun 2.2) | | | |
+| Accessibility | Familia (Req/Opt segun 2.2) | | | |
+| Composition patterns | Familia (Req/Opt segun 2.2) | | | |
+| Integration | Familia (Req/Opt segun 2.2) | | | |
+| Do / Don't | Familia (Req/Opt segun 2.2) | | | |
+| FAQ / Troubleshooting | Familia (Req/Opt segun 2.2) | | | |

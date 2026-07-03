@@ -9,105 +9,58 @@ export const buttonComponentContent: DocsComponentPageContent = {
   hero: {
     title: 'Buttons',
     descriptionHtml:
-      "The <code class='green--text mx-2 title'>e-button</code> component offers a variety of button types and sizes to fit different interaction and layout needs.",
+      "The <code class='green--text mx-2 title'>e-button</code> component covers primary, secondary, and navigation actions. It supports visual variants, sizes, states like <code class='green--text mx-1 title'>disabled</code>/<code class='green--text mx-1 title'>loading</code>, plus icon and link integration. This page helps you compare real usage patterns so you can quickly choose the right setup for visual hierarchy, context, and accessibility.",
   },
   sections: [
     {
       key: 'usage',
       title: 'Usage',
       description:
-        'In its simplest form, a button has subtle elevation, hover feedback, and a ripple interaction on click.',
+        'Use this playground to tune visual hierarchy with color, outlined, and text; try block for form/mobile layouts; and validate state feedback with disabled and loading.',
     },
     {
       key: 'size-variants',
       title: 'Button size variants',
       descriptionHtml:
-        "Available size options: <code class='green--text'>x-small small default large x-large</code>",
+        "Set visual scale based on density and priority. Options: <code class='green--text'>x-small small default large x-large</code>.",
+    },
+    {
+      key: 'visual-variants',
+      title: 'Visual variants',
+      description:
+        'Compare variants with the same label to pick hierarchy: default for primary action, outlined/text for secondary actions, tonal for mid emphasis.',
     },
     {
       key: 'icon-mode',
       title: 'Icon mode',
       descriptionHtml:
-        "Using the <code class='ma-2 green--text'>icon</code> prop you can switch the component to icon-driven layouts.",
+        "With the <code class='ma-2 green--text'>icon</code> prop you can create compact icon-driven buttons. Recommended for toolbars and frequent actions.",
     },
     {
       key: 'prepend-append-icons',
       title: 'Prepend and append icons',
       descriptionHtml:
-        "You can place icons on either the <code class='ma-2 green--text'>left</code> or <code class='ma-2 green--text'>right</code> side of the button.",
+        "Add visual context by placing icons on the <code class='ma-2 green--text'>left</code> (prepend) or <code class='ma-2 green--text'>right</code> (append) side of the label.",
     },
     {
       key: 'custom-size',
       title: 'Custom size',
       descriptionHtml:
-        "Using <code class='ma-2 green--text'>width</code> or <code class='ma-2 green--text'>height</code> you can change the default dimensions.",
+        "Adjust dimensions with <code class='ma-2 green--text'>width</code> and <code class='ma-2 green--text'>height</code> when the layout requires exact measurements.",
     },
     {
-      key: 'states',
-      title: 'States and interaction',
+      key: 'common-use-cases',
+      title: 'Common use cases',
       description:
-        'Document disabled and loading states clearly, and keep focus-visible affordance for keyboard users to preserve interaction feedback.',
-    },
-    {
-      key: 'accessibility',
-      title: 'Accessibility',
-      description:
-        'Use explicit labels for icon-only actions, preserve color contrast, and ensure button semantics match the intended action type.',
-    },
-    {
-      key: 'integration',
-      title: 'Integration patterns',
-      description:
-        'Use buttons for routing and async actions with clear loading/disabled behavior to prevent duplicate submissions.',
-    },
-    {
-      key: 'do-dont',
-      title: "Do and don't",
-      description:
-        'Prefer clear action labels, semantic intent, and consistent hierarchy. Avoid ambiguous labels and competing primary actions.',
-    },
-    {
-      key: 'composition-patterns',
-      title: 'Composition patterns',
-      description:
-        'Use grouped actions for toolbars, dialogs, and form footers with predictable primary and secondary ordering.',
-    },
-    {
-      key: 'faq',
-      title: 'FAQ and troubleshooting',
-      description:
-        'Resolve common issues around loading feedback, icon-only labeling, and navigation behavior.',
-      faqItems: [
-        {
-          question: 'How can I prevent duplicate submits?',
-          answerHtml:
-            "Use <code class='ma-2 green--text'>loading</code> and <code class='ma-2 green--text'>disabled</code> together while an async action is running.",
-        },
-        {
-          question: 'How should I label an icon-only action?',
-          answerHtml:
-            "Always provide <code class='ma-2 green--text'>aria-label</code> on icon-only buttons so assistive technologies can announce the action.",
-        },
-        {
-          question: 'When should I use a button versus a text link?',
-          answerHtml:
-            "Use a button for direct actions and use <code class='ma-2 green--text'>text</code> style when the action has lower visual priority.",
-        },
-      ],
+        'Recommended Card pattern: secondary text action plus emphasized primary action, validating loading and disabled states.',
     },
     {
       key: 'props',
       title: 'Props',
-      description: 'Explore the available props for the Button component.',
+      description: 'Complete reference of props, types, and behavior to configure Button precisely.',
     },
   ],
   labels: {
-    tabs: {
-      design: 'Design',
-      template: 'Template',
-      example: 'Playground',
-      ts: 'TS',
-    },
     controls: [
       { key: 'color', label: 'color' },
       { key: 'outlined', label: 'outlined' },

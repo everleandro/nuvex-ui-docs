@@ -1,133 +1,89 @@
-import type { DocsComponentPageContent } from '../types'
+import type { DocsComponentPageContent } from "../types";
 
 export const buttonComponentContentEs: DocsComponentPageContent = {
-  kind: 'component',
+  kind: "component",
   seo: {
-    title: 'Button',
-    description: 'Documentacion del componente Button de Nuvex UI con playground, variantes, iconos, tamanos y props.',
+    title: "Botones",
+    description:
+      "Documentacion del componente Button de Nuvex UI con playground, variantes, iconos, tamanos y props.",
   },
   hero: {
-    title: 'Buttons',
+    title: "Botones",
     descriptionHtml:
-      "El componente <code class='green--text mx-2 title'>e-button</code> ofrece varios tipos y tamanos de botones para distintos contextos de uso.",
+      "El componente <code class='green--text mx-2 title'>e-button</code> cubre acciones primarias, secundarias y de navegacion. Soporta variantes visuales, tamanos, estados como <code class='green--text mx-1 title'>disabled</code>/<code class='green--text mx-1 title'>loading</code> e integracion con iconos y enlaces. En esta pagina puedes comparar patrones reales de uso para elegir rapidamente la configuracion adecuada segun jerarquia visual, contexto y accesibilidad.",
   },
   sections: [
     {
-      key: 'usage',
-      title: 'Uso',
+      key: "usage",
+      title: "Uso",
       description:
-        'En su forma mas simple, un boton tiene una elevacion ligera, feedback al pasar el cursor y efecto ripple al hacer clic.',
+        "Usa este playground para ajustar jerarquia visual con color, outlined y text; prueba block para layouts de formulario/mobile; y valida feedback de estado con disabled y loading.",
     },
     {
-      key: 'size-variants',
-      title: 'Variantes de tamano',
+      key: "size-variants",
+      title: "Variantes de tamano",
       descriptionHtml:
-        "Opciones disponibles de tamano: <code class='green--text'>x-small small default large x-large</code>",
+        "Define escala visual segun densidad y prioridad. Opciones: <code class='green--text'>x-small small default large x-large</code>.",
     },
     {
-      key: 'icon-mode',
-      title: 'Modo icono',
+      key: "visual-variants",
+      title: "Variantes visuales",
+      description:
+        "Compara variantes con el mismo texto para elegir jerarquia: default para accion principal, outlined/text para acciones secundarias, tonal para enfasis intermedio.",
+    },
+    {
+      key: "icon-mode",
+      title: "Modo icono",
       descriptionHtml:
-        "Usando la prop <code class='ma-2 green--text'>icon</code> puedes cambiar el layout del componente a un enfoque basado en iconos.",
+        "Con la prop <code class='ma-2 green--text'>icon</code> puedes crear botones compactos basados en icono. Recomendado para barras de herramientas y acciones recurrentes.",
     },
     {
-      key: 'prepend-append-icons',
-      title: 'Iconos prepend y append',
+      key: "prepend-append-icons",
+      title: "Iconos prepend y append",
       descriptionHtml:
-        "Puedes posicionar iconos en el lado <code class='ma-2 green--text'>izquierdo</code> o <code class='ma-2 green--text'>derecho</code> del boton.",
+        "Agrega contexto visual colocando iconos al lado <code class='ma-2 green--text'>izquierdo</code> (prepend) o <code class='ma-2 green--text'>derecho</code> (append) del texto.",
     },
     {
-      key: 'custom-size',
-      title: 'Tamano personalizado',
+      key: "custom-size",
+      title: "Tamano personalizado",
       descriptionHtml:
-        "Usando <code class='ma-2 green--text'>width</code> o <code class='ma-2 green--text'>height</code> puedes cambiar las dimensiones por defecto.",
+        "Ajusta dimensiones con <code class='ma-2 green--text'>width</code> y <code class='ma-2 green--text'>height</code> cuando el layout requiera medidas especificas.",
     },
     {
-      key: 'states',
-      title: 'Estados e interaccion',
+      key: "common-use-cases",
+      title: "Casos de uso comunes",
       description:
-        'Documenta claramente los estados disabled y loading, y conserva una senal focus-visible para usuarios de teclado.',
+        "Patron recomendado en Cards: accion secundaria en text y accion principal destacada, validando estados loading y disabled.",
     },
     {
-      key: 'accessibility',
-      title: 'Accesibilidad',
+      key: "props",
+      title: "Props",
       description:
-        'Usa etiquetas explicitas en acciones solo-icono, conserva contraste legible y asegura semantica correcta segun la accion.',
-    },
-    {
-      key: 'integration',
-      title: 'Patrones de integracion',
-      description:
-        'Usa botones para routing y acciones asincronas con estado loading/disabled para evitar envios duplicados.',
-    },
-    {
-      key: 'do-dont',
-      title: 'Buenas y malas practicas',
-      description:
-        'Prefiere acciones con etiquetas claras, intencion semantica y jerarquia visual consistente. Evita labels ambiguos y acciones primarias en competencia.',
-    },
-    {
-      key: 'composition-patterns',
-      title: 'Patrones de composicion',
-      description:
-        'Usa agrupaciones de acciones para toolbars, dialogs y pie de formularios con orden primario/secundario predecible.',
-    },
-    {
-      key: 'faq',
-      title: 'FAQ y troubleshooting',
-      description:
-        'Resuelve problemas comunes de loading, etiquetado de botones solo-icono y comportamiento de navegacion.',
-      faqItems: [
-        {
-          question: 'Como evito envios duplicados?',
-          answerHtml:
-            "Usa <code class='ma-2 green--text'>loading</code> y <code class='ma-2 green--text'>disabled</code> al mismo tiempo mientras una accion asincrona esta en progreso.",
-        },
-        {
-          question: 'Como etiqueto correctamente un boton solo-icono?',
-          answerHtml:
-            "Agrega siempre <code class='ma-2 green--text'>aria-label</code> en botones solo-icono para que tecnologias asistivas anuncien la accion.",
-        },
-        {
-          question: 'Cuando debo usar boton y cuando boton de texto?',
-          answerHtml:
-            "Usa boton para acciones directas y estilo <code class='ma-2 green--text'>text</code> cuando la accion tenga menor prioridad visual.",
-        },
-      ],
-    },
-    {
-      key: 'props',
-      title: 'Props',
-      description: 'Explora las props disponibles para el componente Button.',
+        "Referencia completa de props, tipos y comportamiento para configurar Button con precision.",
     },
   ],
   labels: {
-    tabs: {
-      design: 'Diseno',
-      template: 'Template',
-      example: 'Playground',
-      ts: 'TS',
-    },
     controls: [
-      { key: 'color', label: 'color' },
-      { key: 'outlined', label: 'outlined' },
-      { key: 'block', label: 'block' },
-      { key: 'disabled', label: 'disabled' },
-      { key: 'rounded', label: 'rounded' },
-      { key: 'loading', label: 'loading' },
-      { key: 'depressed', label: 'depressed' },
+      { key: "color", label: "color" },
+      { key: "outlined", label: "outlined" },
+      { key: "block", label: "block" },
+      { key: "disabled", label: "disabled" },
+      { key: "rounded", label: "rounded" },
+      { key: "loading", label: "loading" },
+      { key: "depressed", label: "depressed" },
     ],
     links: {
-      iconsPage: 'Iconos',
-      iconGuidePrefix: 'Puedes aprender mas sobre como funcionan los iconos en la pagina de',
-      iconGuideSuffix: '.',
+      iconsPage: "Iconos",
+      iconGuidePrefix:
+        "Puedes aprender mas sobre como funcionan los iconos en la pagina de",
+      iconGuideSuffix: ".",
     },
     buttonText: {
-      preview: 'Button',
-      delete: 'Delete',
-      send: 'Send',
-      warning: 'warning',
-      stop: 'Stop',
+      preview: "Button",
+      delete: "Delete",
+      send: "Send",
+      warning: "warning",
+      stop: "Stop",
     },
   },
-}
+};

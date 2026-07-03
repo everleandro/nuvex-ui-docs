@@ -1,7 +1,7 @@
 <template>
   <section class="docs-page-hero p-3">
-    <h1 class="docs-page-hero__title">{{ title }}</h1>
-    <div v-if="hasDescriptionContent" class="docs-page-hero__description">
+    <h1 class="docs-page-hero__title text-h1">{{ title }}</h1>
+    <div v-if="hasDescriptionContent" class="docs-page-hero__description text-body">
       <slot v-if="hasDescriptionSlot" name="description" />
       <p v-else-if="descriptionHtml" v-html="descriptionHtml" />
       <p v-else>{{ description }}</p>
@@ -63,13 +63,18 @@ const { locale } = useI18n()
   margin: 0;
 }
 
+
 .docs-page-hero__description {
-  max-width: 64ch;
-  opacity: 0.82;
+  max-width: 78ch;
+  opacity: 0.88;
 }
 
 .docs-page-hero__description p {
   margin: 0;
+}
+
+.docs-page-hero__description p + p {
+  margin-top: 0.65rem;
 }
 
 .docs-page-hero__actions {

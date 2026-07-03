@@ -1,10 +1,10 @@
 <template>
-  <div class="code-panel">  
+  <div class="code-panel flex-1 app-responsive-content">
     <div class="code-panel__actions">
       <CopyButton />
     </div>
 
-    <div v-prism="prismBinding" class="code-panel__content">{{ highlightedCode }}</div>
+    <div v-prism="prismBinding" class="code-panel__content"></div>
   </div>
 </template>
 
@@ -19,8 +19,8 @@ const props = withDefaults(
     debounceMs?: number
   }>(),
   {
-    language: 'vue',
-    lineNumbers: true,
+    language: 'html',
+    lineNumbers: false,
     debounceMs: 80,
   },
 )
@@ -46,17 +46,16 @@ onBeforeUnmount(() => {
     clearTimeout(timer)
   }
 })
-
 const prismBinding = computed(() => ({
   class: `language-${props.language}`,
   lineNumbers: props.lineNumbers,
+  code: highlightedCode.value,
 }))
 </script>
 
 <style scoped>
 .code-panel {
   position: relative;
-  height: 100%;
 }
 
 .code-panel__actions {
