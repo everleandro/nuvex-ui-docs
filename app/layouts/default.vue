@@ -119,6 +119,8 @@ const alternateHeadLinks = computed<{ rel: string; hreflang: string; href: strin
 useHead(() => ({
   htmlAttrs: {
     lang: locale.value,
+    'data-theme': currentTheme.value,
+    style: `color-scheme: ${currentTheme.value === 'dark' ? 'dark' : 'light'};`,
   },
   link: [
     {
