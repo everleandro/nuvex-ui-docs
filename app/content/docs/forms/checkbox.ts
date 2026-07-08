@@ -4,7 +4,7 @@ export const checkboxComponentContent: DocsComponentPageContent = {
   kind: 'component',
   seo: {
     title: 'Checkbox',
-    description: 'Checkbox component documentation for Nuvex UI with interactive usage, variants, custom values, label slot patterns, validation, and props.',
+    description: 'Checkbox component documentation for Nuvex UI with interactive usage, variants, retain-color, custom values, label slot patterns, validation, and props.',
   },
   hero: {
     title: 'Checkbox',
@@ -16,7 +16,7 @@ export const checkboxComponentContent: DocsComponentPageContent = {
       key: 'usage',
       title: 'Usage',
       description:
-        'Use this baseline playground to configure checkbox behavior in context: color, outlined, disabled, readonly, overlay, and model mapping through true-value and false-value.',
+        'Use this baseline playground to configure checkbox behavior in context: color, outlined, disabled, readonly, tonal, and retain-color for stronger state continuity.',
     },
     {
       key: 'visual-variants',
@@ -55,7 +55,32 @@ export const checkboxComponentContent: DocsComponentPageContent = {
       { key: 'disabled', label: 'disabled' },
       { key: 'readonly', label: 'readonly' },
       { key: 'tonal', label: 'tonal' },
+      { key: 'retainColor', label: 'retainColor' },
       { key: 'customValues', label: 'custom values' },
     ],
+    checkboxText: {
+      usageLabel: 'Enable deployment checks',
+      usageDetail: 'Required for deployment checklist',
+      visualStateLabels: {
+        default: 'Default',
+        outlined: 'Outlined',
+        active: 'Active',
+        disabled: 'Disabled',
+        readonly: 'Readonly',
+      },
+      customValuesLabel: 'Release checklist',
+      customValuesDetail: 'Toggle to mark deployment readiness',
+      currentModelValue: 'Current model value',
+      termsDialogTitle: 'Terms and Conditions',
+      termsDialogBody: 'Use this dialog to explain the scope of consent, expected usage, and any additional conditions before continuing.',
+      termsDialogClose: 'Close',
+      validationCheckboxLabel: 'I accept the terms of service',
+      validationMessage: 'You must accept the terms before continuing.',
+      validationButtonLabel: 'Create account',
+      validationIdleFeedback: 'Submit to validate the checkbox rule.',
+      validationSuccessFeedback: 'Form is valid. Ready to continue.',
+      slotsLead: 'I agree to the',
+      slotsLinkLabel: 'Terms and Conditions',
+    },
   },
 }

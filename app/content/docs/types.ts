@@ -88,6 +88,30 @@ export interface DocsComponentControlLabel {
 
 export interface DocsComponentPageLabels {
   controls: DocsComponentControlLabel[]
+  checkboxText?: {
+    usageLabel: string
+    usageDetail: string
+    visualStateLabels: {
+      default: string
+      outlined: string
+      active: string
+      disabled: string
+      readonly: string
+    }
+    customValuesLabel: string
+    customValuesDetail: string
+    currentModelValue: string
+    termsDialogTitle: string
+    termsDialogBody: string
+    termsDialogClose: string
+    validationCheckboxLabel: string
+    validationMessage: string
+    validationButtonLabel: string
+    validationIdleFeedback: string
+    validationSuccessFeedback: string
+    slotsLead: string
+    slotsLinkLabel: string
+  }
   links?: {
     iconsPage: string
     iconGuidePrefix: string

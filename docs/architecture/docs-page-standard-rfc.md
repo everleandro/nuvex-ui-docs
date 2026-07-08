@@ -148,10 +148,78 @@ Minimo:
 - UI global (labels genericos): i18n/locales/en.json y i18n/locales/es.json.
 - Contenido editorial por pagina: modulos tipados por locale.
 
+Regla arquitectonica obligatoria:
+
+- Las paginas de componentes deben resolver su copy localizado desde `app/content/docs/...` y consumirlo via `content` / `content.labels`.
+- `i18n/locales/*.json` queda reservado para UI global o texto compartido de aplicacion, no para copy editorial especifico de una pagina de docs.
+- Si una demo necesita labels, mensajes de validacion, helper text, textos de dialogo o snippets localizados, esos textos deben vivir en el modulo de contenido de la pagina (`*.ts` y `*-es.ts`), no en `computed` locales dentro de la vista.
+
 Ejemplo:
 
 - app/content/docs/forms/button.ts
 - app/content/docs/forms/button-es.ts
+- app/content/docs/forms/checkbox.ts
+- app/content/docs/forms/checkbox-es.ts
+
+### 6.2.1 Estructura minima recomendada para locales por pagina
+
+Usar `labels` como contenedor de todo texto visible reutilizado por la vista o por los snippets localizados del playground.
+
+Ejemplo minimo:
+
+```ts
+export const checkboxComponentContent: DocsComponentPageContent = {
+  kind: 'component',
+  seo: {
+    title: 'Checkbox',
+    description: '...',
+  },
+  hero: {
+    title: 'Checkbox',
+    descriptionHtml: '...',
+  },
+  sections: [
+    { key: 'usage', title: 'Usage', description: '...' },
+    { key: 'props', title: 'Props', description: '...' },
+  ],
+  labels: {
+    controls: [
+      { key: 'color', label: 'color' },
+      { key: 'outlined', label: 'outlined' },
+    ],
+    checkboxText: {
+      usageLabel: 'Enable deployment checks',
+      usageDetail: 'Required for deployment checklist',
+      validationCheckboxLabel: 'I accept the terms of service',
+      validationMessage: 'You must accept the terms before continuing.',
+      validationButtonLabel: 'Create account',
+      validationIdleFeedback: 'Submit to validate the checkbox rule.',
+      validationSuccessFeedback: 'Form is valid. Ready to continue.',
+      visualStateLabels: {
+        default: 'Default',
+        outlined: 'Outlined',
+        active: 'Active',
+        disabled: 'Disabled',
+        readonly: 'Readonly',
+      },
+      customValuesLabel: 'Release checklist',
+      customValuesDetail: 'Toggle to mark deployment readiness',
+      currentModelValue: 'Current model value',
+      termsDialogTitle: 'Terms and Conditions',
+      termsDialogBody: '...',
+      termsDialogClose: 'Close',
+      slotsLead: 'I agree to the',
+      slotsLinkLabel: 'Terms and Conditions',
+    },
+  },
+}
+```
+
+Reglas de uso:
+
+- `controls` concentra labels de toggles/inputs del panel de playground.
+- Los textos especificos de demos complejas deben agruparse en un namespace semantico dentro de `labels` como `checkboxText`, `integrationText`, `formText` o equivalente.
+- La vista solo lee `content.value.labels...`; no redefine ese texto por locale.
 
 ## 6.3 Criterios de calidad i18n
 
@@ -159,6 +227,11 @@ Ejemplo:
 - Paridad de secciones entre en y es.
 - Fallback controlado a en solo cuando falte traduccion.
 - Sin hardcode de strings de contenido en componentes Vue de pagina.
+- La vista Vue actua como capa de render y estado; no define diccionarios inline por locale salvo fallback tecnico temporal claramente justificado.
+
+Anti-patron explicito:
+
+- No crear objetos tipo `pageText` con ramas `if (locale.value === 'es')` dentro de una pagina de docs cuando ese mismo contenido puede modelarse en `app/content/docs/...`.
 
 ## 7. Reutilizacion de componentes
 

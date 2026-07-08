@@ -5,18 +5,10 @@
     <DocsSection :id="sections.usage.key" :title="sections.usage.title" :description="sections.usage.description">
       <DocsComponentPlayground :tabs="tabsPlayground" :color="color">
         <template #panel-design>
-          <ECheckbox
-            v-model="checkboxValue"
-            :label="usageLabel"
-            :color="color"
-            :outlined="checkboxProperty.outlined"
-            :disabled="checkboxProperty.disabled"
-            :readonly="checkboxProperty.readonly"
-            :tonal="checkboxProperty.tonal"
-            :true-value="resolvedTrueValue"
-            :false-value="resolvedFalseValue"
-            detail="Required for deployment checklist"
-          />
+          <ECheckbox v-model="checkboxValue" :label="usageLabel" :color="color" :outlined="checkboxProperty.outlined"
+            :disabled="checkboxProperty.disabled" :readonly="checkboxProperty.readonly" :tonal="checkboxProperty.tonal"
+            :retain-color="checkboxProperty.retainColor"
+            :detail="pageText.usageDetail" />
         </template>
 
         <template #panel-design-code>
@@ -30,7 +22,8 @@
             <ECheckbox v-model="checkboxProperty.disabled" cols="24" :label="controlLabel('disabled')" :color="color" />
             <ECheckbox v-model="checkboxProperty.readonly" cols="24" :label="controlLabel('readonly')" :color="color" />
             <ECheckbox v-model="checkboxProperty.tonal" cols="24" :label="controlLabel('tonal')" :color="color" />
-            <ECheckbox v-model="useCustomValues" cols="24" :label="controlLabel('customValues')" :color="color" />
+            <ECheckbox v-model="checkboxProperty.retainColor" cols="24" :label="controlLabel('retainColor')"
+              :color="color" />
           </EForm>
         </template>
       </DocsComponentPlayground>
@@ -41,11 +34,11 @@
       <DocsComponentPlayground :tabs="tabsDesignTemplate" :color="color">
         <template #panel-design>
           <EForm>
-            <ECheckbox v-model="visualStates.default" lg="6" label="Default" :color="color" />
-            <ECheckbox v-model="visualStates.outlined" lg="6" label="Outlined" outlined :color="color" />
-            <ECheckbox v-model="visualStates.active" lg="6" label="Active" :color="color" />
-            <ECheckbox v-model="visualStates.disabled" lg="6" label="Disabled" disabled :color="color" />
-            <ECheckbox v-model="visualStates.readonly" lg="6" label="Readonly" readonly outlined :color="color" />
+            <ECheckbox v-model="visualStates.default" lg="6" :label="pageText.visualStateLabels.default" :color="color" />
+            <ECheckbox v-model="visualStates.outlined" lg="6" :label="pageText.visualStateLabels.outlined" outlined :color="color" />
+            <ECheckbox v-model="visualStates.active" lg="6" :label="pageText.visualStateLabels.active" :color="color" />
+            <ECheckbox v-model="visualStates.disabled" lg="6" :label="pageText.visualStateLabels.disabled" disabled :color="color" />
+            <ECheckbox v-model="visualStates.readonly" lg="6" :label="pageText.visualStateLabels.readonly" readonly outlined :color="color" />
           </EForm>
         </template>
 
@@ -60,14 +53,16 @@
       <DocsComponentPlayground :tabs="tabsDesignTemplateTs" :color="color">
         <template #panel-design>
           <EForm>
-            <ECheckbox v-model="releaseStatus" lg="8" label="Release checklist" true-value="ready" false-value="hold"
-              detail="Toggle to mark deployment readiness" :color="color" />
-            <ECard lg="4" color="surface-subtle" elevation="sm" class="pa-3 d-flex flex-column gap-2">
-              <div class="text-caption">Current model value</div>
-              <EChip :color="releaseStatus === 'ready' ? 'success' : 'warning'" tonal>
-                {{ releaseStatus }}
-              </EChip>
-            </ECard>
+            <ECheckbox v-model="releaseStatus" lg="8" :label="pageText.customValuesLabel" true-value="ready" false-value="hold"
+              :detail="pageText.customValuesDetail" :color="color" />
+            <EFormColumn lg="4">
+              <ECard color="surface-subtle" elevation="sm" class="pa-3 d-flex flex-column gap-2">
+                <div class="text-caption">{{ pageText.currentModelValue }}</div>
+                <EChip :color="releaseStatus === 'ready' ? 'success' : 'warning'" tonal>
+                  {{ releaseStatus }}
+                </EChip>
+              </ECard>
+            </EFormColumn>
           </EForm>
         </template>
 
@@ -81,38 +76,36 @@
       </DocsComponentPlayground>
     </DocsSection>
 
-    <DocsSection :id="sections['slots'].key" :title="sections['slots'].title" :description-html="sections['slots'].descriptionHtml">
-      <DocsComponentPlayground :tabs="tabsDesignTemplate" :color="color">
+    <DocsSection :id="sections['slots'].key" :title="sections['slots'].title"
+      :description-html="sections['slots'].descriptionHtml">
+      <DocsComponentPlayground :tabs="tabsDesignTemplateTs" :color="color">
         <template #panel-design>
-          <ECheckbox v-model="slotChecked" :color="color">
-            <template #label>
-              I agree to the
-              <a href="#" class="checkbox-page__inline-link" @click.prevent>Terms and Conditions</a>
-            </template>
-          </ECheckbox>
+          <DocsFormsCheckboxSlotsPreview :color="color" />
         </template>
 
         <template #panel-template>
           <CodePanel :code="slotsTemplateCode" />
         </template>
+
+        <template #panel-ts>
+          <CodePanel :code="slotsTsCode" language="ts" />
+        </template>
       </DocsComponentPlayground>
     </DocsSection>
 
-    <DocsSection :id="sections.validation.key" :title="sections.validation.title" :description="sections.validation.description">
+    <DocsSection :id="sections.validation.key" :title="sections.validation.title"
+      :description="sections.validation.description">
       <DocsComponentPlayground :tabs="tabsDesignTemplateTs" :color="color">
         <template #panel-design>
-          <ECard elevation="sm" color="surface-subtle" class="pa-4" style="width: 100%;">
-            <EForm v-model="validationState.isValid">
-              <ECheckbox
-                v-model="validationState.termsAccepted"
-                label="I accept the terms of service"
-                :rules="[(value) => value === true || validationMessage]"
-                :color="color"
-              />
-              <div class="d-flex items-center gap-2 mt-3">
-                <EButton color="primary" @click="handleValidationSubmit">Create account</EButton>
-                <span class="text-caption">{{ validationFeedback }}</span>
-              </div>
+          <ECard elevation="sm" color="surface-subtle" class="pa-4" style="width: 400px;">
+            <EForm v-model="validationState.isValid" validate-on-submit @submit="handleValidationSubmit"
+              @submit-invalid="handleValidationInvalid">
+              <ECheckbox v-model="validationState.termsAccepted" :label="pageText.validationCheckboxLabel"
+                :rules="[(value: boolean) => value === true || validationMessage]" :color="color" />
+              <EFormColumn cols="12" class="d-flex flex-column gap-2">
+                <EButton color="primary" type="submit" :disabled="!validationState.isValid">{{ pageText.validationButtonLabel }}</EButton>
+                <div class="d-flex justify-center"><EChip class="text-caption">{{ validationFeedback }}</EChip></div>
+              </EFormColumn>
             </EForm>
           </ECard>
         </template>
@@ -199,28 +192,43 @@ useSeoMeta({
 const color = ref('primary')
 const colors = ['primary', 'secondary', 'blue', 'warning', 'purple']
 
+const pageText = computed(() => {
+  return content.value.labels.checkboxText ?? {
+    usageLabel: 'Enable deployment checks',
+    usageDetail: 'Required for deployment checklist',
+    visualStateLabels: {
+      default: 'Default',
+      outlined: 'Outlined',
+      active: 'Active',
+      disabled: 'Disabled',
+      readonly: 'Readonly',
+    },
+    customValuesLabel: 'Release checklist',
+    customValuesDetail: 'Toggle to mark deployment readiness',
+    currentModelValue: 'Current model value',
+    termsDialogTitle: 'Terms and Conditions',
+    termsDialogBody: 'Use this dialog to explain the scope of consent, expected usage, and any additional conditions before continuing.',
+    termsDialogClose: 'Close',
+    validationCheckboxLabel: 'I accept the terms of service',
+    validationMessage: 'You must accept the terms before continuing.',
+    validationButtonLabel: 'Create account',
+    validationIdleFeedback: 'Submit to validate the checkbox rule.',
+    validationSuccessFeedback: 'Form is valid. Ready to continue.',
+    slotsLead: 'I agree to the',
+    slotsLinkLabel: 'Terms and Conditions',
+  }
+})
+
 const checkboxProperty = ref({
   outlined: false,
   disabled: false,
   readonly: false,
-  tonal: false,
+  tonal: true,
+  retainColor: true,
 })
 
-const useCustomValues = ref(false)
 const checkboxValue = ref<CheckboxValue>(false)
-const usageLabel = ref('Enable deployment checks')
-
-const resolvedTrueValue = computed<CheckboxValue>(() => {
-  return useCustomValues.value ? 'enabled' : true
-})
-
-const resolvedFalseValue = computed<CheckboxValue>(() => {
-  return useCustomValues.value ? 'disabled' : false
-})
-
-watch(useCustomValues, () => {
-  checkboxValue.value = resolvedFalseValue.value
-})
+const usageLabel = computed(() => pageText.value.usageLabel)
 
 const visualStates = ref({
   default: false,
@@ -231,27 +239,30 @@ const visualStates = ref({
 })
 
 const releaseStatus = ref<'ready' | 'hold'>('hold')
-const slotChecked = ref(false)
 
-const validationMessage = 'You must accept the terms before continuing.'
+const validationMessage = computed(() => pageText.value.validationMessage)
 const validationState = ref({
   isValid: undefined as boolean | undefined,
   termsAccepted: false,
-  submitted: false,
+  submitState: 'idle' as 'idle' | 'valid' | 'invalid',
 })
 
 const handleValidationSubmit = () => {
-  validationState.value.submitted = true
+  validationState.value.submitState = 'valid'
+}
+
+const handleValidationInvalid = () => {
+  validationState.value.submitState = 'invalid'
 }
 
 const validationFeedback = computed(() => {
-  if (!validationState.value.submitted) {
-    return 'Submit to validate the checkbox rule.'
+  if (validationState.value.submitState === 'idle') {
+    return pageText.value.validationIdleFeedback
   }
 
-  return validationState.value.termsAccepted
-    ? 'Form is valid. Ready to continue.'
-    : validationMessage
+  return validationState.value.submitState === 'valid'
+    ? pageText.value.validationSuccessFeedback
+    : validationMessage.value
 })
 
 const { tabsPlayground, tabsDesignTemplate, tabsDesignTemplateTs } = useDocsPlaygroundTabSets()
@@ -271,57 +282,81 @@ const usageTemplateCode = computed(() => {
       checkboxProperty.value.disabled && 'disabled',
       checkboxProperty.value.readonly && 'readonly',
       checkboxProperty.value.tonal && 'tonal',
-      useCustomValues.value && 'true-value="enabled"',
-      useCustomValues.value && 'false-value="disabled"',
+      checkboxProperty.value.retainColor && 'retain-color',
     ],
   })
 })
 
 const visualVariantsTemplateCode = `<EForm>
-  <ECheckbox v-model="visualStates.default" label="Default" :color="color" />
-  <ECheckbox v-model="visualStates.outlined" label="Outlined" outlined :color="color" />
-  <ECheckbox v-model="visualStates.active" label="Active" :color="color" />
-  <ECheckbox v-model="visualStates.disabled" label="Disabled" disabled :color="color" />
-  <ECheckbox v-model="visualStates.readonly" label="Readonly" readonly outlined :color="color" />
+  <ECheckbox v-model="visualStates.default" label="${pageText.value.visualStateLabels.default}" :color="color" />
+  <ECheckbox v-model="visualStates.outlined" label="${pageText.value.visualStateLabels.outlined}" outlined :color="color" />
+  <ECheckbox v-model="visualStates.active" label="${pageText.value.visualStateLabels.active}" :color="color" />
+  <ECheckbox v-model="visualStates.disabled" label="${pageText.value.visualStateLabels.disabled}" disabled :color="color" />
+  <ECheckbox v-model="visualStates.readonly" label="${pageText.value.visualStateLabels.readonly}" readonly outlined :color="color" />
 </EForm>`
 
-const customValuesTemplateCode = `<ECheckbox
+const customValuesTemplateCode = computed(() => `<ECheckbox
   v-model="releaseStatus"
-  label="Release checklist"
+  label="${pageText.value.customValuesLabel}"
   true-value="ready"
   false-value="hold"
-  detail="Toggle to mark deployment readiness"
-/>`
+  detail="${pageText.value.customValuesDetail}"
+/>`)
 
 const customValuesTsCode = `const releaseStatus = ref<'ready' | 'hold'>('hold')`
 
-const slotsTemplateCode = `<ECheckbox v-model="slotChecked">
+const slotsTemplateCode = computed(() => `<ECheckbox v-model="slotChecked">
   <template #label>
-    I agree to the
-    <a href="#" @click.prevent>Terms and Conditions</a>
+    ${pageText.value.slotsLead}
+    <a href="#" @click.prevent="termsDialogOpen = true">${pageText.value.slotsLinkLabel}</a>
   </template>
-</ECheckbox>`
+</ECheckbox>
 
-const validationTemplateCode = `<EForm v-model="isValid">
+<EDialog v-model="termsDialogOpen" max-width="420">
+  <ECard class="pa-4 d-flex flex-column gap-3">
+    <div>
+      <div class="text-subtitle-2">${pageText.value.termsDialogTitle}</div>
+      <p class="text-body-2 mt-2 mb-0">
+        ${pageText.value.termsDialogBody}
+      </p>
+    </div>
+
+    <div class="d-flex justify-end">
+      <EButton color="primary" @click="termsDialogOpen = false">
+        ${pageText.value.termsDialogClose}
+      </EButton>
+    </div>
+  </ECard>
+</EDialog>`)
+
+const slotsTsCode = `const slotChecked = ref(false)
+const termsDialogOpen = ref(false)`
+
+const validationTemplateCode = computed(() => `<EForm
+  v-model="isValid"
+  validate-on-submit
+  @submit="handleSubmit"
+  @submit-invalid="handleInvalid"
+>
   <ECheckbox
     v-model="termsAccepted"
-    label="I accept the terms of service"
-    :rules="[(value) => value === true || 'You must accept the terms before continuing.']"
+    label="${pageText.value.validationCheckboxLabel}"
+    :rules="[(value) => value === true || '${pageText.value.validationMessage}']"
   />
 
-  <EButton color="primary" @click="submitted = true">
-    Create account
+  <EButton color="primary" type="submit">
+    ${pageText.value.validationButtonLabel}
   </EButton>
-</EForm>`
+</EForm>`)
 
 const validationTsCode = `const isValid = ref<boolean | undefined>()
-const submitted = ref(false)
-const termsAccepted = ref(false)`
-</script>
+const termsAccepted = ref(false)
 
-<style scoped>
-.checkbox-page__inline-link {
-  color: inherit;
-  text-decoration: underline;
+const handleSubmit = () => {
+  // Continue with the valid form submission flow.
 }
-</style>
+
+const handleInvalid = () => {
+  // Optional: react when validation blocks the submit.
+}`
+</script>

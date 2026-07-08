@@ -40,6 +40,8 @@ Notas:
 - Si el componente tiene slots nombrados, incluir una seccion de slots obligatoria.
 - Si hay varios escenarios de slots, se permiten multiples secciones de slots.
 - Si una demo crece en complejidad, extraerla a un componente de apoyo en `app/components/docs/[ruta-de-la-pagina]/[NombreSeccion].vue`.
+- Todo texto localizado especifico de la pagina debe salir de `app/content/docs/[ruta].ts` y `app/content/docs/[ruta]-es.ts`; la vista no debe declarar diccionarios inline por locale.
+- Usar `i18n/locales/*.json` solo para UI global/compartida, no para copy editorial del playground o secciones de una pagina concreta.
 
 Definicion operativa de "componente de entrada":
 
@@ -144,6 +146,7 @@ Contrato minimo recomendado:
 - Tab de diseno/preview.
 - Tab de template/snippet.
 - Controles que representen las props mas usadas.
+- Si el playground incluye texto visible adicional (helper text, labels de demo, feedback, dialogs, estados), modelarlo en `labels` dentro del contenido por locale.
 
 ### 4.3 Ejemplos especificos del componente
 
@@ -258,6 +261,13 @@ faqItems: [
 ### 4.11 Criterios minimos de calidad por seccion
 
 Aplicar como gate antes de marcar una pagina como `published`.
+
+Checklist de locales para paginas de componente:
+
+1. Existe archivo `en` y archivo `es` en `app/content/docs/...`.
+2. Hero, secciones y `labels` mantienen paridad estructural entre locales.
+3. La vista consume `content` / `content.labels` y no contiene ramas manuales por locale para copy editorial.
+4. `i18n/locales/*.json` solo se toca si el texto es global y reutilizable fuera de una pagina puntual.
 
 | Seccion | Criterio minimo |
 | --- | --- |
