@@ -2,8 +2,12 @@ import { introductionContent } from './getting-started/introduction'
 import { introductionContentEs } from './getting-started/introduction-es'
 import { buttonComponentContent } from './forms/button'
 import { buttonComponentContentEs } from './forms/button-es'
+import { checkboxComponentContent } from './forms/checkbox'
+import { checkboxComponentContentEs } from './forms/checkbox-es'
 import { selectComponentContent } from './forms/select'
 import { selectComponentContentEs } from './forms/select-es'
+import { textareaComponentContent } from './forms/textarea'
+import { textareaComponentContentEs } from './forms/textarea-es'
 import { textFieldComponentContent } from './forms/text-field'
 import { textFieldComponentContentEs } from './forms/text-field-es'
 import type {
@@ -29,12 +33,16 @@ const docsContentByLocale: Record<DocsLocaleCode, Record<string, DocsPageContent
 const docsComponentContentByLocale: Record<DocsLocaleCode, Record<string, DocsComponentPageContent>> = {
   en: {
     '/docs/forms/button': buttonComponentContent,
+    '/docs/forms/checkbox': checkboxComponentContent,
     '/docs/forms/select': selectComponentContent,
+    '/docs/forms/textarea': textareaComponentContent,
     '/docs/forms/text-field': textFieldComponentContent,
   },
   es: {
     '/docs/forms/button': buttonComponentContentEs,
+    '/docs/forms/checkbox': checkboxComponentContentEs,
     '/docs/forms/select': selectComponentContentEs,
+    '/docs/forms/textarea': textareaComponentContentEs,
     '/docs/forms/text-field': textFieldComponentContentEs,
   },
 }
