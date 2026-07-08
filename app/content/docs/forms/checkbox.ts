@@ -22,7 +22,7 @@ export const checkboxComponentContent: DocsComponentPageContent = {
       key: 'visual-variants',
       title: 'Visual variants',
       description:
-        'Compare default and outlined presentation across active, disabled, and readonly states to keep semantic intent clear in dense forms.',
+        'Compare default, outlined, tonal, retain-color, active, disabled, and readonly states to keep semantic intent clear in dense forms.',
     },
     {
       key: 'custom-values',
@@ -64,6 +64,8 @@ export const checkboxComponentContent: DocsComponentPageContent = {
       visualStateLabels: {
         default: 'Default',
         outlined: 'Outlined',
+        tonal: 'Tonal',
+        retainColor: 'Retain color',
         active: 'Active',
         disabled: 'Disabled',
         readonly: 'Readonly',

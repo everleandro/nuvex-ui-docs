@@ -4,6 +4,10 @@ import { buttonComponentContent } from './forms/button'
 import { buttonComponentContentEs } from './forms/button-es'
 import { checkboxComponentContent } from './forms/checkbox'
 import { checkboxComponentContentEs } from './forms/checkbox-es'
+import { radioComponentContent } from './forms/radio'
+import { radioComponentContentEs } from './forms/radio-es'
+import { switchComponentContent } from './forms/switch'
+import { switchComponentContentEs } from './forms/switch-es'
 import { selectComponentContent } from './forms/select'
 import { selectComponentContentEs } from './forms/select-es'
 import { textareaComponentContent } from './forms/textarea'
@@ -34,6 +38,8 @@ const docsComponentContentByLocale: Record<DocsLocaleCode, Record<string, DocsCo
   en: {
     '/docs/forms/button': buttonComponentContent,
     '/docs/forms/checkbox': checkboxComponentContent,
+    '/docs/forms/radio': radioComponentContent,
+    '/docs/forms/switch': switchComponentContent,
     '/docs/forms/select': selectComponentContent,
     '/docs/forms/textarea': textareaComponentContent,
     '/docs/forms/text-field': textFieldComponentContent,
@@ -41,6 +47,8 @@ const docsComponentContentByLocale: Record<DocsLocaleCode, Record<string, DocsCo
   es: {
     '/docs/forms/button': buttonComponentContentEs,
     '/docs/forms/checkbox': checkboxComponentContentEs,
+    '/docs/forms/radio': radioComponentContentEs,
+    '/docs/forms/switch': switchComponentContentEs,
     '/docs/forms/select': selectComponentContentEs,
     '/docs/forms/textarea': textareaComponentContentEs,
     '/docs/forms/text-field': textFieldComponentContentEs,

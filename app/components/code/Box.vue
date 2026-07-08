@@ -20,7 +20,7 @@
       <template v-if="showForm">
         <ECol lg="5" class="code-box__form-container d-flex">
           <EDivider class="m-0 d-none d-md-block" vertical />
-          <div class="p-4 d-flex flex-grow">
+          <div class="p-4 d-flex flex-grow items-start">
             <slot name="form"></slot>
           </div>
         </ECol>

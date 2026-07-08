@@ -94,6 +94,8 @@ export interface DocsComponentPageLabels {
     visualStateLabels: {
       default: string
       outlined: string
+      tonal: string
+      retainColor: string
       active: string
       disabled: string
       readonly: string
@@ -111,6 +113,98 @@ export interface DocsComponentPageLabels {
     validationSuccessFeedback: string
     slotsLead: string
     slotsLinkLabel: string
+  }
+  switchText?: {
+    usageLabel: string
+    usageDetail: string
+    visualStateLabels: {
+      default: string
+      outlined: string
+      tonal: string
+      retainColor: string
+      loading: string
+      disabled: string
+      readonly: string
+    }
+    customValuesLabel: string
+    customValuesDetail: string
+    currentModelValue: string
+    asyncLabel: string
+    asyncDetail: string
+    asyncButtonLabel: string
+    asyncIdleFeedback: string
+    asyncSavingFeedback: string
+    asyncSuccessFeedback: string
+    slotLead: string
+    slotLinkLabel: string
+    dialogTitle: string
+    dialogBody: string
+    dialogClose: string
+    validationLabel: string
+    validationButtonLabel: string
+    validationMessage: string
+    validationIdleFeedback: string
+    validationSuccessFeedback: string
+  }
+  radioText?: {
+    usageGroupLabel: string
+    usageDetail: string
+    usageOptions: {
+      email: string
+      phone: string
+      sms: string
+    }
+    layoutLabels: {
+      row: string
+      column: string
+    }
+    layoutGroupLabels: {
+      row: string
+      column: string
+    }
+    layoutDetail: string
+    layoutOptions: {
+      staging: string
+      production: string
+      canary: string
+    }
+    visualStateLabels: {
+      default: string
+      outlined: string
+      tonal: string
+      retainColor: string
+      disabled: string
+      readonly: string
+    }
+    stateOptions: {
+      auto: string
+      manual: string
+    }
+    mandatoryGroupLabel: string
+    mandatoryDetail: string
+    mandatoryOptions: {
+      free: string
+      pro: string
+      enterprise: string
+    }
+    resetMandatoryButton: string
+    currentModelValue: string
+    slotGroupLead: string
+    slotGroupLinkLabel: string
+    slotOptionLabel: string
+    slotDialogTitle: string
+    slotDialogBody: string
+    slotDialogClose: string
+    validationGroupLabel: string
+    validationOptions: {
+      stable: string
+      beta: string
+      nightly: string
+    }
+    validationButtonLabel: string
+    validationMessage: string
+    validationIdleFeedback: string
+    validationSuccessFeedback: string
   }
   links?: {
     iconsPage: string

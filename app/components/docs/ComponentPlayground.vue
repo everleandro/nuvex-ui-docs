@@ -72,6 +72,6 @@ const activeTabValue = computed(() => {
 </script>
 <style scoped>
 .design-code-panel {
-  min-height: 70%;
+  min-height: 65%;
 }
 </style>

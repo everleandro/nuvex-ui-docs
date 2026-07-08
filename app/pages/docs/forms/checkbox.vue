@@ -36,6 +36,8 @@
           <EForm>
             <ECheckbox v-model="visualStates.default" lg="6" :label="pageText.visualStateLabels.default" :color="color" />
             <ECheckbox v-model="visualStates.outlined" lg="6" :label="pageText.visualStateLabels.outlined" outlined :color="color" />
+            <ECheckbox v-model="visualStates.tonal" lg="6" :label="pageText.visualStateLabels.tonal" tonal :color="color" />
+            <ECheckbox v-model="visualStates.retainColor" lg="6" :label="pageText.visualStateLabels.retainColor" :retain-color="true" :color="color" />
             <ECheckbox v-model="visualStates.active" lg="6" :label="pageText.visualStateLabels.active" :color="color" />
             <ECheckbox v-model="visualStates.disabled" lg="6" :label="pageText.visualStateLabels.disabled" disabled :color="color" />
             <ECheckbox v-model="visualStates.readonly" lg="6" :label="pageText.visualStateLabels.readonly" readonly outlined :color="color" />
@@ -199,6 +201,8 @@ const pageText = computed(() => {
     visualStateLabels: {
       default: 'Default',
       outlined: 'Outlined',
+      tonal: 'Tonal',
+      retainColor: 'Retain color',
       active: 'Active',
       disabled: 'Disabled',
       readonly: 'Readonly',
@@ -233,6 +237,8 @@ const usageLabel = computed(() => pageText.value.usageLabel)
 const visualStates = ref({
   default: false,
   outlined: false,
+  tonal: true,
+  retainColor: true,
   active: true,
   disabled: true,
   readonly: true,
@@ -290,6 +296,8 @@ const usageTemplateCode = computed(() => {
 const visualVariantsTemplateCode = `<EForm>
   <ECheckbox v-model="visualStates.default" label="${pageText.value.visualStateLabels.default}" :color="color" />
   <ECheckbox v-model="visualStates.outlined" label="${pageText.value.visualStateLabels.outlined}" outlined :color="color" />
+  <ECheckbox v-model="visualStates.tonal" label="${pageText.value.visualStateLabels.tonal}" tonal :color="color" />
+  <ECheckbox v-model="visualStates.retainColor" label="${pageText.value.visualStateLabels.retainColor}" retain-color :color="color" />
   <ECheckbox v-model="visualStates.active" label="${pageText.value.visualStateLabels.active}" :color="color" />
   <ECheckbox v-model="visualStates.disabled" label="${pageText.value.visualStateLabels.disabled}" disabled :color="color" />
   <ECheckbox v-model="visualStates.readonly" label="${pageText.value.visualStateLabels.readonly}" readonly outlined :color="color" />
