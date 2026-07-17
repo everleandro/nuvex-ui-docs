@@ -1,7 +1,7 @@
 <template>
   <section class="docs-page-hero p-3">
-    <h1 class="docs-page-hero__title text-h1">{{ title }}</h1>
-    <div v-if="hasDescriptionContent" class="docs-page-hero__description text-body">
+    <h1 class="docs-page-hero__title type-h1 text-heading">{{ title }}</h1>
+    <div v-if="hasDescriptionContent" class="docs-page-hero__description type-body">
       <slot v-if="hasDescriptionSlot" name="description" />
       <p v-else-if="descriptionHtml" v-html="descriptionHtml" />
       <p v-else>{{ description }}</p>

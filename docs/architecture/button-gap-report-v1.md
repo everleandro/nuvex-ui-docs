@@ -55,7 +55,7 @@ Button ya cumple cobertura requerida de v1 para Core Actions segun la matriz del
 ### C) Button como navegacion
 
 ```vue
-<e-button :to="'/docs/forms/text-field'" text>
+<e-button :to="'/docs/component/forms/text-field'" text>
   Go to TextField docs
 </e-button>
 ```

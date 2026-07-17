@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import avatarManifest from '~~/assets/avatar-manifest.json'
-import { getDocsComponentPageContent } from '~/content/docs'
+import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
 
 type AvatarManifestEntry = {
     id: string
@@ -47,15 +47,7 @@ type Assignee = {
 
 const { locale } = useI18n()
 
-const content = computed(() => {
-    const resolvedContent = getDocsComponentPageContent('/docs/forms/select', locale.value)
-
-    if (!resolvedContent) {
-        throw createError({ statusCode: 404, statusMessage: 'Select documentation content not found' })
-    }
-
-    return resolvedContent
-})
+const content = useDocsComponentI18nContent('pages.input.select')
 
 const assigneeItems: Assignee[] = (avatarManifest as AvatarManifestEntry[]).map((entry) => ({
     id: entry.id,

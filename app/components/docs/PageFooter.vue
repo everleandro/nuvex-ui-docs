@@ -1,13 +1,13 @@
 <template>
     <footer v-if="hasSiblings" class="docs-page-footer">
-        <DocsSection :title="t('docs.footer.title')" :description="t('docs.footer.description')">
+        <DocsSection :title="t('common.docs.footer.title')" :description="t('common.docs.footer.description')">
             <div class="d-flex gap-3 p-3">
                 <NuxtLink v-if="siblings.previous" :to="withLocalePrefix(siblings.previous.to, locale)" class="docs-page-footer__link">
                     <ECard
                         v-ripple
                         outlined
                         :title="t(getNavigationItemTitleKey(siblings.previous))"
-                        :subtitle="t('docs.footer.previous')"
+                        :subtitle="t('common.docs.footer.previous')"
                         :prepend-icon="$icon.arrowLeft" :prepend-icon-props="{ size: 'x-large' }" />
                 </NuxtLink>
                 <ESpacer />
@@ -16,7 +16,7 @@
                         v-ripple
                         outlined
                         :title="t(getNavigationItemTitleKey(siblings.next))"
-                        :subtitle="t('docs.footer.next')"
+                        :subtitle="t('common.docs.footer.next')"
                         :append-icon="$icon.arrowRight" :append-icon-props="{ size: 'x-large' }" />
                 </NuxtLink>
             </div>

@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import type { DocsFaqItem } from '~/content/docs/types'
+import type { DocsFaqItem } from '~/types/docs'
 
 defineProps<{
   items: DocsFaqItem[]

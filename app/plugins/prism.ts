@@ -1,4 +1,5 @@
 import Prism from "prismjs";
+import "prismjs/components/prism-bash";
 import "prismjs/components/prism-typescript";
 import "prismjs/components/prism-scss";
 import "prismjs/components/prism-json"; // need this for json

@@ -19,10 +19,10 @@ export default defineNuxtConfig({
     strategy: 'prefix_except_default',
     defaultLocale: 'en',
     locales: [
-      { code: 'en', name: 'English', file: 'en.json' },
-      { code: 'es', name: 'Espanol', file: 'es.json' },
+      { code: 'en', name: 'English' },
+      { code: 'es', name: 'Espanol' },
     ],
-    langDir: 'locales',
+    vueI18n: './i18n.config.ts',
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'nuvex-docs-locale',

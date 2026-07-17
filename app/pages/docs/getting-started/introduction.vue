@@ -1,3 +1,19 @@
+<script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+import { useDocsPageI18nContent } from '~/composables/useDocsI18nContent'
+import { resolveDocsRichTextHtml } from '~/utils/docs-rich-text'
+import { withLocalePrefix } from '~/utils/locale-path'
+
+const { locale } = useI18n()
+
+const content = useDocsPageI18nContent('pages.introduction.introduction')
+
+useSeoMeta({
+  title: computed(() => content.value.seo.title),
+  description: computed(() => content.value.seo.description),
+})
+</script>
+
 <template>
   <article class="docs-page">
     <DocsPageHero
@@ -12,6 +28,7 @@
       :id="section.key"
       :title="section.title"
       :description="section.description"
+      :description-html="resolveDocsRichTextHtml(section.descriptionHtml, locale)"
     >
       <ERow v-if="section.type === 'card-grid'" dense>
         <ECol
@@ -21,49 +38,85 @@
           :md="section.cols?.md ?? 6"
           :lg="section.cols?.lg ?? 4"
         >
-          <ECard class="docs-page__card" :title="item.title" :description="item.description" outlined/>
+          <ECard
+            class="docs-page__card"
+            :title="item.title"
+            :description="item.description"
+            outlined
+          />
         </ECol>
       </ERow>
 
-      <ol v-else-if="section.ordered" class="docs-page__steps">
-        <li v-for="item in section.items" :key="item">{{ item }}</li>
+      <ERow v-else-if="section.type === 'nav-card-grid'" dense>
+        <ECol
+          v-for="item in section.items"
+          :key="item.title"
+          :cols="12"
+          :md="section.cols?.md ?? 6"
+          :lg="section.cols?.lg ?? 4"
+        >
+          <NuxtLink
+            :to="withLocalePrefix(item.to, locale)"
+            class="docs-page__card-link"
+          >
+            <ECard
+              v-ripple
+              class="docs-page__card"
+              :title="item.title"
+              :description="item.description"
+              :prepend-icon="$icon[item.icon]"
+              :prepend-icon-props="{ size: 'x-large' }"
+              outlined
+            />
+          </NuxtLink>
+        </ECol>
+      </ERow>
+
+      <ol v-else-if="section.type === 'list' && section.ordered" class="docs-page__steps">
+        <li v-for="(item, index) in section.items" :key="item">
+          <span
+            v-if="section.itemsHtml?.[index]"
+            v-html="resolveDocsRichTextHtml(section.itemsHtml[index], locale)"
+          />
+          <template v-else>{{ item }}</template>
+        </li>
       </ol>
 
-      <ul v-else class="docs-page__list">
-        <li v-for="item in section.items" :key="item">{{ item }}</li>
+      <ul v-else-if="section.type === 'list'" class="docs-page__list">
+        <li v-for="(item, index) in section.items" :key="item">
+          <span
+            v-if="section.itemsHtml?.[index]"
+            v-html="resolveDocsRichTextHtml(section.itemsHtml[index], locale)"
+          />
+          <template v-else>{{ item }}</template>
+        </li>
       </ul>
     </DocsSection>
 
   </article>
 </template>
 
-<script setup lang="ts">
-import { useI18n } from 'vue-i18n'
-import { getDocsPageContent } from '~/content/docs'
-
-const route = useRoute()
-const { locale } = useI18n()
-
-const content = computed(() => {
-  const resolvedContent = getDocsPageContent(route.path, locale.value)
-
-  if (!resolvedContent) {
-    throw createError({ statusCode: 404, statusMessage: 'Documentation page content not found' })
-  }
-
-  return resolvedContent
-})
-
-useSeoMeta({
-  title: computed(() => content.value.seo.title),
-  description: computed(() => content.value.seo.description),
-})
-</script>
-
 <style scoped>
 .docs-page {
   display: grid;
   gap: 1.5rem;
+}
+
+.docs-page__card-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.docs-page :deep(.docs-page__inline-link) {
+  color: var(--e-color-primary);
+  text-decoration: none;
+}
+
+.docs-page :deep(.docs-page__inline-link:hover),
+.docs-page :deep(.docs-page__inline-link:focus-visible) {
+  text-decoration: underline;
 }
 
 .docs-page__card {

@@ -27,8 +27,8 @@
 <script setup lang="ts">
 import { EFormColumn, ESpacer, ETextfield } from 'nuvex-ui'
 import { useI18n } from 'vue-i18n'
+import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
 import { useValidationRules } from '~/composables/useValidationRules'
-import { getDocsComponentPageContent } from '~/content/docs'
 
 interface IntegrationFormLabels {
     submit: string
@@ -45,15 +45,7 @@ interface IntegrationFormLabels {
 }
 
 const { locale } = useI18n()
-const content = computed(() => {
-    const resolvedContent = getDocsComponentPageContent('/docs/forms/text-field', locale.value)
-
-    if (!resolvedContent) {
-        throw createError({ statusCode: 404, statusMessage: 'TextField documentation content not found' })
-    }
-
-    return resolvedContent
-})
+const content = useDocsComponentI18nContent('pages.input.textField')
 
 const labels = computed<IntegrationFormLabels>(() => {
     const raw = content.value.labels.integrationText?.form as Partial<IntegrationFormLabels> | undefined

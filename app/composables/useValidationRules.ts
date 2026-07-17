@@ -7,9 +7,9 @@ export const useValidationRules = () => {
 
   const ruleFactory = computed(() => {
     return createValidationRules({
-      required: t('validation.required'),
-      email: t('validation.email.invalid'),
-      minLength: (min) => t('validation.minLength', { min }),
+      required: t('errors.validation.required'),
+      email: t('errors.validation.email.invalid'),
+      minLength: (min) => t('errors.validation.minLength', { min }),
     })
   })
 

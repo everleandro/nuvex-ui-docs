@@ -6,8 +6,21 @@
                     <EListItem v-bind="attrs" :title="t(getNavigationGroupTitleKey(group))"
                         :prepend-icon="$icon[group.icon]" />
                 </template>
-                <EListItem v-for="item in group.children" :key="item.to" active-color="primary" :title="t(getNavigationItemTitleKey(item))"
-                    :to="withLocalePrefix(item.to, locale)" />
+                <template v-for="entry in group.entries" :key="entry.id">
+                    <EListItem
+                        v-if="entry.kind === 'header'"
+                        class="app-navigation-drawer__header"
+                        :title="t(entry.titleKey)"
+                        tabindex="-1"
+                    />
+                    <EDivider v-else-if="entry.kind === 'divider'" class="my-2" />
+                    <EListItem
+                        v-else
+                        active-color="primary"
+                        :title="t(getNavigationItemTitleKey(entry))"
+                        :to="withLocalePrefix(entry.to, locale)"
+                    />
+                </template>
             </EListGroup>
         </EList>
     </EDrawer>
@@ -45,3 +58,11 @@ watch(
 )
 
 </script>
+
+<style scoped lang="scss">
+.app-navigation-drawer__header {
+    pointer-events: none;
+    opacity: 0.72;
+    text-transform: uppercase;
+}
+</style>

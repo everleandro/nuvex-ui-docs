@@ -23,7 +23,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import { useValidationRules } from '~/composables/useValidationRules'
-import { getDocsComponentPageContent } from '~/content/docs'
+import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
 
 interface IntegrationFormLabels {
     submit: string
@@ -39,15 +39,7 @@ interface IntegrationFormLabels {
 }
 
 const { locale } = useI18n()
-const content = computed(() => {
-    const resolvedContent = getDocsComponentPageContent('/docs/forms/button', locale.value)
-
-    if (!resolvedContent) {
-        throw createError({ statusCode: 404, statusMessage: 'Button documentation content not found' })
-    }
-
-    return resolvedContent
-})
+const content = useDocsComponentI18nContent('pages.button.button')
 
 const labels = computed<IntegrationFormLabels>(() => {
     const raw = content.value.labels.integrationText?.form as Partial<IntegrationFormLabels> | undefined

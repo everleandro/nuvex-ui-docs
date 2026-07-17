@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { getDocsComponentPageContent } from '~/content/docs'
+import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
 
 interface IntegrationHierarchyLabels {
     cancel: string
@@ -23,15 +23,7 @@ interface IntegrationHierarchyLabels {
 }
 
 const { locale } = useI18n()
-const content = computed(() => {
-    const resolvedContent = getDocsComponentPageContent('/docs/forms/button', locale.value)
-
-    if (!resolvedContent) {
-        throw createError({ statusCode: 404, statusMessage: 'Button documentation content not found' })
-    }
-
-    return resolvedContent
-})
+const content = useDocsComponentI18nContent('pages.button.button')
 
 const labels = computed<IntegrationHierarchyLabels>(() => {
     const raw = content.value.labels.integrationText?.hierarchy

@@ -1,9 +1,8 @@
 <template>
   <section :id="id" class="docs-section p-3">
-    <header v-if="eyebrow || title || hasDescriptionContent" class="docs-section__header">
-      <p v-if="eyebrow" class="docs-section__eyebrow">{{ eyebrow }}</p>
-      <h2 v-if="title" class="docs-section__title text-h4">{{ title }}</h2>
-      <div v-if="hasDescriptionContent" class="docs-section__description text-body">
+    <header v-if="title || hasDescriptionContent" class="docs-section__header">
+      <h2 v-if="title" class="docs-section__title type-h4 text-heading">{{ title }}</h2>
+      <div v-if="hasDescriptionContent" class="docs-section__description type-body">
         <p v-if="hasDescriptionSlot">
           <slot name="description" />
         </p>
@@ -11,6 +10,10 @@
         <p v-else>{{ description }}</p>
       </div>
     </header>
+
+    <ECard v-if="callout" elevation="sm" :color="callout.color || 'surface-subtle'" :description="callout.description"
+      :title="callout.title" tonal :prepend-icon="callout.icon ? $icon[callout.icon] : undefined"
+      class="docs-section__callout" />
 
     <div class="docs-section__body">
       <slot />
@@ -20,13 +23,14 @@
 
 <script setup lang="ts">
 import { computed, useSlots } from 'vue'
+import type { DocsCallout } from '~/types/docs'
 
 const props = defineProps<{
   id?: string
-  eyebrow?: string
   title?: string
   description?: string
   descriptionHtml?: string
+  callout?: DocsCallout
 }>()
 
 const slots = useSlots()
@@ -39,35 +43,6 @@ const hasDescriptionContent = computed(
 
 <style scoped>
 .docs-section {
-  display: grid;
-  gap: 1rem;
-}
-
-.docs-section__header {
-  display: grid;
-  gap: 0.5rem;
-}
-
-.docs-section__eyebrow,
-.docs-section__title,
-.docs-section__description {
-  margin: 0;
-}
-
-.docs-section__description p {
-  margin: 0;
-}
-
-.docs-section__eyebrow {
-  font-size: var(--e-typography-label-font-size-lg, 0.875rem);
-  line-height: var(--e-typography-label-line-height-lg, 1.25rem);
-  font-weight: var(--e-typography-label-font-weight-lg, 500);
-  letter-spacing: var(--e-typography-label-letter-spacing-lg, 0.08em);
-  text-transform: uppercase;
-  opacity: 0.7;
-}
-
-.docs-section__body {
   display: grid;
   gap: 1rem;
 }

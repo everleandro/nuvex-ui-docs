@@ -9,7 +9,7 @@ Scope: nuvex-ui-docs
 Definir un estandar unico para las paginas de documentacion antes de escalar contenido.
 Este RFC formaliza:
 
-- Los 2 tipos de pagina oficiales.
+- Los 3 tipos de pagina oficiales.
 - El contrato de contenido para renderizado consistente.
 - La estrategia de internacionalizacion (i18n) por pagina.
 - Los componentes base reutilizables.
@@ -70,9 +70,32 @@ Ejemplo objetivo:
 
 - Forms / Button (migrada al estandar).
 
+### Tipo C: Pagina de workflow / integracion
+
+Uso:
+
+- Instalacion.
+- Integraciones por framework.
+- Setup inicial de theming o plugin.
+- Guias operativas donde el usuario ejecuta pasos reales.
+
+Contenido esperado:
+
+- Hero con objetivo y alcance del flujo.
+- Decision points iniciales cuando hay multiples caminos posibles.
+- Bloque principal de comandos con tabs por package manager o runtime.
+- Snippets de setup por archivo o framework.
+- Checklist de verificacion.
+- Troubleshooting / pitfalls.
+- Siguientes pasos de navegacion.
+
+Ejemplo objetivo:
+
+- Getting Started / Installation.
+
 ## 4. Contrato comun de pagina
 
-Toda pagina (A o B) debe cumplir:
+Toda pagina (A, B o C) debe cumplir:
 
 - SEO por pagina (title, description).
 - Secciones con id estables para secondary nav.
@@ -83,7 +106,7 @@ Toda pagina (A o B) debe cumplir:
 ### 4.1 Esquema minimo propuesto (v1)
 
 ```ts
-export type DocsPageKind = 'concept' | 'component'
+export type DocsPageKind = 'concept' | 'component' | 'workflow'
 
 export interface DocsPageModel {
   kind: DocsPageKind
@@ -110,12 +133,18 @@ export type DocsSectionModel =
   | DocsPlaygroundSection
   | DocsApiSection
   | DocsCalloutSection
+  | DocsWorkflowDecisionSection
+  | DocsWorkflowCommandTabsSection
+  | DocsWorkflowCodeSection
+  | DocsWorkflowChecklistSection
+  | DocsWorkflowNextStepsSection
 ```
 
 Notas:
 
 - No obliga a crear todos los bloques de inmediato.
 - Permite evolucion por fases sin romper contenido existente.
+- Tipo C agrega bloques especializados para comandos y verificacion, pero mantiene la misma disciplina de contenido tipado, secondary nav y i18n por pagina.
 
 ## 5. Bloques estandar por tipo de pagina
 
@@ -136,12 +165,38 @@ Minimo:
 - api-reference
 - callout (accesibilidad y caveats)
 
+### 5.3 Bloques para Tipo C (workflow)
+
+Minimo:
+
+- decision-grid (opcional cuando existan multiples caminos de entrada)
+- command-tabs
+- code-block
+- checklist
+- next-steps
+
+Opcionales recomendados:
+
+- status-card
+- callout / troubleshooting
+- faq
+
+Regla de presentacion para `status-card`:
+
+- Se usa para resaltar una advertencia, prerequisito o confirmacion importante que afecte el flujo.
+- Debe ocupar todo el ancho disponible dentro de la seccion.
+- Debe usar estilo tonal.
+- Debe incluir prepend icon cuando aporte claridad.
+- Debe usar color semantico de estado (`success`, `warning`, `error`, `info` o equivalente).
+- En layout, se ubica entre la descripcion editorial de la seccion y el bloque principal de interaccion o codigo.
+
 ## 6. Estrategia de i18n
 
 ## 6.1 Regla general
 
 - Todo texto editorial visible debe salir de contenido por locale.
 - El codigo de ejemplo no se traduce.
+- Los comandos de shell no se traducen; solo el contexto editorial alrededor del comando cambia por locale.
 
 ## 6.2 Distribucion recomendada
 
@@ -150,9 +205,9 @@ Minimo:
 
 Regla arquitectonica obligatoria:
 
-- Las paginas de componentes deben resolver su copy localizado desde `app/content/docs/...` y consumirlo via `content` / `content.labels`.
+- Las paginas de componentes y workflow deben resolver su copy localizado desde `app/content/docs/...` y consumirlo via `content` / `content.labels`.
 - `i18n/locales/*.json` queda reservado para UI global o texto compartido de aplicacion, no para copy editorial especifico de una pagina de docs.
-- Si una demo necesita labels, mensajes de validacion, helper text, textos de dialogo o snippets localizados, esos textos deben vivir en el modulo de contenido de la pagina (`*.ts` y `*-es.ts`), no en `computed` locales dentro de la vista.
+- Si una demo necesita labels, mensajes de validacion, helper text, textos de dialogo, comandos contextualizados o snippets localizados, esos textos deben vivir en el modulo de contenido de la pagina (`*.ts` y `*-es.ts`), no en `computed` locales dentro de la vista.
 
 Ejemplo:
 
@@ -240,13 +295,14 @@ Mantener y reforzar estos componentes base:
 - docs/PageHero.vue
 - docs/Section.vue
 - docs/ApiTable.vue
-- code/Box.vue (o su evolucion para playground estandar)
+- code/Box.vue (o su evolucion para playground estandar y tabs de comandos)
 - code/CodePanel.vue
 
 Regla:
 
 - La pagina define contenido y estado.
 - Los componentes de docs renderizan presentacion consistente.
+- Si una seccion workflow necesita resaltar un requisito o caveat operativo, `DocsSection` puede evolucionar para exponer una region intermedia entre descripcion y cuerpo principal, en lugar de forzar ese card dentro del contenido libre del body.
 
 ## 8. Convenciones de contenido
 
@@ -265,14 +321,25 @@ Regla:
 6. api
 7. best-practices
 
-### 8.3 Criterio de snippet
+### 8.3 Orden recomendado en paginas de workflow
+
+1. overview
+2. decision-points
+3. command-tabs
+4. setup-snippets
+5. verification
+6. troubleshooting
+7. next-steps
+
+### 8.4 Criterio de snippet
 
 - Todo snippet debe corresponder a una demo valida de la pagina.
 - Evitar snippets desactualizados respecto al playground.
+- En paginas de workflow, cada snippet debe corresponder a un paso ejecutable o a un archivo real que el usuario deba tocar.
 
-### 8.4 Estructura FAQ estandar
+### 8.5 Estructura FAQ estandar
 
-Cuando una pagina componente incluya FAQ, el contenido debe modelarse por items y no como bloque de codigo unico.
+Cuando una pagina componente o workflow incluya FAQ, el contenido debe modelarse por items y no como bloque de codigo unico.
 
 Formato recomendado por item:
 
@@ -331,6 +398,17 @@ Una pagina componente se considera lista si:
 - Tiene playground y snippets consistentes.
 - Tiene API table y notas de accesibilidad.
 
+## 10.1 Definition of Done para una pagina tipo workflow
+
+Una pagina workflow se considera lista si:
+
+- Usa contrato tipado de contenido.
+- Tiene secondary nav funcional por ids estables.
+- Tiene comandos consistentes para al menos npm y pnpm cuando aplique.
+- Tiene snippets de setup alineados a archivos reales del repo o del framework objetivo.
+- Tiene checklist de verificacion y siguientes pasos.
+- Tiene contenido en en/es (o fallback documentado).
+
 ## 11. Riesgos y mitigaciones
 
 Riesgo: Mezclar contenido tipado con hardcode en templates.
@@ -346,6 +424,7 @@ Mitigacion: Bloques extensibles por union types y versionado de contrato.
 
 - Si eventos y slots iran en tabla unica API o tablas separadas.
 - Si playground se renderiza por un bloque generico o por bloques especializados.
+- Si command-tabs se renderiza con un componente generico de tabs de codigo o uno especializado por package manager con iconografia propia.
 - Si se agregara validacion automatica en CI para paridad i18n.
 
 ## 13. Proximo paso recomendado (implementacion controlada)

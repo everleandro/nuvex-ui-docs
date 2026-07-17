@@ -50,10 +50,10 @@ onMounted(() => {
 
 const themeToggleLabel = computed(() =>
   !isHydrated.value
-    ? t('ui.theme.toggle')
+    ? t('common.theme.toggle')
     : currentTheme.value === 'dark'
-      ? t('ui.theme.toLight')
-      : t('ui.theme.toDark'),
+      ? t('common.theme.toLight')
+      : t('common.theme.toDark'),
 );
 
 type LayoutLocale = { code: string; name: string }
@@ -71,10 +71,10 @@ const languageToggleLabel = computed(() => {
   const targetLocaleName = alternateLocale.value?.name
 
   if (!targetLocaleName) {
-    return t('ui.language.toggle')
+    return t('common.language.toggle')
   }
 
-  return t('ui.language.switchTo', { locale: targetLocaleName })
+  return t('common.language.switchTo', { locale: targetLocaleName })
 })
 
 const isCurrentLocale = (localeCode: string): boolean => {

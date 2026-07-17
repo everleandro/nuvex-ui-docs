@@ -4,21 +4,21 @@
             <table>
                 <thead>
                     <tr>
-                        <th class="api-table__head subtitle">{{ t('docs.apiTable.property') }}</th>
-                        <th class="api-table__head subtitle">{{ t('docs.apiTable.type') }}</th>
-                        <th class="api-table__head subtitle">{{ t('docs.apiTable.default') }}</th>
+                        <th class="api-table__head type-subtitle">{{ t('common.docs.apiTable.property') }}</th>
+                        <th class="api-table__head type-subtitle">{{ t('common.docs.apiTable.type') }}</th>
+                        <th class="api-table__head type-subtitle">{{ t('common.docs.apiTable.default') }}</th>
                     </tr>
                 </thead>
                 <tbody>
                     <template v-for="item in props.apiReference" :key="item.property">
                         <tr class="api-table__row api-table__row--property">
-                            <td class="api-table__property code">{{ item.property }}</td>
-                            <td class="api-table__token code" :class="item.type.class" v-html="item.type.value"></td>
-                            <td class="api-table__token code" :class="item.default.class">{{ item.default.value }}</td>
+                            <td class="api-table__property type-code">{{ item.property }}</td>
+                            <td class="api-table__token type-code" :class="item.type.class" v-html="item.type.value"></td>
+                            <td class="api-table__token type-code" :class="item.default.class">{{ item.default.value }}</td>
                         </tr>
                         <tr class="api-table__row" v-if="item.description">
                             <td class="api-table__description-cell" colspan="3">
-                                <p class="api-table__description text-body">{{ item.description }}</p>
+                                <p class="api-table__description type-body">{{ item.description }}</p>
                             </td>
                         </tr>
                     </template>

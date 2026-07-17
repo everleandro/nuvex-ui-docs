@@ -10,8 +10,8 @@
     <EDialog v-model="termsDialogOpen" max-width="420">
       <ECard class="pa-4 d-flex flex-column gap-3">
         <div>
-          <div class="text-subtitle-2">Terms and Conditions</div>
-          <p class="text-body-2 mt-2 mb-0">
+          <div class="type-subtitle text-heading">Terms and Conditions</div>
+          <p class="type-body mt-2 mb-0">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus facilisis, velit ut tristique
             blandit, lectus nibh pharetra massa, id posuere justo nisi vitae arcu.
           </p>

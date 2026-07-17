@@ -3,7 +3,7 @@
         <template #prepend>
             <div class="d-flex items-center gap-2 mt-4 mb-2">
                 <EIcon :icon="$icon.layersOutline" />
-                <span class="text-h6">{{ t('docs.secondaryNav.title') }}</span>
+                <span class="type-h6">{{ t('common.docs.secondaryNav.title') }}</span>
             </div>
         </template>
         <div v-if="navItems.length" ref="tabGroupContainer" class="ml-3">
@@ -15,25 +15,25 @@
             </ETabGroup>
         </div>
 
-        <p v-else class="ml-3 mt-2 text-caption">{{ t('docs.secondaryNav.empty') }}</p>
+        <p v-else class="ml-3 mt-2 type-subtitle">{{ t('common.docs.secondaryNav.empty') }}</p>
     </EDrawer>
 </template>
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { getDocsSecondaryNavItems } from '~/content/docs'
+import { useDocsSecondaryNavItems } from '~/composables/useDocsSecondaryNavItems'
 import { useBreakpoint } from "nuvex-ui"
 const { viewport } = useBreakpoint()
 
 const route = useRoute()
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const activeSection = ref('')
 const topOffset = 92
 const tabGroupContainer = ref<HTMLElement | null>(null)
 let isSyncingFromScroll = false
 let scrollFrame: number | null = null
 
-const navItems = computed(() => getDocsSecondaryNavItems(route.path, locale.value))
+const navItems = useDocsSecondaryNavItems(computed(() => route.path))
 const isLargeScreen = computed(() => viewport.lg || viewport.xl)
 const isVisible = computed(() => navItems.value.length > 0 && isLargeScreen.value)
 

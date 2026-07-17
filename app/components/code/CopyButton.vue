@@ -2,9 +2,9 @@
     <div ref="root">
         <e-button :icon="$icon.contentCopy" text small
             :class="['copy-button-activator', 'm-1', { 'copy-button-activator--copied': copied }]"
-            :title="copied ? t('ui.copy.copied') : t('ui.copy.code')" @click="copy" />
+            :title="copied ? t('common.actions.copied') : t('common.actions.copyCode')" @click="copy" />
         <transition name="copy-feedback-fade">
-            <span v-if="copied" class="copy-button-feedback">{{ t('ui.copy.copied') }}</span>
+            <span v-if="copied" class="copy-button-feedback">{{ t('common.actions.copied') }}</span>
         </transition>
     </div>
 </template>

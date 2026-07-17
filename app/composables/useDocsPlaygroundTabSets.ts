@@ -32,11 +32,11 @@ export const useDocsPlaygroundTabSets = () => {
 
   const tabsBuilder = computed(() => {
     const labels: DocsPlaygroundTabsLabels = {
-      design: t('docs.playgroundTabs.design'),
-      template: t('docs.playgroundTabs.template'),
-      example: t('docs.playgroundTabs.example'),
-      ts: t('docs.playgroundTabs.ts'),
-      css: t('docs.playgroundTabs.css'),
+      design: t('playground.tabs.design'),
+      template: t('playground.tabs.template'),
+      example: t('playground.tabs.example'),
+      ts: t('playground.tabs.ts'),
+      css: t('playground.tabs.css'),
     }
 
     const build = (keys: DocsPlaygroundTabKey[]): DocsPlaygroundTab[] => {

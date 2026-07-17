@@ -8,7 +8,7 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { findNavigationItemByPath, getNavigationGroupTitleKey, getNavigationItemTitleKey } from '~/navigation.config'
+import { findNavigationItemByPath, getNavigationItemSectionTitleKey, getNavigationItemTitleKey } from '~/navigation.config'
 
 const route = useRoute()
 const { t } = useI18n()
@@ -19,7 +19,7 @@ const resolvedGroupTitle = computed(() => {
     return ''
   }
 
-  return t(getNavigationGroupTitleKey(resolvedItem.value.group))
+  return t(getNavigationItemSectionTitleKey(resolvedItem.value.item))
 })
 
 const resolvedItemTitle = computed(() => {
