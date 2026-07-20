@@ -3,13 +3,14 @@ import type {
   DocsComponentPageContent,
   DocsInstallationEditorialContent,
   DocsPageContent,
+  DocsQuickStartEditorialContent,
   DocsSecondaryNavItem,
   DocsWorkflowPageContent,
 } from '~/types/docs'
 import { toCanonicalDocsPath } from '~/utils/docs-navigation-paths'
 
 type DocsSecondaryNavContentResolver = {
-  kind: 'page' | 'workflow' | 'component' | 'installation'
+  kind: 'page' | 'workflow' | 'component' | 'installation' | 'quick-start'
   messageKey: string
 }
 
@@ -19,8 +20,8 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
     messageKey: 'pages.introduction.introduction',
   },
   '/docs/getting-started/quick-start': {
-    kind: 'workflow',
-    messageKey: 'pages.introduction.quickStart',
+    kind: 'quick-start',
+    messageKey: 'pages.quickStart.quickStart',
   },
   '/docs/getting-started/installation': {
     kind: 'installation',
@@ -72,6 +73,13 @@ const toInstallationSectionNavItems = (content: DocsInstallationEditorialContent
   }))
 }
 
+const toQuickStartSectionNavItems = (content: DocsQuickStartEditorialContent): DocsSecondaryNavItem[] => {
+  return Object.entries(content.sections).map(([id, section]) => ({
+    id,
+    label: section.title,
+  }))
+}
+
 export const useDocsSecondaryNavItems = (path: Ref<string> | ComputedRef<string>) => {
   const { tm } = useI18n()
 
@@ -85,6 +93,10 @@ export const useDocsSecondaryNavItems = (path: Ref<string> | ComputedRef<string>
 
     if (resolver.kind === 'installation') {
       return toInstallationSectionNavItems(tm(resolver.messageKey) as DocsInstallationEditorialContent)
+    }
+
+    if (resolver.kind === 'quick-start') {
+      return toQuickStartSectionNavItems(tm(resolver.messageKey) as DocsQuickStartEditorialContent)
     }
 
     if (resolver.kind === 'page') {

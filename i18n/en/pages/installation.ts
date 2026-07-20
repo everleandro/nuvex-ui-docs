@@ -69,35 +69,35 @@ export const installationEditorialContent: DocsInstallationEditorialContent = {
         "Use this list to confirm the base setup is correct before moving into other guides.",
       items: [
         "The app compiles without Sass errors.",
-        "Nuvex UI base styles load without importing extra CSS outside the main setup.",
+        "The first component looks styled instead of rendering as unstyled HTML.",
         "An EButton renders without component registration warnings.",
-        "Framework helper classes are available if you imported framework.scss.",
+        "Framework classes and base component styling are already visible if you imported framework.scss.",
       ],
     },
     "common-pitfalls": {
       title: "Common pitfalls",
       description:
-        "These errors usually show up during the first setup and are worth resolving before moving on.",
+        "These setup issues usually show up when installing the library for the first time and are worth resolving before moving on.",
       items: [
         {
-          title: "framework.scss fails to compile",
+          title: "framework.scss does not compile",
           description:
             "Install sass in your project before importing nuvex-ui/framework.scss.",
         },
         {
-          title: "Helpers or styles do not look right",
+          title: "Styles do not look as expected",
           description:
             "Verify load order: nuvex-ui/styles.css first, then nuvex-ui/framework.scss.",
         },
         {
-          title: "Components do not render",
+          title: "Components do not appear",
           description:
             "Confirm that you registered NuvexUI with app.use(NuvexUI) or defineNuxtPlugin.",
         },
         {
-          title: "I need theme persistence or more refined SSR behavior",
+          title: "My Sass variables do not apply",
           description:
-            "That no longer belongs in Installation; it should live in Nuxt Integration or a dedicated theming guide.",
+            "If you plan to customize framework.scss, define your variables before importing the framework from your global stylesheet or your project's Sass configuration.",
         },
       ],
     },

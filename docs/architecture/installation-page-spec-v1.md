@@ -39,6 +39,22 @@ Su secuencia debe responder estas preguntas en orden:
 5. Como verifico que funciono.
 6. Cual es el siguiente paso.
 
+## 2.1 Baseline de implementacion Type C
+
+Installation define la base de implementacion para las paginas Tipo C v1.
+
+Reglas obligatorias:
+
+- El archivo Vue se escribe en orden `template -> script -> style`.
+- Cada seccion se declara de forma explicita en el template. No se itera una coleccion heterogenea de secciones para renderizar la pagina completa.
+- Todo el contenido editorial visible vive en `i18n/en/pages/installation.ts` y `i18n/es/pages/installation.ts`.
+- La pagina arma localmente solo lo no editorial: icons, rutas, anchors, snippets, comandos y metadatos de presentacion.
+- Cuando la pagina referencia otra pagina de docs, debe existir un link navegable hacia esa ruta.
+
+Consecuencia practica:
+
+- `installation.vue` actua como referencia base para futuras paginas Tipo C.
+
 ## 3. Estructura exacta
 
 ## 3.1 Hero
@@ -247,9 +263,9 @@ Descripcion:
 Items:
 
 - `La app compila sin errores de Sass.`
-- `Los estilos base de Nuvex UI se cargan sin importar CSS adicional fuera del setup principal.`
+- `El primer componente se ve estilizado y no como HTML sin formato.`
 - `Un EButton se renderiza sin warnings de componente no registrado.`
-- `Las clases de framework estan disponibles si importaste framework.scss.`
+- `Las clases de framework y el acabado base de los componentes ya se reflejan si importaste framework.scss.`
 
 ## 3.8 Seccion: Problemas comunes
 
@@ -267,14 +283,14 @@ Descripcion:
 
 Items:
 
-1. `Error al compilar framework.scss`
+1. `framework.scss no compila`
    - `Instala sass en tu proyecto antes de importar nuvex-ui/framework.scss.`
-2. `Los helpers o estilos no se ven bien`
+2. `Los estilos no se ven como esperas`
    - `Verifica el orden de carga: primero nuvex-ui/styles.css y despues nuvex-ui/framework.scss.`
-3. `Los componentes no renderizan`
+3. `Los componentes no aparecen`
    - `Confirma que registraste NuvexUI con app.use(NuvexUI) o defineNuxtPlugin.`
-4. `Necesito persistencia de tema o SSR mas fino`
-   - `Eso ya no pertenece a Installation; debe vivir en Nuxt Integration o en una guia especifica de theming.`
+4. `Mis variables Sass no se aplican`
+   - `Si vas a personalizar framework.scss, define tus variables antes de importar el framework desde tu hoja global o desde la configuracion Sass del proyecto.`
 
 ## 3.9 Seccion: Siguiente paso recomendado
 
@@ -328,6 +344,12 @@ Esta regla aplica especialmente a:
 
 ## 6. Decisiones abiertas antes de implementar
 
-- Si `Registro minimo en Vue + Vite` y `Registro minimo en Nuxt` viven como dos `code-block` independientes o como un bloque con tabs por framework.
-- Si `Problemas comunes` se renderiza como FAQ expandible o como grupo de status-cards.
+Decisiones cerradas en v1:
+
+- `Registro minimo en Vue + Vite` y `Registro minimo en Nuxt` viven como dos secciones `code-block` independientes.
+- `Problemas comunes` se renderiza como grupo de cards, no como FAQ expandible.
+- `installation.vue` renderiza sus secciones de forma explicita y usa el contenido editorial localizado solo como fuente de copy.
+
+Decision abierta restante:
+
 - Si `Quick Start` debe mantener pagina propia breve o absorber parte del contenido operativo de Installation.

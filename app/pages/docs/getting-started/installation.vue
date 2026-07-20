@@ -1,23 +1,21 @@
 <template>
   <article class="docs-page">
-    <DocsPageHero :title="editorialContent.hero.title" :description="editorialContent.hero.description"
+    <DocsPageHero :title="content.hero.title" :description="content.hero.description"
       :actions="heroActions" />
 
-    <DocsSection :title="editorialContent.hero.prerequisitesTitle">
+    <DocsSection :title="content.hero.prerequisitesTitle">
       <ECard elevation="sm" color="primary" tonal>
         <ul class="pl-5">
-          <li v-for="(item, index) in editorialContent.hero.prerequisites" :key="item"
-            :class="index === editorialContent.hero.prerequisites.length - 1 ? 'mb-0' : 'mb-2'">
+          <li v-for="(item, index) in prerequisites" :key="item" :class="index === prerequisites.length - 1 ? 'mb-0' : 'mb-2'">
             {{ item }}
           </li>
         </ul>
       </ECard>
     </DocsSection>
 
-    <DocsSection :id="sections['choose-path'].key" :title="sections['choose-path'].title"
-      :description="sections['choose-path'].description">
+    <DocsSection :id="choosePathSection.key" :title="choosePathSection.title" :description="choosePathSection.description">
       <ERow dense>
-        <ECol v-for="item in sections['choose-path'].items" :key="item.title" cols="12" md="6">
+        <ECol v-for="item in choosePathSection.items" :key="item.title" cols="12" md="6">
           <NuxtLink :to="withLocalePrefix(item.to, locale)" class="docs-page__card-link no-underline">
             <ECard v-ripple outlined class="full-height chose-path__card" :title="item.title"
               :description="item.description" :prepend-header-icon="$icon[item.icon]"
@@ -27,57 +25,57 @@
       </ERow>
     </DocsSection>
 
-    <DocsSection :id="sections['install-package'].key" :title="sections['install-package'].title"
-      :description="sections['install-package'].description" :callout="sections['install-package'].callout">
-      <CodeCommandTabs :commands="sections['install-package'].commands" />
+    <DocsSection :id="installPackageSection.key" :title="installPackageSection.title"
+      :description="installPackageSection.description" :callout="installPackageSection.callout">
+      <CodeCommandTabs :commands="installPackageSection.commands" />
     </DocsSection>
 
-    <DocsSection :id="sections['register-vue'].key" :title="sections['register-vue'].title"
-      :description="sections['register-vue'].description">
-      <ECard v-for="snippet in sections['register-vue'].snippets" :subtitle="snippet.label">
+    <DocsSection :id="registerVueSection.key" :title="registerVueSection.title"
+      :description="registerVueSection.description">
+      <ECard v-for="snippet in registerVueSection.snippets" :key="snippet.label || snippet.code" :subtitle="snippet.label">
         <CodePanel :code="snippet.code" :language="snippet.language" />
       </ECard>
     </DocsSection>
 
-    <DocsSection :id="sections['register-nuxt'].key" :title="sections['register-nuxt'].title"
-      :description="sections['register-nuxt'].description" :callout="sections['register-nuxt'].callout">
-      <ECard v-for="snippet in sections['register-nuxt'].snippets" :subtitle="snippet.label" class="mt-4">
+    <DocsSection :id="registerNuxtSection.key" :title="registerNuxtSection.title"
+      :description="registerNuxtSection.description" :callout="registerNuxtSection.callout">
+      <ECard v-for="snippet in registerNuxtSection.snippets" :key="snippet.label || snippet.code" :subtitle="snippet.label" class="mt-4">
         <CodePanel :code="snippet.code" :language="snippet.language" />
       </ECard>
     </DocsSection>
 
-    <DocsSection :id="sections['first-render'].key" :title="sections['first-render'].title"
-      :description="sections['first-render'].description">
-      <ECard v-for="snippet in sections['first-render'].snippets" :subtitle="snippet.label">
+    <DocsSection :id="firstRenderSection.key" :title="firstRenderSection.title"
+      :description="firstRenderSection.description">
+      <ECard v-for="snippet in firstRenderSection.snippets" :key="snippet.label || snippet.code" :subtitle="snippet.label">
         <CodePanel :code="snippet.code" :language="snippet.language" />
       </ECard>
     </DocsSection>
 
-    <DocsSection :id="sections['verify-installation'].key" :title="sections['verify-installation'].title"
-      :description="sections['verify-installation'].description">
+    <DocsSection :id="verifyInstallationSection.key" :title="verifyInstallationSection.title"
+      :description="verifyInstallationSection.description">
       <ECard elevation="sm" color="primary" tonal>
         <ol class="pl-5">
-          <li v-for="(item, index) in sections['verify-installation'].items" :key="index" class="mb-2">
+          <li v-for="(item, index) in verifyInstallationSection.items" :key="index" class="mb-2">
             {{ item }}
           </li>
         </ol>
       </ECard>
     </DocsSection>
 
-    <DocsSection :id="sections['common-pitfalls'].key" :title="sections['common-pitfalls'].title"
-      :description="sections['common-pitfalls'].description">
+    <DocsSection :id="commonPitfallsSection.key" :title="commonPitfallsSection.title"
+      :description="commonPitfallsSection.description">
       <ERow dense>
-        <ECol v-for="item in sections['common-pitfalls'].items" :key="item.title" cols="12" md="6">
+        <ECol v-for="item in commonPitfallsSection.items" :key="item.title" cols="12" md="6">
           <ECard elevation="sm" class="full-height" :title="item.title" :description="item.description" />
         </ECol>
       </ERow>
     </DocsSection>
 
-    <DocsSection :id="sections['next-steps'].key" :title="sections['next-steps'].title"
-      :description="sections['next-steps'].description" :callout="sections['next-steps'].callout">
+    <DocsSection :id="nextStepsSection.key" :title="nextStepsSection.title"
+      :description="nextStepsSection.description" :callout="nextStepsSection.callout">
       <ERow dense>
-        <ECol v-for="(item, index) in sections['next-steps'].items" :key="index" cols="12" md="6">
-          <NuxtLink :to="withLocalePrefix(item.to, locale)" class="docs-page__card-link no-underline ">
+        <ECol v-for="item in nextStepsSection.items" :key="item.to" cols="12" md="6">
+          <NuxtLink :to="withLocalePrefix(item.to, locale)" class="docs-page__card-link no-underline">
             <ECard v-ripple outlined :title="item.title" :description="item.description" />
           </NuxtLink>
         </ECol>
@@ -96,15 +94,17 @@ import { withLocalePrefix } from '~/utils/locale-path'
 const { locale } = useI18n()
 
 const editorialContent = useDocsInstallationI18nContent('pages.installation.installation')
+const content = computed(() => editorialContent.value)
+const prerequisites = computed(() => content.value.hero.prerequisites)
 
 const heroActions = computed<DocsPageAction[]>(() => ([
   {
-    label: editorialContent.value.hero.actions.installPackage,
+    label: content.value.hero.actions.installPackage,
     to: '/docs/getting-started/installation#install-package',
     outlined: true,
   },
   {
-    label: editorialContent.value.hero.actions.nuxtIntegration,
+    label: content.value.hero.actions.nuxtIntegration,
     to: '/docs/getting-started/nuxt-integration',
     variant: 'text',
     outlined: false,
@@ -143,105 +143,128 @@ const installationChoosePathMeta = [
   },
 ] as const
 
-const sections = computed(() => {
-  const content = editorialContent.value.sections
-  const choosePathItems = content['choose-path'].items as DocsGridItem[] | undefined
-  const nextStepItems = content['next-steps'].items as DocsGridItem[] | undefined
-
-  const installPackageCallout = {
-    color: 'warning',
-    icon: 'alert',
-    description: content['install-package'].calloutDescription,
-  }
-
-  const registerNuxtCallout = {
-    color: 'info',
-    description: content['register-nuxt'].calloutDescription,
-  }
+const choosePathSection = computed(() => {
+  const section = content.value.sections['choose-path']
+  const items = (section.items as DocsGridItem[] | undefined) ?? []
 
   return {
-    'choose-path': {
-      key: 'choose-path',
-      title: content['choose-path'].title,
-      description: content['choose-path'].description,
-      items: (choosePathItems ?? []).map((item, index) => {
-        const meta = installationChoosePathMeta[index]!
+    key: 'choose-path',
+    title: section.title,
+    description: section.description,
+    items: items.map((item, index) => {
+      const meta = installationChoosePathMeta[index]!
 
-        return {
-          title: item.title,
-          description: item.description,
-          to: meta.to,
-          icon: meta.icon,
-          viewBox: meta.viewBox,
-        }
-      }),
-      callout: undefined,
-    },
-    'install-package': {
-      key: 'install-package',
-      title: content['install-package'].title,
-      description: content['install-package'].description,
-      commands: installationCommands,
-      callout: installPackageCallout,
-    },
-    'register-vue': {
-      key: 'register-vue',
-      title: content['register-vue'].title,
-      description: content['register-vue'].description,
-      snippets: installationCodeSnippets['register-vue'],
-      callout: undefined,
-    },
-    'register-nuxt': {
-      key: 'register-nuxt',
-      title: content['register-nuxt'].title,
-      description: content['register-nuxt'].description,
-      snippets: installationCodeSnippets['register-nuxt'],
-      callout: registerNuxtCallout,
-    },
-    'first-render': {
-      key: 'first-render',
-      title: content['first-render'].title,
-      description: content['first-render'].description,
-      snippets: installationCodeSnippets['first-render'],
-      callout: undefined,
-    },
-    'verify-installation': {
-      key: 'verify-installation',
-      title: content['verify-installation'].title,
-      description: content['verify-installation'].description,
-      items: content['verify-installation'].items,
-      itemsHtml: undefined,
-      callout: undefined,
-    },
-    'common-pitfalls': {
-      key: 'common-pitfalls',
-      title: content['common-pitfalls'].title,
-      description: content['common-pitfalls'].description,
-      items: content['common-pitfalls'].items,
-      callout: undefined,
-    },
-    'next-steps': {
-      key: 'next-steps',
-      title: content['next-steps'].title,
-      description: content['next-steps'].description,
-      items: (nextStepItems ?? []).map((item, index) => {
-        const meta = installationNextStepMeta[index]!
+      return {
+        title: item.title,
+        description: item.description,
+        to: meta.to,
+        icon: meta.icon,
+        viewBox: meta.viewBox,
+      }
+    }),
+  }
+})
 
-        return {
-          title: item.title,
-          description: item.description,
-          to: meta.to,
-          icon: meta.icon,
-        }
-      }),
-      callout: undefined,
+const installPackageSection = computed(() => {
+  const section = content.value.sections['install-package']
+
+  return {
+    key: 'install-package',
+    title: section.title,
+    description: section.description,
+    commands: installationCommands,
+    callout: {
+      color: 'warning' as const,
+      icon: 'alert',
+      description: section.calloutDescription,
     },
   }
 })
 
+const registerVueSection = computed(() => {
+  const section = content.value.sections['register-vue']
+
+  return {
+    key: 'register-vue',
+    title: section.title,
+    description: section.description,
+    snippets: installationCodeSnippets['register-vue'],
+  }
+})
+
+const registerNuxtSection = computed(() => {
+  const section = content.value.sections['register-nuxt']
+
+  return {
+    key: 'register-nuxt',
+    title: section.title,
+    description: section.description,
+    snippets: installationCodeSnippets['register-nuxt'],
+    callout: {
+      color: 'info' as const,
+      description: section.calloutDescription,
+    },
+  }
+})
+
+const firstRenderSection = computed(() => {
+  const section = content.value.sections['first-render']
+
+  return {
+    key: 'first-render',
+    title: section.title,
+    description: section.description,
+    snippets: installationCodeSnippets['first-render'],
+  }
+})
+
+const verifyInstallationSection = computed(() => {
+  const section = content.value.sections['verify-installation']
+
+  return {
+    key: 'verify-installation',
+    title: section.title,
+    description: section.description,
+    items: section.items ?? [],
+  }
+})
+
+const commonPitfallsSection = computed(() => {
+  const section = content.value.sections['common-pitfalls']
+
+  return {
+    key: 'common-pitfalls',
+    title: section.title,
+    description: section.description,
+    items: (section.items as DocsGridItem[] | undefined) ?? [],
+  }
+})
+
+const nextStepsSection = computed(() => {
+  const section = content.value.sections['next-steps']
+  const items = (section.items as DocsGridItem[] | undefined) ?? []
+
+  return {
+    key: 'next-steps',
+    title: section.title,
+    description: section.description,
+    callout: undefined,
+    items: items.map((item, index) => {
+      const meta = installationNextStepMeta[index]!
+
+      return {
+        title: item.title,
+        description: item.description,
+        to: meta.to,
+        icon: meta.icon,
+      }
+    }),
+  }
+})
+
 useSeoMeta({
-  title: computed(() => editorialContent.value.seo.title),
-  description: computed(() => editorialContent.value.seo.description),
+  title: computed(() => content.value.seo.title),
+  description: computed(() => content.value.seo.description),
 })
 </script>
 <style lang="scss">

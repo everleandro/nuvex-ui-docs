@@ -69,35 +69,35 @@ export const installationEditorialContentEs: DocsInstallationEditorialContent = 
         'Usa esta lista para confirmar que el setup base quedo correcto antes de pasar a otras guias.',
       items: [
         'La app compila sin errores de Sass.',
-        'Los estilos base de Nuvex UI se cargan sin importar CSS adicional fuera del setup principal.',
+        'El primer componente se ve estilizado y no como HTML sin formato.',
         'Un EButton se renderiza sin warnings de componente no registrado.',
-        'Las clases de framework estan disponibles si importaste framework.scss.',
+        'Las clases de framework y el acabado base de los componentes ya se reflejan si importaste framework.scss.',
       ],
     },
     'common-pitfalls': {
       title: 'Problemas comunes',
       description:
-        'Estos errores suelen aparecer en el primer setup y conviene resolverlos antes de seguir.',
+        'Estos errores de setup suelen aparecer al instalar la libreria por primera vez y conviene resolverlos antes de seguir.',
       items: [
         {
-          title: 'Error al compilar framework.scss',
+          title: 'framework.scss no compila',
           description:
             'Instala sass en tu proyecto antes de importar nuvex-ui/framework.scss.',
         },
         {
-          title: 'Los helpers o estilos no se ven bien',
+          title: 'Los estilos no se ven como esperas',
           description:
             'Verifica el orden de carga: primero nuvex-ui/styles.css y despues nuvex-ui/framework.scss.',
         },
         {
-          title: 'Los componentes no renderizan',
+          title: 'Los componentes no aparecen',
           description:
             'Confirma que registraste NuvexUI con app.use(NuvexUI) o defineNuxtPlugin.',
         },
         {
-          title: 'Necesito persistencia de tema o SSR mas fino',
+          title: 'Mis variables Sass no se aplican',
           description:
-            'Eso ya no pertenece a Installation; debe vivir en Nuxt Integration o en una guia especifica de theming.',
+            'Si vas a personalizar framework.scss, define tus variables antes de importar el framework desde tu hoja global o desde la configuracion Sass del proyecto.',
         },
       ],
     },

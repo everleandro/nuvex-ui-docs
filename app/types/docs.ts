@@ -108,6 +108,35 @@ export interface DocsInstallationEditorialContent {
   sections: Record<DocsInstallationSectionKey, DocsInstallationSection>
 }
 
+export type DocsQuickStartSectionKey =
+  | 'recommended-structure'
+  | 'create-layout-base'
+  | 'add-drawer'
+  | 'connect-drawer-state'
+  | 'add-bar-toggle'
+  | 'assemble-initial-structure'
+  | 'verify-structure'
+  | 'next-steps'
+
+export interface DocsQuickStartEditorialContent {
+  seo: {
+    title: string
+    description: string
+  }
+  hero: {
+    title: string
+    description: string
+    descriptionHtml?: string
+    prerequisitesTitle: string
+    actions: {
+      backToInstallation: string
+      openAppShell: string
+    }
+    prerequisites: string[]
+  }
+  sections: Record<DocsQuickStartSectionKey, DocsInstallationSection>
+}
+
 export type DocsWorkflowCommandValue = 'npm' | 'pnpm' | 'yarn' | 'bun'
 
 export interface DocsWorkflowCommandEntry {

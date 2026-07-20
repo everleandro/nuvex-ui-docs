@@ -3,6 +3,7 @@ import type {
   DocsComponentPageContent,
   DocsInstallationEditorialContent,
   DocsPageContent,
+  DocsQuickStartEditorialContent,
   DocsWorkflowPageContent,
 } from '~/types/docs'
 
@@ -28,4 +29,10 @@ export const useDocsInstallationI18nContent = (messageKey: string) => {
   const { tm } = useI18n()
 
   return computed(() => tm(messageKey) as DocsInstallationEditorialContent)
+}
+
+export const useDocsQuickStartI18nContent = (messageKey: string) => {
+  const { tm } = useI18n()
+
+  return computed(() => tm(messageKey) as DocsQuickStartEditorialContent)
 }

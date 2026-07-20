@@ -181,6 +181,22 @@ Opcionales recomendados:
 - callout / troubleshooting
 - faq
 
+### 5.3.1 Baseline de implementacion para Tipo C (v1)
+
+La implementacion base de una pagina Tipo C debe seguir estas reglas:
+
+- El archivo Vue se organiza siempre en orden `template -> script -> style`.
+- El template declara cada seccion de forma explicita. No se usa un `v-for` sobre una coleccion heterogenea de secciones para renderizar toda la pagina.
+- El contenido editorial visible vive en modulos tipados por locale.
+- Para Tipo C v1, la ubicacion canonica del contenido editorial es `i18n/en/pages/...` y `i18n/es/pages/...`.
+- La pagina Vue arma localmente todo lo no editorial: icons, rutas, anchors, comandos, snippets no traducibles y pequenos metadatos de presentacion.
+- Si una seccion hace referencia a otra pagina de docs, la vista debe renderizar un link navegable hacia esa ruta.
+- Los ids de seccion siguen siendo estables para secondary nav, pero la vista no delega la composicion completa de la pagina a un renderer generico de bloques.
+
+Referencia inicial:
+
+- `app/pages/docs/getting-started/installation.vue`
+
 Regla de presentacion para `status-card`:
 
 - Se usa para resaltar una advertencia, prerequisito o confirmacion importante que afecte el flujo.
@@ -200,21 +216,20 @@ Regla de presentacion para `status-card`:
 
 ## 6.2 Distribucion recomendada
 
-- UI global (labels genericos): i18n/locales/en.json y i18n/locales/es.json.
+- UI global (labels genericos): `i18n/locales/en.json` y `i18n/locales/es.json`.
 - Contenido editorial por pagina: modulos tipados por locale.
 
-Regla arquitectonica obligatoria:
+Regla arquitectonica obligatoria para Tipo C v1:
 
-- Las paginas de componentes y workflow deben resolver su copy localizado desde `app/content/docs/...` y consumirlo via `content` / `content.labels`.
+- El copy editorial visible de la pagina vive en `i18n/en/pages/...` y `i18n/es/pages/...`.
 - `i18n/locales/*.json` queda reservado para UI global o texto compartido de aplicacion, no para copy editorial especifico de una pagina de docs.
-- Si una demo necesita labels, mensajes de validacion, helper text, textos de dialogo, comandos contextualizados o snippets localizados, esos textos deben vivir en el modulo de contenido de la pagina (`*.ts` y `*-es.ts`), no en `computed` locales dentro de la vista.
+- La vista Vue consume ese contenido localizado y arma localmente solo el wiring no editorial.
+- Si una demo o workflow necesita labels, mensajes, comandos contextualizados o descripcion editorial por locale, esos textos viven en el modulo tipado del page locale, no en diccionarios inline dentro de la vista.
 
-Ejemplo:
+Ejemplo Tipo C:
 
-- app/content/docs/forms/button.ts
-- app/content/docs/forms/button-es.ts
-- app/content/docs/forms/checkbox.ts
-- app/content/docs/forms/checkbox-es.ts
+- `i18n/en/pages/installation.ts`
+- `i18n/es/pages/installation.ts`
 
 ### 6.2.1 Estructura minima recomendada para locales por pagina
 
@@ -274,7 +289,7 @@ Reglas de uso:
 
 - `controls` concentra labels de toggles/inputs del panel de playground.
 - Los textos especificos de demos complejas deben agruparse en un namespace semantico dentro de `labels` como `checkboxText`, `integrationText`, `formText` o equivalente.
-- La vista solo lee `content.value.labels...`; no redefine ese texto por locale.
+- La vista solo lee `content.value...`; no redefine ese texto por locale.
 
 ## 6.3 Criterios de calidad i18n
 
@@ -286,7 +301,7 @@ Reglas de uso:
 
 Anti-patron explicito:
 
-- No crear objetos tipo `pageText` con ramas `if (locale.value === 'es')` dentro de una pagina de docs cuando ese mismo contenido puede modelarse en `app/content/docs/...`.
+- No crear objetos tipo `pageText` con ramas `if (locale.value === 'es')` dentro de una pagina de docs cuando ese mismo contenido puede modelarse en un modulo tipado por locale.
 
 ## 7. Reutilizacion de componentes
 

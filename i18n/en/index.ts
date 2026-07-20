@@ -4,6 +4,7 @@ import playground from './playground'
 import errors from './errors'
 import introduction from './pages/introduction'
 import installation from './pages/installation'
+import quickStart from './pages/quick-start'
 import button from './pages/button'
 import input from './pages/input'
 import modal from './pages/modal'
@@ -16,6 +17,7 @@ const en = {
   pages: {
     introduction,
     installation,
+    quickStart,
     button,
     input,
     modal,
