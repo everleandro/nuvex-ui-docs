@@ -4,6 +4,7 @@ import playground from './playground'
 import errors from './errors'
 import introduction from './pages/introduction'
 import installation from './pages/installation'
+import nuxtIntegration from './pages/nuxt-integration'
 import quickStart from './pages/quick-start'
 import button from './pages/button'
 import input from './pages/input'
@@ -17,6 +18,7 @@ const en = {
   pages: {
     introduction,
     installation,
+    nuxtIntegration,
     quickStart,
     button,
     input,

@@ -2,6 +2,7 @@ import { useI18n } from 'vue-i18n'
 import type {
   DocsComponentPageContent,
   DocsInstallationEditorialContent,
+  DocsNuxtIntegrationEditorialContent,
   DocsPageContent,
   DocsQuickStartEditorialContent,
   DocsSecondaryNavItem,
@@ -10,7 +11,7 @@ import type {
 import { toCanonicalDocsPath } from '~/utils/docs-navigation-paths'
 
 type DocsSecondaryNavContentResolver = {
-  kind: 'page' | 'workflow' | 'component' | 'installation' | 'quick-start'
+  kind: 'page' | 'workflow' | 'component' | 'installation' | 'quick-start' | 'nuxt-integration'
   messageKey: string
 }
 
@@ -26,6 +27,10 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
   '/docs/getting-started/installation': {
     kind: 'installation',
     messageKey: 'pages.installation.installation',
+  },
+  '/docs/getting-started/nuxt-integration': {
+    kind: 'nuxt-integration',
+    messageKey: 'pages.nuxtIntegration.nuxtIntegration',
   },
   '/docs/component/forms/button': {
     kind: 'component',
@@ -80,6 +85,13 @@ const toQuickStartSectionNavItems = (content: DocsQuickStartEditorialContent): D
   }))
 }
 
+const toNuxtIntegrationSectionNavItems = (content: DocsNuxtIntegrationEditorialContent): DocsSecondaryNavItem[] => {
+  return Object.entries(content.sections).map(([id, section]) => ({
+    id,
+    label: section.title,
+  }))
+}
+
 export const useDocsSecondaryNavItems = (path: Ref<string> | ComputedRef<string>) => {
   const { tm } = useI18n()
 
@@ -97,6 +109,10 @@ export const useDocsSecondaryNavItems = (path: Ref<string> | ComputedRef<string>
 
     if (resolver.kind === 'quick-start') {
       return toQuickStartSectionNavItems(tm(resolver.messageKey) as DocsQuickStartEditorialContent)
+    }
+
+    if (resolver.kind === 'nuxt-integration') {
+      return toNuxtIntegrationSectionNavItems(tm(resolver.messageKey) as DocsNuxtIntegrationEditorialContent)
     }
 
     if (resolver.kind === 'page') {

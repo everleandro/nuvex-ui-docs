@@ -2,6 +2,7 @@ import { useI18n } from 'vue-i18n'
 import type {
   DocsComponentPageContent,
   DocsInstallationEditorialContent,
+  DocsNuxtIntegrationEditorialContent,
   DocsPageContent,
   DocsQuickStartEditorialContent,
   DocsWorkflowPageContent,
@@ -35,4 +36,10 @@ export const useDocsQuickStartI18nContent = (messageKey: string) => {
   const { tm } = useI18n()
 
   return computed(() => tm(messageKey) as DocsQuickStartEditorialContent)
+}
+
+export const useDocsNuxtIntegrationI18nContent = (messageKey: string) => {
+  const { tm } = useI18n()
+
+  return computed(() => tm(messageKey) as DocsNuxtIntegrationEditorialContent)
 }

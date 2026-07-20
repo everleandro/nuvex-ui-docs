@@ -17,7 +17,7 @@
       <ERow dense>
         <ECol v-for="item in recommendedStructureSection.items" :key="item.title" cols="12" md="6">
           <ECard outlined class="full-height quick-start__structure-card" :title="item.title"
-            :description="item.description" :prepend-header-icon="$icon[item.icon]" />
+            :description="item.description" :prepend-header-icon="item.icon ? $icon[item.icon] : undefined" />
         </ECol>
       </ERow>
     </DocsSection>

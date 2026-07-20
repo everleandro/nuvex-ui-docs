@@ -1,19 +1,20 @@
 <template>
   <article class="docs-page">
-    <DocsPageHero :title="content.hero.title" :description="content.hero.description"
-      :actions="heroActions" />
+    <DocsPageHero :title="content.hero.title" :description="content.hero.description" :actions="heroActions" />
 
     <DocsSection :title="content.hero.prerequisitesTitle">
       <ECard elevation="sm" color="primary" tonal>
         <ul class="pl-5">
-          <li v-for="(item, index) in prerequisites" :key="item" :class="index === prerequisites.length - 1 ? 'mb-0' : 'mb-2'">
+          <li v-for="(item, index) in prerequisites" :key="item"
+            :class="index === prerequisites.length - 1 ? 'mb-0' : 'mb-2'">
             {{ item }}
           </li>
         </ul>
       </ECard>
     </DocsSection>
 
-    <DocsSection :id="choosePathSection.key" :title="choosePathSection.title" :description="choosePathSection.description">
+    <DocsSection :id="choosePathSection.key" :title="choosePathSection.title"
+      :description="choosePathSection.description">
       <ERow dense>
         <ECol v-for="item in choosePathSection.items" :key="item.title" cols="12" md="6">
           <NuxtLink :to="withLocalePrefix(item.to, locale)" class="docs-page__card-link no-underline">
@@ -32,21 +33,24 @@
 
     <DocsSection :id="registerVueSection.key" :title="registerVueSection.title"
       :description="registerVueSection.description">
-      <ECard v-for="snippet in registerVueSection.snippets" :key="snippet.label || snippet.code" :subtitle="snippet.label">
+      <ECard v-for="snippet in registerVueSection.snippets" :key="snippet.label || snippet.code"
+        :subtitle="snippet.label">
         <CodePanel :code="snippet.code" :language="snippet.language" />
       </ECard>
     </DocsSection>
 
     <DocsSection :id="registerNuxtSection.key" :title="registerNuxtSection.title"
       :description="registerNuxtSection.description" :callout="registerNuxtSection.callout">
-      <ECard v-for="snippet in registerNuxtSection.snippets" :key="snippet.label || snippet.code" :subtitle="snippet.label" class="mt-4">
+      <ECard v-for="snippet in registerNuxtSection.snippets" :key="snippet.label || snippet.code"
+        :subtitle="snippet.label" class="mt-4">
         <CodePanel :code="snippet.code" :language="snippet.language" />
       </ECard>
     </DocsSection>
 
     <DocsSection :id="firstRenderSection.key" :title="firstRenderSection.title"
       :description="firstRenderSection.description">
-      <ECard v-for="snippet in firstRenderSection.snippets" :key="snippet.label || snippet.code" :subtitle="snippet.label">
+      <ECard v-for="snippet in firstRenderSection.snippets" :key="snippet.label || snippet.code"
+        :subtitle="snippet.label">
         <CodePanel :code="snippet.code" :language="snippet.language" />
       </ECard>
     </DocsSection>
@@ -71,8 +75,8 @@
       </ERow>
     </DocsSection>
 
-    <DocsSection :id="nextStepsSection.key" :title="nextStepsSection.title"
-      :description="nextStepsSection.description" :callout="nextStepsSection.callout">
+    <DocsSection :id="nextStepsSection.key" :title="nextStepsSection.title" :description="nextStepsSection.description"
+      :callout="nextStepsSection.callout">
       <ERow dense>
         <ECol v-for="item in nextStepsSection.items" :key="item.to" cols="12" md="6">
           <NuxtLink :to="withLocalePrefix(item.to, locale)" class="docs-page__card-link no-underline">
@@ -176,7 +180,7 @@ const installPackageSection = computed(() => {
     callout: {
       color: 'warning' as const,
       icon: 'alert',
-      description: section.calloutDescription,
+      description: section.calloutDescription || '',
     },
   }
 })
@@ -202,7 +206,7 @@ const registerNuxtSection = computed(() => {
     snippets: installationCodeSnippets['register-nuxt'],
     callout: {
       color: 'info' as const,
-      description: section.calloutDescription,
+      description: section.calloutDescription || '',
     },
   }
 })
