@@ -21,7 +21,6 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useDocsSecondaryNavItems } from '~/composables/useDocsSecondaryNavItems'
 import { useBreakpoint } from "nuvex-ui"
 const { viewport } = useBreakpoint()
 

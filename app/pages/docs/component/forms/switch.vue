@@ -178,8 +178,6 @@
 import { useI18n } from 'vue-i18n'
 import { switchApiReference } from '~/api-reference/forms/switch'
 import { switchApiReferenceEs } from '~/api-reference/forms/switch-es'
-import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
-import { useDocsPlaygroundTabSets } from '~/composables/useDocsPlaygroundTabSets'
 import { buildTemplateElementSnippet } from '~/utils/snippet-element'
 
 type SwitchValue = boolean | string | number

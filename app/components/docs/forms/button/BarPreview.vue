@@ -10,7 +10,6 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
 
 interface IntegrationHierarchyLabels {
     cancel: string

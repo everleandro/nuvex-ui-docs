@@ -27,8 +27,6 @@
 <script setup lang="ts">
 import { EFormColumn, ESpacer, ETextfield } from 'nuvex-ui'
 import { useI18n } from 'vue-i18n'
-import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
-import { useValidationRules } from '~/composables/useValidationRules'
 
 interface IntegrationFormLabels {
     submit: string

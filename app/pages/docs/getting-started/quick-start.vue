@@ -83,25 +83,34 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useDocsQuickStartI18nContent } from '~/composables/useDocsI18nContent'
-import type { DocsGridItem, DocsPageAction } from '~/types/docs'
+import type { DocsEditorialGridItem, DocsPageAction, DocsQuickStartSectionKey, DocsWorkflowPageContent } from '~/types/docs'
 import { quickStartCodeSnippets } from './quick-start.snippets'
 import { withLocalePrefix } from '~/utils/locale-path'
 
 const { locale } = useI18n()
 
-const editorialContent = useDocsQuickStartI18nContent('pages.quickStart.quickStart')
+const editorialContent = useDocsI18nContent<DocsWorkflowPageContent<DocsQuickStartSectionKey>>('pages.quickStart.quickStart')
 const content = computed(() => editorialContent.value)
-const prerequisites = computed(() => content.value.hero.prerequisites)
+const prerequisites = computed(() => content.value.hero.prerequisites ?? [])
+
+const getActionLabel = (key: string) => {
+  const action = content.value.hero.actions?.find((entry) => entry.key === key)
+
+  if (!action) {
+    throw new Error(`Missing quick-start hero action: ${key}`)
+  }
+
+  return action.label
+}
 
 const heroActions = computed<DocsPageAction[]>(() => ([
   {
-    label: content.value.hero.actions.backToInstallation,
+    label: getActionLabel('back-to-installation'),
     to: '/docs/getting-started/installation',
     outlined: true,
   },
   {
-    label: content.value.hero.actions.openAppShell,
+    label: getActionLabel('open-app-shell'),
     to: '/docs/component/layout/app-shell',
     variant: 'text',
     outlined: false,
@@ -127,14 +136,20 @@ const quickStartNextStepMeta = [
   },
 ] as const
 
+const quickStartStructureIcons = ['layout', 'layout', 'layout', 'forms'] as const
+
 const recommendedStructureSection = computed(() => {
   const section = content.value.sections['recommended-structure']
+  const items = (section.items as DocsEditorialGridItem[] | undefined) ?? []
 
   return {
     key: 'recommended-structure',
     title: section.title,
     description: section.description,
-    items: (section.items as DocsGridItem[] | undefined) ?? [],
+    items: items.map((item, index) => ({
+      ...item,
+      icon: quickStartStructureIcons[index],
+    })),
   }
 })
 
@@ -210,7 +225,7 @@ const verifyStructureSection = computed(() => {
 
 const nextStepsSection = computed(() => {
   const section = content.value.sections['next-steps']
-  const items = (section.items as DocsGridItem[] | undefined) ?? []
+  const items = (section.items as DocsEditorialGridItem[] | undefined) ?? []
 
   return {
     key: 'next-steps',

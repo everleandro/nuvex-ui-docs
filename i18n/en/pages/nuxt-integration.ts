@@ -1,6 +1,7 @@
-import type { DocsNuxtIntegrationEditorialContent } from '~/types/docs'
+import type { DocsNuxtIntegrationSectionKey, DocsWorkflowPageContent } from '~/types/docs'
 
-export const nuxtIntegrationEditorialContent: DocsNuxtIntegrationEditorialContent = {
+export const nuxtIntegrationEditorialContent: DocsWorkflowPageContent<DocsNuxtIntegrationSectionKey> = {
+  kind: 'workflow',
   seo: {
     title: 'Nuxt Integration',
     description:
@@ -11,10 +12,16 @@ export const nuxtIntegrationEditorialContent: DocsNuxtIntegrationEditorialConten
     description:
       'Integrate Nuvex UI into Nuxt with an SSR-safe base, correct style loading, and theme persistence before moving into deeper theming or layout patterns.',
     prerequisitesTitle: 'Before you start',
-    actions: {
-      backToInstallation: 'Back to Installation',
-      openThemingOverview: 'Open Theming Overview',
-    },
+    actions: [
+      {
+        key: 'back-to-installation',
+        label: 'Back to Installation',
+      },
+      {
+        key: 'open-theming-overview',
+        label: 'Open Theming Overview',
+      },
+    ],
     prerequisites: [
       'You already completed Installation or already have the minimum Nuxt setup working.',
       'Your Nuxt app already compiles with Nuvex UI and the base styles.',
@@ -30,22 +37,18 @@ export const nuxtIntegrationEditorialContent: DocsNuxtIntegrationEditorialConten
         {
           title: 'Nuxt plugin',
           description: 'Registers Nuvex UI through Nuxt\'s plugin lifecycle instead of treating the setup like a generic Vue entry file.',
-          icon: 'nuxt',
         },
         {
           title: 'Style loading order',
           description: 'Confirms the order of styles.css, framework.scss, and app-level overrides inside nuxt.config.ts.',
-          icon: 'theming',
         },
         {
           title: 'SSR theme persistence',
           description: 'Uses a cookie as the source of truth so the server can resolve the initial theme before hydration.',
-          icon: 'theming',
         },
         {
           title: 'Client fallback',
           description: 'Keeps localStorage as a client-side fallback without depending on it as the only source of the theme.',
-          icon: 'advanced',
         },
       ],
     },

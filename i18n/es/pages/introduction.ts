@@ -1,6 +1,7 @@
-import type { DocsPageContent } from '~/types/docs'
+import type { DocsConceptPageContent, DocsIntroductionSectionKey } from '~/types/docs'
 
-export const introductionContentEs: DocsPageContent = {
+export const introductionEditorialContentEs: DocsConceptPageContent<DocsIntroductionSectionKey> = {
+  kind: 'concept',
   seo: {
     title: 'Introduccion',
     description:
@@ -12,20 +13,17 @@ export const introductionContentEs: DocsPageContent = {
       'Nuvex UI es un sistema de componentes para Vue 3 enfocado en crear interfaces consistentes mas rapido. Usa esta guia para entender la libreria, el flujo de documentacion y la ruta recomendada hacia produccion.',
     actions: [
       {
+        key: 'start-with-installation',
         label: 'Comenzar con la instalacion',
-        to: '/docs/getting-started/installation',
-        outlined: true,
       },
       {
+        key: 'open-quick-start',
         label: 'Abrir inicio rapido',
-        to: '/docs/getting-started/quick-start',
-        variant: 'text',
-        outlined: false,
       },
     ],
   },
-  sections: [
-    {
+  sections: {
+    'what-is-nuvex-ui': {
       type: 'nav-card-grid',
       key: 'what-is-nuvex-ui',
       title: 'Explora Nuvex UI por capacidades',
@@ -35,46 +33,30 @@ export const introductionContentEs: DocsPageContent = {
         {
           title: 'Primeros pasos',
           description: 'Instalacion, arranque rapido e integracion inicial para incorporar Nuvex UI en un proyecto nuevo con el menor tiempo de setup posible.',
-          to: '/docs/getting-started/installation',
-          icon: 'gettingStarted',
         },
         {
           title: 'Design System',
           description: 'Colores, tipografia, iconografia, spacing y superficies para entender el lenguaje visual base y tomar decisiones consistentes desde el inicio.',
-          to: '/docs/design-system/colors',
-          icon: 'designSystem',
         },
         {
           title: 'Theming',
           description: 'Tokens, variables CSS y APIs de tema para adaptar la libreria a la identidad del producto sin perder coherencia entre componentes.',
-          to: '/docs/theming/overview',
-          icon: 'theming',
         },
         {
           title: 'Layout',
           description: 'App shell, bar, drawer, container y patrones responsivos para estructurar pantallas reales sobre una base predecible y reutilizable.',
-          to: '/docs/component/layout/app-shell',
-          icon: 'layout',
         },
         {
           title: 'Forms y entrada de datos',
           description: 'Campos, validacion, acciones y patrones de captura para construir flujos de negocio claros, consistentes y listos para produccion.',
-          to: '/docs/component/forms/overview',
-          icon: 'forms',
         },
         {
           title: 'Capacidades avanzadas',
           description: 'Overlays, scheduling, utilidades, extensibilidad y guias de integracion para escenarios mas complejos y equipos que necesitan ir mas alla del caso base.',
-          to: '/docs/advanced/plugin-api',
-          icon: 'advanced',
         },
       ],
-      cols: {
-        md: 6,
-        lg: 4,
-      },
     },
-    {
+    'docs-organization': {
       type: 'card-grid',
       key: 'docs-organization',
       title: 'Como navegar la documentacion',
@@ -99,12 +81,8 @@ export const introductionContentEs: DocsPageContent = {
           description: 'En componentes de entrada, revisa validacion antes de llegar a props. Usa la API reference al final para confirmar contratos, tipos y comportamiento una vez que ya elegiste el patron correcto.',
         },
       ],
-      cols: {
-        md: 6,
-        lg: 6,
-      },
     },
-    {
+    'recommended-path': {
       type: 'list',
       key: 'recommended-path',
       title: 'Ruta recomendada para empezar',
@@ -124,13 +102,12 @@ export const introductionContentEs: DocsPageContent = {
         'Expande hacia la documentacion especifica de componentes segun se implementen funcionalidades, por ejemplo <a href="/docs/component/forms/text-field" class="docs-page__inline-link">Text Field</a> o <a href="/docs/component/forms/select" class="docs-page__inline-link">Select</a>.',
       ],
     },
-    {
+    'system-principles': {
       type: 'list',
       key: 'system-principles',
       title: 'Que esperar de las paginas de componentes',
       description:
         'Usa estos criterios para leer y evaluar paginas tipo B con mas claridad antes de tomar decisiones de implementacion.',
-      ordered: false,
       items: [
         'Playground primero: cada pagina debe ayudarte a probar el caso principal antes de entrar en variantes y detalles de API.',
         'Ejemplos antes que teoria: las secciones intermedias deben mostrar estados, composicion y patrones de uso cercanos a implementacion real.',
@@ -138,11 +115,11 @@ export const introductionContentEs: DocsPageContent = {
         'API al final: usa la referencia tecnica para confirmar contratos, tipos y comportamiento una vez que ya elegiste el patron correcto.',
       ],
     },
-  ],
+  },
 }
 
 export const introductionPages = {
-  introduction: introductionContentEs,
+  introduction: introductionEditorialContentEs,
 } as const
 
 export default introductionPages

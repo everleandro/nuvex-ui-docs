@@ -28,7 +28,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
 import avatarManifest from '~~/assets/avatar-manifest.json'
-import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
 
 type AvatarManifestEntry = {
     id: string

@@ -189,8 +189,6 @@ import { useI18n } from 'vue-i18n'
 import { selectApiReference } from '~/api-reference/forms/select'
 import { selectApiReferenceEs } from '~/api-reference/forms/select-es'
 import avatarManifest from '~~/assets/avatar-manifest.json'
-import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
-import { useDocsPlaygroundTabSets } from '~/composables/useDocsPlaygroundTabSets'
 import { buildTemplateElementSnippet } from '~/utils/snippet-element'
 
 type AvatarManifestEntry = {

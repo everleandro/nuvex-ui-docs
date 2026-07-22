@@ -152,8 +152,6 @@
 import { useI18n } from 'vue-i18n'
 import { textareaApiReference } from '~/api-reference/forms/textarea'
 import { textareaApiReferenceEs } from '~/api-reference/forms/textarea-es'
-import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
-import { useDocsPlaygroundTabSets } from '~/composables/useDocsPlaygroundTabSets'
 import { buildTemplateElementSnippet } from '~/utils/snippet-element'
 
 const { locale } = useI18n()

@@ -15,7 +15,7 @@
     <DocsSection :id="whatThisGuideAddsSection.key" :title="whatThisGuideAddsSection.title" :description="whatThisGuideAddsSection.description">
       <ERow dense>
         <ECol v-for="item in whatThisGuideAddsSection.items" :key="item.title" cols="12" md="6">
-          <ECard outlined class="full-height" :title="item.title" :description="item.description" :prepend-header-icon="$icon[item.icon]" />
+          <ECard outlined class="full-height" :title="item.title" :description="item.description" :prepend-header-icon="item.icon ? $icon[item.icon] : undefined" />
         </ECol>
       </ERow>
     </DocsSection>
@@ -76,25 +76,34 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useDocsNuxtIntegrationI18nContent } from '~/composables/useDocsI18nContent'
-import type { DocsGridItem, DocsPageAction } from '~/types/docs'
+import type { DocsEditorialGridItem, DocsNuxtIntegrationSectionKey, DocsPageAction, DocsWorkflowPageContent } from '~/types/docs'
 import { nuxtIntegrationCodeSnippets } from './nuxt-integration.snippets'
 import { withLocalePrefix } from '~/utils/locale-path'
 
 const { locale } = useI18n()
 
-const editorialContent = useDocsNuxtIntegrationI18nContent('pages.nuxtIntegration.nuxtIntegration')
+const editorialContent = useDocsI18nContent<DocsWorkflowPageContent<DocsNuxtIntegrationSectionKey>>('pages.nuxtIntegration.nuxtIntegration')
 const content = computed(() => editorialContent.value)
-const prerequisites = computed(() => content.value.hero.prerequisites)
+const prerequisites = computed(() => content.value.hero.prerequisites ?? [])
+
+const getActionLabel = (key: string) => {
+  const action = content.value.hero.actions?.find((entry) => entry.key === key)
+
+  if (!action) {
+    throw new Error(`Missing nuxt-integration hero action: ${key}`)
+  }
+
+  return action.label
+}
 
 const heroActions = computed<DocsPageAction[]>(() => ([
   {
-    label: content.value.hero.actions.backToInstallation,
+    label: getActionLabel('back-to-installation'),
     to: '/docs/getting-started/installation',
     outlined: true,
   },
   {
-    label: content.value.hero.actions.openThemingOverview,
+    label: getActionLabel('open-theming-overview'),
     to: '/docs/theming/overview',
     variant: 'text',
     outlined: false,
@@ -120,14 +129,20 @@ const nuxtIntegrationNextStepMeta = [
   },
 ] as const
 
+const nuxtIntegrationGuideIcons = ['nuxt', 'theming', 'theming', 'advanced'] as const
+
 const whatThisGuideAddsSection = computed(() => {
   const section = content.value.sections['what-this-guide-adds']
+  const items = (section.items as DocsEditorialGridItem[] | undefined) ?? []
 
   return {
     key: 'what-this-guide-adds',
     title: section.title,
     description: section.description,
-    items: (section.items as DocsGridItem[] | undefined) ?? [],
+    items: items.map((item, index) => ({
+      ...item,
+      icon: nuxtIntegrationGuideIcons[index],
+    })),
   }
 })
 
@@ -207,13 +222,13 @@ const commonPitfallsSection = computed(() => {
     key: 'common-pitfalls',
     title: section.title,
     description: section.description,
-    items: (section.items as DocsGridItem[] | undefined) ?? [],
+    items: (section.items as DocsEditorialGridItem[] | undefined) ?? [],
   }
 })
 
 const nextStepsSection = computed(() => {
   const section = content.value.sections['next-steps']
-  const items = (section.items as DocsGridItem[] | undefined) ?? []
+  const items = (section.items as DocsEditorialGridItem[] | undefined) ?? []
 
   return {
     key: 'next-steps',

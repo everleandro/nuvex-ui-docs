@@ -193,7 +193,6 @@
 </template>
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
-import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
 import { withLocalePrefix } from '~/utils/locale-path'
 import { buttonApiReference } from '@/api-reference/forms/button'
 import { buttonApiReferenceEs } from '@/api-reference/forms/button-es'

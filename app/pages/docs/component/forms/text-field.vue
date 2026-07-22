@@ -173,8 +173,6 @@ import { EForm } from 'nuvex-ui'
 import { useI18n } from 'vue-i18n'
 import { textFieldApiReference } from '~/api-reference/forms/text-field'
 import { textFieldApiReferenceEs } from '~/api-reference/forms/text-field-es'
-import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
-import { useDocsPlaygroundTabSets } from '~/composables/useDocsPlaygroundTabSets'
 
 const { locale } = useI18n()
 
@@ -404,7 +402,6 @@ const validationTemplateCode = `<ECard
 </ECard>`
 
 const validationTsCode = `import { EFormColumn, ESpacer } from 'nuvex-ui'
-import { useValidationRules } from '~/composables/useValidationRules'
 
 interface IntegrationFormLabels {
   submit: string

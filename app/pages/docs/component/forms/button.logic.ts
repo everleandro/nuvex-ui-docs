@@ -1,5 +1,4 @@
 import { computed, ref, type ComputedRef } from "vue";
-import { useDocsPlaygroundTabSets } from "~/composables/useDocsPlaygroundTabSets";
 import { buildTemplateElementSnippet } from "~/utils/snippet-element";
 
 type ButtonPageContent = {

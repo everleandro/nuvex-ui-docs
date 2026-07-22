@@ -90,25 +90,34 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useDocsInstallationI18nContent } from '~/composables/useDocsI18nContent'
-import type { DocsGridItem, DocsPageAction } from '~/types/docs'
+import type { DocsEditorialGridItem, DocsInstallationSectionKey, DocsPageAction, DocsWorkflowPageContent } from '~/types/docs'
 import { installationCodeSnippets, installationCommands } from './installation.snippets'
 import { withLocalePrefix } from '~/utils/locale-path'
 
 const { locale } = useI18n()
 
-const editorialContent = useDocsInstallationI18nContent('pages.installation.installation')
+const editorialContent = useDocsI18nContent<DocsWorkflowPageContent<DocsInstallationSectionKey>>('pages.installation.installation')
 const content = computed(() => editorialContent.value)
-const prerequisites = computed(() => content.value.hero.prerequisites)
+const prerequisites = computed(() => content.value.hero.prerequisites ?? [])
+
+const getActionLabel = (key: string) => {
+  const action = content.value.hero.actions?.find((entry) => entry.key === key)
+
+  if (!action) {
+    throw new Error(`Missing installation hero action: ${key}`)
+  }
+
+  return action.label
+}
 
 const heroActions = computed<DocsPageAction[]>(() => ([
   {
-    label: content.value.hero.actions.installPackage,
+    label: getActionLabel('install-package'),
     to: '/docs/getting-started/installation#install-package',
     outlined: true,
   },
   {
-    label: content.value.hero.actions.nuxtIntegration,
+    label: getActionLabel('nuxt-integration'),
     to: '/docs/getting-started/nuxt-integration',
     variant: 'text',
     outlined: false,
@@ -149,7 +158,7 @@ const installationChoosePathMeta = [
 
 const choosePathSection = computed(() => {
   const section = content.value.sections['choose-path']
-  const items = (section.items as DocsGridItem[] | undefined) ?? []
+  const items = (section.items as DocsEditorialGridItem[] | undefined) ?? []
 
   return {
     key: 'choose-path',
@@ -240,13 +249,13 @@ const commonPitfallsSection = computed(() => {
     key: 'common-pitfalls',
     title: section.title,
     description: section.description,
-    items: (section.items as DocsGridItem[] | undefined) ?? [],
+    items: (section.items as DocsEditorialGridItem[] | undefined) ?? [],
   }
 })
 
 const nextStepsSection = computed(() => {
   const section = content.value.sections['next-steps']
-  const items = (section.items as DocsGridItem[] | undefined) ?? []
+  const items = (section.items as DocsEditorialGridItem[] | undefined) ?? []
 
   return {
     key: 'next-steps',

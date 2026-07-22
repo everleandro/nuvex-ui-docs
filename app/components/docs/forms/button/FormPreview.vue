@@ -22,8 +22,6 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
-import { useValidationRules } from '~/composables/useValidationRules'
-import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
 
 interface IntegrationFormLabels {
     submit: string

@@ -222,8 +222,6 @@
 import { useI18n } from 'vue-i18n'
 import { radioApiReference } from '~/api-reference/forms/radio'
 import { radioApiReferenceEs } from '~/api-reference/forms/radio-es'
-import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
-import { useDocsPlaygroundTabSets } from '~/composables/useDocsPlaygroundTabSets'
 import { buildTemplateElementSnippet } from '~/utils/snippet-element'
 
 type RadioValue = string | number | null | undefined

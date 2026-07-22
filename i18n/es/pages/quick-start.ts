@@ -1,6 +1,7 @@
-import type { DocsQuickStartEditorialContent } from '~/types/docs'
+import type { DocsQuickStartSectionKey, DocsWorkflowPageContent } from '~/types/docs'
 
-export const quickStartEditorialContentEs: DocsQuickStartEditorialContent = {
+export const quickStartEditorialContentEs: DocsWorkflowPageContent<DocsQuickStartSectionKey> = {
+  kind: 'workflow',
   seo: {
     title: 'Inicio rapido',
     description:
@@ -13,10 +14,16 @@ export const quickStartEditorialContentEs: DocsQuickStartEditorialContent = {
     descriptionHtml:
       'Construye la estructura inicial recomendada para empezar una aplicacion con Nuvex UI despues de la instalacion. Esta guia monta una base minima con <a href="/docs/component/layout/bar" class="no-underline primary--text">app bar</a>, <a href="/docs/component/layout/drawer" class="no-underline primary--text">drawer</a> y un area principal de contenido antes de pasar a patrones de layout mas profundos.',
     prerequisitesTitle: 'Antes de empezar',
-    actions: {
-      backToInstallation: 'Volver a Installation',
-      openAppShell: 'Abrir docs de App Shell',
-    },
+    actions: [
+      {
+        key: 'back-to-installation',
+        label: 'Volver a Installation',
+      },
+      {
+        key: 'open-app-shell',
+        label: 'Abrir docs de App Shell',
+      },
+    ],
     prerequisites: [
       'Nuvex UI ya esta instalado y registrado.',
       'Los estilos base ya cargan correctamente.',
@@ -33,22 +40,18 @@ export const quickStartEditorialContentEs: DocsQuickStartEditorialContent = {
         {
           title: 'App bar',
           description: 'Define la franja superior de la aplicacion y deja visible el punto de entrada principal para acciones y navegacion.',
-          icon: 'layout',
         },
         {
           title: 'Drawer de navegacion',
           description: 'Agrupa los destinos principales de la app en una navegacion lateral sencilla desde el primer setup.',
-          icon: 'layout',
         },
         {
           title: 'Area principal',
           description: 'Reserva una zona de contenido estable para que las pantallas queden alineadas, legibles y listas para crecer.',
-          icon: 'layout',
         },
         {
           title: 'Boton de menu',
           description: 'Agrega una interaccion basica para abrir y cerrar la navegacion lateral desde la barra superior.',
-          icon: 'forms',
         },
       ],
     },

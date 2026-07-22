@@ -9,7 +9,7 @@
     <template #window-item>
       <EWindowItem v-for="tab in tabs" :key="tab.value" :value="tab.value">
         <template v-if="tab.value === designTabValue && hasDesignStructureSlots">
-          <div class="full-height d-flex flex-column p-4">
+          <div class="full-height d-flex flex-column">
             <div v-if="hasDesignSlot" class="flex-1 d-flex flex-wrap gap-4 justify-center items-center">
               <slot name="panel-design" />
             </div>

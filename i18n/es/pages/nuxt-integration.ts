@@ -1,6 +1,7 @@
-import type { DocsNuxtIntegrationEditorialContent } from '~/types/docs'
+import type { DocsNuxtIntegrationSectionKey, DocsWorkflowPageContent } from '~/types/docs'
 
-export const nuxtIntegrationEditorialContentEs: DocsNuxtIntegrationEditorialContent = {
+export const nuxtIntegrationEditorialContentEs: DocsWorkflowPageContent<DocsNuxtIntegrationSectionKey> = {
+  kind: 'workflow',
   seo: {
     title: 'Nuxt Integration',
     description:
@@ -11,10 +12,16 @@ export const nuxtIntegrationEditorialContentEs: DocsNuxtIntegrationEditorialCont
     description:
       'Integra Nuvex UI en Nuxt con una base compatible con SSR, carga correcta de estilos y persistencia de tema antes de pasar a theming mas profundo o a patrones de layout.',
     prerequisitesTitle: 'Antes de empezar',
-    actions: {
-      backToInstallation: 'Volver a Installation',
-      openThemingOverview: 'Abrir Theming Overview',
-    },
+    actions: [
+      {
+        key: 'back-to-installation',
+        label: 'Volver a Installation',
+      },
+      {
+        key: 'open-theming-overview',
+        label: 'Abrir Theming Overview',
+      },
+    ],
     prerequisites: [
       'Ya completaste Installation o ya tienes el setup minimo funcionando en Nuxt.',
       'Tu app Nuxt ya compila con Nuvex UI y los estilos base.',
@@ -30,22 +37,18 @@ export const nuxtIntegrationEditorialContentEs: DocsNuxtIntegrationEditorialCont
         {
           title: 'Plugin de Nuxt',
           description: 'Registra Nuvex UI dentro del ciclo normal de plugins de Nuxt en lugar de tratar el setup como una entrada generica de Vue.',
-          icon: 'nuxt',
         },
         {
           title: 'Orden de estilos',
           description: 'Confirma el orden de styles.css, framework.scss y tus overrides dentro de nuxt.config.ts.',
-          icon: 'theming',
         },
         {
           title: 'Persistencia SSR del tema',
           description: 'Usa una cookie como fuente de verdad para que el server conozca el tema inicial antes de hidratar.',
-          icon: 'theming',
         },
         {
           title: 'Fallback en cliente',
           description: 'Mantiene localStorage como apoyo en cliente sin depender de el como unica fuente del tema.',
-          icon: 'advanced',
         },
       ],
     },

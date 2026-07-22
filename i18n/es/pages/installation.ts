@@ -1,6 +1,7 @@
-import type { DocsInstallationEditorialContent } from '~/types/docs'
+import type { DocsInstallationSectionKey, DocsWorkflowPageContent } from '~/types/docs'
 
-export const installationEditorialContentEs: DocsInstallationEditorialContent = {
+export const installationEditorialContentEs: DocsWorkflowPageContent<DocsInstallationSectionKey> = {
+  kind: 'workflow',
   seo: {
     title: 'Instalacion',
     description:
@@ -11,10 +12,16 @@ export const installationEditorialContentEs: DocsInstallationEditorialContent = 
     description:
       'Instala Nuvex UI, registra el plugin y carga los estilos base para dejar tu proyecto listo antes de pasar a componentes, theming o layout.',
     prerequisitesTitle: 'Antes de empezar',
-    actions: {
-      installPackage: 'Instalar con npm',
-      nuxtIntegration: 'Ver integracion Nuxt',
-    },
+    actions: [
+      {
+        key: 'install-package',
+        label: 'Instalar con npm',
+      },
+      {
+        key: 'nuxt-integration',
+        label: 'Ver integracion Nuxt',
+      },
+    ],
     prerequisites: [
       'Vue 3 o Nuxt 4.',
       'Un proyecto ya creado.',

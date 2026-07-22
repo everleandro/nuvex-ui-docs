@@ -1,6 +1,7 @@
-import type { DocsPageContent } from '~/types/docs'
+import type { DocsConceptPageContent, DocsIntroductionSectionKey } from '~/types/docs'
 
-export const introductionContent: DocsPageContent = {
+export const introductionEditorialContent: DocsConceptPageContent<DocsIntroductionSectionKey> = {
+  kind: 'concept',
   seo: {
     title: 'Introduction',
     description:
@@ -12,20 +13,17 @@ export const introductionContent: DocsPageContent = {
       'Nuvex UI is a Vue 3 component system focused on shipping consistent interfaces faster. Use this guide to understand the library, the documentation flow, and the recommended path to production.',
     actions: [
       {
+        key: 'start-with-installation',
         label: 'Start with Installation',
-        to: '/docs/getting-started/installation',
-        outlined: true,
       },
       {
+        key: 'open-quick-start',
         label: 'Open Quick Start',
-        to: '/docs/getting-started/quick-start',
-        variant: 'text',
-        outlined: false,
       },
     ],
   },
-  sections: [
-    {
+  sections: {
+    'what-is-nuvex-ui': {
       type: 'nav-card-grid',
       key: 'what-is-nuvex-ui',
       title: 'Explore Nuvex UI by capability',
@@ -35,46 +33,30 @@ export const introductionContent: DocsPageContent = {
         {
           title: 'Getting Started',
           description: 'Installation, quick start, and first integration steps to bring Nuvex UI into a new project with minimal setup friction.',
-          to: '/docs/getting-started/installation',
-          icon: 'gettingStarted',
         },
         {
           title: 'Design System',
           description: 'Colors, typography, iconography, spacing, and surfaces that define the base visual language and support consistent decisions early on.',
-          to: '/docs/design-system/colors',
-          icon: 'designSystem',
         },
         {
           title: 'Theming',
           description: 'Tokens, CSS variables, and theme APIs for adapting the library to your product identity without losing consistency across components.',
-          to: '/docs/theming/overview',
-          icon: 'theming',
         },
         {
           title: 'Layout',
           description: 'App shell, bar, drawer, container, and responsive patterns for structuring real screens on a predictable foundation.',
-          to: '/docs/component/layout/app-shell',
-          icon: 'layout',
         },
         {
           title: 'Forms and Data Entry',
           description: 'Fields, validation, actions, and input patterns for building clear, production-ready business flows.',
-          to: '/docs/component/forms/overview',
-          icon: 'forms',
         },
         {
           title: 'Advanced Capabilities',
           description: 'Overlays, scheduling, utilities, extensibility, and integration guidance for teams working beyond the base case.',
-          to: '/docs/advanced/plugin-api',
-          icon: 'advanced',
         },
       ],
-      cols: {
-        md: 6,
-        lg: 4,
-      },
     },
-    {
+    'docs-organization': {
       type: 'card-grid',
       key: 'docs-organization',
       title: 'How to navigate the documentation',
@@ -99,12 +81,8 @@ export const introductionContent: DocsPageContent = {
           description: 'For input components, review validation before props. Use the API reference at the end to confirm contracts, types, and behavior once you have already chosen the right pattern.',
         },
       ],
-      cols: {
-        md: 6,
-        lg: 3,
-      },
     },
-    {
+    'recommended-path': {
       type: 'list',
       key: 'recommended-path',
       title: 'Recommended path to start',
@@ -124,13 +102,12 @@ export const introductionContent: DocsPageContent = {
         'Expand into component-specific docs as features are implemented, for example <a href="/docs/component/forms/text-field" class="docs-page__inline-link">Text Field</a> or <a href="/docs/component/forms/select" class="docs-page__inline-link">Select</a>.',
       ],
     },
-    {
+    'system-principles': {
       type: 'list',
       key: 'system-principles',
       title: 'What to expect from component pages',
       description:
         'Use these criteria to read and evaluate Type B pages more clearly before making implementation decisions.',
-      ordered: false,
       items: [
         'Playground first: each page should help you try the primary case before moving into variants and API details.',
         'Examples before theory: mid-page sections should show states, composition, and usage patterns that stay close to real implementation.',
@@ -138,11 +115,11 @@ export const introductionContent: DocsPageContent = {
         'API at the end: use the technical reference to confirm contracts, types, and behavior once you have already chosen the right pattern.',
       ],
     },
-  ],
+  },
 }
 
 export const introductionPages = {
-  introduction: introductionContent,
+  introduction: introductionEditorialContent,
 } as const
 
 export default introductionPages

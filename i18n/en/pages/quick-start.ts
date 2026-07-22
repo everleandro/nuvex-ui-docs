@@ -1,6 +1,7 @@
-import type { DocsQuickStartEditorialContent } from '~/types/docs'
+import type { DocsQuickStartSectionKey, DocsWorkflowPageContent } from '~/types/docs'
 
-export const quickStartEditorialContent: DocsQuickStartEditorialContent = {
+export const quickStartEditorialContent: DocsWorkflowPageContent<DocsQuickStartSectionKey> = {
+  kind: 'workflow',
   seo: {
     title: 'Quick Start',
     description:
@@ -13,10 +14,16 @@ export const quickStartEditorialContent: DocsQuickStartEditorialContent = {
     descriptionHtml:
       'Build the recommended initial structure for starting an application with Nuvex UI after installation. This guide sets up a minimal foundation with an <a href="/docs/component/layout/bar" class="no-underline primary--text">app bar</a>, a <a href="/docs/component/layout/drawer" class="no-underline primary--text">drawer</a>, and a main content area before moving into deeper layout patterns.',
     prerequisitesTitle: 'Before you start',
-    actions: {
-      backToInstallation: 'Back to Installation',
-      openAppShell: 'Open App Shell docs',
-    },
+    actions: [
+      {
+        key: 'back-to-installation',
+        label: 'Back to Installation',
+      },
+      {
+        key: 'open-app-shell',
+        label: 'Open App Shell docs',
+      },
+    ],
     prerequisites: [
       'Nuvex UI is already installed and registered.',
       'Base styles are already loading correctly.',
@@ -33,22 +40,18 @@ export const quickStartEditorialContent: DocsQuickStartEditorialContent = {
         {
           title: 'App bar',
           description: 'Defines the top band of the application and keeps the main entry point for actions and navigation visible.',
-          icon: 'layout',
         },
         {
           title: 'Navigation drawer',
           description: 'Groups the main app destinations into a simple side navigation from the first setup onward.',
-          icon: 'layout',
         },
         {
           title: 'Main content area',
           description: 'Reserves a stable content region so screens stay aligned, readable, and ready to grow.',
-          icon: 'layout',
         },
         {
           title: 'Menu button',
           description: 'Adds a basic interaction so users can open and close the side navigation from the top bar.',
-          icon: 'forms',
         },
       ],
     },

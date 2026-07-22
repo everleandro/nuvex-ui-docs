@@ -132,8 +132,6 @@
 import { useI18n } from 'vue-i18n'
 import { checkboxApiReference } from '~/api-reference/forms/checkbox'
 import { checkboxApiReferenceEs } from '~/api-reference/forms/checkbox-es'
-import { useDocsComponentI18nContent } from '~/composables/useDocsI18nContent'
-import { useDocsPlaygroundTabSets } from '~/composables/useDocsPlaygroundTabSets'
 import { buildTemplateElementSnippet } from '~/utils/snippet-element'
 
 type CheckboxValue = boolean | string | number

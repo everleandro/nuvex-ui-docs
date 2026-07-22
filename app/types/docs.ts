@@ -46,39 +46,83 @@ export interface DocsGridItem {
   icon?: string;
 }
 
-export interface DocsSection {
-  type: "card-grid" | "nav-card-grid" | "list";
-  key: string;
-  title: string;
-  description: string;
-  descriptionHtml?: string;
-  ordered?: boolean;
-  items: Array<string | DocsGridItem>;
-  itemsHtml?: string[];
-  cols?: {
-    md?: number;
-    lg?: number;
-  };
-}
-
-export interface DocsPageContent {
-  seo: {
-    title: string;
-    description: string;
-  };
-  hero: {
-    title: string;
-    description: string;
-    actions: DocsPageAction[];
-  };
-  sections: DocsSection[];
-  footer?: DocsFooterContent;
-}
-
 export interface DocsSecondaryNavItem {
   id: string;
   label: string;
 }
+
+export type DocsPageKind = "concept" | "component" | "workflow";
+
+export interface DocsEditorialHeroBase {
+  title: string;
+  description?: string;
+  descriptionHtml?: string;
+}
+
+export interface DocsEditorialActionLabel {
+  key: string;
+  label: string;
+}
+
+export interface DocsEditorialSectionBase<TKey extends string = string> {
+  key: TKey;
+  title: string;
+  description?: string;
+  descriptionHtml?: string;
+}
+
+export interface DocsEditorialPageBase<
+  TKind extends DocsPageKind,
+  THero,
+  TSections,
+> {
+  kind: TKind;
+  seo: {
+    title: string;
+    description: string;
+  };
+  hero: THero;
+  sections: TSections;
+  footer?: DocsFooterContent;
+}
+
+export interface DocsEditorialGridItem {
+  title: string;
+  description: string;
+}
+
+export interface DocsConceptHero extends DocsEditorialHeroBase {
+  actions?: DocsEditorialActionLabel[];
+}
+
+export interface DocsConceptSection<TKey extends string = string>
+  extends DocsEditorialSectionBase<TKey> {
+  type: "card-grid" | "nav-card-grid" | "list" | "callout";
+  ordered?: boolean;
+  items?: Array<string | DocsEditorialGridItem>;
+  itemsHtml?: string[];
+  body?: string;
+  bodyHtml?: string;
+  labels?: Record<string, string>;
+}
+
+export type DocsConceptPageContent<TKey extends string = string> =
+  DocsEditorialPageBase<
+    "concept",
+    DocsConceptHero,
+    Record<TKey, DocsConceptSection<TKey>>
+  >;
+
+export type DocsIntroductionSectionKey =
+  | "what-is-nuvex-ui"
+  | "docs-organization"
+  | "recommended-path"
+  | "system-principles";
+
+export type DocsColorsSectionKey =
+  | "background-helpers"
+  | "text-helpers"
+  | "palette-reference";
 
 export type DocsInstallationSectionKey =
   | "choose-path"
@@ -90,32 +134,6 @@ export type DocsInstallationSectionKey =
   | "common-pitfalls"
   | "next-steps";
 
-export interface DocsInstallationSection {
-  title: string;
-  description: string;
-  icon?: IconPath | IconPath[];
-  items?: Array<string | DocsGridItem>;
-  calloutDescription?: string;
-}
-
-export interface DocsInstallationEditorialContent {
-  seo: {
-    title: string;
-    description: string;
-  };
-  hero: {
-    title: string;
-    description: string;
-    prerequisitesTitle: string;
-    actions: {
-      installPackage: string;
-      nuxtIntegration: string;
-    };
-    prerequisites: string[];
-  };
-  sections: Record<DocsInstallationSectionKey, DocsInstallationSection>;
-}
-
 export type DocsQuickStartSectionKey =
   | "recommended-structure"
   | "create-layout-base"
@@ -126,25 +144,6 @@ export type DocsQuickStartSectionKey =
   | "verify-structure"
   | "next-steps";
 
-export interface DocsQuickStartEditorialContent {
-  seo: {
-    title: string;
-    description: string;
-  };
-  hero: {
-    title: string;
-    description: string;
-    descriptionHtml?: string;
-    prerequisitesTitle: string;
-    actions: {
-      backToInstallation: string;
-      openAppShell: string;
-    };
-    prerequisites: string[];
-  };
-  sections: Record<DocsQuickStartSectionKey, DocsInstallationSection>;
-}
-
 export type DocsNuxtIntegrationSectionKey =
   | "what-this-guide-adds"
   | "register-nuxt-plugin"
@@ -154,24 +153,6 @@ export type DocsNuxtIntegrationSectionKey =
   | "verify-integration"
   | "common-pitfalls"
   | "next-steps";
-
-export interface DocsNuxtIntegrationEditorialContent {
-  seo: {
-    title: string;
-    description: string;
-  };
-  hero: {
-    title: string;
-    description: string;
-    prerequisitesTitle: string;
-    actions: {
-      backToInstallation: string;
-      openThemingOverview: string;
-    };
-    prerequisites: string[];
-  };
-  sections: Record<DocsNuxtIntegrationSectionKey, DocsInstallationSection>;
-}
 
 export type DocsWorkflowCommandValue = "npm" | "pnpm" | "yarn" | "bun";
 
@@ -187,74 +168,42 @@ export interface DocsWorkflowCodeSnippet {
   language: "bash" | "ts" | "js" | "vue" | "scss" | "json";
 }
 
-export interface DocsWorkflowSectionBase {
-  key: string;
+export interface DocsWorkflowHero extends DocsEditorialHeroBase {
+  prerequisitesTitle?: string;
+  prerequisites?: string[];
+  actions?: DocsEditorialActionLabel[];
+}
+
+export interface DocsWorkflowSection<TKey extends string = string>
+  {
+  key?: TKey;
   title: string;
   description?: string;
   descriptionHtml?: string;
-  callout?: DocsCallout;
-}
-
-export interface DocsWorkflowDecisionSection extends DocsWorkflowSectionBase {
-  type: "decision-grid";
-  items: DocsGridItem[];
+  type?:
+    | "decision-grid"
+    | "command-tabs"
+    | "code-block"
+    | "checklist"
+    | "callout-group"
+    | "next-steps";
+  items?: Array<string | DocsEditorialGridItem>;
+  itemsHtml?: string[];
+  ordered?: boolean;
+  calloutDescription?: string;
+  note?: string;
   cols?: {
     md?: number;
     lg?: number;
   };
 }
 
-export interface DocsWorkflowCommandTabsSection extends DocsWorkflowSectionBase {
-  type: "command-tabs";
-  commands?: Partial<
-    Record<DocsWorkflowCommandValue, DocsWorkflowCommandEntry>
+export type DocsWorkflowPageContent<TKey extends string = string> =
+  DocsEditorialPageBase<
+    "workflow",
+    DocsWorkflowHero,
+    Record<TKey, DocsWorkflowSection<TKey>>
   >;
-}
-
-export interface DocsWorkflowCodeSection extends DocsWorkflowSectionBase {
-  type: "code-block";
-  snippets?: DocsWorkflowCodeSnippet[];
-}
-
-export interface DocsWorkflowChecklistSection extends DocsWorkflowSectionBase {
-  type: "checklist";
-  items: string[];
-  itemsHtml?: string[];
-}
-
-export interface DocsWorkflowCalloutSection extends DocsWorkflowSectionBase {
-  type: "callout-group";
-  items: DocsGridItem[];
-}
-
-export interface DocsWorkflowNextStepsSection extends DocsWorkflowSectionBase {
-  type: "next-steps";
-  items: Array<DocsGridItem & { to: string }>;
-}
-
-export type DocsWorkflowSection =
-  | DocsWorkflowDecisionSection
-  | DocsWorkflowCommandTabsSection
-  | DocsWorkflowCodeSection
-  | DocsWorkflowChecklistSection
-  | DocsWorkflowCalloutSection
-  | DocsWorkflowNextStepsSection;
-
-export interface DocsWorkflowPageContent {
-  kind: "workflow";
-  seo: {
-    title: string;
-    description: string;
-  };
-  hero: {
-    title: string;
-    description: string;
-    actions: DocsPageAction[];
-    prerequisites?: string[];
-  };
-  sections: DocsWorkflowSection[];
-  footer?: DocsFooterContent;
-}
 
 export interface DocsComponentSection {
   key: string;

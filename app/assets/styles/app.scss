@@ -5,3 +5,16 @@
     max-width: 100%;
     overflow-x: auto;
 }
+
+.docs-inline-code {
+    display: inline-block;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.375rem;
+    background: color-mix(in srgb, var(--e-color-surface-subtle, #f3f4f6) 88%, var(--e-color-border, #d1d5db) 12%);
+    border: 1px solid color-mix(in srgb, var(--e-color-border, #d1d5db) 70%, transparent 30%);
+    color: inherit;
+    font-family: Monaco, Consolas, 'Liberation Mono', monospace;
+    font-size: 0.875em;
+    line-height: 1.4;
+    white-space: nowrap;
+}
