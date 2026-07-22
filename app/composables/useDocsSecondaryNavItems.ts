@@ -2,11 +2,13 @@ import { useI18n } from 'vue-i18n'
 import type {
   DocsComponentPageContent,
   DocsConceptPageContent,
+  DocsColorsSectionKey,
   DocsIntroductionSectionKey,
   DocsInstallationSectionKey,
   DocsNuxtIntegrationSectionKey,
   DocsQuickStartSectionKey,
   DocsSecondaryNavItem,
+  DocsTypographySectionKey,
   DocsWorkflowPageContent,
 } from '~/types/docs'
 import { toCanonicalDocsPath } from '~/utils/docs-navigation-paths'
@@ -20,6 +22,14 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
   '/docs/getting-started/introduction': {
     kind: 'concept',
     messageKey: 'pages.introduction.introduction',
+  },
+  '/docs/design-system/colors': {
+    kind: 'concept',
+    messageKey: 'pages.colors.colors',
+  },
+  '/docs/design-system/typography': {
+    kind: 'concept',
+    messageKey: 'pages.typography.typography',
   },
   '/docs/getting-started/quick-start': {
     kind: 'workflow',
@@ -91,7 +101,11 @@ export const useDocsSecondaryNavItems = (path: Ref<string> | ComputedRef<string>
     }
 
     if (resolver.kind === 'concept') {
-      return toEditorialSectionNavItems(tm(resolver.messageKey) as DocsConceptPageContent<DocsIntroductionSectionKey>)
+      return toEditorialSectionNavItems(
+        tm(resolver.messageKey) as DocsConceptPageContent<
+          DocsIntroductionSectionKey | DocsColorsSectionKey | DocsTypographySectionKey
+        >,
+      )
     }
 
     if (resolver.kind === 'workflow') {

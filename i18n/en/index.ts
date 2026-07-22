@@ -7,6 +7,7 @@ import installation from './pages/installation'
 import nuxtIntegration from './pages/nuxt-integration'
 import quickStart from './pages/quick-start'
 import colors from './pages/colors'
+import typography from './pages/typography'
 import button from './pages/button'
 import input from './pages/input'
 import modal from './pages/modal'
@@ -22,6 +23,7 @@ const en = {
     nuxtIntegration,
     quickStart,
     colors,
+    typography,
     button,
     input,
     modal,

@@ -124,6 +124,11 @@ export type DocsColorsSectionKey =
   | "text-helpers"
   | "palette-reference";
 
+export type DocsTypographySectionKey =
+  | "usage"
+  | "hierarchy"
+  | "specialized-roles";
+
 export type DocsInstallationSectionKey =
   | "choose-path"
   | "install-package"
