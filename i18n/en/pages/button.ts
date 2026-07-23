@@ -71,7 +71,7 @@ export const buttonComponentContent: DocsComponentPageContent = {
       { key: 'depressed', label: 'depressed' },
     ],
     links: {
-      iconsPage: 'Icons',
+      iconsPage: 'Icon Configuration',
       iconGuidePrefix: 'You can learn more about how icons work on the',
       iconGuideSuffix: 'page.',
     },

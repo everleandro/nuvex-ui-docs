@@ -84,7 +84,7 @@
             <template #description>
                 <span v-html="sections['icon-mode'].descriptionHtml"></span>
                 {{ iconLinks.iconGuidePrefix }}
-                <e-button :to="withLocalePrefix('/docs/design-system/icons', locale)" text color='primary'>
+                <e-button :to="withLocalePrefix('/docs/design-system/icon-configuration', locale)" text color='primary'>
                     {{ iconLinks.iconsPage }}
                 </e-button>
                 {{ iconLinks.iconGuideSuffix }}

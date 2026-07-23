@@ -159,6 +159,17 @@ export type DocsNuxtIntegrationSectionKey =
   | "common-pitfalls"
   | "next-steps";
 
+export type DocsIconConfigurationSectionKey =
+  | "overview"
+  | "application-icon-strategy"
+  | "mdi-integration"
+  | "font-awesome-integration"
+  | "internal-framework-icons"
+  | "overriding-framework-icons"
+  | "per-instance-overrides"
+  | "ssr-considerations"
+  | "recommendations";
+
 export type DocsWorkflowCommandValue = "npm" | "pnpm" | "yarn" | "bun";
 
 export interface DocsWorkflowCommandEntry {

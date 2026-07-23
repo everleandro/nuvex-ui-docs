@@ -3,6 +3,7 @@ import type {
   DocsComponentPageContent,
   DocsConceptPageContent,
   DocsColorsSectionKey,
+  DocsIconConfigurationSectionKey,
   DocsIntroductionSectionKey,
   DocsInstallationSectionKey,
   DocsNuxtIntegrationSectionKey,
@@ -42,6 +43,10 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
   '/docs/getting-started/nuxt-integration': {
     kind: 'workflow',
     messageKey: 'pages.nuxtIntegration.nuxtIntegration',
+  },
+  '/docs/design-system/icon-configuration': {
+    kind: 'workflow',
+    messageKey: 'pages.iconConfiguration.iconConfiguration',
   },
   '/docs/component/forms/button': {
     kind: 'component',
@@ -111,7 +116,7 @@ export const useDocsSecondaryNavItems = (path: Ref<string> | ComputedRef<string>
     if (resolver.kind === 'workflow') {
       return toEditorialSectionNavItems(
         tm(resolver.messageKey) as DocsWorkflowPageContent<
-          DocsInstallationSectionKey | DocsQuickStartSectionKey | DocsNuxtIntegrationSectionKey
+          DocsInstallationSectionKey | DocsQuickStartSectionKey | DocsNuxtIntegrationSectionKey | DocsIconConfigurationSectionKey
         >,
       )
     }

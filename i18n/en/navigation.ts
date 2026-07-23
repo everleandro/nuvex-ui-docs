@@ -25,7 +25,7 @@ const navigation = {
     design_system: {
       colors: 'Colors',
       typography: 'Typography',
-      icons: 'Icons',
+      icon_configuration: 'Icon Configuration',
       spacing: 'Spacing',
       surfaces: 'Surfaces',
     },

@@ -68,7 +68,7 @@ export const navigationGroups: NavigationGroupItem[] = [
   createSimpleGroup('design-system', 'navigation.groups.design_system', 'designSystem', [
     { id: 'colors', titleKey: 'navigation.items.design_system.colors', to: '/docs/design-system/colors' },
     { id: 'typography', titleKey: 'navigation.items.design_system.typography', to: '/docs/design-system/typography' },
-    { id: 'icons', titleKey: 'navigation.items.design_system.icons', to: '/docs/design-system/icons' },
+    { id: 'icon-configuration', titleKey: 'navigation.items.design_system.icon_configuration', to: '/docs/design-system/icon-configuration' },
     { id: 'spacing', titleKey: 'navigation.items.design_system.spacing', to: '/docs/design-system/spacing' },
     { id: 'surfaces', titleKey: 'navigation.items.design_system.surfaces', to: '/docs/design-system/surfaces' },
   ]),
