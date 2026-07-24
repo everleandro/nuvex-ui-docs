@@ -8,6 +8,7 @@ import nuxtIntegration from './pages/nuxt-integration'
 import quickStart from './pages/quick-start'
 import iconConfiguration from './pages/icon-configuration'
 import colors from './pages/colors'
+import surfaces from './pages/surfaces'
 import typography from './pages/typography'
 import button from './pages/button'
 import input from './pages/input'
@@ -25,6 +26,7 @@ const en = {
     quickStart,
     iconConfiguration,
     colors,
+    surfaces,
     typography,
     button,
     input,

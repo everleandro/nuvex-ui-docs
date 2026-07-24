@@ -9,6 +9,7 @@ import type {
   DocsNuxtIntegrationSectionKey,
   DocsQuickStartSectionKey,
   DocsSecondaryNavItem,
+  DocsSurfacesSectionKey,
   DocsTypographySectionKey,
   DocsWorkflowPageContent,
 } from '~/types/docs'
@@ -31,6 +32,10 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
   '/docs/design-system/typography': {
     kind: 'concept',
     messageKey: 'pages.typography.typography',
+  },
+  '/docs/design-system/surfaces': {
+    kind: 'concept',
+    messageKey: 'pages.surfaces.surfaces',
   },
   '/docs/getting-started/quick-start': {
     kind: 'workflow',
@@ -108,7 +113,7 @@ export const useDocsSecondaryNavItems = (path: Ref<string> | ComputedRef<string>
     if (resolver.kind === 'concept') {
       return toEditorialSectionNavItems(
         tm(resolver.messageKey) as DocsConceptPageContent<
-          DocsIntroductionSectionKey | DocsColorsSectionKey | DocsTypographySectionKey
+          DocsIntroductionSectionKey | DocsColorsSectionKey | DocsTypographySectionKey | DocsSurfacesSectionKey
         >,
       )
     }
