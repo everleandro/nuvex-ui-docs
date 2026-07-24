@@ -100,7 +100,7 @@ export interface DocsConceptSection<TKey extends string = string>
   type: "card-grid" | "nav-card-grid" | "list" | "callout";
   ordered?: boolean;
   items?: Array<string | DocsEditorialGridItem>;
-  itemsHtml?: string[];
+  itemsHtml?: Partial<Record<string, string>>;
   body?: string;
   bodyHtml?: string;
   labels?: Record<string, string>;
@@ -128,6 +128,20 @@ export type DocsTypographySectionKey =
   | "usage"
   | "hierarchy"
   | "specialized-roles";
+
+export type DocsSpacingSectionKey =
+  | "usage"
+  | "class-syntax"
+  | "direction-modifiers"
+  | "scale-reference"
+  | "implementation-examples"
+  | "framework-notes";
+
+export type DocsSurfacesSectionKey =
+  | "surface-roles"
+  | "contrast-pairing"
+  | "layering-rule"
+  | "recommended-mappings";
 
 export type DocsInstallationSectionKey =
   | "choose-path"
@@ -204,7 +218,7 @@ export interface DocsWorkflowSection<TKey extends string = string>
     | "callout-group"
     | "next-steps";
   items?: Array<string | DocsEditorialGridItem>;
-  itemsHtml?: string[];
+  itemsHtml?: Partial<Record<string, string>>;
   ordered?: boolean;
   calloutDescription?: string;
   note?: string;
