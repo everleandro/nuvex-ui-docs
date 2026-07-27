@@ -56,32 +56,6 @@ export const introductionEditorialContent: DocsConceptPageContent<DocsIntroducti
         },
       ],
     },
-    'docs-organization': {
-      type: 'card-grid',
-      key: 'docs-organization',
-      title: 'How to navigate the documentation',
-      description: 'The documentation is designed to take you from broad orientation to concrete implementation.',
-      descriptionHtml:
-        'The documentation is designed to take you from broad orientation to concrete implementation. Use this structure to find what you need faster and move through each page without losing context. If you want to see the Type B pattern in action, review <a href="/docs/component/forms/button" class="docs-page__inline-link">Button</a> or <a href="/docs/component/forms/text-field" class="docs-page__inline-link">Text Field</a>, where the flow moves from overview to playground, examples, validation, and API.',
-      items: [
-        {
-          title: 'Start with the right area',
-          description: 'Use the main hubs to locate the capability you need: onboarding, visual system, theming, layout, forms, or advanced integration.',
-        },
-        {
-          title: 'Move from overview to playground',
-          description: 'On component pages, begin with the hero and usage section to understand scope, try the primary case, and adjust the most important props before comparing variants.',
-        },
-        {
-          title: 'Go deeper with real examples',
-          description: 'After the main playground, use the component-specific sections to compare states, composition, icons, integration patterns, and production-facing examples.',
-        },
-        {
-          title: 'Close with validation and API',
-          description: 'For input components, review validation before props. Use the API reference at the end to confirm contracts, types, and behavior once you have already chosen the right pattern.',
-        },
-      ],
-    },
     'recommended-path': {
       type: 'list',
       key: 'recommended-path',
@@ -95,24 +69,24 @@ export const introductionEditorialContent: DocsConceptPageContent<DocsIntroducti
         'Configure themes, layout primitives, and navigation structure.',
         'Expand into component-specific docs as features are implemented.',
       ],
-      itemsHtml: [
-        'Install Nuvex UI and verify your base dependencies in <a href="/docs/getting-started/installation" class="docs-page__inline-link">Installation</a>.',
-        'Build a first screen using core components and global styles, using a Type B page such as <a href="/docs/component/forms/button" class="docs-page__inline-link">Button</a> as a reference.',
-        'Configure themes, layout primitives, and navigation structure with help from <a href="/docs/theming/overview" class="docs-page__inline-link">Theming</a> and <a href="/docs/component/layout/app-shell" class="docs-page__inline-link">Layout</a>.',
-        'Expand into component-specific docs as features are implemented, for example <a href="/docs/component/forms/text-field" class="docs-page__inline-link">Text Field</a> or <a href="/docs/component/forms/select" class="docs-page__inline-link">Select</a>.',
-      ],
+      itemsHtml: {
+        'Install Nuvex UI and verify your base dependencies.': 'Install Nuvex UI and verify your base dependencies in <a href="/docs/getting-started/installation" class="docs-page__inline-link">Installation</a>.',
+        'Build a first screen using core components and global styles.': 'Build a first screen using core components and global styles, using a Type B page such as <a href="/docs/component/forms/button" class="docs-page__inline-link">Button</a> as a reference.',
+        'Configure themes, layout primitives, and navigation structure.': 'Configure themes, layout primitives, and navigation structure with help from <a href="/docs/theming/overview" class="docs-page__inline-link">Theming</a> and <a href="/docs/component/layout/app-shell" class="docs-page__inline-link">Layout</a>.',
+        'Expand into component-specific docs as features are implemented.': 'Expand into component-specific docs as features are implemented, for example <a href="/docs/component/forms/text-field" class="docs-page__inline-link">Text Field</a> or <a href="/docs/component/forms/select" class="docs-page__inline-link">Select</a>.',
+      },
     },
     'system-principles': {
       type: 'list',
       key: 'system-principles',
-      title: 'What to expect from component pages',
+      title: 'How component pages help you',
       description:
-        'Use these criteria to read and evaluate Type B pages more clearly before making implementation decisions.',
+        'Component pages are structured to help you move from orientation to implementation without guessing what to look at next.',
       items: [
-        'Playground first: each page should help you try the primary case before moving into variants and API details.',
-        'Examples before theory: mid-page sections should show states, composition, and usage patterns that stay close to real implementation.',
-        'Validation when it applies: for input components, validation should appear before the API so the flow closes with functional context.',
-        'API at the end: use the technical reference to confirm contracts, types, and behavior once you have already chosen the right pattern.',
+        'Start with the primary example to understand the component in its most common use case before comparing variants.',
+        'Use the middle sections to review states, composition, icons, and integration patterns that stay close to real product work.',
+        'For input components, check validation and interaction guidance before relying on the API table alone.',
+        'Use the API reference last to confirm props, events, slots, and behavior once you already know the pattern you want.',
       ],
     },
   },

@@ -6,8 +6,11 @@ import introduction from './pages/introduction'
 import installation from './pages/installation'
 import nuxtIntegration from './pages/nuxt-integration'
 import quickStart from './pages/quick-start'
+import themingOverview from './pages/theming-overview'
+import runtimeThemeApi from './pages/runtime-theme-api'
 import iconConfiguration from './pages/icon-configuration'
 import colors from './pages/colors'
+import spacing from './pages/spacing'
 import surfaces from './pages/surfaces'
 import typography from './pages/typography'
 import button from './pages/button'
@@ -24,8 +27,11 @@ const es = {
     installation,
     nuxtIntegration,
     quickStart,
+    themingOverview,
+    runtimeThemeApi,
     iconConfiguration,
     colors,
+    spacing,
     surfaces,
     typography,
     button,

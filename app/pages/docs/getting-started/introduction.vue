@@ -13,22 +13,12 @@
       </ERow>
     </DocsSection>
 
-    <DocsSection :id="docsOrganizationSection.key" :title="docsOrganizationSection.title"
-      :description="docsOrganizationSection.description"
-      :description-html="resolveDocsRichTextHtml(docsOrganizationSection.descriptionHtml, locale)">
-      <ERow dense>
-        <ECol v-for="item in docsOrganizationSection.items" :key="item.title" cols="12" md="6" lg="3">
-          <ECard class="docs-page__card" :title="item.title" :description="item.description" outlined />
-        </ECol>
-      </ERow>
-    </DocsSection>
-
     <DocsSection :id="recommendedPathSection.key" :title="recommendedPathSection.title"
       :description="recommendedPathSection.description">
       <ol class="docs-page__steps">
-        <li v-for="(item, index) in recommendedPathSection.items" :key="item">
-          <span v-if="recommendedPathSection.itemsHtml[index]"
-            v-html="resolveDocsRichTextHtml(recommendedPathSection.itemsHtml[index], locale)" />
+        <li v-for="item in recommendedPathSection.items" :key="item">
+          <span v-if="recommendedPathSection.itemsHtml[item]"
+            v-html="resolveDocsRichTextHtml(recommendedPathSection.itemsHtml[item], locale)" />
           <template v-else>{{ item }}</template>
         </li>
       </ol>
@@ -37,9 +27,9 @@
     <DocsSection :id="systemPrinciplesSection.key" :title="systemPrinciplesSection.title"
       :description="systemPrinciplesSection.description">
       <ul class="docs-page__list">
-        <li v-for="(item, index) in systemPrinciplesSection.items" :key="item">
-          <span v-if="systemPrinciplesSection.itemsHtml[index]"
-            v-html="resolveDocsRichTextHtml(systemPrinciplesSection.itemsHtml[index], locale)" />
+        <li v-for="item in systemPrinciplesSection.items" :key="item">
+          <span v-if="systemPrinciplesSection.itemsHtml[item]"
+            v-html="resolveDocsRichTextHtml(systemPrinciplesSection.itemsHtml[item], locale)" />
           <template v-else>{{ item }}</template>
         </li>
       </ul>
@@ -129,18 +119,6 @@ const exploreSection = computed(() => {
   }
 })
 
-const docsOrganizationSection = computed(() => {
-  const section = content.value.sections['docs-organization']
-
-  return {
-    key: section.key,
-    title: section.title,
-    description: section.description,
-    descriptionHtml: section.descriptionHtml,
-    items: (section.items as DocsEditorialGridItem[] ),
-  }
-})
-
 const recommendedPathSection = computed(() => {
   const section = content.value.sections['recommended-path']
 
@@ -149,7 +127,7 @@ const recommendedPathSection = computed(() => {
     title: section.title,
     description: section.description,
     items: section.items as string[],
-    itemsHtml: section.itemsHtml ?? [],
+    itemsHtml: section.itemsHtml ?? {},
   }
 })
 
@@ -161,7 +139,7 @@ const systemPrinciplesSection = computed(() => {
     title: section.title,
     description: section.description,
     items: section.items as string[],
-    itemsHtml: section.itemsHtml ?? [],
+    itemsHtml: section.itemsHtml ?? {},
   }
 })
 

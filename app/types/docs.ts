@@ -115,9 +115,16 @@ export type DocsConceptPageContent<TKey extends string = string> =
 
 export type DocsIntroductionSectionKey =
   | "what-is-nuvex-ui"
-  | "docs-organization"
   | "recommended-path"
   | "system-principles";
+
+export type DocsThemingOverviewSectionKey =
+  | "what-theming-covers"
+  | "theme-model-overview"
+  | "default-behavior"
+  | "choose-your-path"
+  | "build-time-vs-runtime"
+  | "common-mistakes";
 
 export type DocsColorsSectionKey =
   | "background-helpers"
@@ -172,6 +179,18 @@ export type DocsNuxtIntegrationSectionKey =
   | "verify-integration"
   | "common-pitfalls"
   | "next-steps";
+
+export type DocsRuntimeThemeApiSectionKey =
+  | 'resolve-initial-theme'
+  | 'inspect-theme-state'
+  | 'change-active-theme'
+  | 'persist-theme-choice'
+  | 'control-dom-output'
+  | 'emit-css-variables'
+  | 'register-runtime-themes'
+  | 'app-integration-patterns'
+  | 'runtime-mistakes'
+  | 'next-steps';
 
 export type DocsIconConfigurationSectionKey =
   | "overview"

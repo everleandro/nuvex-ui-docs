@@ -8,8 +8,11 @@ import type {
   DocsInstallationSectionKey,
   DocsNuxtIntegrationSectionKey,
   DocsQuickStartSectionKey,
+  DocsRuntimeThemeApiSectionKey,
   DocsSecondaryNavItem,
+  DocsSpacingSectionKey,
   DocsSurfacesSectionKey,
+  DocsThemingOverviewSectionKey,
   DocsTypographySectionKey,
   DocsWorkflowPageContent,
 } from '~/types/docs'
@@ -33,9 +36,21 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
     kind: 'concept',
     messageKey: 'pages.typography.typography',
   },
+  '/docs/design-system/spacing': {
+    kind: 'concept',
+    messageKey: 'pages.spacing.spacing',
+  },
   '/docs/design-system/surfaces': {
     kind: 'concept',
     messageKey: 'pages.surfaces.surfaces',
+  },
+  '/docs/theming/overview': {
+    kind: 'concept',
+    messageKey: 'pages.themingOverview.overview',
+  },
+  '/docs/theming/runtime-theme-api': {
+    kind: 'workflow',
+    messageKey: 'pages.runtimeThemeApi.runtimeThemeApi',
   },
   '/docs/getting-started/quick-start': {
     kind: 'workflow',
@@ -113,7 +128,7 @@ export const useDocsSecondaryNavItems = (path: Ref<string> | ComputedRef<string>
     if (resolver.kind === 'concept') {
       return toEditorialSectionNavItems(
         tm(resolver.messageKey) as DocsConceptPageContent<
-          DocsIntroductionSectionKey | DocsColorsSectionKey | DocsTypographySectionKey | DocsSurfacesSectionKey
+          DocsIntroductionSectionKey | DocsThemingOverviewSectionKey | DocsColorsSectionKey | DocsTypographySectionKey | DocsSpacingSectionKey | DocsSurfacesSectionKey
         >,
       )
     }
@@ -121,7 +136,7 @@ export const useDocsSecondaryNavItems = (path: Ref<string> | ComputedRef<string>
     if (resolver.kind === 'workflow') {
       return toEditorialSectionNavItems(
         tm(resolver.messageKey) as DocsWorkflowPageContent<
-          DocsInstallationSectionKey | DocsQuickStartSectionKey | DocsNuxtIntegrationSectionKey | DocsIconConfigurationSectionKey
+          DocsInstallationSectionKey | DocsQuickStartSectionKey | DocsNuxtIntegrationSectionKey | DocsIconConfigurationSectionKey | DocsRuntimeThemeApiSectionKey
         >,
       )
     }

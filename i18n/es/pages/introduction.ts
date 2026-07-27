@@ -56,32 +56,6 @@ export const introductionEditorialContentEs: DocsConceptPageContent<DocsIntroduc
         },
       ],
     },
-    'docs-organization': {
-      type: 'card-grid',
-      key: 'docs-organization',
-      title: 'Como navegar la documentacion',
-      description: 'La documentacion esta pensada para llevarte de orientacion general a implementacion puntual.',
-      descriptionHtml:
-        'La documentacion esta pensada para llevarte de orientacion general a implementacion puntual. Usa esta estructura para encontrar mas rapido lo que necesitas y recorrer cada pagina sin perder contexto. Si quieres ver el patron tipo B en accion, revisa <a href="/docs/component/forms/button" class="docs-page__inline-link">Button</a> o <a href="/docs/component/forms/text-field" class="docs-page__inline-link">Text Field</a>, donde el recorrido pasa de overview a playground, ejemplos, validacion y API.',
-      items: [
-        {
-          title: 'Empieza por el area correcta',
-          description: 'Usa los hubs principales para ubicar la capacidad que necesitas: onboarding, sistema visual, theming, layout, formularios o integracion avanzada.',
-        },
-        {
-          title: 'Pasa del overview al playground',
-          description: 'En las paginas de componente, empieza por el hero y la seccion de uso para entender alcance, probar el caso principal y ajustar las props mas importantes antes de entrar en variantes.',
-        },
-        {
-          title: 'Profundiza con ejemplos reales',
-          description: 'Despues del playground principal, recorre las secciones especificas del componente para comparar estados, composicion, iconos, patrones de integracion y casos de uso mas cercanos a produccion.',
-        },
-        {
-          title: 'Cierra con validacion y API',
-          description: 'En componentes de entrada, revisa validacion antes de llegar a props. Usa la API reference al final para confirmar contratos, tipos y comportamiento una vez que ya elegiste el patron correcto.',
-        },
-      ],
-    },
     'recommended-path': {
       type: 'list',
       key: 'recommended-path',
@@ -95,24 +69,24 @@ export const introductionEditorialContentEs: DocsConceptPageContent<DocsIntroduc
         'Configura temas, primitivas de layout y estructura de navegacion.',
         'Expande hacia la documentacion especifica de componentes segun se implementen funcionalidades.',
       ],
-      itemsHtml: [
-        'Instala Nuvex UI y verifica las dependencias base en <a href="/docs/getting-started/installation" class="docs-page__inline-link">Installation</a>.',
-        'Construye una primera pantalla con componentes core y estilos globales usando como referencia una pagina tipo B como <a href="/docs/component/forms/button" class="docs-page__inline-link">Button</a>.',
-        'Configura temas, primitivas de layout y estructura de navegacion apoyandote en <a href="/docs/theming/overview" class="docs-page__inline-link">Theming</a> y <a href="/docs/component/layout/app-shell" class="docs-page__inline-link">Layout</a>.',
-        'Expande hacia la documentacion especifica de componentes segun se implementen funcionalidades, por ejemplo <a href="/docs/component/forms/text-field" class="docs-page__inline-link">Text Field</a> o <a href="/docs/component/forms/select" class="docs-page__inline-link">Select</a>.',
-      ],
+      itemsHtml: {
+        'Instala Nuvex UI y verifica las dependencias base.': 'Instala Nuvex UI y verifica las dependencias base en <a href="/docs/getting-started/installation" class="docs-page__inline-link">Installation</a>.',
+        'Construye una primera pantalla con componentes core y estilos globales.': 'Construye una primera pantalla con componentes core y estilos globales usando como referencia una pagina tipo B como <a href="/docs/component/forms/button" class="docs-page__inline-link">Button</a>.',
+        'Configura temas, primitivas de layout y estructura de navegacion.': 'Configura temas, primitivas de layout y estructura de navegacion apoyandote en <a href="/docs/theming/overview" class="docs-page__inline-link">Theming</a> y <a href="/docs/component/layout/app-shell" class="docs-page__inline-link">Layout</a>.',
+        'Expande hacia la documentacion especifica de componentes segun se implementen funcionalidades.': 'Expande hacia la documentacion especifica de componentes segun se implementen funcionalidades, por ejemplo <a href="/docs/component/forms/text-field" class="docs-page__inline-link">Text Field</a> o <a href="/docs/component/forms/select" class="docs-page__inline-link">Select</a>.',
+      },
     },
     'system-principles': {
       type: 'list',
       key: 'system-principles',
-      title: 'Que esperar de las paginas de componentes',
+      title: 'Como te ayudan las paginas de componentes',
       description:
-        'Usa estos criterios para leer y evaluar paginas tipo B con mas claridad antes de tomar decisiones de implementacion.',
+        'Las paginas de componentes estan organizadas para ayudarte a pasar de orientacion a implementacion sin tener que adivinar que revisar despues.',
       items: [
-        'Playground primero: cada pagina debe ayudarte a probar el caso principal antes de entrar en variantes y detalles de API.',
-        'Ejemplos antes que teoria: las secciones intermedias deben mostrar estados, composicion y patrones de uso cercanos a implementacion real.',
-        'Validation cuando aplica: en componentes de entrada, la validacion debe aparecer antes de la API para cerrar el flujo con contexto funcional.',
-        'API al final: usa la referencia tecnica para confirmar contratos, tipos y comportamiento una vez que ya elegiste el patron correcto.',
+        'Empieza por el ejemplo principal para entender el componente en su caso de uso mas comun antes de comparar variantes.',
+        'Usa las secciones intermedias para revisar estados, composicion, iconos y patrones de integracion cercanos al trabajo real de producto.',
+        'En componentes de entrada, revisa validacion y guias de interaccion antes de apoyarte solo en la tabla de API.',
+        'Deja la API reference para el final y usala para confirmar props, eventos, slots y comportamiento cuando ya tengas claro el patron que necesitas.',
       ],
     },
   },
