@@ -179,8 +179,8 @@ La seccion Theming mezcla paginas Tipo A y Tipo C del estandar general.
 
 ### 7.3 Design Tokens
 
-- Tipo: A (concept)
-- Rol: explicar semantica y taxonomia de tokens
+- Tipo: C (workflow / decision guide)
+- Rol: ayudar a elegir la capa semantica correcta antes de tocar implementacion de tema
 
 ### 7.4 CSS Variables
 
@@ -305,6 +305,12 @@ No debe incluir:
 Resultado esperado:
 
 - el usuario entiende la semantica antes de tocar implementacion.
+
+Enfoque editorial obligatorio:
+
+- explicar el sistema de tokens desde la perspectiva de decisiones de theming en Nuvex UI;
+- priorizar criterio de eleccion entre familias de tokens sobre teoria general de color;
+- y asumir que el lector ya sabe programar y necesita saber que token tocar, no aprender fundamentos visuales desde cero.
 
 ### 8.4 CSS Variables
 
@@ -492,7 +498,8 @@ Minimo obligatorio:
 Minimo obligatorio:
 
 - hero;
-- taxonomia de tokens;
+- taxonomia operativa de tokens;
+- decision guide;
 - mapping guide;
 - reglas de uso correcto;
 - ejemplos comparativos;
