@@ -3,9 +3,13 @@ import type {
   DocsComponentPageContent,
   DocsConceptPageContent,
   DocsColorsSectionKey,
+  DocsCustomThemesSectionKey,
+  DocsCssVariablesSectionKey,
+  DocsDesignTokensSectionKey,
   DocsIconConfigurationSectionKey,
   DocsIntroductionSectionKey,
   DocsInstallationSectionKey,
+  DocsLightAndDarkThemesSectionKey,
   DocsNuxtIntegrationSectionKey,
   DocsQuickStartSectionKey,
   DocsRuntimeThemeApiSectionKey,
@@ -21,6 +25,7 @@ import { toCanonicalDocsPath } from '~/utils/docs-navigation-paths'
 type DocsSecondaryNavContentResolver = {
   kind: 'workflow' | 'component' | 'concept'
   messageKey: string
+  introId?: string
 }
 
 const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver> = {
@@ -51,6 +56,26 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
   '/docs/theming/runtime-theme-api': {
     kind: 'workflow',
     messageKey: 'pages.runtimeThemeApi.runtimeThemeApi',
+  },
+  '/docs/theming/design-tokens': {
+    kind: 'workflow',
+    messageKey: 'pages.designTokens.designTokens',
+    introId: 'sass-to-css-variables',
+  },
+  '/docs/theming/css-variables': {
+    kind: 'workflow',
+    messageKey: 'pages.cssVariables.cssVariables',
+    introId: 'generated-css-variables',
+  },
+  '/docs/theming/light-and-dark-themes': {
+    kind: 'workflow',
+    messageKey: 'pages.lightAndDarkThemes.lightAndDarkThemes',
+    introId: 'framework-theme-baseline',
+  },
+  '/docs/theming/custom-themes': {
+    kind: 'workflow',
+    messageKey: 'pages.customThemes.customThemes',
+    introId: 'framework-custom-theme-support',
   },
   '/docs/getting-started/quick-start': {
     kind: 'workflow',
@@ -106,12 +131,27 @@ const toSectionNavItems = (content: DocsComponentPageContent): DocsSecondaryNavI
 }
 
 const toEditorialSectionNavItems = <TSection extends { title: string }>(content: {
+  hero?: {
+    prerequisitesTitle?: string
+  }
   sections: Record<string, TSection>
-}): DocsSecondaryNavItem[] => {
-  return Object.entries(content.sections).map(([id, section]) => ({
+}, introId?: string): DocsSecondaryNavItem[] => {
+  const items = Object.entries(content.sections).map(([id, section]) => ({
     id,
     label: section.title,
   }))
+
+  if (content.hero?.prerequisitesTitle && introId) {
+    return [
+      {
+        id: introId,
+        label: content.hero.prerequisitesTitle,
+      },
+      ...items,
+    ]
+  }
+
+  return items
 }
 
 export const useDocsSecondaryNavItems = (path: Ref<string> | ComputedRef<string>) => {
@@ -130,14 +170,16 @@ export const useDocsSecondaryNavItems = (path: Ref<string> | ComputedRef<string>
         tm(resolver.messageKey) as DocsConceptPageContent<
           DocsIntroductionSectionKey | DocsThemingOverviewSectionKey | DocsColorsSectionKey | DocsTypographySectionKey | DocsSpacingSectionKey | DocsSurfacesSectionKey
         >,
+        resolver.introId,
       )
     }
 
     if (resolver.kind === 'workflow') {
       return toEditorialSectionNavItems(
         tm(resolver.messageKey) as DocsWorkflowPageContent<
-          DocsInstallationSectionKey | DocsQuickStartSectionKey | DocsNuxtIntegrationSectionKey | DocsIconConfigurationSectionKey | DocsRuntimeThemeApiSectionKey
+          DocsInstallationSectionKey | DocsQuickStartSectionKey | DocsNuxtIntegrationSectionKey | DocsIconConfigurationSectionKey | DocsRuntimeThemeApiSectionKey | DocsDesignTokensSectionKey | DocsCssVariablesSectionKey | DocsLightAndDarkThemesSectionKey | DocsCustomThemesSectionKey
         >,
+        resolver.introId,
       )
     }
 

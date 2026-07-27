@@ -192,6 +192,31 @@ export type DocsRuntimeThemeApiSectionKey =
   | 'runtime-mistakes'
   | 'next-steps';
 
+export type DocsDesignTokensSectionKey =
+  | 'override-in-vue-and-nuxt'
+  | 'framework-token-reference'
+  | 'next-steps';
+
+export type DocsCssVariablesSectionKey =
+  | 'use-in-vue-and-nuxt'
+  | 'next-steps';
+
+export type DocsLightAndDarkThemesSectionKey =
+  | 'built-in-theme-baseline'
+  | 'initial-theme-resolution'
+  | 'dom-theme-contract'
+  | 'adopt-in-vue-and-nuxt'
+  | 'customize-light-and-dark'
+  | 'stay-on-base-themes'
+  | 'next-steps';
+
+export type DocsCustomThemesSectionKey =
+  | 'define-theme-object'
+  | 'register-at-startup'
+  | 'operate-at-runtime'
+  | 'built-in-theme-limits'
+  | 'next-steps';
+
 export type DocsIconConfigurationSectionKey =
   | "overview"
   | "application-icon-strategy"

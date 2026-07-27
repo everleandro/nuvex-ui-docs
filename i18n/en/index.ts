@@ -8,6 +8,10 @@ import nuxtIntegration from './pages/nuxt-integration'
 import quickStart from './pages/quick-start'
 import themingOverview from './pages/theming-overview'
 import runtimeThemeApi from './pages/runtime-theme-api'
+import designTokens from './pages/design-tokens'
+import cssVariables from './pages/css-variables'
+import lightAndDarkThemes from './pages/light-and-dark-themes'
+import customThemes from './pages/custom-themes'
 import iconConfiguration from './pages/icon-configuration'
 import colors from './pages/colors'
 import spacing from './pages/spacing'
@@ -29,6 +33,10 @@ const en = {
     quickStart,
     themingOverview,
     runtimeThemeApi,
+    designTokens,
+    cssVariables,
+    lightAndDarkThemes,
+    customThemes,
     iconConfiguration,
     colors,
     spacing,
