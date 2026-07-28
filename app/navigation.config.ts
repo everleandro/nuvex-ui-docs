@@ -86,7 +86,7 @@ export const navigationGroups: NavigationGroupItem[] = [
     icon: 'components',
     entries: [
       { kind: 'header', id: 'forms-header', titleKey: 'navigation.subgroups.forms' },
-      createLink('forms-overview', 'navigation.items.forms.overview', '/docs/component/forms/overview', 'forms', 'navigation.subgroups.forms'),
+      createLink('forms-form', 'navigation.items.forms.form', '/docs/component/forms/form', 'forms', 'navigation.subgroups.forms'),
       createLink('forms-button', 'navigation.items.forms.button', '/docs/component/forms/button', 'forms', 'navigation.subgroups.forms'),
       createLink('forms-text-field', 'navigation.items.forms.text_field', '/docs/component/forms/text-field', 'forms', 'navigation.subgroups.forms'),
       createLink('forms-textarea', 'navigation.items.forms.textarea', '/docs/component/forms/textarea', 'forms', 'navigation.subgroups.forms'),
@@ -94,7 +94,6 @@ export const navigationGroups: NavigationGroupItem[] = [
       createLink('forms-checkbox', 'navigation.items.forms.checkbox', '/docs/component/forms/checkbox', 'forms', 'navigation.subgroups.forms'),
       createLink('forms-radio', 'navigation.items.forms.radio', '/docs/component/forms/radio', 'forms', 'navigation.subgroups.forms'),
       createLink('forms-switch', 'navigation.items.forms.switch', '/docs/component/forms/switch', 'forms', 'navigation.subgroups.forms'),
-      createLink('forms-validation-patterns', 'navigation.items.forms.validation_patterns', '/docs/component/forms/validation-patterns', 'forms', 'navigation.subgroups.forms'),
       { kind: 'divider', id: 'forms-divider' },
       { kind: 'header', id: 'navigation-header', titleKey: 'navigation.subgroups.navigation' },
       createLink('navigation-list', 'navigation.items.navigation.list', '/docs/component/navigation/list', 'navigation', 'navigation.subgroups.navigation'),

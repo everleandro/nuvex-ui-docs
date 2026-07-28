@@ -93,6 +93,10 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
     kind: 'workflow',
     messageKey: 'pages.iconConfiguration.iconConfiguration',
   },
+  '/docs/component/forms/form': {
+    kind: 'component',
+    messageKey: 'pages.form.form',
+  },
   '/docs/component/forms/button': {
     kind: 'component',
     messageKey: 'pages.button.button',

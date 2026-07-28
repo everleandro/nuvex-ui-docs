@@ -169,7 +169,6 @@
 </template>
 
 <script setup lang="ts">
-import { EForm } from 'nuvex-ui'
 import { useI18n } from 'vue-i18n'
 import { textFieldApiReference } from '~/api-reference/forms/text-field'
 import { textFieldApiReferenceEs } from '~/api-reference/forms/text-field-es'
@@ -466,11 +465,3 @@ const validationCssCode = `.docs-page__text-field-validation {
 }`
 
 </script>
-
-<style lang="scss">
-.docs-page {
-  .e-text-field {
-    margin-bottom: 8px;
-  }
-}
-</style>

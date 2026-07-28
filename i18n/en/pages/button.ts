@@ -9,7 +9,7 @@ export const buttonComponentContent: DocsComponentPageContent = {
   hero: {
     title: 'Buttons',
     descriptionHtml:
-      "The <code class='green--text mx-2 title'>e-button</code> component covers primary, secondary, and navigation actions. It supports visual variants, sizes, states like <code class='green--text mx-1 title'>disabled</code>/<code class='green--text mx-1 title'>loading</code>, plus icon and link integration. This page helps you compare real usage patterns so you can quickly choose the right setup for visual hierarchy, context, and accessibility.",
+      "The <code class='docs-inline-code'>e-button</code> component covers primary, secondary, and navigation actions. It supports visual variants, sizes, states like <code class='docs-inline-code'>disabled</code>/<code class='docs-inline-code'>loading</code>, plus icon and link integration. This page helps you compare real usage patterns so you can quickly choose the right setup for visual hierarchy, context, and accessibility.",
   },
   sections: [
     {
@@ -22,7 +22,7 @@ export const buttonComponentContent: DocsComponentPageContent = {
       key: 'size-variants',
       title: 'Button size variants',
       descriptionHtml:
-        "Set visual scale based on density and priority. Options: <code class='green--text'>x-small small default large x-large</code>.",
+        "Set visual scale based on density and priority. Options: <code class='docs-inline-code'>x-small small default large x-large</code>.",
     },
     {
       key: 'visual-variants',
@@ -34,19 +34,19 @@ export const buttonComponentContent: DocsComponentPageContent = {
       key: 'icon-mode',
       title: 'Icon mode',
       descriptionHtml:
-        "With the <code class='ma-2 green--text'>icon</code> prop you can create compact icon-driven buttons. Recommended for toolbars and frequent actions.",
+        "With the <code class='docs-inline-code'>icon</code> prop you can create compact icon-driven buttons. Recommended for toolbars and frequent actions.",
     },
     {
       key: 'prepend-append-icons',
       title: 'Prepend and append icons',
       descriptionHtml:
-        "Add visual context by placing icons on the <code class='ma-2 green--text'>left</code> (prepend) or <code class='ma-2 green--text'>right</code> (append) side of the label.",
+        "Add visual context by placing icons on the <code class='docs-inline-code'>left</code> (prepend) or <code class='docs-inline-code'>right</code> (append) side of the label.",
     },
     {
       key: 'custom-size',
       title: 'Custom size',
       descriptionHtml:
-        "Adjust dimensions with <code class='ma-2 green--text'>width</code> and <code class='ma-2 green--text'>height</code> when the layout requires exact measurements.",
+        "Adjust dimensions with <code class='docs-inline-code'>width</code> and <code class='docs-inline-code'>height</code> when the layout requires exact measurements.",
     },
     {
       key: 'common-use-cases',

@@ -53,7 +53,7 @@ const navigation = {
       positioning: 'Positioning',
     },
     forms: {
-      overview: 'Overview',
+      form: 'Form',
       button: 'Button',
       text_field: 'Textfield',
       textarea: 'Textarea',
@@ -61,7 +61,6 @@ const navigation = {
       checkbox: 'Checkbox',
       radio: 'Radio',
       switch: 'Switch',
-      validation_patterns: 'Validation Patterns',
     },
     navigation: {
       list: 'List',

@@ -3,7 +3,7 @@
     <DocsPageHero :title="content.hero.title" :description="content.hero.description" :actions="heroActions" />
 
     <DocsSection :title="content.hero.prerequisitesTitle">
-      <ECard elevation="sm" color="primary" tonal>
+      <ECard >
         <ul class="pl-5">
           <li v-for="(item, index) in prerequisites" :key="item" :class="index === prerequisites.length - 1 ? 'mb-0' : 'mb-2'">
             {{ item }}

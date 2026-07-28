@@ -17,6 +17,7 @@ import colors from './pages/colors'
 import spacing from './pages/spacing'
 import surfaces from './pages/surfaces'
 import typography from './pages/typography'
+import form from './pages/form'
 import button from './pages/button'
 import input from './pages/input'
 import modal from './pages/modal'
@@ -42,6 +43,7 @@ const en = {
     spacing,
     surfaces,
     typography,
+    form,
     button,
     input,
     modal,

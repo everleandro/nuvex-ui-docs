@@ -9,7 +9,7 @@ export const checkboxComponentContentEs: DocsComponentPageContent = {
   hero: {
     title: 'Checkbox',
     descriptionHtml:
-      "El componente <code class='green--text mx-2 title'>e-checkbox</code> captura valores booleanos o mapeados (on/off) con un contrato consistente de campo, incluyendo validacion, texto de ayuda y estados disabled/readonly.<br><br>Usa esta pagina para validar patrones de interaccion, mapeo del modelo y etiquetado accesible antes de integrar flujos con checkbox en formularios de produccion.",
+      "El componente <code class='docs-inline-code'>e-checkbox</code> captura valores booleanos o mapeados (on/off) con un contrato consistente de campo, incluyendo validacion, texto de ayuda y estados disabled/readonly.<br><br>Usa esta pagina para validar patrones de interaccion, mapeo del modelo y etiquetado accesible antes de integrar flujos con checkbox en formularios de produccion.",
   },
   sections: [
     {
@@ -34,7 +34,7 @@ export const checkboxComponentContentEs: DocsComponentPageContent = {
       key: 'slots',
       title: 'Slots nombrados',
       descriptionHtml:
-        "Usa el slot <code class='ma-2 green--text'>label</code> para renderizar etiquetas enriquecidas con enlaces o contexto adicional sin perder la semantica nativa del checkbox.",
+        "Usa el slot <code class='docs-inline-code'>label</code> para renderizar etiquetas enriquecidas con enlaces o contexto adicional sin perder la semantica nativa del checkbox.",
     },
     {
       key: 'validation',
@@ -96,7 +96,7 @@ export const radioComponentContentEs: DocsComponentPageContent = {
   hero: {
     title: 'Radio',
     descriptionHtml:
-      "Los componentes <code class='green--text mx-2 title'>e-radio-group</code> y <code class='green--text mx-2 title'>e-radio</code> resuelven seleccion exclusiva dentro del sistema compartido de field, incluyendo validacion, layout en fila o columna y comportamiento centralizado de color, disabled y readonly.<br><br>Usa esta pagina para validar flujos de seleccion agrupada antes de conectar canales de release, ambientes o preferencias a formularios de produccion.",
+      "Los componentes <code class='docs-inline-code'>e-radio-group</code> y <code class='docs-inline-code'>e-radio</code> resuelven seleccion exclusiva dentro del sistema compartido de field, incluyendo validacion, layout en fila o columna y comportamiento centralizado de color, disabled y readonly.<br><br>Usa esta pagina para validar flujos de seleccion agrupada antes de conectar canales de release, ambientes o preferencias a formularios de produccion.",
   },
   sections: [
     {
@@ -127,7 +127,7 @@ export const radioComponentContentEs: DocsComponentPageContent = {
       key: 'slots',
       title: 'Slots nombrados',
       descriptionHtml:
-        "Usa el slot <code class='ma-2 green--text'>label</code> tanto en <code class='ma-2 green--text'>e-radio-group</code> como en <code class='ma-2 green--text'>e-radio</code> cuando el copy necesita contenido inline mas rico.",
+        "Usa el slot <code class='docs-inline-code'>label</code> tanto en <code class='docs-inline-code'>e-radio-group</code> como en <code class='docs-inline-code'>e-radio</code> cuando el copy necesita contenido inline mas rico.",
     },
     {
       key: 'validation',
@@ -223,7 +223,7 @@ export const selectComponentContentEs: DocsComponentPageContent = {
   hero: {
     title: 'Select',
     descriptionHtml:
-      "El componente <code class='green--text mx-2 title'>e-select</code> resuelve seleccion simple y multiple con soporte para items primitivos u objetos, autocomplete opcional, chips, estado de carga y render personalizado por slots.<br><br>Usa esta pagina para comparar patrones de configuracion rapido, validar contratos de mapeo objeto/valor y construir flujos de formulario listos para produccion con feedback claro.",
+      "El componente <code class='docs-inline-code'>e-select</code> resuelve seleccion simple y multiple con soporte para items primitivos u objetos, autocomplete opcional, chips, estado de carga y render personalizado por slots.<br><br>Usa esta pagina para comparar patrones de configuracion rapido, validar contratos de mapeo objeto/valor y construir flujos de formulario listos para produccion con feedback claro.",
   },
   sections: [
     {
@@ -260,7 +260,7 @@ export const selectComponentContentEs: DocsComponentPageContent = {
       key: 'slots',
       title: 'Slots nombrados',
       descriptionHtml:
-        "Personaliza la lista y el valor seleccionado con los slots <code class='ma-2 green--text'>item</code> y <code class='ma-2 green--text'>selection</code> para renderizar metadatos y contexto adicional.",
+        "Personaliza la lista y el valor seleccionado con los slots <code class='docs-inline-code'>item</code> y <code class='docs-inline-code'>selection</code> para renderizar metadatos y contexto adicional.",
     },
     {
       key: 'async-loading',
@@ -315,7 +315,7 @@ export const switchComponentContentEs: DocsComponentPageContent = {
   hero: {
     title: 'Switch',
     descriptionHtml:
-      "El componente <code class='green--text mx-2 title'>e-switch</code> captura estado booleano o binario mapeado dentro del contrato compartido de field, incluyendo detalles de ayuda, feedback de carga async, validacion y etiquetado accesible.<br><br>Usa esta pagina para validar comportamiento de toggles, side effects y mapeo de valores antes de conectar paneles de preferencias, release gates o settings de entorno a flujos de produccion.",
+      "El componente <code class='docs-inline-code'>e-switch</code> captura estado booleano o binario mapeado dentro del contrato compartido de field, incluyendo detalles de ayuda, feedback de carga async, validacion y etiquetado accesible.<br><br>Usa esta pagina para validar comportamiento de toggles, side effects y mapeo de valores antes de conectar paneles de preferencias, release gates o settings de entorno a flujos de produccion.",
   },
   sections: [
     {
@@ -346,7 +346,7 @@ export const switchComponentContentEs: DocsComponentPageContent = {
       key: 'slots',
       title: 'Slots nombrados',
       descriptionHtml:
-        "Usa el slot <code class='ma-2 green--text'>label</code> para renderizar labels mas ricos con links o contexto de politicas sin perder la semantica del switch.",
+        "Usa el slot <code class='docs-inline-code'>label</code> para renderizar labels mas ricos con links o contexto de politicas sin perder la semantica del switch.",
     },
     {
       key: 'validation',
@@ -414,7 +414,7 @@ export const textFieldComponentContentEs: DocsComponentPageContent = {
   hero: {
     title: 'Textfield',
     descriptionHtml:
-      "El componente <code class='green--text mx-2 title'>e-text-field</code> es el input base para formularios y captura de datos estructurados en Nuvex UI. Soporta variantes visuales, iconos internos, prefijos/sufijos, comportamiento de etiqueta y estados clave como <code class='green--text mx-1 title'>readonly</code>, <code class='green--text mx-1 title'>disabled</code> y <code class='green--text mx-1 title'>clearable</code>.<br><br>Usa esta página para comparar patrones de interacción rápidamente, componer inputs más ricos con slots nombrados y aplicar reglas de validación que mantengan formularios claros, accionables y listos para producción.",
+      "El componente <code class='docs-inline-code'>e-text-field</code> es el input base para formularios y captura de datos estructurados en Nuvex UI. Soporta variantes visuales, iconos internos, prefijos/sufijos, comportamiento de etiqueta y estados clave como <code class='docs-inline-code'>readonly</code>, <code class='docs-inline-code'>disabled</code> y <code class='docs-inline-code'>clearable</code>.<br><br>Usa esta página para comparar patrones de interacción rápidamente, componer inputs más ricos con slots nombrados y aplicar reglas de validación que mantengan formularios claros, accionables y listos para producción.",
   },
   sections: [
     {
@@ -427,7 +427,7 @@ export const textFieldComponentContentEs: DocsComponentPageContent = {
       key: 'icons',
       title: 'Íconos',
       descriptionHtml:
-        "Compara <code class='ma-2 green--text'>prependIcon</code> y <code class='ma-2 green--text'>appendIcon</code> con <code class='ma-2 green--text'>prependInnerIcon</code> y <code class='ma-2 green--text'>appendInnerIcon</code> en campos filled y outlined para elegir el peso visual correcto en contexto, acciones y escaneo.",
+        "Compara <code class='docs-inline-code'>prependIcon</code> y <code class='docs-inline-code'>appendIcon</code> con <code class='docs-inline-code'>prependInnerIcon</code> y <code class='docs-inline-code'>appendInnerIcon</code> en campos filled y outlined para elegir el peso visual correcto en contexto, acciones y escaneo.",
     },
     {
       key: 'visual-variants',
@@ -439,13 +439,13 @@ export const textFieldComponentContentEs: DocsComponentPageContent = {
       key: 'slots',
       title: 'Slots nombrados',
       descriptionHtml:
-        "Compone inputs orientados a tareas con <code class='ma-2 green--text'>prepend</code>, <code class='ma-2 green--text'>prepend-inner</code>, <code class='ma-2 green--text'>append-inner</code> y <code class='ma-2 green--text'>append</code> para incluir contexto, acciones rápidas y controles secundarios sin perder claridad.",
+        "Compone inputs orientados a tareas con <code class='docs-inline-code'>prepend</code>, <code class='docs-inline-code'>prepend-inner</code>, <code class='docs-inline-code'>append-inner</code> y <code class='docs-inline-code'>append</code> para incluir contexto, acciones rápidas y controles secundarios sin perder claridad.",
     },
     {
       key: 'prepend-append-icons',
       title: 'Prefijos y sufijos',
       descriptionHtml:
-        "Usa <code class='ma-2 green--text'>prefix</code> y <code class='ma-2 green--text'>suffix</code> para fijar tokens como símbolos monetarios, IDs y unidades; así los usuarios entienden el formato esperado de inmediato y cometen menos errores de entrada.",
+        "Usa <code class='docs-inline-code'>prefix</code> y <code class='docs-inline-code'>suffix</code> para fijar tokens como símbolos monetarios, IDs y unidades; así los usuarios entienden el formato esperado de inmediato y cometen menos errores de entrada.",
     },
     {
       key: 'validation',
@@ -501,7 +501,7 @@ export const textareaComponentContentEs: DocsComponentPageContent = {
   hero: {
     title: 'Textarea',
     descriptionHtml:
-      "El componente <code class='green--text mx-2 title'>e-textarea</code> esta pensado para entrada multilinea usando el mismo sistema de campos del resto de controles de formulario. Soporta variantes visuales, prefijos/sufijos, iconos, validacion y mensajes de ayuda.<br><br>Usa esta pagina para elegir la estructura correcta en comentarios, descripciones y entradas largas, manteniendo claridad, consistencia y comportamiento de envio predecible.",
+      "El componente <code class='docs-inline-code'>e-textarea</code> esta pensado para entrada multilinea usando el mismo sistema de campos del resto de controles de formulario. Soporta variantes visuales, prefijos/sufijos, iconos, validacion y mensajes de ayuda.<br><br>Usa esta pagina para elegir la estructura correcta en comentarios, descripciones y entradas largas, manteniendo claridad, consistencia y comportamiento de envio predecible.",
   },
   sections: [
     {
@@ -520,19 +520,19 @@ export const textareaComponentContentEs: DocsComponentPageContent = {
       key: 'rows-and-length',
       title: 'Rows y longitud',
       descriptionHtml:
-        "Controla la huella vertical con <code class='ma-2 green--text'>rows</code> y agrega guardrails con <code class='ma-2 green--text'>limit</code> + <code class='ma-2 green--text'>counter</code> para mejorar calidad en entradas largas.",
+        "Controla la huella vertical con <code class='docs-inline-code'>rows</code> y agrega guardrails con <code class='docs-inline-code'>limit</code> + <code class='docs-inline-code'>counter</code> para mejorar calidad en entradas largas.",
     },
     {
       key: 'icons-and-affixes',
       title: 'Iconos y affixes',
       descriptionHtml:
-        "Usa props de iconos y affixes como <code class='ma-2 green--text'>prependIcon</code>, <code class='ma-2 green--text'>appendInnerIcon</code>, <code class='ma-2 green--text'>prefix</code> y <code class='ma-2 green--text'>suffix</code> para reforzar intencion y escaneo sin agregar campos extra.",
+        "Usa props de iconos y affixes como <code class='docs-inline-code'>prependIcon</code>, <code class='docs-inline-code'>appendInnerIcon</code>, <code class='docs-inline-code'>prefix</code> y <code class='docs-inline-code'>suffix</code> para reforzar intencion y escaneo sin agregar campos extra.",
     },
     {
       key: 'slots-composition',
       title: 'Slots nombrados',
       descriptionHtml:
-        "Compone campos multilinea mas ricos con slots como <code class='ma-2 green--text'>prepend</code> y <code class='ma-2 green--text'>append-inner</code> para agregar contexto y acciones rapidas en sitio.",
+        "Compone campos multilinea mas ricos con slots como <code class='docs-inline-code'>prepend</code> y <code class='docs-inline-code'>append-inner</code> para agregar contexto y acciones rapidas en sitio.",
     },
     {
       key: 'validation',

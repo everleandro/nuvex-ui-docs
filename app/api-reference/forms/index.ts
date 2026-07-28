@@ -1,5 +1,6 @@
 export { buttonApiReference } from '~/api-reference/forms/button'
 export { checkboxApiReference } from '~/api-reference/forms/checkbox'
+export { formApiReference } from '~/api-reference/forms/form'
 export { selectApiReference } from '~/api-reference/forms/select'
 export { textareaApiReference } from '~/api-reference/forms/textarea'
 export { textFieldApiReference } from '~/api-reference/forms/text-field'

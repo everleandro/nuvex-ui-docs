@@ -10,7 +10,7 @@ export const buttonComponentContentEs: DocsComponentPageContent = {
   hero: {
     title: 'Botones',
     descriptionHtml:
-      "El componente <code class='green--text mx-2 title'>e-button</code> cubre acciones primarias, secundarias y de navegacion. Soporta variantes visuales, tamanos, estados como <code class='green--text mx-1 title'>disabled</code>/<code class='green--text mx-1 title'>loading</code> e integracion con iconos y enlaces. En esta pagina puedes comparar patrones reales de uso para elegir rapidamente la configuracion adecuada segun jerarquia visual, contexto y accesibilidad.",
+      "El componente <code class='docs-inline-code'>e-button</code> cubre acciones primarias, secundarias y de navegacion. Soporta variantes visuales, tamanos, estados como <code class='docs-inline-code'>disabled</code>/<code class='docs-inline-code'>loading</code> e integracion con iconos y enlaces. En esta pagina puedes comparar patrones reales de uso para elegir rapidamente la configuracion adecuada segun jerarquia visual, contexto y accesibilidad.",
   },
   sections: [
     {
@@ -23,7 +23,7 @@ export const buttonComponentContentEs: DocsComponentPageContent = {
       key: 'size-variants',
       title: 'Variantes de tamano',
       descriptionHtml:
-        "Define escala visual segun densidad y prioridad. Opciones: <code class='green--text'>x-small small default large x-large</code>.",
+        "Define escala visual segun densidad y prioridad. Opciones: <code class='docs-inline-code'>x-small small default large x-large</code>.",
     },
     {
       key: 'visual-variants',
@@ -35,19 +35,19 @@ export const buttonComponentContentEs: DocsComponentPageContent = {
       key: 'icon-mode',
       title: 'Modo icono',
       descriptionHtml:
-        "Con la prop <code class='ma-2 green--text'>icon</code> puedes crear botones compactos basados en icono. Recomendado para barras de herramientas y acciones recurrentes.",
+        "Con la prop <code class='docs-inline-code'>icon</code> puedes crear botones compactos basados en icono. Recomendado para barras de herramientas y acciones recurrentes.",
     },
     {
       key: 'prepend-append-icons',
       title: 'Iconos prepend y append',
       descriptionHtml:
-        "Agrega contexto visual colocando iconos al lado <code class='ma-2 green--text'>izquierdo</code> (prepend) o <code class='ma-2 green--text'>derecho</code> (append) del texto.",
+        "Agrega contexto visual colocando iconos al lado <code class='docs-inline-code'>izquierdo</code> (prepend) o <code class='docs-inline-code'>derecho</code> (append) del texto.",
     },
     {
       key: 'custom-size',
       title: 'Tamano personalizado',
       descriptionHtml:
-        "Ajusta dimensiones con <code class='ma-2 green--text'>width</code> y <code class='ma-2 green--text'>height</code> cuando el layout requiera medidas especificas.",
+        "Ajusta dimensiones con <code class='docs-inline-code'>width</code> y <code class='docs-inline-code'>height</code> cuando el layout requiera medidas especificas.",
     },
     {
       key: 'common-use-cases',
