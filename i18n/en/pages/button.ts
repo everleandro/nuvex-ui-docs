@@ -15,20 +15,20 @@ export const buttonComponentContent: DocsComponentPageContent = {
     {
       key: 'usage',
       title: 'Usage',
-      description:
-        'Use this playground to tune visual hierarchy with color, outlined, and text; try block for form/mobile layouts; and validate state feedback with disabled and loading.',
+      descriptionHtml:
+        "Use this playground to tune visual hierarchy with <code class='docs-inline-code'>color</code>, <code class='docs-inline-code'>outlined</code>, and <code class='docs-inline-code'>text</code>; try <code class='docs-inline-code'>block</code> for form/mobile layouts; and validate state feedback with <code class='docs-inline-code'>disabled</code> and <code class='docs-inline-code'>loading</code>.",
     },
     {
       key: 'size-variants',
       title: 'Button size variants',
       descriptionHtml:
-        "Set visual scale based on density and priority. Options: <code class='docs-inline-code'>x-small small default large x-large</code>.",
+        "Set visual scale based on density and priority. Options: <code class='docs-inline-code'>x-small</code>, <code class='docs-inline-code'>small</code>, <code class='docs-inline-code'>default</code>, <code class='docs-inline-code'>large</code>, <code class='docs-inline-code'>x-large</code>.",
     },
     {
       key: 'visual-variants',
       title: 'Visual variants',
-      description:
-        'Compare variants with the same label to pick hierarchy: default for primary action, outlined/text for secondary actions, tonal for mid emphasis.',
+      descriptionHtml:
+        "Compare how the framework materializes an already-decided visual hierarchy with <code class='docs-inline-code'>default</code>, <code class='docs-inline-code'>outlined</code>, <code class='docs-inline-code'>text</code>, and <code class='docs-inline-code'>tonal</code> to consistently express a primary action, secondary actions, or mid-level emphasis in the interface.",
     },
     {
       key: 'icon-mode',
@@ -52,7 +52,7 @@ export const buttonComponentContent: DocsComponentPageContent = {
       key: 'common-use-cases',
       title: 'Common use cases',
       description:
-        'Recommended Card pattern: secondary text action plus emphasized primary action, validating loading and disabled states.',
+        'Recommended app bar pattern: navigation at the start, brand in the main flow, a tonal primary action for creation, and utility actions grouped at the end.',
     },
     {
       key: 'props',

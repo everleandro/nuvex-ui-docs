@@ -16,20 +16,20 @@ export const buttonComponentContentEs: DocsComponentPageContent = {
     {
       key: 'usage',
       title: 'Uso',
-      description:
-        'Usa este playground para ajustar jerarquia visual con color, outlined y text; prueba block para layouts de formulario/mobile; y valida feedback de estado con disabled y loading.',
+      descriptionHtml:
+        "Usa este playground para ajustar jerarquia visual con <code class='docs-inline-code'>color</code>, <code class='docs-inline-code'>outlined</code> y <code class='docs-inline-code'>text</code>; prueba <code class='docs-inline-code'>block</code> para layouts de formulario/mobile; y valida feedback de estado con <code class='docs-inline-code'>disabled</code> y <code class='docs-inline-code'>loading</code>.",
     },
     {
       key: 'size-variants',
       title: 'Variantes de tamano',
       descriptionHtml:
-        "Define escala visual segun densidad y prioridad. Opciones: <code class='docs-inline-code'>x-small small default large x-large</code>.",
+        "Define escala visual segun densidad y prioridad. Opciones: <code class='docs-inline-code'>x-small</code>, <code class='docs-inline-code'>small</code>, <code class='docs-inline-code'>default</code>, <code class='docs-inline-code'>large</code>, <code class='docs-inline-code'>x-large</code>.",
     },
     {
       key: 'visual-variants',
       title: 'Variantes visuales',
-      description:
-        'Compara variantes con el mismo texto para elegir jerarquia: default para accion principal, outlined/text para acciones secundarias, tonal para enfasis intermedio.',
+      descriptionHtml:
+        "Compara como el framework materializa una jerarquia visual ya decidida con <code class='docs-inline-code'>default</code>, <code class='docs-inline-code'>outlined</code>, <code class='docs-inline-code'>text</code> y <code class='docs-inline-code'>tonal</code> para resolver con consistencia una accion principal, acciones secundarias o un enfasis intermedio dentro de la interfaz.",
     },
     {
       key: 'icon-mode',
@@ -53,7 +53,7 @@ export const buttonComponentContentEs: DocsComponentPageContent = {
       key: 'common-use-cases',
       title: 'Casos de uso comunes',
       description:
-        'Patron recomendado en Cards: accion secundaria en text y accion principal destacada, validando estados loading y disabled.',
+        'Patron recomendado para app bars: navegacion al inicio, marca dentro del flujo principal, una accion primaria tonal para crear y utilidades agrupadas al final.',
     },
     {
       key: 'props',

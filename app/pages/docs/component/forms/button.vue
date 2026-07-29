@@ -2,7 +2,8 @@
     <article class="docs-page">
         <DocsPageHero :title="content.hero.title" :description-html="content.hero.descriptionHtml" />
 
-        <DocsSection :id="sections.usage.key" :title="sections.usage.title" :description="sections.usage.description">
+        <DocsSection :id="sections.usage.key" :title="sections.usage.title"
+            :description-html="sections.usage.descriptionHtml">
             <DocsComponentPlayground :tabs="tabsPlayground" :color="color">
                 <template #panel-design>
                     <e-button :color="color" :disabled="buttonProperty.disabled" :rounded="buttonProperty.rounded"
@@ -84,9 +85,9 @@
             <template #description>
                 <span v-html="sections['icon-mode'].descriptionHtml"></span>
                 {{ iconLinks.iconGuidePrefix }}
-                <e-button :to="withLocalePrefix('/docs/design-system/icon-configuration', locale)" text color='primary'>
+                <NuxtLink :to="withLocalePrefix('/docs/design-system/icon-configuration', locale)" class="primary--text">
                     {{ iconLinks.iconsPage }}
-                </e-button>
+                </NuxtLink>
                 {{ iconLinks.iconGuideSuffix }}
             </template>
             <DocsComponentPlayground :tabs="tabsDesignTemplateTs" color="primary">
@@ -165,23 +166,13 @@
 
         <DocsSection :id="sections['common-use-cases'].key" :title="sections['common-use-cases'].title"
             :description="sections['common-use-cases'].description">
-            <DocsComponentPlayground :tabs="tabsDesignTemplateTsCss" color="primary">
+            <DocsComponentPlayground :tabs="tabsDesignTemplate" color="primary">
                 <template #panel-design>
-                    <DocsFormsButtonFormPreview />
+                    <DocsFormsButtonBarPreview />
                 </template>
 
                 <template #panel-template>
-                    <CodePanel :code="commonUseCasesCardHtmlCode" class="full-height" :line-numbers="false" />
-                </template>
-
-                <template #panel-ts>
-                    <CodePanel :code="commonUseCasesCardTsCode" language="ts" class="full-height"
-                        :line-numbers="false" />
-                </template>
-
-                <template #panel-css>
-                    <CodePanel :code="commonUseCasesCardCssCode" language="scss" class="full-height"
-                        :line-numbers="false" />
+                    <CodePanel :code="commonUseCasesBarHtmlCode" class="full-height" :line-numbers="false" />
                 </template>
             </DocsComponentPlayground>
         </DocsSection>
@@ -197,6 +188,7 @@ import { withLocalePrefix } from '~/utils/locale-path'
 import { buttonApiReference } from '@/api-reference/forms/button'
 import { buttonApiReferenceEs } from '@/api-reference/forms/button-es'
 import { createButtonPlaygroundLogic } from './button.logic'
+import { buttonCodeSnippets } from './button.snippets'
 
 const { locale } = useI18n()
 
@@ -254,19 +246,19 @@ const {
     tabsPlayground,
     tabsDesignTemplate,
     tabsDesignTemplateTs,
-    tabsDesignTemplateTsCss,
     controlLabel,
     iconLinks,
     buttonTextLabels,
     HTMLCode,
+} = createButtonPlaygroundLogic(content)
+
+const {
     sizeHtmlCode,
     visualVariantsHtmlCode,
     appendPrependHtmlCode,
     customSizeHtmlCode,
-    commonUseCasesCardHtmlCode,
-    commonUseCasesCardTsCode,
-    commonUseCasesCardCssCode,
+    commonUseCasesBarHtmlCode,
     iconHtmlCode,
     iconTsCode,
-} = createButtonPlaygroundLogic(content)
+} = buttonCodeSnippets
 </script>
