@@ -404,6 +404,105 @@ export const switchComponentContentEs: DocsComponentPageContent = {
   },
 }
 
+export const datePickerComponentContentEs: DocsComponentPageContent = {
+  kind: 'component',
+  seo: {
+    title: 'Date Picker',
+    description: 'Documentacion del componente Date Picker de Nuvex UI con uso interactivo, vistas controladas, fechas disabled/highlighted, integracion con dialog y props.',
+  },
+  hero: {
+    title: 'Date Picker',
+    descriptionHtml:
+      "El componente <code class='docs-inline-code'>e-date-picker</code> resuelve seleccion de dia, mes y anio con navegacion amigable por teclado, estado de vista controlado, rangos resaltados y reglas de fechas deshabilitadas.<br><br>Usa esta pagina para validar flujos de agenda, comparar modos de navegacion y conectar seleccion de fechas restringidas a formularios de produccion con comportamiento predecible.",
+  },
+  sections: [
+    {
+      key: 'usage',
+      title: 'Uso',
+      descriptionHtml:
+        "Explora como <code class='docs-inline-code'>color</code>, <code class='docs-inline-code'>elevation</code>, <code class='docs-inline-code'>landscape</code>, <code class='docs-inline-code'>grid-button-elevation</code> y <code class='docs-inline-code'>no-title</code> definen Date Picker, y previsualiza su efecto combinado antes de aplicar la configuracion en tu interfaz.",
+    },
+    {
+      key: 'disabled-dates',
+      title: 'Fechas deshabilitadas y resaltadas',
+      descriptionHtml:
+        "Usa reglas <code class='docs-inline-code'>disabled</code> para impedir la seleccion de fechas no disponibles, y reglas <code class='docs-inline-code'>highlighted</code> para resaltar fechas importantes o ventanas de agenda sin bloquearlas.",
+    },
+    {
+      key: 'layout-and-header',
+      title: 'Layout y opciones de header',
+      description:
+        'Usa landscape, only-month, no-title, week-start y format para adaptar el layout del picker y el orden de lectura a distintos contextos de agenda.',
+    },
+    {
+      key: 'localization',
+      title: 'Internacionalizacion',
+      descriptionHtml:
+        "Usa <code class='docs-inline-code'>lng</code> para mostrar las etiquetas del calendario, los nombres de los meses y los dias de la semana en un idioma distinto al locale global de la aplicacion.",
+    },
+    {
+      key: 'slots-customization',
+      title: 'Customizacion de slots',
+      description:
+        'Reemplaza las regiones de title y header cuando el flujo de agenda necesita un marco visual custom, mas contexto de estado o navegacion con branding.',
+    },
+    {
+      key: 'integration',
+      title: 'Integracion',
+      descriptionHtml:
+        "Combina Date Picker con un <code class='docs-inline-code'>ETextfield</code> de solo lectura y muestralo en un <code class='docs-inline-code'>EDialog</code> o <code class='docs-inline-code'>EMenu</code>. La prop <code class='docs-inline-code'>close-on-change</code> cierra la superficie activa despues de seleccionar.",
+    },
+    {
+      key: 'props',
+      title: 'Props',
+      description:
+        'Usa la tabla de API como fuente de verdad para tipos aceptados, defaults y los principales comportamientos de agenda expuestos por Date Picker.',
+    },
+  ],
+  labels: {
+    controls: [
+      { key: 'color', label: 'color' },
+      { key: 'elevation', label: 'elevation' },
+      { key: 'landscape', label: 'landscape' },
+      { key: 'gridButtonElevation', label: 'grid-button-elevation' },
+      { key: 'noTitle', label: 'no-title' },
+    ],
+    datePickerText: {
+      disabledCard: {
+        title: 'Reglas de bloqueo de agenda',
+        subtitle: 'Bloquea fines de semana y del 20 al 25 de agosto.',
+      },
+      highlightedCard: {
+        title: 'Ventanas visibles de agenda',
+        subtitle: 'Resalta releases y la ventana de aprobacion.',
+      },
+      layoutCards: {
+        monthOnlyTitle: 'Seleccion mensual en landscape',
+        monthOnlySubtitle: 'Usa only-month para flujos compactos de facturacion o reportes.',
+        headerlessTitle: 'Agenda con header reducido',
+        headerlessSubtitle: 'Usa no-title con inicio de semana custom para reducir peso visual.',
+      },
+      localizationCards: {
+        spanishTitle: 'Calendario en espanol',
+        spanishSubtitle: 'Las etiquetas y los nombres de los meses se muestran en espanol.',
+        frenchTitle: 'Calendario en frances',
+        frenchSubtitle: 'Las etiquetas y los nombres de los meses se muestran en frances.',
+      },
+      slotsCard: {
+        title: 'Title y header custom',
+        subtitle: 'Sobrescribe ambas regiones visibles de slots sin perder la navegacion del Date Picker.',
+        quickJump: 'Ir a vista mensual',
+        planLabel: 'Plan de release',
+        selectedWindow: 'Ventana seleccionada',
+      },
+      integration: {
+        birthDateLabel: 'Fecha de nacimiento',
+        deadlineLabel: 'Fecha limite',
+      },
+    },
+  },
+}
+
 export const textFieldComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
@@ -574,6 +673,7 @@ export const textareaComponentContentEs: DocsComponentPageContent = {
 
 export const inputPages = {
   checkbox: checkboxComponentContentEs,
+  datePicker: datePickerComponentContentEs,
   radio: radioComponentContentEs,
   select: selectComponentContentEs,
   switch: switchComponentContentEs,

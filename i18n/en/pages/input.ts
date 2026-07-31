@@ -404,6 +404,105 @@ export const switchComponentContent: DocsComponentPageContent = {
   },
 }
 
+export const datePickerComponentContent: DocsComponentPageContent = {
+  kind: 'component',
+  seo: {
+    title: 'Date Picker',
+    description: 'Date Picker component documentation for Nuvex UI with interactive usage, controlled views, disabled and highlighted dates, dialog integration, and props.',
+  },
+  hero: {
+    title: 'Date Picker',
+    descriptionHtml:
+      "The <code class='docs-inline-code'>e-date-picker</code> component handles day, month, and year selection with keyboard-friendly navigation, controlled view state, highlighted ranges, and disabled-date rules.<br><br>Use this page to validate scheduling flows, compare navigation modes, and wire constrained date selection into production forms with predictable behavior.",
+  },
+  sections: [
+    {
+      key: 'usage',
+      title: 'Usage',
+      descriptionHtml:
+        "Explore how <code class='docs-inline-code'>color</code>, <code class='docs-inline-code'>elevation</code>, <code class='docs-inline-code'>landscape</code>, <code class='docs-inline-code'>grid-button-elevation</code>, and <code class='docs-inline-code'>no-title</code> shape Date Picker, and preview their combined effect before applying the configuration in your interface.",
+    },
+    {
+      key: 'disabled-dates',
+      title: 'Disabled and highlighted dates',
+      descriptionHtml:
+        "Use <code class='docs-inline-code'>disabled</code> rules to prevent unavailable dates from being selected, and <code class='docs-inline-code'>highlighted</code> rules to emphasize important dates or scheduling windows without blocking them.",
+    },
+    {
+      key: 'layout-and-header',
+      title: 'Layout and header options',
+      description:
+        'Use landscape, only-month, no-title, week-start, and format to adapt the picker layout and reading order to different scheduling contexts.',
+    },
+    {
+      key: 'localization',
+      title: 'Internationalization',
+      descriptionHtml:
+        "Use <code class='docs-inline-code'>lng</code> to render calendar labels, month names, and weekdays in a language that differs from the application's global locale.",
+    },
+    {
+      key: 'slots-customization',
+      title: 'Slots customization',
+      description:
+        'Replace the title and header regions when scheduling flows need custom framing, stronger status cues, or a branded navigation pattern.',
+    },
+    {
+      key: 'integration',
+      title: 'Integration',
+      descriptionHtml:
+        "Combine Date Picker with a read-only <code class='docs-inline-code'>ETextfield</code> and display it in an <code class='docs-inline-code'>EDialog</code> or <code class='docs-inline-code'>EMenu</code>. The <code class='docs-inline-code'>close-on-change</code> prop closes the active surface after selection.",
+    },
+    {
+      key: 'props',
+      title: 'Props',
+      description:
+        'Use the API table as the source of truth for accepted types, defaults, and the main scheduling behaviors exposed by Date Picker.',
+    },
+  ],
+  labels: {
+    controls: [
+      { key: 'color', label: 'color' },
+      { key: 'elevation', label: 'elevation' },
+      { key: 'landscape', label: 'landscape' },
+      { key: 'gridButtonElevation', label: 'grid-button-elevation' },
+      { key: 'noTitle', label: 'no-title' },
+    ],
+    datePickerText: {
+      disabledCard: {
+        title: 'Blocked scheduling rules',
+        subtitle: 'Blocks weekends and August 20-25.',
+      },
+      highlightedCard: {
+        title: 'Visible scheduling windows',
+        subtitle: 'Marks releases and the approval window.',
+      },
+      layoutCards: {
+        monthOnlyTitle: 'Landscape month selection',
+        monthOnlySubtitle: 'Use only-month for compact billing or reporting flows.',
+        headerlessTitle: 'Header-only scheduling',
+        headerlessSubtitle: 'Use no-title with a custom week start to reduce visual weight.',
+      },
+      localizationCards: {
+        spanishTitle: 'Spanish calendar',
+        spanishSubtitle: 'Calendar labels and month names are displayed in Spanish.',
+        frenchTitle: 'French calendar',
+        frenchSubtitle: 'Calendar labels and month names are displayed in French.',
+      },
+      slotsCard: {
+        title: 'Custom title and header',
+        subtitle: 'Override both visible slot regions while preserving Date Picker navigation behavior.',
+        quickJump: 'Jump to month view',
+        planLabel: 'Release plan',
+        selectedWindow: 'Selected window',
+      },
+      integration: {
+        birthDateLabel: 'Birth date',
+        deadlineLabel: 'Deadline',
+      },
+    },
+  },
+}
+
 export const textFieldComponentContent: DocsComponentPageContent = {
   kind: 'component',
   seo: {
@@ -566,6 +665,7 @@ export const textareaComponentContent: DocsComponentPageContent = {
 
 export const inputPages = {
   checkbox: checkboxComponentContent,
+  datePicker: datePickerComponentContent,
   radio: radioComponentContent,
   select: selectComponentContent,
   switch: switchComponentContent,
