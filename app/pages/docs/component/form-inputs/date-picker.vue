@@ -141,6 +141,7 @@ import { useI18n } from 'vue-i18n'
 import { type DatesConfiguration } from 'nuvex-ui'
 import { datePickerApiReference } from '~/api-reference/forms/date-picker'
 import { datePickerApiReferenceEs } from '~/api-reference/forms/date-picker-es'
+import { datePickerCodeSnippets } from './date-picker.snippets'
 
 const content = useDocsComponentI18nContent('pages.input.datePicker')
 const { locale } = useI18n()
@@ -148,9 +149,7 @@ const { locale } = useI18n()
 type DatePickerSectionKey =
   | 'usage'
   | 'disabled-dates'
-  | 'layout-and-header'
   | 'localization'
-  | 'slots-customization'
   | 'integration'
   | 'props'
 
@@ -190,9 +189,7 @@ const sections = computed(() => {
   return {
     usage: getRequiredSection('usage'),
     'disabled-dates': getRequiredSection('disabled-dates'),
-    'layout-and-header': getRequiredSection('layout-and-header'),
     localization: getRequiredSection('localization'),
-    'slots-customization': getRequiredSection('slots-customization'),
     integration: getRequiredSection('integration'),
     props: getRequiredSection('props'),
   }
@@ -258,14 +255,10 @@ useSeoMeta({
 const colors = ['primary', 'secondary', 'blue', 'warning', 'purple']
 const elevations = ['xs', 'sm', 'md', 'lg', 'xl'] as const
 
-const { tabsPlayground, tabsDesignTemplate, tabsDesignTemplateTs } = useDocsPlaygroundTabSets()
+const { tabsPlayground, tabsDesignTemplateTs } = useDocsPlaygroundTabSets()
 
 const controlLabel = (key: string): string => {
   return content.value.labels.controls.find((item) => item.key === key)?.label ?? key
-}
-
-const createDate = (year: number, month: number, day: number) => {
-  return new Date(year, month - 1, day)
 }
 
 const elevationOptions = computed(() => {
@@ -276,7 +269,7 @@ const elevationOptions = computed(() => {
 })
 
 const formatDisplayDate = (value?: Date | string) => {
-  const normalized = value instanceof Date ? value : new Date(value ?? createDate(2026, 8, 14))
+  const normalized = value instanceof Date ? value : new Date(value ?? new Date(2026, 7, 14))
   const language = locale.value.startsWith('es') ? 'es-ES' : 'en-US'
 
   return new Intl.DateTimeFormat(language, {
@@ -290,25 +283,25 @@ const disabledDateRules: DatesConfiguration = {
   days: [0, 6],
   ranges: [
     {
-      from: createDate(2026, 8, 20),
-      to: createDate(2026, 8, 25),
+      from: new Date(2026, 7, 20),
+      to: new Date(2026, 7, 25),
     },
   ],
 }
 
 const highlightedDateRules: DatesConfiguration = {
-  dates: [createDate(2026, 8, 14), createDate(2026, 8, 29)],
+  dates: [new Date(2026, 7, 14), new Date(2026, 7, 29)],
   ranges: [
     {
-      from: createDate(2026, 8, 10),
-      to: createDate(2026, 8, 12),
+      from: new Date(2026, 7, 10),
+      to: new Date(2026, 7, 12),
     },
   ],
 }
 
-const usageDate = ref(createDate(2026, 8, 14))
-const disabledDate = ref(createDate(2026, 8, 14))
-const highlightedDate = ref(createDate(2026, 8, 14))
+const usageDate = ref(new Date(2026, 7, 14))
+const disabledDate = ref(new Date(2026, 7, 14))
+const highlightedDate = ref(new Date(2026, 7, 14))
 const usageColor = ref('primary')
 const usageLandscape = ref(false)
 const usageElevation = ref<(typeof elevations)[number] | undefined>(undefined)
@@ -329,262 +322,19 @@ const usageTemplateCode = computed(() => {
   })
 })
 
-const dateRulesTemplateCode = `<template>
-  <ECard
-    title="Blocked scheduling rules"
-    subtitle="Blocks weekends and August 20-25."
-  >
-    <div class="d-flex justify-center">
-      <EDatePicker
-        v-model="disabledDate"
-        color="secondary"
-        :disabled="disabledDates"
-      />
-    </div>
-  </ECard>
-
-  <ECard
-    title="Visible scheduling windows"
-    subtitle="Marks releases and the approval window."
-  >
-    <div class="d-flex justify-center">
-      <EDatePicker
-        v-model="highlightedDate"
-        color="primary"
-        :highlighted="highlightedDates"
-      />
-    </div>
-  </ECard>
-</template>`
-
-const dateRulesTsCode = `import { ref } from 'vue'
-import type { DatesConfiguration } from 'nuvex-ui'
-
-const disabledDate = ref(new Date(2026, 7, 14))
-const highlightedDate = ref(new Date(2026, 7, 14))
-
-const disabledDates: DatesConfiguration = {
-  days: [0, 6],
-  ranges: [
-    {
-      from: new Date(2026, 7, 20),
-      to: new Date(2026, 7, 25),
-    },
-  ],
-}
-
-const highlightedDates: DatesConfiguration = {
-  dates: [new Date(2026, 7, 14), new Date(2026, 7, 29)],
-  ranges: [
-    {
-      from: new Date(2026, 7, 10),
-      to: new Date(2026, 7, 12),
-    },
-  ],
-}`
-
-const monthOnlyDate = ref(createDate(2026, 11, 1))
-const headerlessDate = ref(createDate(2026, 8, 18))
-
-const layoutTemplateCode = `<template>
-  <EDatePicker v-model="monthValue" only-month landscape color="primary" />
-
-  <EDatePicker
-    v-model="dateValue"
-    no-title
-    :week-start="0"
-    format="month-mmmm year-YYYY"
-    color="primary"
-  />
-</template>`
-
-const localizedSpanishDate = ref(createDate(2026, 8, 14))
-const localizedFrenchDate = ref(createDate(2026, 8, 14))
-
-const localizationTemplateCode = `<template>
-  <ECard
-    title="Spanish calendar"
-    subtitle="Calendar labels and month names are displayed in Spanish."
-    elevation="sm"
-  >
-    <EDatePicker v-model="spanishDate" lng="es" color="secondary" />
-  </ECard>
-
-  <ECard
-    title="French calendar"
-    subtitle="Calendar labels and month names are displayed in French."
-    elevation="sm"
-  >
-    <EDatePicker v-model="frenchDate" lng="fr" color="primary" />
-  </ECard>
-</template>`
-
-const localizationTsCode = `import { ref } from 'vue'
-
-const spanishDate = ref(new Date(2026, 7, 14))
-const frenchDate = ref(new Date(2026, 7, 14))`
-
-const slotDate = ref(createDate(2026, 8, 14))
-
-const formatHeaderSlotDate = (value: Date) => {
-  const language = locale.value.startsWith('es') ? 'es-ES' : 'en-US'
-
-  return new Intl.DateTimeFormat(language, {
-    month: 'long',
-    year: 'numeric',
-  }).format(value)
-}
-
-const slotsTemplateCode = `<template>
-  <EDatePicker v-model="value" color="primary">
-    <template #title>
-      <div class="custom-title">
-        <span>Release plan</span>
-        <strong>{{ formattedDate }}</strong>
-      </div>
-    </template>
-
-    <template #header="{ prev, next, changeViewMode, pageDate }">
-      <div class="custom-header">
-        <EButton text @click="prev()">Prev</EButton>
-        <strong>{{ formatHeader(pageDate) }}</strong>
-        <div>
-          <EButton text @click="changeViewMode(datePickerViewType.month)">Jump to month view</EButton>
-          <EButton text @click="next()">Next</EButton>
-        </div>
-      </div>
-    </template>
-  </EDatePicker>
-</template>`
-
-const slotsTsCode = `import { computed, ref } from 'vue'
-import { datePickerViewType } from 'nuvex-ui'
-
-const value = ref(new Date())
-
-const formattedDate = computed(() => {
-  return new Intl.DateTimeFormat('en-US', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-  }).format(value.value)
-})
-
-const formatHeader = (pageDate: Date) => {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'long',
-    year: 'numeric',
-  }).format(pageDate)
-}`
+const localizedSpanishDate = ref(new Date(2026, 7, 14))
+const localizedFrenchDate = ref(new Date(2026, 7, 14))
 
 const integrationDialogOpen = ref(false)
-const birthDate = ref(createDate(1996, 4, 18))
-const deadline = ref(createDate(2026, 10, 3))
-
-const integrationTemplateCode = `<template>
-  <EDialog v-model="dialogOpen">
-    <EDatePicker v-model="birthDate" color="secondary" close-on-change />
-  </EDialog>
-
-  <ERow>
-    <ECol sm="6">
-      <ETextfield
-        id="birth-date"
-        :model-value="formatDate(birthDate)"
-        label="Birth date"
-        :append-icon="$icon.calendar"
-        input-align="end"
-        input-readonly
-        @click="dialogOpen = true"
-      />
-    </ECol>
-
-    <ECol sm="6">
-      <EMenu origin="bottom right" fit-content>
-        <template #activator="{ attrs }">
-          <ETextfield
-            id="deadline"
-            :model-value="formatDate(deadline)"
-            label="Deadline"
-            :append-inner-icon="$icon.calendar"
-            input-align="end"
-            input-readonly
-            v-bind="attrs"
-          />
-        </template>
-
-        <EDatePicker v-model="deadline" color="primary" close-on-change />
-      </EMenu>
-    </ECol>
-  </ERow>
-</template>`
-
-const integrationTsCode = `import { ref } from 'vue'
-
-const dialogOpen = ref(false)
 const birthDate = ref(new Date(1996, 3, 18))
 const deadline = ref(new Date(2026, 9, 3))
 
-const formatDate = (value: Date) => {
-  return new Intl.DateTimeFormat('en-US', {
-    day: '2-digit',
-    month: 'long',
-    year: 'numeric',
-  }).format(value)
-}`
+const {
+  dateRulesTemplateCode,
+  dateRulesTsCode,
+  localizationTemplateCode,
+  localizationTsCode,
+  integrationTemplateCode,
+  integrationTsCode,
+} = datePickerCodeSnippets
 </script>
-
-<style scoped>
-.date-picker-page__usage-layout {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: minmax(0, auto) minmax(18rem, 22rem);
-  align-items: start;
-}
-
-.date-picker-page__status-card,
-.date-picker-page__dialog-card,
-.date-picker-page__demo-card {
-  width: 100%;
-}
-
-.date-picker-page__pair-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-}
-
-.date-picker-page__summary-list {
-  margin: 0;
-  padding-left: 1.25rem;
-}
-
-.date-picker-page__slot-title {
-  display: grid;
-  gap: 0.25rem;
-}
-
-.date-picker-page__slot-header {
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.date-picker-page__slot-header-copy {
-  display: grid;
-  justify-items: center;
-  gap: 0.125rem;
-  text-align: center;
-}
-
-@media (max-width: 960px) {
-
-  .date-picker-page__usage-layout,
-  .date-picker-page__pair-grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>

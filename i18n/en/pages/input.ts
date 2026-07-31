@@ -429,22 +429,10 @@ export const datePickerComponentContent: DocsComponentPageContent = {
         "Use <code class='docs-inline-code'>disabled</code> rules to prevent unavailable dates from being selected, and <code class='docs-inline-code'>highlighted</code> rules to emphasize important dates or scheduling windows without blocking them.",
     },
     {
-      key: 'layout-and-header',
-      title: 'Layout and header options',
-      description:
-        'Use landscape, only-month, no-title, week-start, and format to adapt the picker layout and reading order to different scheduling contexts.',
-    },
-    {
       key: 'localization',
       title: 'Internationalization',
       descriptionHtml:
         "Use <code class='docs-inline-code'>lng</code> to render calendar labels, month names, and weekdays in a language that differs from the application's global locale.",
-    },
-    {
-      key: 'slots-customization',
-      title: 'Slots customization',
-      description:
-        'Replace the title and header regions when scheduling flows need custom framing, stronger status cues, or a branded navigation pattern.',
     },
     {
       key: 'integration',
@@ -476,24 +464,11 @@ export const datePickerComponentContent: DocsComponentPageContent = {
         title: 'Visible scheduling windows',
         subtitle: 'Marks releases and the approval window.',
       },
-      layoutCards: {
-        monthOnlyTitle: 'Landscape month selection',
-        monthOnlySubtitle: 'Use only-month for compact billing or reporting flows.',
-        headerlessTitle: 'Header-only scheduling',
-        headerlessSubtitle: 'Use no-title with a custom week start to reduce visual weight.',
-      },
       localizationCards: {
         spanishTitle: 'Spanish calendar',
         spanishSubtitle: 'Calendar labels and month names are displayed in Spanish.',
         frenchTitle: 'French calendar',
         frenchSubtitle: 'Calendar labels and month names are displayed in French.',
-      },
-      slotsCard: {
-        title: 'Custom title and header',
-        subtitle: 'Override both visible slot regions while preserving Date Picker navigation behavior.',
-        quickJump: 'Jump to month view',
-        planLabel: 'Release plan',
-        selectedWindow: 'Selected window',
       },
       integration: {
         birthDateLabel: 'Birth date',

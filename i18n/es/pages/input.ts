@@ -429,22 +429,10 @@ export const datePickerComponentContentEs: DocsComponentPageContent = {
         "Usa reglas <code class='docs-inline-code'>disabled</code> para impedir la seleccion de fechas no disponibles, y reglas <code class='docs-inline-code'>highlighted</code> para resaltar fechas importantes o ventanas de agenda sin bloquearlas.",
     },
     {
-      key: 'layout-and-header',
-      title: 'Layout y opciones de header',
-      description:
-        'Usa landscape, only-month, no-title, week-start y format para adaptar el layout del picker y el orden de lectura a distintos contextos de agenda.',
-    },
-    {
       key: 'localization',
       title: 'Internacionalizacion',
       descriptionHtml:
         "Usa <code class='docs-inline-code'>lng</code> para mostrar las etiquetas del calendario, los nombres de los meses y los dias de la semana en un idioma distinto al locale global de la aplicacion.",
-    },
-    {
-      key: 'slots-customization',
-      title: 'Customizacion de slots',
-      description:
-        'Reemplaza las regiones de title y header cuando el flujo de agenda necesita un marco visual custom, mas contexto de estado o navegacion con branding.',
     },
     {
       key: 'integration',
@@ -476,24 +464,11 @@ export const datePickerComponentContentEs: DocsComponentPageContent = {
         title: 'Ventanas visibles de agenda',
         subtitle: 'Resalta releases y la ventana de aprobacion.',
       },
-      layoutCards: {
-        monthOnlyTitle: 'Seleccion mensual en landscape',
-        monthOnlySubtitle: 'Usa only-month para flujos compactos de facturacion o reportes.',
-        headerlessTitle: 'Agenda con header reducido',
-        headerlessSubtitle: 'Usa no-title con inicio de semana custom para reducir peso visual.',
-      },
       localizationCards: {
         spanishTitle: 'Calendario en espanol',
         spanishSubtitle: 'Las etiquetas y los nombres de los meses se muestran en espanol.',
         frenchTitle: 'Calendario en frances',
         frenchSubtitle: 'Las etiquetas y los nombres de los meses se muestran en frances.',
-      },
-      slotsCard: {
-        title: 'Title y header custom',
-        subtitle: 'Sobrescribe ambas regiones visibles de slots sin perder la navegacion del Date Picker.',
-        quickJump: 'Ir a vista mensual',
-        planLabel: 'Plan de release',
-        selectedWindow: 'Ventana seleccionada',
       },
       integration: {
         birthDateLabel: 'Fecha de nacimiento',
