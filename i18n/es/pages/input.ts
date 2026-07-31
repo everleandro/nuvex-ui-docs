@@ -78,9 +78,12 @@ export const checkboxComponentContentEs: DocsComponentPageContent = {
       termsDialogClose: 'Cerrar',
       validationCheckboxLabel: 'Acepto los terminos del servicio',
       validationMessage: 'Debes aceptar los terminos antes de continuar.',
+      validationCancelLabel: 'Cancelar',
       validationButtonLabel: 'Crear cuenta',
       validationIdleFeedback: 'Envia el formulario para validar la regla del checkbox.',
       validationSuccessFeedback: 'El formulario es valido. Puedes continuar.',
+      validationSubmittingFeedback: 'Enviando consentimiento...',
+      validationCanceledFeedback: 'Formulario de consentimiento reiniciado.',
       slotsLead: 'Acepto los',
       slotsLinkLabel: 'Terminos y condiciones',
     },
@@ -207,9 +210,12 @@ export const radioComponentContentEs: DocsComponentPageContent = {
         nightly: 'Nightly',
       },
       validationButtonLabel: 'Guardar preferencias',
+      validationCancelLabel: 'Cancelar',
       validationMessage: 'Selecciona un canal de release antes de continuar.',
       validationIdleFeedback: 'Envia para validar la regla del grupo de radios.',
       validationSuccessFeedback: 'El formulario es valido. Listo para continuar.',
+      validationSubmittingFeedback: 'Guardando preferencias...',
+      validationCanceledFeedback: 'Preferencias de radio reiniciadas.',
     },
   },
 }
@@ -294,6 +300,7 @@ export const selectComponentContentEs: DocsComponentPageContent = {
     ],
     integrationText: {
       form: {
+        cancel: 'Cancelar',
         submit: 'Crear ticket',
         idle: 'Completa campos obligatorios para continuar',
         submitting: 'Creando ticket...',
@@ -397,9 +404,12 @@ export const switchComponentContentEs: DocsComponentPageContent = {
       dialogClose: 'Cerrar',
       validationLabel: 'Habilitar notificaciones de produccion',
       validationButtonLabel: 'Continuar',
+      validationCancelLabel: 'Cancelar',
       validationMessage: 'Activa este switch antes de continuar.',
       validationIdleFeedback: 'Envia para validar la regla del switch.',
       validationSuccessFeedback: 'El formulario es valido. Listo para continuar.',
+      validationSubmittingFeedback: 'Guardando preferencia de notificaciones...',
+      validationCanceledFeedback: 'Preferencia de notificaciones reiniciada.',
     },
   },
 }
@@ -546,6 +556,7 @@ export const textFieldComponentContentEs: DocsComponentPageContent = {
     ],
     integrationText: {
       form: {
+        cancel: 'Cancelar',
         submit: 'Finalizar registro',
         idle: 'Completa todos los campos obligatorios para continuar',
         submitting: 'Enviando registro...',
@@ -635,6 +646,7 @@ export const textareaComponentContentEs: DocsComponentPageContent = {
     formText: {
       form: {
         submit: 'Enviar feedback',
+        cancel: 'Cancelar',
         idle: 'Completa campos obligatorios para continuar',
         submitting: 'Enviando feedback...',
         success: 'Feedback enviado correctamente',

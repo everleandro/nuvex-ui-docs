@@ -78,9 +78,12 @@ export const checkboxComponentContent: DocsComponentPageContent = {
       termsDialogClose: 'Close',
       validationCheckboxLabel: 'I accept the terms of service',
       validationMessage: 'You must accept the terms before continuing.',
+      validationCancelLabel: 'Cancel',
       validationButtonLabel: 'Create account',
       validationIdleFeedback: 'Submit to validate the checkbox rule.',
       validationSuccessFeedback: 'Form is valid. Ready to continue.',
+      validationSubmittingFeedback: 'Submitting consent...',
+      validationCanceledFeedback: 'Consent form reset.',
       slotsLead: 'I agree to the',
       slotsLinkLabel: 'Terms and Conditions',
     },
@@ -207,9 +210,12 @@ export const radioComponentContent: DocsComponentPageContent = {
         nightly: 'Nightly',
       },
       validationButtonLabel: 'Save preferences',
+      validationCancelLabel: 'Cancel',
       validationMessage: 'Select a release track before continuing.',
       validationIdleFeedback: 'Submit to validate the radio group rule.',
       validationSuccessFeedback: 'Form is valid. Ready to continue.',
+      validationSubmittingFeedback: 'Saving preferences...',
+      validationCanceledFeedback: 'Radio preferences reset.',
     },
   },
 }
@@ -294,6 +300,7 @@ export const selectComponentContent: DocsComponentPageContent = {
     ],
     integrationText: {
       form: {
+        cancel: 'Cancel',
         submit: 'Create ticket',
         idle: 'Complete required fields to continue',
         submitting: 'Creating ticket...',
@@ -397,9 +404,12 @@ export const switchComponentContent: DocsComponentPageContent = {
       dialogClose: 'Close',
       validationLabel: 'Enable production notifications',
       validationButtonLabel: 'Continue',
+      validationCancelLabel: 'Cancel',
       validationMessage: 'Enable this switch before continuing.',
       validationIdleFeedback: 'Submit to validate the switch rule.',
       validationSuccessFeedback: 'Form is valid. Ready to continue.',
+      validationSubmittingFeedback: 'Saving notification preference...',
+      validationCanceledFeedback: 'Notification preference reset.',
     },
   },
 }
@@ -538,6 +548,7 @@ export const textFieldComponentContent: DocsComponentPageContent = {
     ],
     integrationText: {
       form: {
+        cancel: 'Cancel',
         submit: 'Complete registration',
         idle: 'Complete all required fields to continue',
         submitting: 'Submitting registration...',
@@ -627,6 +638,7 @@ export const textareaComponentContent: DocsComponentPageContent = {
     formText: {
       form: {
         submit: 'Send feedback',
+        cancel: 'Cancel',
         idle: 'Complete required fields to continue',
         submitting: 'Sending feedback...',
         success: 'Feedback submitted successfully',

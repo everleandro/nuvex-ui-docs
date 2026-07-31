@@ -93,35 +93,35 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
     kind: 'workflow',
     messageKey: 'pages.iconConfiguration.iconConfiguration',
   },
-  '/docs/component/forms/form': {
+  '/docs/component/form-foundations/form': {
     kind: 'component',
     messageKey: 'pages.form.form',
   },
-  '/docs/component/forms/button': {
+  '/docs/component/core-actions/button': {
     kind: 'component',
     messageKey: 'pages.button.button',
   },
-  '/docs/component/forms/checkbox': {
+  '/docs/component/form-inputs/checkbox': {
     kind: 'component',
     messageKey: 'pages.input.checkbox',
   },
-  '/docs/component/forms/radio': {
+  '/docs/component/form-inputs/radio': {
     kind: 'component',
     messageKey: 'pages.input.radio',
   },
-  '/docs/component/forms/select': {
+  '/docs/component/form-inputs/select': {
     kind: 'component',
     messageKey: 'pages.input.select',
   },
-  '/docs/component/forms/switch': {
+  '/docs/component/form-inputs/switch': {
     kind: 'component',
     messageKey: 'pages.input.switch',
   },
-  '/docs/component/forms/text-field': {
+  '/docs/component/form-inputs/text-field': {
     kind: 'component',
     messageKey: 'pages.input.textField',
   },
-  '/docs/component/forms/textarea': {
+  '/docs/component/form-inputs/textarea': {
     kind: 'component',
     messageKey: 'pages.input.textarea',
   },

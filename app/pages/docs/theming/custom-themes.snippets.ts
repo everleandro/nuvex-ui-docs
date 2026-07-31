@@ -14,7 +14,7 @@ export const customThemesCodeSnippets: Record<'define-theme-object' | 'register-
   isDark: false,
   tokens: {
     brand: '#0ea5e9',
-    'surface-1': '#ecfeff',
+    'surface-base': '#ecfeff',
     'text-default': '#0f172a',
   },
 }`,

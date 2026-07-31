@@ -3,7 +3,7 @@
     <ECheckbox v-model="slotChecked" :color="color">
       <template #label>
         I agree to the
-        <a href="#" @click.prevent="termsDialogOpen = true">Terms and Conditions</a>
+        <a href="#" @click.prevent="termsDialogOpen = true" class="primary--text">Terms and Conditions</a>
       </template>
     </ECheckbox>
 

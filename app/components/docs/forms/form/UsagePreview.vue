@@ -29,8 +29,8 @@ defineProps<{
   disabled: boolean
   readonly: boolean
   retainColor: boolean
-  table: boolean
-  fieldColor: string
+  table?: boolean
+  fieldColor?: string
 }>()
 
 const content = useDocsComponentI18nContent('pages.form.form')

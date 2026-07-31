@@ -54,7 +54,7 @@
         </template>
 
         <template #panel-template>
-          <CodePanel :code="layoutTemplateCode" />
+          <CodePanel :code="radioCodeSnippets.layoutTemplateCode" />
         </template>
       </DocsComponentPlayground>
     </DocsSection>
@@ -98,7 +98,7 @@
         </template>
 
         <template #panel-template>
-          <CodePanel :code="visualVariantsTemplateCode" />
+          <CodePanel :code="radioCodeSnippets.visualVariantsTemplateCode" />
         </template>
       </DocsComponentPlayground>
     </DocsSection>
@@ -107,7 +107,8 @@
       :description="sections['mandatory-selection'].description">
       <DocsComponentPlayground :tabs="tabsDesignTemplateTs" :color="color">
         <template #panel-design>
-          <ECard color="surface-subtle" elevation="sm" class="pa-4 d-flex flex-column gap-3" style="width: 420px;">
+          <ECard elevation="sm" style="width: 420px;">
+            <ECard tonal>{{ pageText.currentModelValue }}: {{ mandatorySelection }}</ECard>
             <ERadioGroup :key="mandatoryDemoKey" v-model="mandatorySelection" mandatory
               :label="pageText.mandatoryGroupLabel" :detail="pageText.mandatoryDetail" :color="color">
               <ERadio model-value="free" :label="pageText.mandatoryOptions.free" />
@@ -115,19 +116,20 @@
               <ERadio model-value="enterprise" :label="pageText.mandatoryOptions.enterprise" />
             </ERadioGroup>
 
+            <EDivider class="my-4"/>
             <div class="d-flex align-center justify-space-between gap-3 flex-wrap">
-              <EChip tonal>{{ pageText.currentModelValue }}: {{ mandatorySelection }}</EChip>
+              <ESpacer/>
               <EButton text :color="color" @click="resetMandatoryDemo">{{ pageText.resetMandatoryButton }}</EButton>
             </div>
           </ECard>
         </template>
 
         <template #panel-template>
-          <CodePanel :code="mandatoryTemplateCode" />
+          <CodePanel :code="radioCodeSnippets.mandatoryTemplateCode" />
         </template>
 
         <template #panel-ts>
-          <CodePanel :code="mandatoryTsCode" language="ts" />
+          <CodePanel :code="radioCodeSnippets.mandatoryTsCode" language="ts" />
         </template>
       </DocsComponentPlayground>
     </DocsSection>
@@ -140,7 +142,7 @@
             <ERadioGroup v-model="slotValue" :color="color">
               <template #label>
                 {{ pageText.slotGroupLead }}
-                <a href="#" @click.prevent="slotDialogOpen = true">{{ pageText.slotGroupLinkLabel }}</a>
+                <a href="#" @click.prevent="slotDialogOpen = true" class="secondary--text">{{ pageText.slotGroupLinkLabel }}</a>
               </template>
 
               <ERadio model-value="stable">
@@ -168,11 +170,11 @@
         </template>
 
         <template #panel-template>
-          <CodePanel :code="slotsTemplateCode" />
+          <CodePanel :code="radioCodeSnippets.slotsTemplateCode" />
         </template>
 
         <template #panel-ts>
-          <CodePanel :code="slotsTsCode" language="ts" />
+          <CodePanel :code="radioCodeSnippets.slotsTsCode" language="ts" />
         </template>
       </DocsComponentPlayground>
     </DocsSection>
@@ -181,33 +183,15 @@
       :description="sections.validation.description">
       <DocsComponentPlayground :tabs="tabsDesignTemplateTs" :color="color">
         <template #panel-design>
-          <ECard elevation="sm" color="surface-subtle" class="pa-4" style="width: 420px;">
-            <EForm v-model="validationState.isValid" validate-on-submit @submit="handleValidationSubmit"
-              @submit-invalid="handleValidationInvalid">
-              <ERadioGroup v-model="validationState.selection" :label="pageText.validationGroupLabel"
-                :rules="[(value: RadioValue) => value != null || validationMessage]" :color="color">
-                <ERadio model-value="stable" :label="pageText.validationOptions.stable" />
-                <ERadio model-value="beta" :label="pageText.validationOptions.beta" />
-                <ERadio model-value="nightly" :label="pageText.validationOptions.nightly" />
-              </ERadioGroup>
-
-              <EFormColumn cols="12" class="d-flex flex-column gap-2">
-                <EButton color="primary" type="submit" :disabled="!validationState.isValid">{{
-                  pageText.validationButtonLabel }}</EButton>
-                <div class="d-flex justify-center">
-                  <EChip class="type-subtitle">{{ validationFeedback }}</EChip>
-                </div>
-              </EFormColumn>
-            </EForm>
-          </ECard>
+          <DocsFormsRadioValidationPreview :color="color" />
         </template>
 
         <template #panel-template>
-          <CodePanel :code="validationTemplateCode" />
+          <CodePanel :code="radioCodeSnippets.validationTemplateCode" />
         </template>
 
         <template #panel-ts>
-          <CodePanel :code="validationTsCode" language="ts" />
+          <CodePanel :code="radioCodeSnippets.validationTsCode" language="ts" />
         </template>
       </DocsComponentPlayground>
     </DocsSection>
@@ -222,6 +206,7 @@
 import { useI18n } from 'vue-i18n'
 import { radioApiReference } from '~/api-reference/forms/radio'
 import { radioApiReferenceEs } from '~/api-reference/forms/radio-es'
+import { radioCodeSnippets } from './radio.snippets'
 import { buildTemplateElementSnippet } from '~/utils/snippet-element'
 
 type RadioValue = string | number | null | undefined
@@ -325,31 +310,6 @@ const resetMandatoryDemo = () => {
 const slotValue = ref<RadioValue>('stable')
 const slotDialogOpen = ref(false)
 
-const validationMessage = computed(() => pageText.value.validationMessage)
-const validationState = ref({
-  isValid: undefined as boolean | undefined,
-  selection: undefined as RadioValue,
-  submitState: 'idle' as 'idle' | 'valid' | 'invalid',
-})
-
-const handleValidationSubmit = () => {
-  validationState.value.submitState = 'valid'
-}
-
-const handleValidationInvalid = () => {
-  validationState.value.submitState = 'invalid'
-}
-
-const validationFeedback = computed(() => {
-  if (validationState.value.submitState === 'idle') {
-    return pageText.value.validationIdleFeedback
-  }
-
-  return validationState.value.submitState === 'valid'
-    ? pageText.value.validationSuccessFeedback
-    : validationMessage.value
-})
-
 const { tabsPlayground, tabsDesignTemplate, tabsDesignTemplateTs } = useDocsPlaygroundTabSets()
 
 const controlLabel = (key: string): string => {
@@ -378,108 +338,4 @@ const usageTemplateCode = computed(() => {
     ],
   })
 })
-
-const layoutTemplateCode = computed(() => `<EForm>
-  <ERadioGroup v-model="environment" label="Row layout" detail="Use row for compact option sets and column for longer labels." row>
-    <ERadio model-value="staging" label="Staging" />
-    <ERadio model-value="production" label="Production" />
-    <ERadio model-value="canary" label="Canary" />
-  </ERadioGroup>
-
-  <ERadioGroup v-model="environment" label="Column layout" detail="Use row for compact option sets and column for longer labels.">
-    <ERadio model-value="staging" label="Staging" />
-    <ERadio model-value="production" label="Production" />
-    <ERadio model-value="canary" label="Canary" />
-  </ERadioGroup>
-</EForm>`)
-
-const visualVariantsTemplateCode = computed(() => `<EForm>
-  <ERadioGroup v-model="visualStates.default" label="Default" :color="color">
-    <ERadio model-value="auto" label="Automatic" />
-    <ERadio model-value="manual" label="Manual" />
-  </ERadioGroup>
-  <ERadioGroup v-model="visualStates.outlined" label="Outlined" outlined :color="color">
-    <ERadio model-value="auto" label="Automatic" />
-    <ERadio model-value="manual" label="Manual" />
-  </ERadioGroup>
-  <ERadioGroup v-model="visualStates.tonal" label="Tonal" tonal :color="color">
-    <ERadio model-value="auto" label="Automatic" />
-    <ERadio model-value="manual" label="Manual" />
-  </ERadioGroup>
-  <ERadioGroup v-model="visualStates.retainColor" label="Retain color" retain-color :color="color">
-    <ERadio model-value="auto" label="Automatic" />
-    <ERadio model-value="manual" label="Manual" />
-  </ERadioGroup>
-  <ERadioGroup v-model="visualStates.disabled" label="Disabled" disabled :color="color">
-    <ERadio model-value="auto" label="Automatic" />
-    <ERadio model-value="manual" label="Manual" />
-  </ERadioGroup>
-  <ERadioGroup v-model="visualStates.readonly" label="Readonly" readonly outlined :color="color">
-    <ERadio model-value="auto" label="Automatic" />
-    <ERadio model-value="manual" label="Manual" />
-  </ERadioGroup>
-</EForm>`)
-
-const mandatoryTemplateCode = computed(() => `<ERadioGroup
-  v-model="membershipTier"
-  mandatory
-  label="Membership tier"
-  detail="Mandatory selects the first available option when no valid value exists."
->
-  <ERadio model-value="free" label="Free" />
-  <ERadio model-value="pro" label="Pro" />
-  <ERadio model-value="enterprise" label="Enterprise" />
-</ERadioGroup>`)
-
-const mandatoryTsCode = `const membershipTier = ref<string | undefined>()`
-
-const slotsTemplateCode = computed(() => `<ERadioGroup v-model="releaseTrack">
-  <template #label>
-    Review the
-    <a href="#" @click.prevent="dialogOpen = true">release policy</a>
-  </template>
-
-  <ERadio model-value="stable">
-    <template #label>
-      Stable (recommended)
-    </template>
-  </ERadio>
-  <ERadio model-value="beta" label="Beta" />
-  <ERadio model-value="nightly" label="Nightly" />
-</ERadioGroup>`)
-
-const slotsTsCode = `const releaseTrack = ref('stable')
-const dialogOpen = ref(false)`
-
-const validationTemplateCode = computed(() => `<EForm
-  v-model="isValid"
-  validate-on-submit
-  @submit="handleSubmit"
-  @submit-invalid="handleInvalid"
->
-  <ERadioGroup
-    v-model="releaseTrack"
-    label="Release track"
-    :rules="[(value) => value != null || 'Select a release track before continuing.']"
-  >
-    <ERadio model-value="stable" label="Stable" />
-    <ERadio model-value="beta" label="Beta" />
-    <ERadio model-value="nightly" label="Nightly" />
-  </ERadioGroup>
-
-  <EButton color="primary" type="submit">
-    Save preferences
-  </EButton>
-</EForm>`)
-
-const validationTsCode = `const isValid = ref<boolean | undefined>()
-const releaseTrack = ref<string | undefined>()
-
-const handleSubmit = () => {
-  // Continue with the valid form submission flow.
-}
-
-const handleInvalid = () => {
-  // Optional: react when validation blocks the submit.
-}`
 </script>

@@ -2,13 +2,13 @@
     <article class="docs-page form-page">
         <DocsPageHero :title="content.hero.title" :description-html="content.hero.descriptionHtml" />
 
-        <DocsSection :id="sections.usage.key" :title="sections.usage.title" :description-html="sections.usage.descriptionHtml">
+        <DocsSection :id="sections.usage.key" :title="sections.usage.title"
+            :description-html="sections.usage.descriptionHtml">
             <DocsComponentPlayground :tabs="tabsDesignTemplate" :color="color">
                 <template #panel-design>
                     <DocsFormsFormUsagePreview :color="color" :outlined="formControls.outlined"
                         :disabled="formControls.disabled" :readonly="formControls.readonly"
-                        :retain-color="formControls.retainColor" :table="formControls.table"
-                        :field-color="formControls.fieldColor" />
+                        :retain-color="formControls.retainColor" />
                 </template>
 
                 <template #panel-template>
@@ -63,10 +63,7 @@
             <DocsComponentPlayground :tabs="tabsDesignTemplateTs" :color="color">
                 <template #panel-design>
                     <ECard :title="tableText.cardTitle" :subtitle="tableText.cardSubtitle" elevation="sm">
-                        <EForm table :color="color" :table-line-color="tableConfig.tableLineColor || undefined"
-                            :table-cell-background-color="tableConfig.tableCellBackgroundColor || undefined"
-                            :table-field-color="tableConfig.tableFieldColor || undefined"
-                            :table-line-opacity="tableConfig.tableLineOpacity">
+                        <EForm table field-color="primary" label-behavior="floating">
                             <ETextfield v-model="tableModel.ticketId" md="6" :label="tableText.ticketLabel" />
                             <ESelect v-model="tableModel.assignee" md="6" :items="assigneeItems"
                                 :label="tableText.assigneeLabel" />
@@ -131,7 +128,7 @@
                                 :label="validationText.policyLabel"
                                 :rules="[(value: boolean) => value === true || validationText.policyMessage]" />
                             <EFormColumn cols="12">
-                                <EButton color="primary" block type="submit">{{ validationText.submitLabel }}</EButton>
+                                <EButton color="primary" block type="submit" :disabled="!validationState.isValid">{{ validationText.submitLabel }}</EButton>
                             </EFormColumn>
                         </EForm>
                     </ECard>
@@ -183,10 +180,12 @@
 </template>
 
 <script setup lang="ts">
+import type { EForm } from 'nuvex-ui'
 import { useI18n } from 'vue-i18n'
 import type { RouteLocationAsString } from 'vue-router'
 import { formApiReference } from '~/api-reference/forms/form'
 import { formApiReferenceEs } from '~/api-reference/forms/form-es'
+import { formCodeSnippets } from './form-page.snippets'
 
 type FormSectionKey =
     | 'usage'
@@ -196,12 +195,6 @@ type FormSectionKey =
     | 'validation-lifecycle'
     | 'exposed-methods'
     | 'props'
-
-type FormInstance = {
-    validate?: () => Promise<boolean>
-    reset?: () => void
-    resetValidation?: () => void
-}
 
 interface FormTextLabels {
     fieldColorLabel: string
@@ -378,13 +371,6 @@ const inheritedBehavior = reactive({
     labelBehavior: 'floating'
 })
 
-const tableConfig = reactive({
-    tableLineColor: '',
-    tableCellBackgroundColor: '',
-    tableFieldColor: '',
-    tableLineOpacity: 1,
-})
-
 const inheritedModel = reactive({
     firstName: '',
     companyName: '',
@@ -425,7 +411,7 @@ const methodsModel = reactive({
     email: '',
 })
 
-const methodsFormRef = ref<FormInstance | null>(null)
+const methodsFormRef = ref<EForm | null>(null)
 
 const requiredRule = (value: unknown) => {
     return !!value || validationText.value.requiredMessage
@@ -472,175 +458,17 @@ const localizedFormApiReference = computed(() => {
     return locale.value === 'es' ? formApiReferenceEs : formApiReference
 })
 
-const usageHtmlCode = `<ECard title="Shared form behavior" subtitle="One parent controls multiple child fields">
-    <EForm
-        :outlined="outlined"
-        :disabled="disabled"
-        :readonly="readonly"
-        :retain-color="retainColor"
-        :color="color"
-    >
-        <ETextfield md="6" label="Name" placeholder="Jane Doe" />
-        <ESelect md="6" :items="['Admin', 'Editor', 'Viewer']" label="Role" />
-        <ETextfield label="Email" placeholder="name@company.com" />
-        <ETextarea label="Notes" />
-    </EForm>
-</ECard>`
-
-const inheritedTemplateCode = `<ECard elevation="sm">
-    <EForm
-        :label-behavior="inheritedBehavior.labelBehavior"
-        :outlined="inheritedBehavior.outlined"
-    >
-        <ETextfield v-model="inheritedModel.firstName" md="6" label="First name" />
-        <ESelect v-model="inheritedModel.status" md="6" :items="statusItems" label="Environment status" />
-        <ETextfield v-model="inheritedModel.companyName" label="Company legal name" />
-        <ETextarea v-model="inheritedModel.notes" label="Operational notes" />
-    </EForm>
-</ECard>`
-
-const inheritedTsCode = `const statusItems = ['Draft', 'Ready', 'Blocked']
-
-const inheritedBehavior = reactive({
-    outlined: true,
-    labelBehavior: 'floating',
-})
-
-const inheritedModel = reactive({
-    firstName: '',
-    companyName: '',
-    status: '',
-    notes: '',
-})`
-
-const tableTemplateCode = `<ECard title="Structured approval form" subtitle="Table layout for dense business inputs" elevation="sm">
-    <EForm
-        table
-        :color="color"
-        :table-line-color="tableConfig.tableLineColor || undefined"
-        :table-cell-background-color="tableConfig.tableCellBackgroundColor || undefined"
-        :table-field-color="tableConfig.tableFieldColor || undefined"
-        :table-line-opacity="tableConfig.tableLineOpacity"
-    >
-        <ETextfield v-model="tableModel.ticketId" md="6" label="Ticket ID" />
-        <ESelect v-model="tableModel.assignee" md="6" :items="assigneeItems" label="Assignee" />
-        <ESelect v-model="tableModel.environment" md="6" :items="environmentItems" label="Environment" />
-        <ECheckbox v-model="tableModel.requiresApproval" md="6" label="Requires approval" />
-    </EForm>
-</ECard>`
-
-const tableTsCode = `const assigneeItems = ['Ana', 'Marco', 'Sofia']
-const environmentItems = ['Staging', 'Production', 'Canary']
-
-const tableConfig = reactive({
-    tableLineColor: '',
-    tableCellBackgroundColor: '',
-    tableFieldColor: '',
-    tableLineOpacity: 1,
-})
-
-const tableModel = reactive({
-    ticketId: '',
-    assignee: '',
-    environment: '',
-    requiresApproval: false,
-})`
-
-const columnTemplateCode = `<ECard title="Action layout with Form Column" subtitle="Group fields and actions without breaking alignment" elevation="sm">
-    <EForm :color="color" label-min-width="130">
-        <ETextfield v-model="columnModel.name" lg="12" label="Workflow name" />
-        <ESelect v-model="columnModel.owner" lg="12" :items="assigneeItems" label="Owner" />
-
-        <EFormColumn class="d-flex gap-4">
-            <ESpacer />
-            <EButton color="primary" type="submit">Save changes</EButton>
-        </EFormColumn>
-    </EForm>
-</ECard>`
-
-const columnTsCode = `const assigneeItems = ['Ana', 'Marco', 'Sofia']
-
-const columnModel = reactive({
-    name: '',
-    owner: '',
-})`
-
-const validationTemplateCode = `<ECard title="Submit-time validation flow" :subtitle="validationFeedback" elevation="sm" style="width: 500px;">
-    <EForm
-        v-model="validationState.isValid"
-        validate-on-submit
-        label-behavior="floating"
-        focus-first-invalid
-        :color="color"
-        @submit="handleValidationSubmit"
-        @submit-invalid="handleValidationInvalid"
-    >
-        <ETextfield v-model="validationModel.subject" md="12" label="Subject" :rules="[requiredRule]" />
-        <ETextarea v-model="validationModel.message" md="12" label="Message" :rules="[requiredRule]" />
-        <ECheckbox
-            v-model="validationModel.policyAccepted"
-            md="12"
-            label="I reviewed the release policy"
-            :rules="[(value) => value === true || validationText.policyMessage]"
-        />
-        <EFormColumn cols="12">
-            <EButton color="primary" block type="submit">Submit form</EButton>
-        </EFormColumn>
-    </EForm>
-</ECard>`
-
-const validationTsCode = `const validationState = reactive({
-    isValid: false,
-    submitState: 'idle',
-})
-
-const validationModel = reactive({
-    subject: '',
-    message: '',
-    policyAccepted: false,
-})
-
-const requiredRule = (value) => !!value || 'This field is required.'
-
-const handleValidationSubmit = () => {
-    validationState.submitState = 'valid'
-}
-
-const handleValidationInvalid = () => {
-    validationState.submitState = 'invalid'
-}`
-
-const methodsTemplateCode = `<ECard title="Programmatic form control" :subtitle="methodsFeedback" elevation="sm" style="width: 560px;">
-    <EForm ref="methodsFormRef" v-model="methodsState.isValid" :color="color">
-        <ETextfield v-model="methodsModel.name" label="Name" :rules="[requiredRule]" />
-        <ETextfield v-model="methodsModel.email" label="Email" :rules="[requiredRule]" />
-        <EFormColumn cols="12" class="d-flex gap-2">
-            <ESpacer />
-            <EButton color="primary" @click="runValidate">Run validate()</EButton>
-            <EButton color="secondary" @click="runResetValidation">Run resetValidation()</EButton>
-        </EFormColumn>
-    </EForm>
-</ECard>`
-
-const methodsTsCode = `const methodsState = reactive({
-    isValid: false,
-    lastAction: 'idle',
-})
-
-const methodsModel = reactive({
-    name: '',
-    email: '',
-})
-
-const methodsFormRef = ref(null)
-
-const runValidate = async () => {
-    const valid = await methodsFormRef.value?.validate?.()
-    methodsState.lastAction = valid ? 'valid' : 'invalid'
-}
-
-const runResetValidation = () => {
-    methodsFormRef.value?.resetValidation?.()
-    methodsState.lastAction = 'reset-validation'
-}`
+const {
+    usageHtmlCode,
+    inheritedTemplateCode,
+    inheritedTsCode,
+    tableTemplateCode,
+    tableTsCode,
+    columnTemplateCode,
+    columnTsCode,
+    validationTemplateCode,
+    validationTsCode,
+    methodsTemplateCode,
+    methodsTsCode,
+} = formCodeSnippets
 </script>

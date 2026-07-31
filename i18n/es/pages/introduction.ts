@@ -71,9 +71,9 @@ export const introductionEditorialContentEs: DocsConceptPageContent<DocsIntroduc
       ],
       itemsHtml: {
         'Instala Nuvex UI y verifica las dependencias base.': 'Instala Nuvex UI y verifica las dependencias base en <a href="/docs/getting-started/installation" class="docs-page__inline-link">Installation</a>.',
-        'Construye una primera pantalla con componentes core y estilos globales.': 'Construye una primera pantalla con componentes core y estilos globales usando como referencia una pagina tipo B como <a href="/docs/component/forms/button" class="docs-page__inline-link">Button</a>.',
+        'Construye una primera pantalla con componentes core y estilos globales.': 'Construye una primera pantalla con componentes core y estilos globales usando como referencia una pagina tipo B como <a href="/docs/component/core-actions/button" class="docs-page__inline-link">Button</a>.',
         'Configura temas, primitivas de layout y estructura de navegacion.': 'Configura temas, primitivas de layout y estructura de navegacion apoyandote en <a href="/docs/theming/overview" class="docs-page__inline-link">Theming</a> y <a href="/docs/component/layout/app-shell" class="docs-page__inline-link">Layout</a>.',
-        'Expande hacia la documentacion especifica de componentes segun se implementen funcionalidades.': 'Expande hacia la documentacion especifica de componentes segun se implementen funcionalidades, por ejemplo <a href="/docs/component/forms/text-field" class="docs-page__inline-link">Text Field</a> o <a href="/docs/component/forms/select" class="docs-page__inline-link">Select</a>.',
+        'Expande hacia la documentacion especifica de componentes segun se implementen funcionalidades.': 'Expande hacia la documentacion especifica de componentes segun se implementen funcionalidades, por ejemplo <a href="/docs/component/form-inputs/text-field" class="docs-page__inline-link">Text Field</a> o <a href="/docs/component/form-inputs/select" class="docs-page__inline-link">Select</a>.',
       },
     },
     'system-principles': {

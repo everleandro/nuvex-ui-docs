@@ -13,7 +13,7 @@
             <div v-if="hasDesignSlot" class="flex-1 d-flex flex-wrap gap-4 justify-center items-center">
               <slot name="panel-design" />
             </div>
-            <div v-if="hasDesignCodeSlot" class="d-flex mt-4 items-end design-code-panel">
+            <div v-if="hasDesignCodeSlot" class="d-flex full-height mt-4 design-code-panel">
               <slot name="panel-design-code" />
             </div>
           </div>
@@ -70,8 +70,10 @@ const activeTabValue = computed(() => {
 })
 
 </script>
-<style scoped>
+<style lang="scss">
 .design-code-panel {
-  min-height: 65%;
+  &>pre {
+    height: 100%;
+  }
 }
 </style>

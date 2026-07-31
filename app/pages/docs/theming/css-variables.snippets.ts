@@ -11,12 +11,12 @@ export const cssVariablesCodeSnippets: Record<'use-in-vue-and-nuxt', CssVariable
       code: `:root {
   --e-border-radius-root: 0.875rem;
   --e-color-primary: #0f766e;
-  --e-surface-1: #ffffff;
+  --e-color-surface-base: #ffffff;
 }
 
 [data-theme='dark'] {
   --e-color-primary: #5eead4;
-  --e-surface-1: #111827;
+  --e-color-surface-base: #111827;
   --e-text-default: #e5eef9;
 }`,
       language: 'css',
@@ -25,7 +25,7 @@ export const cssVariablesCodeSnippets: Record<'use-in-vue-and-nuxt', CssVariable
       label: 'components/MarketingBanner.vue <style scoped>',
       code: `.marketing-banner {
   border-radius: var(--e-border-radius-root);
-  background: var(--e-surface-1);
+  background: var(--e-color-surface-base);
   color: var(--e-text-default);
   border: 1px solid var(--e-border);
 }

@@ -1,10 +1,13 @@
 :root,
 [data-theme="light"],
 html.light {
-  --prism-bg: var(--e-color-surface-2, #f8fafc);
-  --prism-bg-inline: var(--e-color-surface-3, #eef2f7);
-  --prism-fg: var(--e-contrast-surface-2, #000);
+  --prism-bg: var(--e-color-surface-raised, #f8fafc);
+  --prism-bg-inline: var(--e-color-surface-subtle, #e6ebf2);
+  --prism-fg: var(--e-contrast-surface-raised, #000);
   --prism-border: var(--e-color-border, rgba(0, 0, 0, 0.12));
+  --prism-selection: rgba(148, 163, 184, 0.2);
+  --prism-line-number: color-mix(in srgb, var(--prism-fg) 42%, transparent);
+  --prism-line-number-active: color-mix(in srgb, var(--prism-fg) 76%, transparent);
   --prism-comment: color-mix(in srgb, var(--prism-fg) 56%, transparent);
   --prism-punctuation: color-mix(in srgb, var(--prism-fg) 86%, transparent);
   --prism-keyword: var(--e-color-primary, #42b883);
@@ -12,6 +15,10 @@ html.light {
   --prism-number: var(--e-color-tertiary, #3498db);
   --prism-function: var(--e-color-tertiary, #3498db);
   --prism-property: var(--e-color-primary, #42b883);
+  --prism-tag: var(--e-color-error, #e74c3c);
+  --prism-operator: color-mix(in srgb, var(--prism-fg) 90%, transparent);
+  --prism-variable: var(--prism-fg);
+  --prism-attribute: var(--e-color-warning, #f39c12);
   --prism-warning: var(--e-color-warning, #f39c12);
   --prism-error: var(--e-color-error, #e74c3c);
 }
@@ -19,19 +26,26 @@ html.light {
 :root.dark,
 [data-theme="dark"],
 html.dark {
-  --prism-bg: var(--e-color-surface-1, #1e1e1e);
-  --prism-bg-inline: var(--e-color-surface-2, #262626);
-  --prism-fg: var(--e-contrast-surface-1, #fafafa);
-  --prism-border: var(--e-color-border, rgba(255, 255, 255, 0.12));
-  --prism-comment: color-mix(in srgb, var(--prism-fg) 58%, transparent);
-  --prism-punctuation: color-mix(in srgb, var(--prism-fg) 88%, transparent);
-  --prism-keyword: var(--e-color-primary, #58d78d);
-  --prism-string: var(--e-color-success, #52c77a);
-  --prism-number: var(--e-color-warning, #f8b739);
-  --prism-function: var(--e-color-tertiary, #5dade2);
-  --prism-property: var(--e-color-primary, #58d78d);
-  --prism-warning: var(--e-color-warning, #f8b739);
-  --prism-error: var(--e-color-error, #f58a8a);
+  --prism-bg: #212121;
+  --prism-bg-inline: #292929;
+  --prism-fg: #eeffff;
+  --prism-border: #323232;
+  --prism-selection: rgba(64, 64, 64, 0.9);
+  --prism-line-number: #616161;
+  --prism-line-number-active: #b0bec5;
+  --prism-comment: #616161;
+  --prism-punctuation: #b0bec5;
+  --prism-keyword: #c792ea;
+  --prism-string: #c3e88d;
+  --prism-number: #f78c6c;
+  --prism-function: #82aaff;
+  --prism-property: #80cbc4;
+  --prism-tag: #f07178;
+  --prism-operator: #89ddff;
+  --prism-variable: #eeffff;
+  --prism-attribute: #ffcb6b;
+  --prism-warning: #ffcb6b;
+  --prism-error: #ff5370;
 }
 
 code[class*="language-"],
@@ -48,6 +62,7 @@ pre[class*="language-"] {
   line-height: 1.55;
   tab-size: 2;
   hyphens: none;
+  font-size: var(--e-typography-body-font-size-md);
 }
 
 pre[class*="language-"] {
@@ -56,6 +71,13 @@ pre[class*="language-"] {
   border: 1px solid var(--prism-border);
   border-radius: var(--e-border-radius-root, 0.5rem);
   background: var(--prism-bg);
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] *::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] *::selection {
+  background: var(--prism-selection);
 }
 
 :not(pre) > code[class*="language-"] {
@@ -75,18 +97,27 @@ pre[class*="language-"] {
 }
 
 .token.punctuation,
-.token.operator,
 .token.entity,
-.token.url,
-.token.variable {
+.token.url {
   color: var(--prism-punctuation);
 }
 
+.token.operator {
+  color: var(--prism-operator);
+}
+
+.token.variable {
+  color: var(--prism-variable);
+}
+
 .token.property,
-.token.tag,
 .token.constant,
 .token.symbol {
   color: var(--prism-property);
+}
+
+.token.tag {
+  color: var(--prism-tag);
 }
 
 .token.boolean,
@@ -95,12 +126,15 @@ pre[class*="language-"] {
 }
 
 .token.selector,
-.token.attr-name,
 .token.string,
 .token.char,
 .token.builtin,
 .token.inserted {
   color: var(--prism-string);
+}
+
+.token.attr-name {
+  color: var(--prism-attribute);
 }
 
 .token.atrule,
@@ -139,4 +173,20 @@ pre[class*="language-"] {
 
 .token.entity {
   cursor: help;
+}
+
+pre.line-numbers {
+  padding-left: 3.5rem;
+}
+
+.line-numbers .line-numbers-rows {
+  border-right: 1px solid var(--prism-border);
+}
+
+.line-numbers-rows > span::before {
+  color: var(--prism-line-number);
+}
+
+.line-numbers-rows > span:hover::before {
+  color: var(--prism-line-number-active);
 }

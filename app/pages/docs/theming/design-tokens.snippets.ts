@@ -62,8 +62,8 @@ export const designTokensCodeSnippets: Record<
     'warning': #d97706,
     'error': #dc2626,
     'info': #0284c7,
-    'surface-0': #f4f7fb,
-    'surface-1': #ffffff,
+    'surface-canvas': #f4f7fb,
+    'surface-base': #ffffff,
   ),
   $semantic-color-tokens-dark: (
     'primary': #5eead4,
@@ -73,8 +73,8 @@ export const designTokensCodeSnippets: Record<
     'warning': #fbbf24,
     'error': #f87171,
     'info': #7dd3fc,
-    'surface-0': #0f172a,
-    'surface-1': #111827,
+    'surface-canvas': #0f172a,
+    'surface-base': #111827,
   ),
 );`,
       language: 'scss',
@@ -85,14 +85,14 @@ export const designTokensCodeSnippets: Record<
   $semantic-contrast-tokens-light: (
     'primary': white,
     'secondary': white,
-    'surface-0': #111827,
-    'surface-1': #111827,
+    'surface-canvas': #111827,
+    'surface-base': #111827,
   ),
   $semantic-contrast-tokens-dark: (
     'primary': #042f2e,
     'secondary': #0f172a,
-    'surface-0': #e5eef9,
-    'surface-1': #f8fafc,
+    'surface-canvas': #e5eef9,
+    'surface-base': #f8fafc,
   ),
   $semantic-text-tokens-light: (
     'default': #1f2937,
@@ -168,10 +168,10 @@ export const designTokensCodeSnippets: Record<
   'input': #4f636b,
   'label': #4f636b,
   'disabled': rgba(0, 0, 0, 0.5),
-  'surface-0': #f4f6f8,
-  'surface-1': #ffffff,
-  'surface-2': #f8fafc,
-  'surface-3': #eef2f7,
+  'surface-canvas': #f4f6f8,
+  'surface-base': #ffffff,
+  'surface-raised': #f8fafc,
+  'surface-subtle': #e6ebf2,
   'border': rgba(0, 0, 0, 0.15),
 );
 
@@ -186,10 +186,10 @@ $semantic-color-tokens-dark: (
   'input': #E5E7EB,
   'label': #E5E7EB,
   'disabled': rgba(255, 255, 255, 0.68),
-  'surface-0': #141414,
-  'surface-1': #1e1e1e,
-  'surface-2': #262626,
-  'surface-3': #2f2f2f,
+  'surface-canvas': #141414,
+  'surface-base': #1e1e1e,
+  'surface-raised': #262626,
+  'surface-subtle': #2f2f2f,
   'border': rgba(255, 255, 255, 0.15),
 );
 
@@ -203,10 +203,10 @@ $semantic-contrast-tokens-light: (
   'info': white,
   'input': white,
   'disabled': rgba(255, 255, 255, 0.58),
-  'surface-0': black,
-  'surface-1': black,
-  'surface-2': black,
-  'surface-3': black,
+  'surface-canvas': black,
+  'surface-base': black,
+  'surface-raised': black,
+  'surface-subtle': black,
 );
 
 $semantic-contrast-tokens-dark: (
@@ -219,10 +219,10 @@ $semantic-contrast-tokens-dark: (
   'info': white,
   'input': white,
   'disabled': rgba(255, 255, 255, 0.38),
-  'surface-0': #d0d7e1,
-  'surface-1': #b5c0d2,
-  'surface-2': #9faec3,
-  'surface-3': #8d9aaf,
+  'surface-canvas': #d0d7e1,
+  'surface-base': #b5c0d2,
+  'surface-raised': #9faec3,
+  'surface-subtle': #8d9aaf,
 );
 
 $semantic-text-tokens-light: (
@@ -520,13 +520,13 @@ $list-item-dense: (
     },
     {
       label: 'nuvex-ui/setting.scss components/drawer + expansion + schedule',
-      code: `$drawer-bg: var(--e-color-surface-1);
-$drawer-color: var(--e-contrast-surface-1);
+      code: `$drawer-bg: var(--e-color-surface-base);
+    $drawer-color: var(--e-contrast-surface-base);
 $drawer-border-color: var(--e-color-border);
 $drawer-border-width: 1px;
 $drawer-transition-duration: 0.2s;
 $drawer-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-$drawer-floating-bg: var(--e-color-surface-2);
+    $drawer-floating-bg: var(--e-color-surface-raised);
 $drawer-floating-margin: 12px;
 $drawer-floating-radius: var(--e-border-radius-root, 0rem);
 
@@ -536,22 +536,22 @@ $expansion-header-font-size: 0.875rem;
 $expansion-panel-gap: 0.5rem;
 $expansion-panel-border-width: thin;
 $expansion-panel-border-radius: var(--e-border-radius-root, 0rem);
-$expansion-panel-button-background-color: var(--e-color-surface-1);
-$expansion-panel-background-color: var(--e-color-surface-1);
-$expansion-panel-button-color: var(--e-contrast-surface-1);
-$expansion-panel-color: var(--e-contrast-surface-1);
+$expansion-panel-button-background-color: var(--e-color-surface-base);
+$expansion-panel-background-color: var(--e-color-surface-base);
+$expansion-panel-button-color: var(--e-contrast-surface-base);
+$expansion-panel-color: var(--e-contrast-surface-base);
 
 $e-schedule-border-width: thin;
 $hour-column-width: 4.0625rem;
 $hour-column-width-xs: calc(var(--e-hour-column-width) - 1.1875rem);
 $header-col-height: 4.0625rem;
-$schedule-bg: var(--e-color-surface-1, #ffffff);
-$schedule-color: var(--e-contrast-surface-1);
+$schedule-bg: var(--e-color-surface-base, #ffffff);
+$schedule-color: var(--e-contrast-surface-base);
 $schedule-border-color: var(--e-color-border, rgba(0, 0, 0, 0.12));
 $schedule-border-radius: var(--e-border-radius-root, 0rem);
 $schedule-header-frame-height: calc($header-col-height + 1.25rem);
 $schedule-toolbar-gap: 0.5rem;
-$schedule-event-bg: var(--e-color-surface-2, #ffffff);`,
+$schedule-event-bg: var(--e-color-surface-raised, #ffffff);`,
       language: 'scss',
     },
     {

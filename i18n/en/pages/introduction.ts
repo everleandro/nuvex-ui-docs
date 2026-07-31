@@ -71,9 +71,9 @@ export const introductionEditorialContent: DocsConceptPageContent<DocsIntroducti
       ],
       itemsHtml: {
         'Install Nuvex UI and verify your base dependencies.': 'Install Nuvex UI and verify your base dependencies in <a href="/docs/getting-started/installation" class="docs-page__inline-link">Installation</a>.',
-        'Build a first screen using core components and global styles.': 'Build a first screen using core components and global styles, using a Type B page such as <a href="/docs/component/forms/button" class="docs-page__inline-link">Button</a> as a reference.',
+        'Build a first screen using core components and global styles.': 'Build a first screen using core components and global styles, using a Type B page such as <a href="/docs/component/core-actions/button" class="docs-page__inline-link">Button</a> as a reference.',
         'Configure themes, layout primitives, and navigation structure.': 'Configure themes, layout primitives, and navigation structure with help from <a href="/docs/theming/overview" class="docs-page__inline-link">Theming</a> and <a href="/docs/component/layout/app-shell" class="docs-page__inline-link">Layout</a>.',
-        'Expand into component-specific docs as features are implemented.': 'Expand into component-specific docs as features are implemented, for example <a href="/docs/component/forms/text-field" class="docs-page__inline-link">Text Field</a> or <a href="/docs/component/forms/select" class="docs-page__inline-link">Select</a>.',
+        'Expand into component-specific docs as features are implemented.': 'Expand into component-specific docs as features are implemented, for example <a href="/docs/component/form-inputs/text-field" class="docs-page__inline-link">Text Field</a> or <a href="/docs/component/form-inputs/select" class="docs-page__inline-link">Select</a>.',
       },
     },
     'system-principles': {

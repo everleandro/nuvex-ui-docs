@@ -21,7 +21,8 @@
             <ECheckbox v-model="switchProperty.disabled" cols="24" :label="controlLabel('disabled')" :color="color" />
             <ECheckbox v-model="switchProperty.readonly" cols="24" :label="controlLabel('readonly')" :color="color" />
             <ECheckbox v-model="switchProperty.loading" cols="24" :label="controlLabel('loading')" :color="color" />
-            <ECheckbox v-model="switchProperty.retainColor" cols="24" :label="controlLabel('retainColor')" :color="color" />
+            <ECheckbox v-model="switchProperty.retainColor" cols="24" :label="controlLabel('retainColor')"
+              :color="color" />
           </EForm>
         </template>
       </DocsComponentPlayground>
@@ -33,17 +34,23 @@
         <template #panel-design>
           <EForm>
             <ESwitch v-model="visualStates.default" lg="6" :label="pageText.visualStateLabels.default" :color="color" />
-            <ESwitch v-model="visualStates.outlined" lg="6" :label="pageText.visualStateLabels.outlined" outlined :color="color" />
-            <ESwitch v-model="visualStates.tonal" lg="6" :label="pageText.visualStateLabels.tonal" tonal :color="color" />
-            <ESwitch v-model="visualStates.retainColor" lg="6" :label="pageText.visualStateLabels.retainColor" retain-color :color="color" />
-            <ESwitch v-model="visualStates.loading" lg="6" :label="pageText.visualStateLabels.loading" loading :color="color" />
-            <ESwitch v-model="visualStates.disabled" lg="6" :label="pageText.visualStateLabels.disabled" disabled :color="color" />
-            <ESwitch v-model="visualStates.readonly" lg="6" :label="pageText.visualStateLabels.readonly" readonly outlined :color="color" />
+            <ESwitch v-model="visualStates.outlined" lg="6" :label="pageText.visualStateLabels.outlined" outlined
+              :color="color" />
+            <ESwitch v-model="visualStates.tonal" lg="6" :label="pageText.visualStateLabels.tonal" tonal
+              :color="color" />
+            <ESwitch v-model="visualStates.retainColor" lg="6" :label="pageText.visualStateLabels.retainColor"
+              retain-color :color="color" />
+            <ESwitch v-model="visualStates.loading" lg="6" :label="pageText.visualStateLabels.loading" loading
+              :color="color" />
+            <ESwitch v-model="visualStates.disabled" lg="6" :label="pageText.visualStateLabels.disabled" disabled
+              :color="color" />
+            <ESwitch v-model="visualStates.readonly" lg="6" :label="pageText.visualStateLabels.readonly" readonly
+              outlined :color="color" />
           </EForm>
         </template>
 
         <template #panel-template>
-          <CodePanel :code="visualVariantsTemplateCode" />
+          <CodePanel :code="switchCodeSnippets.visualVariantsTemplateCode" />
         </template>
       </DocsComponentPlayground>
     </DocsSection>
@@ -56,22 +63,21 @@
             <ESwitch v-model="deploymentStatus" lg="8" :label="pageText.customValuesLabel" true-value="published"
               false-value="draft" :detail="pageText.customValuesDetail" :color="color" />
             <EFormColumn lg="4">
-              <ECard color="surface-subtle" elevation="sm" class="pa-3 d-flex flex-column gap-2">
-                <div class="type-subtitle">{{ pageText.currentModelValue }}</div>
-                <EChip :color="deploymentStatus === 'published' ? 'success' : 'warning'" tonal>
+              <ECard elevation="sm" :subtitle="pageText.currentModelValue">
+                <ECard :color="deploymentStatus === 'published' ? 'success' : 'warning'" tonal>
                   {{ deploymentStatus }}
-                </EChip>
+                </ECard>
               </ECard>
             </EFormColumn>
           </EForm>
         </template>
 
         <template #panel-template>
-          <CodePanel :code="customValuesTemplateCode" />
+          <CodePanel :code="switchCodeSnippets.customValuesTemplateCode" />
         </template>
 
         <template #panel-ts>
-          <CodePanel :code="customValuesTsCode" language="ts" />
+          <CodePanel :code="switchCodeSnippets.customValuesTsCode" language="ts" />
         </template>
       </DocsComponentPlayground>
     </DocsSection>
@@ -80,24 +86,22 @@
       :description="sections['loading-and-async'].description">
       <DocsComponentPlayground :tabs="tabsDesignTemplateTs" :color="color">
         <template #panel-design>
-          <ECard elevation="sm" color="surface-subtle" class="pa-4 d-flex flex-column gap-3" style="width: 420px;">
+          <ECard elevation="sm" style="width: 420px;">
+            <ECard :color="asyncFeedbackColor" tonal>{{ asyncFeedback }}</ECard>
             <ESwitch v-model="asyncState.value" :label="pageText.asyncLabel" :detail="pageText.asyncDetail"
               :loading="asyncState.loading" :color="color" @update:model-value="handleAsyncUpdate" />
-            <div class="d-flex align-center flex-column justify-space-between gap-3 flex-wrap">
-              <EChip :color="asyncFeedbackColor" tonal>{{ asyncFeedback }}</EChip>
-              <EButton :disabled="asyncState.loading" :color="color" text @click="resetAsyncDemo">
-                {{ pageText.asyncButtonLabel }}
-              </EButton>
-            </div>
+            <EButton :disabled="asyncState.loading" :color="color" block class="mt-4" @click="resetAsyncDemo">
+              {{ pageText.asyncButtonLabel }}
+            </EButton>
           </ECard>
         </template>
 
         <template #panel-template>
-          <CodePanel :code="asyncTemplateCode" />
+          <CodePanel :code="switchCodeSnippets.asyncTemplateCode" />
         </template>
 
         <template #panel-ts>
-          <CodePanel :code="asyncTsCode" language="ts" />
+          <CodePanel :code="switchCodeSnippets.asyncTsCode" language="ts" />
         </template>
       </DocsComponentPlayground>
     </DocsSection>
@@ -110,7 +114,8 @@
             <ESwitch v-model="slotValue" :color="color">
               <template #label>
                 {{ pageText.slotLead }}
-                <a href="#" @click.prevent="termsDialogOpen = true">{{ pageText.slotLinkLabel }}</a>
+                <a href="#" @click.prevent="termsDialogOpen = true" class="primary--text">{{ pageText.slotLinkLabel
+                  }}</a>
               </template>
             </ESwitch>
 
@@ -132,11 +137,11 @@
         </template>
 
         <template #panel-template>
-          <CodePanel :code="slotsTemplateCode" />
+          <CodePanel :code="switchCodeSnippets.slotsTemplateCode" />
         </template>
 
         <template #panel-ts>
-          <CodePanel :code="slotsTsCode" language="ts" />
+          <CodePanel :code="switchCodeSnippets.slotsTsCode" language="ts" />
         </template>
       </DocsComponentPlayground>
     </DocsSection>
@@ -145,25 +150,15 @@
       :description="sections.validation.description">
       <DocsComponentPlayground :tabs="tabsDesignTemplateTs" :color="color">
         <template #panel-design>
-          <ECard elevation="sm" color="surface-subtle" class="pa-4" style="width: 420px;">
-            <EForm v-model="validationState.isValid" validate-on-submit @submit="handleValidationSubmit"
-              @submit-invalid="handleValidationInvalid">
-              <ESwitch v-model="validationState.accepted" :label="pageText.validationLabel"
-                :rules="[(value: boolean) => value === true || validationMessage]" :color="color" />
-              <EFormColumn cols="12" class="d-flex flex-column gap-2">
-                <EButton color="primary" type="submit" :disabled="!validationState.isValid">{{ pageText.validationButtonLabel }}</EButton>
-                <div class="d-flex justify-center"><EChip class="type-subtitle">{{ validationFeedback }}</EChip></div>
-              </EFormColumn>
-            </EForm>
-          </ECard>
+          <DocsFormsSwitchValidationPreview :color="color" />
         </template>
 
         <template #panel-template>
-          <CodePanel :code="validationTemplateCode" />
+          <CodePanel :code="switchCodeSnippets.validationTemplateCode" />
         </template>
 
         <template #panel-ts>
-          <CodePanel :code="validationTsCode" language="ts" />
+          <CodePanel :code="switchCodeSnippets.validationTsCode" language="ts" />
         </template>
       </DocsComponentPlayground>
     </DocsSection>
@@ -178,6 +173,7 @@
 import { useI18n } from 'vue-i18n'
 import { switchApiReference } from '~/api-reference/forms/switch'
 import { switchApiReferenceEs } from '~/api-reference/forms/switch-es'
+import { switchCodeSnippets } from './switch.snippets'
 import { buildTemplateElementSnippet } from '~/utils/snippet-element'
 
 type SwitchValue = boolean | string | number
@@ -234,36 +230,6 @@ const colors = ['primary', 'secondary', 'blue', 'warning', 'purple']
 
 const pageText = computed(() => {
   return content.value.labels.switchText ?? {
-    usageLabel: 'Enable release gate',
-    usageDetail: 'Controls whether the release can proceed automatically.',
-    visualStateLabels: {
-      default: 'Default',
-      outlined: 'Outlined',
-      tonal: 'Tonal',
-      retainColor: 'Retain color',
-      loading: 'Loading',
-      disabled: 'Disabled',
-      readonly: 'Readonly',
-    },
-    customValuesLabel: 'Publish changes',
-    customValuesDetail: 'Maps switch state to deployment status values.',
-    currentModelValue: 'Current model value',
-    asyncLabel: 'Live analytics',
-    asyncDetail: 'Persist the preference before enabling session tracking.',
-    asyncButtonLabel: 'Reset demo',
-    asyncIdleFeedback: 'Toggle the switch to simulate an async save.',
-    asyncSavingFeedback: 'Saving preference...',
-    asyncSuccessFeedback: 'Preference saved successfully.',
-    slotLead: 'I reviewed the',
-    slotLinkLabel: 'environment policy',
-    dialogTitle: 'Environment policy',
-    dialogBody: 'Use the label slot when the switch label needs richer inline content such as links, helper context, or policy summaries.',
-    dialogClose: 'Close',
-    validationLabel: 'Enable production notifications',
-    validationButtonLabel: 'Continue',
-    validationMessage: 'Enable this switch before continuing.',
-    validationIdleFeedback: 'Submit to validate the switch rule.',
-    validationSuccessFeedback: 'Form is valid. Ready to continue.',
   }
 })
 
@@ -331,31 +297,6 @@ const asyncFeedbackColor = computed(() => {
 const slotValue = ref(false)
 const termsDialogOpen = ref(false)
 
-const validationMessage = computed(() => pageText.value.validationMessage)
-const validationState = ref({
-  isValid: undefined as boolean | undefined,
-  accepted: false,
-  submitState: 'idle' as 'idle' | 'valid' | 'invalid',
-})
-
-const handleValidationSubmit = () => {
-  validationState.value.submitState = 'valid'
-}
-
-const handleValidationInvalid = () => {
-  validationState.value.submitState = 'invalid'
-}
-
-const validationFeedback = computed(() => {
-  if (validationState.value.submitState === 'idle') {
-    return pageText.value.validationIdleFeedback
-  }
-
-  return validationState.value.submitState === 'valid'
-    ? pageText.value.validationSuccessFeedback
-    : validationMessage.value
-})
-
 const { tabsPlayground, tabsDesignTemplate, tabsDesignTemplateTs } = useDocsPlaygroundTabSets()
 
 const controlLabel = (key: string): string => {
@@ -378,101 +319,4 @@ const usageTemplateCode = computed(() => {
     ],
   })
 })
-
-const visualVariantsTemplateCode = computed(() => `<EForm>
-  <ESwitch v-model="visualStates.default" label="${pageText.value.visualStateLabels.default}" :color="color" />
-  <ESwitch v-model="visualStates.outlined" label="${pageText.value.visualStateLabels.outlined}" outlined :color="color" />
-  <ESwitch v-model="visualStates.tonal" label="${pageText.value.visualStateLabels.tonal}" tonal :color="color" />
-  <ESwitch v-model="visualStates.retainColor" label="${pageText.value.visualStateLabels.retainColor}" retain-color :color="color" />
-  <ESwitch v-model="visualStates.loading" label="${pageText.value.visualStateLabels.loading}" loading :color="color" />
-  <ESwitch v-model="visualStates.disabled" label="${pageText.value.visualStateLabels.disabled}" disabled :color="color" />
-  <ESwitch v-model="visualStates.readonly" label="${pageText.value.visualStateLabels.readonly}" readonly outlined :color="color" />
-</EForm>`)
-
-const customValuesTemplateCode = computed(() => `<ESwitch
-  v-model="deploymentStatus"
-  label="${pageText.value.customValuesLabel}"
-  true-value="published"
-  false-value="draft"
-  detail="${pageText.value.customValuesDetail}"
-/>`)
-
-const customValuesTsCode = `const deploymentStatus = ref<'published' | 'draft'>('draft')`
-
-const asyncTemplateCode = computed(() => `<ESwitch
-  v-model="analyticsEnabled"
-  label="${pageText.value.asyncLabel}"
-  detail="${pageText.value.asyncDetail}"
-  :loading="isSaving"
-  @update:model-value="handleAsyncUpdate"
-/>`)
-
-const asyncTsCode = `const analyticsEnabled = ref(true)
-const isSaving = ref(false)
-
-const handleAsyncUpdate = async (value: boolean) => {
-  analyticsEnabled.value = value
-  isSaving.value = true
-
-  try {
-    await new Promise((resolve) => setTimeout(resolve, 900))
-  } finally {
-    isSaving.value = false
-  }
-}`
-
-const slotsTemplateCode = computed(() => `<ESwitch v-model="slotValue">
-  <template #label>
-    ${pageText.value.slotLead}
-    <a href="#" @click.prevent="dialogOpen = true">${pageText.value.slotLinkLabel}</a>
-  </template>
-</ESwitch>
-
-<EDialog v-model="dialogOpen" max-width="420">
-  <ECard class="pa-4 d-flex flex-column gap-3">
-    <div>
-      <div class="type-subtitle text-heading">${pageText.value.dialogTitle}</div>
-      <p class="type-body mt-2 mb-0">
-        ${pageText.value.dialogBody}
-      </p>
-    </div>
-
-    <div class="d-flex justify-end">
-      <EButton color="primary" @click="dialogOpen = false">
-        ${pageText.value.dialogClose}
-      </EButton>
-    </div>
-  </ECard>
-</EDialog>`)
-
-const slotsTsCode = `const slotValue = ref(false)
-const dialogOpen = ref(false)`
-
-const validationTemplateCode = computed(() => `<EForm
-  v-model="isValid"
-  validate-on-submit
-  @submit="handleSubmit"
-  @submit-invalid="handleInvalid"
->
-  <ESwitch
-    v-model="notificationsEnabled"
-    label="${pageText.value.validationLabel}"
-    :rules="[(value) => value === true || '${pageText.value.validationMessage}']"
-  />
-
-  <EButton color="primary" type="submit">
-    ${pageText.value.validationButtonLabel}
-  </EButton>
-</EForm>`)
-
-const validationTsCode = `const isValid = ref<boolean | undefined>()
-const notificationsEnabled = ref(false)
-
-const handleSubmit = () => {
-  // Continue with the valid form submission flow.
-}
-
-const handleInvalid = () => {
-  // Optional: react when validation blocks the submit.
-}`
 </script>

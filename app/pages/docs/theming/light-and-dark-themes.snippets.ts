@@ -49,7 +49,7 @@ createApp(App).use(NuvexUI, {
 }
 
 [data-theme='dark'] .marketing-shell {
-  background: var(--e-surface-0);
+  background: var(--e-color-surface-canvas);
   color: var(--e-text-default);
 }`,
       language: 'css',

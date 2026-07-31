@@ -1,14 +1,14 @@
 <template>
     <ECard class="docs-page__button-integration-form-preview" title="Form Title" :subtitle="statusMessage"
-        elevation="sm" color="green-100">
-        <EForm v-model="formIsValid" class="d-flex flex-column gap-3">
+        elevation="sm">
+        <EForm ref="methodsFormRef" v-model="formIsValid" class="d-flex flex-column gap-3">
             <ETextfield v-model="email" :prepend-icon="$icon.email" :label="labels.emailLabel"
                 :placeholder="labels.emailPlaceholder" :rules="[requiredRule, emailRule]" />
             <ETextfield v-model="password" :prepend-icon="$icon.lock" :label="labels.passwordLabel"
                 :placeholder="labels.passwordPlaceholder" :rules="[requiredRule, passwordRule]" type="password" />
         </EForm>
         <EDivider />
-        <div class="d-flex gap-2 flex-1">
+        <div class="d-flex gap-4 pt-4 flex-1">
             <ESpacer />
             <EButton text @click="resetForm">
                 {{ labels.cancel }}
@@ -21,7 +21,8 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import type { EForm } from 'nuvex-ui';
+const methodsFormRef = ref<EForm | null>(null)
 
 interface IntegrationFormLabels {
     submit: string
@@ -36,7 +37,6 @@ interface IntegrationFormLabels {
     passwordPlaceholder: string
 }
 
-const { locale } = useI18n()
 const content = useDocsComponentI18nContent('pages.button.button')
 
 const labels = computed<IntegrationFormLabels>(() => {
@@ -81,7 +81,8 @@ const statusMessage = computed(() => {
 })
 
 const submitForm = async () => {
-    if (!canSubmit.value) return
+    const valid = await methodsFormRef.value?.validate?.()
+    if (!canSubmit.value || !valid) return
 
     submitting.value = true
     submitted.value = false
@@ -96,19 +97,16 @@ const submitForm = async () => {
 }
 
 const resetForm = () => {
-    email.value = ''
-    password.value = ''
-    formIsValid.value = false
+    methodsFormRef.value?.reset?.()
+    methodsFormRef.value?.resetValidation?.()
     submitting.value = false
     submitted.value = false
     wasCanceled.value = true
 }
 </script>
-<style scoped lang="scss">
+<style lang="scss">
 .docs-page__button-integration-form-preview {
-    width: 400px;
-    --e-color-input: var(--card-text);
-    --e-color-disabled: rgba(155, 155, 155, 0.5);
-    --e-contrast-disabled: rgba(255, 255, 255, 0.68);
+    width: 600px;
+    --e-color-disabled: rgba(155, 155, 155, 0.6);
 }
 </style>

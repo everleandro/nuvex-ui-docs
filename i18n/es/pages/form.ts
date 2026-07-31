@@ -29,7 +29,7 @@ export const formComponentContentEs: DocsComponentPageContent = {
       key: 'table-layout',
       title: 'Layout tipo tabla',
       descriptionHtml:
-        "Este preview muestra a <code class='docs-inline-code'>Form</code> en modo <code class='docs-inline-code'>table</code> para presentar un bloque de datos operativos con una estructura mas rigida. Sobre la misma matriz se renderizan <code class='docs-inline-code'>ticketId</code>, <code class='docs-inline-code'>assignee</code>, <code class='docs-inline-code'>environment</code> y <code class='docs-inline-code'>requiresApproval</code>, mientras el contenedor queda preparado para ajustar detalles visuales como <code class='docs-inline-code'>tableLineColor</code>, <code class='docs-inline-code'>tableCellBackgroundColor</code>, <code class='docs-inline-code'>tableFieldColor</code> y <code class='docs-inline-code'>tableLineOpacity</code>.",
+        "Este preview muestra a <code class='docs-inline-code'>Form</code> en modo <code class='docs-inline-code'>table</code> para presentar un bloque de datos operativos con una estructura mas rigida. El ejemplo aplica <code class='docs-inline-code'>fieldColor</code> en <code class='docs-inline-code'>primary</code> y <code class='docs-inline-code'>labelBehavior</code> en <code class='docs-inline-code'>floating</code>, mientras la misma matriz renderiza <code class='docs-inline-code'>ticketId</code>, <code class='docs-inline-code'>assignee</code>, <code class='docs-inline-code'>environment</code> y <code class='docs-inline-code'>requiresApproval</code> dentro de un card de aprobacion estructurada.",
     },
     {
       key: 'form-column',
@@ -83,9 +83,6 @@ export const formComponentContentEs: DocsComponentPageContent = {
       environmentLabel: 'Ambiente',
       ticketLabel: 'Ticket ID',
       approvalLabel: 'Requiere aprobacion',
-      lineColorLabel: 'tableLineColor',
-      cellColorLabel: 'tableCellBackgroundColor',
-      opacityLabel: 'tableLineOpacity',
     },
     columnText: {
       cardTitle: 'Layout de acciones con Form Column',

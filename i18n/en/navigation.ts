@@ -9,11 +9,14 @@ const navigation = {
     community: 'Community',
   },
   subgroups: {
-    forms: 'Forms',
+    core_actions: 'Core Actions',
+    form_foundations: 'Form Foundations',
+    form_inputs: 'Form Inputs',
     navigation: 'Navigation',
     layout: 'Layout',
     feedback_overlays: 'Feedback and Overlays',
-    data_scheduling: 'Data and Scheduling',
+    data_display_scheduling: 'Data & Scheduling',
+    patterns_integration: 'Patterns and Integration',
   },
   items: {
     getting_started: {
@@ -52,33 +55,40 @@ const navigation = {
       elevation: 'Elevation',
       positioning: 'Positioning',
     },
-    forms: {
-      form: 'Form',
+    core_actions: {
       button: 'Button',
+    },
+    form_foundations: {
+      form: 'Form',
+    },
+    form_inputs: {
       text_field: 'Textfield',
       textarea: 'Textarea',
       select: 'Select',
       checkbox: 'Checkbox',
       radio: 'Radio',
       switch: 'Switch',
+      date_picker: 'Date Picker',
+      time_picker: 'Time Picker',
     },
     navigation: {
       list: 'List',
       menu: 'Menu',
       tabs: 'Tabs',
-      routing_patterns: 'Routing Patterns',
     },
     feedback_overlays: {
       dialog: 'Dialog',
       progress: 'Progress',
+    },
+    data_display_scheduling: {
+      card: 'Card',
+      schedule: 'Schedule',
+    },
+    patterns_integration: {
+      routing_patterns: 'Routing Patterns',
+      responsive_patterns: 'Responsive Patterns',
       overlay_service: 'Overlay Service',
       focus_and_accessibility: 'Focus and Accessibility',
-    },
-    data_scheduling: {
-      card: 'Card',
-      date_picker: 'Date Picker',
-      time_picker: 'Time Picker',
-      schedule: 'Schedule',
     },
     advanced: {
       plugin_api: 'Plugin API',

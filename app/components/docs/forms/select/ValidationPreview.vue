@@ -1,22 +1,21 @@
 <template>
-    <ECard class="select-validation-preview" :title="labels.cardTitle" :subtitle="labels.cardSubtitle" elevation="sm"
-        color="green-100">
+    <ECard class="select-validation-preview" :title="labels.cardTitle" :subtitle="validationStatusMessage" elevation="sm">
         <EForm ref="validationFormRef" v-model="validationFormIsValid" class="d-flex flex-column gap-3">
-            <ESelect v-model="validationModel.assignee" :items="assigneeItems" color="green-900" item-text="name"
+            <ESelect v-model="validationModel.assignee" :items="assigneeItems" :color="color" item-text="name"
                 item-value="id" label="Assignee" :rules="[requiredRule]" />
 
             <ESelect v-model="validationModel.priority" :items="priorityItems" label="Priority" :rules="[requiredRule]"
-                color="green-900" />
+                :color="color" />
 
-            <ESelect v-model="validationModel.tags" :items="tagItems" multiple chip label="Tags" color="green-900" />
+            <ESelect v-model="validationModel.tags" :items="tagItems" multiple chip label="Tags" :color="color" />
 
             <EFormColumn class="d-block">
                 <EDivider />
                 <div class="d-flex gap-2 flex-1 pt-4">
                     <ESpacer />
-                    <EButton text @click="resetValidationDemo">Reset</EButton>
+                    <EButton text @click="resetValidationDemo">{{ labels.cancel }}</EButton>
                     <EButton :disabled="!validationCanSubmit" :loading="validationSubmitting"
-                        @click="submitValidationDemo" color="green-800">
+                        @click="submitValidationDemo" color="primary">
                         {{ labels.submit }}
                     </EButton>
                 </div>
@@ -26,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n'
+import type { EForm } from 'nuvex-ui'
 import avatarManifest from '~~/assets/avatar-manifest.json'
 
 type AvatarManifestEntry = {
@@ -44,8 +43,6 @@ type Assignee = {
     avatarSrc: string
 }
 
-const { locale } = useI18n()
-
 const content = useDocsComponentI18nContent('pages.input.select')
 
 const assigneeItems: Assignee[] = (avatarManifest as AvatarManifestEntry[]).map((entry) => ({
@@ -60,6 +57,7 @@ const tagItems = ['UI', 'Accessibility', 'API', 'Performance', 'Documentation']
 
 const labels = computed(() => {
     return {
+        cancel: content.value.labels.integrationText?.form?.cancel ?? 'Cancel',
         submit: content.value.labels.integrationText?.form?.submit ?? 'Create ticket',
         idle: content.value.labels.integrationText?.form?.idle ?? 'Complete required fields to continue',
         submitting: content.value.labels.integrationText?.form?.submitting ?? 'Creating ticket...',
@@ -70,10 +68,11 @@ const labels = computed(() => {
     }
 })
 
+const color = ref('primary')
 const validationFormIsValid = ref(false)
 const validationSubmitting = ref(false)
 const validationStatusMessage = ref(labels.value.idle)
-const validationFormRef = ref<{ reset?: () => void } | null>(null)
+const validationFormRef = ref<EForm | null>(null)
 const validationModel = ref({
     assignee: '',
     priority: 'Medium',
@@ -94,10 +93,14 @@ const validationCanSubmit = computed(() => {
 
 const resetValidationDemo = () => {
     validationFormRef.value?.reset?.()
+    validationFormRef.value?.resetValidation?.()
+    validationSubmitting.value = false
+    validationStatusMessage.value = labels.value.canceled
 }
 
 const submitValidationDemo = async () => {
-    if (!validationCanSubmit.value) return
+    const valid = await validationFormRef.value?.validate?.()
+    if (!validationCanSubmit.value || !valid) return
 
     validationSubmitting.value = true
     validationStatusMessage.value = labels.value.submitting
@@ -113,27 +116,12 @@ const submitValidationDemo = async () => {
 <style scoped lang="scss">
 .select-validation-preview {
     width: 600px;
-    --e-color-input: var(--card-text);
     --e-color-disabled: rgba(155, 155, 155, 0.5);
-    --e-contrast-disabled: rgba(255, 255, 255, 0.68);
-    --e-color-border: var(--card-text);
 
     .e-divider {
         min-width: calc(100% + var(--card-padding) * 2);
         margin: 0 calc(var(--card-padding) * -1);
         opacity: 0.3;
-    }
-
-    .e-card::before {
-        content: "";
-        border-radius: inherit;
-        opacity: .1;
-        pointer-events: none;
-        background-color: currentColor;
-        transition: opacity .2s cubic-bezier(.4, 0, .6, 1);
-        position: absolute;
-        inset: 0;
-
     }
 }
 </style>

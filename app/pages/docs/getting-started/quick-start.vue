@@ -123,11 +123,11 @@ const quickStartNextStepMeta = [
     icon: 'layout',
   },
   {
-    to: '/docs/component/forms/button',
+    to: '/docs/component/core-actions/button',
     icon: 'forms',
   },
   {
-    to: '/docs/component/forms/text-field',
+    to: '/docs/component/form-inputs/text-field',
     icon: 'forms',
   },
   {

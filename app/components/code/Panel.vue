@@ -1,5 +1,5 @@
 <template>
-  <div class="code-panel flex-1 app-responsive-content">
+  <div class="code-panel code-panel__wrapper flex-1 app-responsive-content full-width p-4">
     <div class="code-panel__actions">
       <CopyButton />
     </div>
@@ -53,19 +53,35 @@ const prismBinding = computed(() => ({
 }))
 </script>
 
-<style scoped>
+<style lang="scss">
 .code-panel {
   position: relative;
-}
-
-.code-panel__actions {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-}
-
-.code-panel__content {
   height: 100%;
+
+  &__wrapper {
+    border: 1px solid var(--prism-border);
+    background: var(--e-color-surface-raised, #f8fafc);
+    border-radius: var(--e-border-radius-root);
+
+    pre[class*="language-"] {
+      border: none;
+      padding: 0;
+    }
+  }
+
+  &__actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  &__content {
+    height: 100%;
+
+    &>pre {
+      height: 100%;
+    }
+  }
 }
 </style>

@@ -29,7 +29,7 @@ export const formComponentContent: DocsComponentPageContent = {
       key: 'table-layout',
       title: 'Table layout',
       descriptionHtml:
-        "This preview shows <code class='docs-inline-code'>Form</code> in <code class='docs-inline-code'>table</code> mode to present an operational data block with a more rigid structure. The same matrix renders <code class='docs-inline-code'>ticketId</code>, <code class='docs-inline-code'>assignee</code>, <code class='docs-inline-code'>environment</code>, and <code class='docs-inline-code'>requiresApproval</code>, while the container is ready to tune visual details such as <code class='docs-inline-code'>tableLineColor</code>, <code class='docs-inline-code'>tableCellBackgroundColor</code>, <code class='docs-inline-code'>tableFieldColor</code>, and <code class='docs-inline-code'>tableLineOpacity</code>.",
+        "This preview shows <code class='docs-inline-code'>Form</code> in <code class='docs-inline-code'>table</code> mode to present an operational data block with a more rigid structure. The example applies <code class='docs-inline-code'>fieldColor</code> with <code class='docs-inline-code'>primary</code> and <code class='docs-inline-code'>labelBehavior</code> with <code class='docs-inline-code'>floating</code>, while the same matrix renders <code class='docs-inline-code'>ticketId</code>, <code class='docs-inline-code'>assignee</code>, <code class='docs-inline-code'>environment</code>, and <code class='docs-inline-code'>requiresApproval</code> inside a structured approval card.",
     },
     {
       key: 'form-column',
@@ -83,9 +83,6 @@ export const formComponentContent: DocsComponentPageContent = {
       environmentLabel: 'Environment',
       ticketLabel: 'Ticket ID',
       approvalLabel: 'Requires approval',
-      lineColorLabel: 'tableLineColor',
-      cellColorLabel: 'tableCellBackgroundColor',
-      opacityLabel: 'tableLineOpacity',
     },
     columnText: {
       cardTitle: 'Action layout with Form Column',

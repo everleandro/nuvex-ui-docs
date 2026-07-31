@@ -1,7 +1,6 @@
 <template>
-    <ECard class="docs-page__text-field-validation" :title="labels.cardTitle" :subtitle="labels.cardSubtitle" elevation="sm"
-        color="green-100">
-        <EForm v-model="formIsValid" class="d-flex flex-column gap-3">
+    <ECard class="docs-page__text-field-validation" :title="labels.cardTitle" :subtitle="statusMessage" elevation="sm">
+        <EForm ref="methodsFormRef" v-model="formIsValid" class="d-flex flex-column gap-3">
             <ETextfield v-model="firstName" :label="labels.firstNameLabel" :placeholder="labels.firstNamePlaceholder"
                 :rules="[requiredRule]" />
             <ETextfield v-model="lastName" :label="labels.lastNameLabel" :placeholder="labels.lastNamePlaceholder"
@@ -14,7 +13,10 @@
                 <EDivider />
                 <div class="d-flex gap-2 flex-1 pt-4">
                     <ESpacer />
-                    <EButton :loading="submitting" color="green-900" type="submit" :disabled="!formIsValid"
+                    <EButton text @click="resetForm">
+                        {{ labels.cancel }}
+                    </EButton>
+                    <EButton :loading="submitting" color="primary" type="submit" :disabled="!canSubmit"
                         :append-icon="$icon.arrowRight" @click="submitForm">
                         {{ labels.submit }}
                     </EButton>
@@ -25,13 +27,18 @@
 </template>
 
 <script setup lang="ts">
+import type { EForm } from 'nuvex-ui'
 import { EFormColumn, ESpacer, ETextfield } from 'nuvex-ui'
-import { useI18n } from 'vue-i18n'
 
 interface IntegrationFormLabels {
+    cancel: string
     submit: string
     cardTitle: string
     cardSubtitle: string
+    idle: string
+    submitting: string
+    success: string
+    canceled: string
     firstNameLabel: string
     firstNamePlaceholder: string
     lastNameLabel: string
@@ -42,16 +49,20 @@ interface IntegrationFormLabels {
     passwordPlaceholder: string
 }
 
-const { locale } = useI18n()
 const content = useDocsComponentI18nContent('pages.input.textField')
 
 const labels = computed<IntegrationFormLabels>(() => {
     const raw = content.value.labels.integrationText?.form as Partial<IntegrationFormLabels> | undefined
 
     return {
+        cancel: raw?.cancel ?? 'Cancel',
         submit: raw?.submit ?? 'Log in',
         cardTitle: raw?.cardTitle ?? 'Registration Form',
         cardSubtitle: raw?.cardSubtitle ?? 'Basic details',
+        idle: raw?.idle ?? 'Complete all required fields to continue',
+        submitting: raw?.submitting ?? 'Submitting registration...',
+        success: raw?.success ?? 'Registration completed successfully',
+        canceled: raw?.canceled ?? 'Registration form reset',
         firstNameLabel: raw?.firstNameLabel ?? 'First name',
         firstNamePlaceholder: raw?.firstNamePlaceholder ?? 'Jane',
         lastNameLabel: raw?.lastNameLabel ?? 'Last name',
@@ -66,9 +77,12 @@ const labels = computed<IntegrationFormLabels>(() => {
 const email = ref('')
 const firstName = ref('')
 const lastName = ref('')
+const methodsFormRef = ref<EForm | null>(null)
 const password = ref('')
 const formIsValid = ref(false)
 const submitting = ref(false)
+const submitted = ref(false)
+const wasCanceled = ref(false)
 
 const {
     requiredRule,
@@ -80,25 +94,41 @@ const canSubmit = computed(() => {
     return formIsValid.value && !submitting.value
 })
 
+const statusMessage = computed(() => {
+    if (submitting.value) return labels.value.submitting
+    if (wasCanceled.value) return labels.value.canceled
+    if (submitted.value) return labels.value.success
+    return labels.value.idle
+})
+
 const submitForm = async () => {
-    if (!canSubmit.value) return
+    const valid = await methodsFormRef.value?.validate?.()
+    if (!canSubmit.value || !valid) return
 
     submitting.value = true
+    submitted.value = false
+    wasCanceled.value = false
 
     try {
         await new Promise((resolve) => setTimeout(resolve, 900))
+        submitted.value = true
     } finally {
         submitting.value = false
     }
+}
+
+const resetForm = () => {
+    methodsFormRef.value?.reset?.()
+    methodsFormRef.value?.resetValidation?.()
+    submitting.value = false
+    submitted.value = false
+    wasCanceled.value = true
 }
 </script>
 <style scoped lang="scss">
 .docs-page__text-field-validation {
     width: 600px;
-    --e-color-input: var(--card-text);
     --e-color-disabled: rgba(155, 155, 155, 0.5);
-    --e-contrast-disabled: rgba(255, 255, 255, 0.68);
-    --e-color-border: var(--card-text);
 
     .e-divider {
         min-width: calc(100% + var(--card-padding) * 2);

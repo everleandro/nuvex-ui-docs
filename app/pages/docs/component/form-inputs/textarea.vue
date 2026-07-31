@@ -120,16 +120,7 @@
       :description="sections['validation'].description">
       <DocsComponentPlayground :tabs="tabsDesignTemplateTs" :color="color">
         <template #panel-design>
-          <ECard :title="labels.form.cardTitle" :subtitle="labels.form.cardSubtitle" elevation="sm" color="surface-subtle">
-            <EForm v-model="validationFormIsValid" class="d-flex flex-column gap-3">
-              <ETextfield v-model="validationProperty.model.subject" label="Subject" :rules="[requiredRule]" />
-              <ETextarea v-model="validationProperty.model.message" label="Message" label-behavior="floating" :rows="5" :limit="280" counter
-                :rules="[requiredRule, minLengthRule]" />
-              <EButton :disabled="!validationCanSubmit" :loading="validationSubmitting" @click="submitValidationDemo">
-                {{ labels.form.submit }}
-              </EButton>
-            </EForm>
-          </ECard>
+          <DocsFormsTextareaValidationPreview :color="color" />
         </template>
 
         <template #panel-template>
@@ -152,6 +143,7 @@
 import { useI18n } from 'vue-i18n'
 import { textareaApiReference } from '~/api-reference/forms/textarea'
 import { textareaApiReferenceEs } from '~/api-reference/forms/textarea-es'
+import { textareaCodeSnippets } from './textarea.snippets'
 import { buildTemplateElementSnippet } from '~/utils/snippet-element'
 
 const { locale } = useI18n()
@@ -249,52 +241,6 @@ const slotsCompositionProperty = ref({
   value: 'Ship notes for this release. Mention impact, risk, and rollback path.',
 })
 
-const labels = computed(() => {
-  return {
-    form: content.value.labels.formText?.form ?? {
-      submit: 'Submit',
-      idle: 'Idle',
-      submitting: 'Submitting...',
-      success: 'Success',
-      canceled: 'Canceled',
-      cardTitle: 'Form',
-      cardSubtitle: 'Subtitle',
-    },
-  }
-})
-
-const validationFormIsValid = ref(false)
-const validationSubmitting = ref(false)
-const validationProperty = ref({
-  model: {
-    subject: '',
-    message: '',
-  },
-})
-
-const requiredRule = (value: unknown) => {
-  return Boolean(String(value ?? '').trim()) || 'This field is required'
-}
-
-const minLengthRule = (value: unknown) => {
-  return String(value ?? '').trim().length >= 12 || 'Use at least 12 characters'
-}
-
-const validationCanSubmit = computed(() => {
-  return validationFormIsValid.value && !validationSubmitting.value
-})
-
-const submitValidationDemo = async () => {
-  if (!validationCanSubmit.value) return
-
-  validationSubmitting.value = true
-  try {
-    await new Promise((resolve) => setTimeout(resolve, 600))
-  } finally {
-    validationSubmitting.value = false
-  }
-}
-
 const { tabsPlayground, tabsDesignTemplate, tabsDesignTemplateTs } = useDocsPlaygroundTabSets()
 
 const controlLabel = (key: string): string => {
@@ -319,79 +265,12 @@ const usageHtmlCode = computed(() => {
   })
 })
 
-const visualVariantsTemplateCode = `<EForm>
-  <ETextarea v-model="visualVariantsProperty.default" label="Default" :rows="4" :color="color" />
-  <ETextarea v-model="visualVariantsProperty.outlined" label="Outlined" :rows="4" outlined :color="color" />
-  <ETextarea v-model="visualVariantsProperty.readonly" label="Readonly" :rows="4" readonly outlined :color="color" />
-  <ETextarea v-model="visualVariantsProperty.disabled" label="Disabled" :rows="4" disabled :color="color" />
-  <ETextarea v-model="visualVariantsProperty.floating" label="Floating" :rows="4" label-behavior="floating" :color="color" />
-  <ETextarea v-model="visualVariantsProperty.floatingOutlined" label="Floating outlined" :rows="4" outlined label-behavior="floating" :color="color" />
-</EForm>`
-
-const rowsAndLengthTemplateCode = `<EForm>
-  <ETextarea v-model="rowsLengthProperty.short" :rows="2" :limit="80" counter label="Short note" :color="color" />
-  <ETextarea v-model="rowsLengthProperty.medium" :rows="4" :limit="180" counter label="Summary" :color="color" />
-  <ETextarea v-model="rowsLengthProperty.long" :rows="8" :limit="480" counter label="Detailed description" :color="color" />
-</EForm>`
-
-const iconsAndAffixesTemplateCode = `<EForm>
-  <ETextarea v-model="iconAffixProperty.prependInner" :prepend-inner-icon="$icon.account" :rows="4" label="prepend-inner" :color="color" />
-  <ETextarea v-model="iconAffixProperty.appendInner" :append-inner-icon="$icon.email" :rows="4" label="append-inner" :color="color" />
-  <ETextarea v-model="iconAffixProperty.prepend" :prepend-icon="$icon.form" :rows="4" label="prepend" :color="color" />
-  <ETextarea v-model="iconAffixProperty.append" :append-icon="$icon.magnify" :rows="4" label="append" :color="color" />
-  <ETextarea v-model="iconAffixProperty.affix" prefix="ID" suffix="chars" :rows="3" label="prefix/suffix" :color="color" />
-</EForm>`
-
-const slotsCompositionTemplateCode = `<ETextarea
-  v-model="slotsCompositionProperty.value"
-  :rows="5"
-  label="Release note"
-  placeholder="Describe user-visible changes"
-  :color="color"
->
-  <template #prepend>
-    <EAvatar :icon="$icon.account" size="small" color="secondary" />
-  </template>
-  <template #append-inner>
-    <EButton :icon="$icon.send" :color="color" size="small" text />
-  </template>
-</ETextarea>`
-
-const validationTemplateCode = `<ECard title="Feedback form" subtitle="Capture details with actionable context" elevation="sm" color="surface-subtle">
-  <EForm v-model="validationFormIsValid" class="d-flex flex-column gap-3">
-    <ETextfield v-model="validationProperty.model.subject" label="Subject" :rules="[requiredRule]" />
-    <ETextarea
-      v-model="validationProperty.model.message"
-      label="Message"
-      :rows="5"
-      :limit="280"
-      counter
-      :rules="[requiredRule, minLengthRule]"
-    />
-    <EButton :disabled="!validationCanSubmit" :loading="validationSubmitting" @click="submitValidationDemo">
-      Send feedback
-    </EButton>
-  </EForm>
-</ECard>`
-
-const validationTsCode = `const validationFormIsValid = ref(false)
-const validationSubmitting = ref(false)
-const validationProperty = ref({
-  model: {
-    subject: '',
-    message: '',
-  },
-})
-
-const requiredRule = (value: unknown) => {
-  return Boolean(String(value ?? '').trim()) || 'This field is required'
-}
-
-const minLengthRule = (value: unknown) => {
-  return String(value ?? '').trim().length >= 12 || 'Use at least 12 characters'
-}
-
-const validationCanSubmit = computed(() => {
-  return validationFormIsValid.value && !validationSubmitting.value
-})`
+const {
+  visualVariantsTemplateCode,
+  rowsAndLengthTemplateCode,
+  iconsAndAffixesTemplateCode,
+  slotsCompositionTemplateCode,
+  validationTemplateCode,
+  validationTsCode,
+} = textareaCodeSnippets
 </script>

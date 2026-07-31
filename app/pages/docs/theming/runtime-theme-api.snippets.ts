@@ -160,7 +160,7 @@ const clearThemeOverride = () => {
     {
       label: 'assets/styles/app.css',
       code: `.marketing-banner {
-  background: var(--acme-theme-surface-1);
+  background: var(--acme-theme-surface-base);
   color: var(--acme-theme-primary);
 }`,
       language: 'css',
@@ -177,7 +177,7 @@ registerTheme({
   isDark: false,
   tokens: {
     primary: '#0ea5e9',
-    'surface-1': '#ecfeff',
+    'surface-base': '#ecfeff',
   },
 })
 

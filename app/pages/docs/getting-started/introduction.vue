@@ -89,7 +89,7 @@ const introductionExploreMeta = [
     icon: 'layout',
   },
   {
-    to: '/docs/component/forms/form',
+    to: '/docs/component/form-foundations/form',
     icon: 'forms',
   },
   {

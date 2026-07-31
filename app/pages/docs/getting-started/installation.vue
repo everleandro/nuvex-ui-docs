@@ -130,7 +130,7 @@ const installationNextStepMeta = [
     icon: 'gettingStarted',
   },
   {
-    to: '/docs/component/forms/button',
+    to: '/docs/component/core-actions/button',
     icon: 'forms',
   },
   {
