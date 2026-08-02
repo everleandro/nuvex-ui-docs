@@ -13,8 +13,10 @@
                     <template v-for="item in props.apiReference" :key="item.property">
                         <tr class="api-table__row api-table__row--property">
                             <td class="api-table__property type-code">{{ item.property }}</td>
-                            <td class="api-table__token type-code" :class="item.type.class" v-html="item.type.value"></td>
-                            <td class="api-table__token type-code" :class="item.default.class">{{ item.default.value }}</td>
+                            <td class="api-table__token type-code" :class="item.type.class" v-html="item.type.value">
+                            </td>
+                            <td class="api-table__token type-code" :class="item.default.class">{{ item.default.value }}
+                            </td>
                         </tr>
                         <tr class="api-table__row" v-if="item.description">
                             <td class="api-table__description-cell" colspan="3">
@@ -42,6 +44,8 @@ const { t } = useI18n()
 .docs-page__api-table {
     --card-padding: calc(var(--e-space-base, 4px) * 4) 0;
     border: 1px solid var(--e-color-border, rgba(0, 0, 0, 0.12));
+    width: 100%;
+
 
     div.responsive-table {
         overflow-x: auto;
@@ -94,7 +98,7 @@ const { t } = useI18n()
     }
 
     table th {
-        --space-base-4:  calc(var(--e-space-base, 4px) * 4);
+        --space-base-4: calc(var(--e-space-base, 4px) * 4);
         padding: 0 var(--space-base-4) var(--space-base-4) var(--space-base-4);
         text-align: start;
         -webkit-user-select: none;

@@ -21,6 +21,9 @@ import form from './pages/form'
 import button from './pages/button'
 import input from './pages/input'
 import modal from './pages/modal'
+import list from './pages/list'
+import menu from './pages/menu'
+import tabs from './pages/tabs'
 
 const es = {
   common,
@@ -47,6 +50,9 @@ const es = {
     button,
     input,
     modal,
+    list,
+    menu,
+    tabs,
   },
 } as const
 

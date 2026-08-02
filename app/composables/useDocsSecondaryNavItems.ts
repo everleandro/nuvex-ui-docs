@@ -125,6 +125,18 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
     kind: 'component',
     messageKey: 'pages.input.textarea',
   },
+  '/docs/component/navigation/list': {
+    kind: 'component',
+    messageKey: 'pages.list.list',
+  },
+  '/docs/component/navigation/menu': {
+    kind: 'component',
+    messageKey: 'pages.menu.menu',
+  },
+  '/docs/component/navigation/tabs': {
+    kind: 'component',
+    messageKey: 'pages.tabs.tabs',
+  },
 }
 
 const toSectionNavItems = (content: DocsComponentPageContent): DocsSecondaryNavItem[] => {
