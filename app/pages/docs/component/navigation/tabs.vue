@@ -149,6 +149,7 @@
       <DocsComponentPlayground :tabs="tabsDesignTemplate" color="primary">
         <template #panel-design>
           <div class="full-width">
+            <p class="type-caption text-medium-emphasis mt-3">{{ tabsLabel('keyboardHint') }}</p>
             <ETabGroup v-model="accessibilityTab" name="workspace-tabs" :aria-label="tabsLabel('workspaceAriaLabel')"
               track color="primary">
               <ETab value="overview">{{ tabsLabel('overview') }}</ETab>
@@ -166,7 +167,6 @@
                 <p class="type-body">{{ tabsLabel('settingsBody') }}</p>
               </EWindowItem>
             </EWindow>
-            <p class="type-caption text-medium-emphasis mt-3">{{ tabsLabel('keyboardHint') }}</p>
           </div>
         </template>
         <template #panel-template>

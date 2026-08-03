@@ -141,6 +141,10 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
     kind: 'component',
     messageKey: 'pages.modal.dialog',
   },
+  '/docs/component/feedback-overlays/progress': {
+    kind: 'component',
+    messageKey: 'pages.progress.progress',
+  },
 }
 
 const toSectionNavItems = (content: DocsComponentPageContent): DocsSecondaryNavItem[] => {

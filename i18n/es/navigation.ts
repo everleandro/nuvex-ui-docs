@@ -1,7 +1,7 @@
 const navigation = {
   groups: {
     getting_started: 'Primeros pasos',
-    design_system: 'Sistema de diseno',
+    design_system: 'Diseño',
     theming: 'Temas',
     components: 'Componentes',
     utilities: 'Utilidades',
@@ -10,7 +10,7 @@ const navigation = {
   },
   subgroups: {
     core_actions: 'Acciones base',
-    form_foundations: 'Fundamentos de formularios',
+    form_foundations: 'Formularios',
     form_inputs: 'Campos de formulario',
     navigation: 'Navegacion',
     layout: 'Layout',

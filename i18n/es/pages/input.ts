@@ -509,7 +509,7 @@ export const textFieldComponentContentEs: DocsComponentPageContent = {
     },
     {
       key: 'icons',
-      title: 'Íconos',
+      title: 'I conos',
       descriptionHtml:
         "Compara <code class='docs-inline-code'>prependIcon</code> y <code class='docs-inline-code'>appendIcon</code> con <code class='docs-inline-code'>prependInnerIcon</code> y <code class='docs-inline-code'>appendInnerIcon</code> en campos filled y outlined para elegir el peso visual correcto en contexto, acciones y escaneo.",
     },

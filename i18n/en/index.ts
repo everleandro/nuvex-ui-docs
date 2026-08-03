@@ -24,6 +24,7 @@ import modal from './pages/modal'
 import list from './pages/list'
 import menu from './pages/menu'
 import tabs from './pages/tabs'
+import progress from './pages/progress'
 
 const en = {
   common,
@@ -53,6 +54,7 @@ const en = {
     list,
     menu,
     tabs,
+    progress,
   },
 } as const
 
