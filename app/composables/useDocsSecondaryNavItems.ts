@@ -137,6 +137,10 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
     kind: 'component',
     messageKey: 'pages.tabs.tabs',
   },
+  '/docs/component/feedback-overlays/dialog': {
+    kind: 'component',
+    messageKey: 'pages.modal.dialog',
+  },
 }
 
 const toSectionNavItems = (content: DocsComponentPageContent): DocsSecondaryNavItem[] => {
