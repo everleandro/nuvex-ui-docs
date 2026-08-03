@@ -145,6 +145,10 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
     kind: 'component',
     messageKey: 'pages.progress.progress',
   },
+  '/docs/component/data-scheduling/card': {
+    kind: 'component',
+    messageKey: 'pages.card.card',
+  },
 }
 
 const toSectionNavItems = (content: DocsComponentPageContent): DocsSecondaryNavItem[] => {

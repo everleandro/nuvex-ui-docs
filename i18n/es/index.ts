@@ -25,6 +25,7 @@ import list from './pages/list'
 import menu from './pages/menu'
 import tabs from './pages/tabs'
 import progress from './pages/progress'
+import card from './pages/card'
 
 const es = {
   common,
@@ -55,6 +56,7 @@ const es = {
     menu,
     tabs,
     progress,
+    card,
   },
 } as const
 
