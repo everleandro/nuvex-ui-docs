@@ -110,8 +110,6 @@ export const navigationGroups: NavigationGroupItem[] = [
       createLink('layout-app-shell', 'navigation.items.layout.app_shell', '/docs/component/layout/app-shell', 'layout', 'navigation.subgroups.layout'),
       createLink('layout-bar', 'navigation.items.layout.bar', '/docs/component/layout/bar', 'layout', 'navigation.subgroups.layout'),
       createLink('layout-drawer', 'navigation.items.layout.drawer', '/docs/component/layout/drawer', 'layout', 'navigation.subgroups.layout'),
-      createLink('layout-container', 'navigation.items.layout.container', '/docs/component/layout/container', 'layout', 'navigation.subgroups.layout'),
-      createLink('layout-divider', 'navigation.items.layout.divider', '/docs/component/layout/divider', 'layout', 'navigation.subgroups.layout'),
       { kind: 'divider', id: 'layout-divider-separator' },
       { kind: 'header', id: 'feedback-overlays-header', titleKey: 'navigation.subgroups.feedback_overlays' },
       createLink('feedback-overlays-dialog', 'navigation.items.feedback_overlays.dialog', '/docs/component/feedback-overlays/dialog', 'feedback-overlays', 'navigation.subgroups.feedback_overlays'),

@@ -6,7 +6,7 @@
       :description-html="sections.usage.descriptionHtml">
       <DocsComponentPlayground :tabs="tabsPlayground" :color="progressProperties.color">
         <template #panel-design>
-          <div class="progress-page__preview">
+          <div class="full-width">
             <ECard :color="progressProperties.useContrastColor ? progressProperties.color : undefined"
               :subtitle="progressProperties.indeterminate ? progressLabel('indeterminate') : `${progressProperties.value}%`">
               <EProgressLinear :value="progressProperties.value" :indeterminate="progressProperties.indeterminate"
@@ -141,7 +141,7 @@
       :description-html="sections.accessibility.descriptionHtml">
       <DocsComponentPlayground :tabs="tabsDesignTemplate" color="primary">
         <template #panel-design>
-          <ECard :title="progressLabel('accessibilityHint')" aria-busy="true">
+          <ECard :description="progressLabel('accessibilityHint')" aria-busy="true" class="full-width">
             <EProgressLinear indeterminate color="primary" :height="6" :aria-label="progressLabel('accessibleLabel')"
               aria-describedby="progress-accessibility-status" />
           </ECard>
@@ -154,20 +154,20 @@
 
     <DocsSection :id="sections.guidelines.key" :title="sections.guidelines.title"
       :description="sections.guidelines.description">
-      <div class="progress-page__guidelines">
-        <div>
+      <ERow>
+        <ECol cols="12" md="6">
           <h3 class="type-h6 success--text mb-3">{{ progressLabel('doTitle') }}</h3>
-          <ul class="progress-page__guideline-list">
+          <ul class="pl-4">
             <li v-for="item in guidelineItems.doItems" :key="item">{{ item }}</li>
           </ul>
-        </div>
-        <div>
+        </ECol>
+        <ECol cols="12" md="6">
           <h3 class="type-h6 error--text mb-3">{{ progressLabel('dontTitle') }}</h3>
-          <ul class="progress-page__guideline-list">
+          <ul class="pl-4">
             <li v-for="item in guidelineItems.dontItems" :key="item">{{ item }}</li>
           </ul>
-        </div>
-      </div>
+        </ECol>
+      </ERow>
     </DocsSection>
 
     <DocsSection :id="sections.props.key" :title="sections.props.title" :description="sections.props.description">
@@ -291,53 +291,4 @@ const {
 } = progressCodeSnippets
 </script>
 
-<style scoped lang="scss">
-.progress-page__preview,
-.progress-page__report {
-  width: 100%;
-}
-
-.progress-page__examples,
-.progress-page__guidelines {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  width: 100%;
-}
-
-.progress-page__example {
-  display: flex;
-  flex-direction: column;
-  gap: .75rem;
-  min-width: 0;
-  padding: 1rem;
-}
-
-.progress-page__contrast-surface {
-  color: var(--e-contrast-primary, white);
-  grid-column: 1 / -1;
-}
-
-.progress-page__guidelines {
-  padding-block: 1rem;
-}
-
-.progress-page__guideline-list {
-  display: grid;
-  gap: .75rem;
-  margin: 0;
-  padding-left: 1.25rem;
-}
-
-@media (max-width: 700px) {
-
-  .progress-page__examples,
-  .progress-page__guidelines {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .progress-page__contrast-surface {
-    grid-column: auto;
-  }
-}
-</style>
+<style scoped lang="scss"></style>

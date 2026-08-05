@@ -149,6 +149,22 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
     kind: 'component',
     messageKey: 'pages.card.card',
   },
+  '/docs/component/data-scheduling/schedule': {
+    kind: 'component',
+    messageKey: 'pages.schedule.schedule',
+  },
+  '/docs/component/layout/app-shell': {
+    kind: 'workflow',
+    messageKey: 'pages.appShell.appShell',
+  },
+  '/docs/component/layout/bar': {
+    kind: 'component',
+    messageKey: 'pages.bar.bar',
+  },
+  '/docs/component/layout/drawer': {
+    kind: 'component',
+    messageKey: 'pages.drawer.drawer',
+  },
 }
 
 const toSectionNavItems = (content: DocsComponentPageContent): DocsSecondaryNavItem[] => {

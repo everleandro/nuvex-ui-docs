@@ -26,6 +26,10 @@ import menu from './pages/menu'
 import tabs from './pages/tabs'
 import progress from './pages/progress'
 import card from './pages/card'
+import schedule from './pages/schedule'
+import appShell from './pages/app-shell'
+import bar from './pages/bar'
+import drawer from './pages/drawer'
 
 const en = {
   common,
@@ -57,6 +61,10 @@ const en = {
     tabs,
     progress,
     card,
+    schedule,
+    appShell,
+    bar,
+    drawer,
   },
 } as const
 

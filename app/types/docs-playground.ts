@@ -59,6 +59,11 @@ export interface SnippetBuildResult {
   full?: string
 }
 
+export interface PlaygroundSnippetMessage {
+  type: 'nuvex:playground-snippet'
+  snippet: string
+}
+
 export type SnippetBuilder<TState extends PlaygroundState = PlaygroundState> = (
   state: TState,
   context?: { componentTag?: string },

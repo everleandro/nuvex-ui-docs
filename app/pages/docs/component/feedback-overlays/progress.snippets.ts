@@ -46,6 +46,7 @@ const advance = () => {
   class="full-width"
   :title="title"
   :subtitle="reportStatus"
+  outlined
   :aria-busy="exportRunning"
 >
   <EProgressLinear

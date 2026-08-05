@@ -284,6 +284,7 @@ export interface DocsComponentSection {
   title: string;
   description?: string;
   descriptionHtml?: string;
+  callout?: DocsCallout;
   faqItems?: DocsFaqItem[];
 }
 
