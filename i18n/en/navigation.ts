@@ -16,7 +16,6 @@ const navigation = {
     layout: 'Layout',
     feedback_overlays: 'Feedback and Overlays',
     data_display_scheduling: 'Data & Scheduling',
-    patterns_integration: 'Patterns and Integration',
   },
   items: {
     getting_started: {
@@ -83,12 +82,6 @@ const navigation = {
     data_display_scheduling: {
       card: 'Card',
       schedule: 'Schedule',
-    },
-    patterns_integration: {
-      routing_patterns: 'Routing Patterns',
-      responsive_patterns: 'Responsive Patterns',
-      overlay_service: 'Overlay Service',
-      focus_and_accessibility: 'Focus and Accessibility',
     },
     advanced: {
       plugin_api: 'Plugin API',

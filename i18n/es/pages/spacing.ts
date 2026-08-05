@@ -13,12 +13,12 @@ export const spacingEditorialContentEs: DocsConceptPageContent<DocsSpacingSectio
       'El spacing en Nuvex UI se expone mediante clases publicas para margin, padding y gap. Usa esta pagina para inspeccionar la sintaxis de los helpers, revisar los modificadores de direccion soportados y copiar ejemplos listos para el framework basados en la escala documentada.',
     actions: [
       {
-        key: 'open-colors',
-        label: 'Abrir colores',
+        key: 'open-flexbox',
+        label: 'Abrir flexbox',
       },
       {
-        key: 'open-typography',
-        label: 'Abrir tipografia',
+        key: 'open-display-helpers',
+        label: 'Abrir helpers de display',
       },
     ],
   },

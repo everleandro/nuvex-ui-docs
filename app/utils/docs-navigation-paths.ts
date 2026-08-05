@@ -8,7 +8,6 @@ const COMPONENT_DOC_SECTIONS = [
   'layout',
   'feedback-overlays',
   'data-display-scheduling',
-  'patterns-integration',
 ] as const
 
 const LEGACY_COMPONENT_PATH_ALIASES: Record<string, string> = {

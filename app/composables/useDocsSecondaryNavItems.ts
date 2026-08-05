@@ -41,7 +41,7 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
     kind: 'concept',
     messageKey: 'pages.typography.typography',
   },
-  '/docs/design-system/spacing': {
+  '/docs/utilities/spacing-helpers': {
     kind: 'concept',
     messageKey: 'pages.spacing.spacing',
   },

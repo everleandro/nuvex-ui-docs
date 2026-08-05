@@ -69,7 +69,6 @@ export const navigationGroups: NavigationGroupItem[] = [
     { id: 'colors', titleKey: 'navigation.items.design_system.colors', to: '/docs/design-system/colors' },
     { id: 'typography', titleKey: 'navigation.items.design_system.typography', to: '/docs/design-system/typography' },
     { id: 'icon-configuration', titleKey: 'navigation.items.design_system.icon_configuration', to: '/docs/design-system/icon-configuration' },
-    { id: 'spacing', titleKey: 'navigation.items.design_system.spacing', to: '/docs/design-system/spacing' },
     { id: 'surfaces', titleKey: 'navigation.items.design_system.surfaces', to: '/docs/design-system/surfaces' },
   ]),
   createSimpleGroup('theming', 'navigation.groups.theming', 'theming', [
@@ -119,11 +118,6 @@ export const navigationGroups: NavigationGroupItem[] = [
       createLink('data-scheduling-card', 'navigation.items.data_display_scheduling.card', '/docs/component/data-scheduling/card', 'data-display-scheduling', 'navigation.subgroups.data_display_scheduling'),
       createLink('data-scheduling-schedule', 'navigation.items.data_display_scheduling.schedule', '/docs/component/data-scheduling/schedule', 'data-display-scheduling', 'navigation.subgroups.data_display_scheduling'),
       { kind: 'divider', id: 'data-display-scheduling-divider' },
-      { kind: 'header', id: 'patterns-integration-header', titleKey: 'navigation.subgroups.patterns_integration' },
-      createLink('navigation-routing-patterns', 'navigation.items.patterns_integration.routing_patterns', '/docs/component/navigation/routing-patterns', 'patterns-integration', 'navigation.subgroups.patterns_integration'),
-      createLink('layout-responsive-patterns', 'navigation.items.patterns_integration.responsive_patterns', '/docs/component/layout/responsive-patterns', 'patterns-integration', 'navigation.subgroups.patterns_integration'),
-      createLink('feedback-overlays-overlay-service', 'navigation.items.patterns_integration.overlay_service', '/docs/component/feedback-overlays/overlay-service', 'patterns-integration', 'navigation.subgroups.patterns_integration'),
-      createLink('feedback-overlays-focus-and-accessibility', 'navigation.items.patterns_integration.focus_and_accessibility', '/docs/component/feedback-overlays/focus-and-accessibility', 'patterns-integration', 'navigation.subgroups.patterns_integration'),
     ],
   },
   createSimpleGroup('utilities', 'navigation.groups.utilities', 'utilities', [
