@@ -6,6 +6,9 @@ import type {
   DocsCustomThemesSectionKey,
   DocsCssVariablesSectionKey,
   DocsDesignTokensSectionKey,
+  DocsDisplayHelpersSectionKey,
+  DocsFlexboxSectionKey,
+  DocsElevationSectionKey,
   DocsIconConfigurationSectionKey,
   DocsIntroductionSectionKey,
   DocsInstallationSectionKey,
@@ -44,6 +47,18 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
   '/docs/utilities/spacing-helpers': {
     kind: 'concept',
     messageKey: 'pages.spacing.spacing',
+  },
+  '/docs/utilities/flexbox': {
+    kind: 'concept',
+    messageKey: 'pages.flexbox.flexbox',
+  },
+  '/docs/utilities/display-helpers': {
+    kind: 'concept',
+    messageKey: 'pages.displayHelpers.displayHelpers',
+  },
+  '/docs/utilities/elevation': {
+    kind: 'concept',
+    messageKey: 'pages.elevation.elevation',
   },
   '/docs/design-system/surfaces': {
     kind: 'concept',
@@ -212,7 +227,7 @@ export const useDocsSecondaryNavItems = (path: Ref<string> | ComputedRef<string>
     if (resolver.kind === 'concept') {
       return toEditorialSectionNavItems(
         tm(resolver.messageKey) as DocsConceptPageContent<
-          DocsIntroductionSectionKey | DocsThemingOverviewSectionKey | DocsColorsSectionKey | DocsTypographySectionKey | DocsSpacingSectionKey | DocsSurfacesSectionKey
+          DocsIntroductionSectionKey | DocsThemingOverviewSectionKey | DocsColorsSectionKey | DocsTypographySectionKey | DocsSpacingSectionKey | DocsFlexboxSectionKey | DocsDisplayHelpersSectionKey | DocsElevationSectionKey | DocsSurfacesSectionKey
         >,
         resolver.introId,
       )

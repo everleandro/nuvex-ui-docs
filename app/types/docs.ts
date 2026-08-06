@@ -144,6 +144,31 @@ export type DocsSpacingSectionKey =
   | "implementation-examples"
   | "framework-notes";
 
+export type DocsFlexboxSectionKey =
+  | 'usage'
+  | 'class-syntax'
+  | 'axis-behavior'
+  | 'direction-wrapping'
+  | 'alignment'
+  | 'item-sizing'
+  | 'implementation-examples'
+  | 'framework-notes';
+
+export type DocsDisplayHelpersSectionKey =
+  | 'usage'
+  | 'class-syntax'
+  | 'responsive-breakpoints'
+  | 'breakpoint-reference'
+  | 'implementation-examples'
+  | 'framework-notes';
+
+export type DocsElevationSectionKey =
+  | 'usage'
+  | 'class-syntax'
+  | 'scale-reference'
+  | 'implementation-examples'
+  | 'framework-notes';
+
 export type DocsSurfacesSectionKey =
   | "surface-roles"
   | "contrast-pairing"

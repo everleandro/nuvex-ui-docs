@@ -14,6 +14,9 @@ import lightAndDarkThemes from './pages/light-and-dark-themes'
 import customThemes from './pages/custom-themes'
 import iconConfiguration from './pages/icon-configuration'
 import colors from './pages/colors'
+import elevation from './pages/elevation'
+import displayHelpers from './pages/display-helpers'
+import flexbox from './pages/flexbox'
 import spacing from './pages/spacing'
 import surfaces from './pages/surfaces'
 import typography from './pages/typography'
@@ -49,6 +52,9 @@ const en = {
     customThemes,
     iconConfiguration,
     colors,
+    elevation,
+    displayHelpers,
+    flexbox,
     spacing,
     surfaces,
     typography,

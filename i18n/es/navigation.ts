@@ -52,7 +52,6 @@ const navigation = {
       spacing_helpers: 'Helpers de espaciado',
       display_helpers: 'Helpers de display',
       elevation: 'Elevacion',
-      positioning: 'Posicionamiento',
     },
     core_actions: {
       button: 'Button',

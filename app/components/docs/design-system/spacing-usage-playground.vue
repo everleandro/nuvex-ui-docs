@@ -12,6 +12,9 @@
                 </div>
             </ECard>
         </template>
+        <template #panel-design-code>
+            <CodePanel :code="HTMLCode" />
+        </template>
 
         <template #form>
             <EForm>
@@ -109,6 +112,7 @@ const buildSpacingClass = (type: 'm' | 'p', direction: DirectionValue, size: num
 const marginClass = computed(() => buildSpacingClass('p', marginDirection.value, marginSize.value))
 const marginClassLabel = computed(() => buildSpacingClass('m', marginDirection.value, marginSize.value))
 const paddingClass = computed(() => buildSpacingClass('p', paddingDirection.value, paddingSize.value))
+const HTMLCode = `<div class="${marginClassLabel.value} ${paddingClass.value}"> </div>`
 
 </script>
 

@@ -125,7 +125,6 @@ export const navigationGroups: NavigationGroupItem[] = [
     { id: 'spacing-helpers', titleKey: 'navigation.items.utilities.spacing_helpers', to: '/docs/utilities/spacing-helpers' },
     { id: 'display-helpers', titleKey: 'navigation.items.utilities.display_helpers', to: '/docs/utilities/display-helpers' },
     { id: 'elevation', titleKey: 'navigation.items.utilities.elevation', to: '/docs/utilities/elevation' },
-    { id: 'positioning', titleKey: 'navigation.items.utilities.positioning', to: '/docs/utilities/positioning' },
   ]),
   createSimpleGroup('advanced', 'navigation.groups.advanced', 'advanced', [
     { id: 'plugin-api', titleKey: 'navigation.items.advanced.plugin_api', to: '/docs/advanced/plugin-api' },
