@@ -50,6 +50,8 @@ export const gridComponentContentEs: DocsComponentPageContent = {
       { key: 'equal', label: 'equal' },
       { key: 'noGutters', label: 'noGutters' },
       { key: 'cols', label: 'cols' },
+      { key: 'rowProperties', label: 'Propiedades de <code class="docs-inline-code">ERow</code>' },
+      { key: 'colProperties', label: 'Propiedades de <code class="docs-inline-code">ECol</code>' },
     ],
     gridText: {
       previewTitle: 'Vista previa de grid',

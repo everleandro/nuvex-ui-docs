@@ -8,8 +8,9 @@
                 <template #panel-design>
                     <ERow class="full-width" :dense="rowProperties.dense" :auto="rowProperties.auto"
                         :equal="rowProperties.equal" :no-gutters="rowProperties.noGutters" :gap="rowProperties.gap">
-                        <ECol v-for="item in previewColumns" :key="item.title" :cols="rowProperties.cols">
-                            <ECard outlined class="full-height full-width" :title="item.title" elevation="md" />
+                        <ECol v-for="item in previewColumns" :key="item.title"
+                            :cols="rowProperties.auto ? undefined : rowProperties.cols">
+                            <ECard class="full-height full-width" :title="item.title" elevation="md" />
                         </ECol>
                     </ERow>
                 </template>
@@ -18,9 +19,16 @@
                 </template>
                 <template #form>
                     <EForm>
-                        <ESelect v-model="rowProperties.gap" cols="24" :items="gaps" :label="controlLabel('gap')" />
-                        <ESelect v-model="rowProperties.cols" cols="24" :items="columnSpans"
-                            :label="controlLabel('cols')" />
+                        <EFormColumn>
+                            <span class="type-lead text-heading" v-html="controlLabel('colProperties')"></span>
+                        </EFormColumn>
+                        <ESelect v-model="rowProperties.cols" :disabled="rowProperties.auto || rowProperties.equal"
+                            cols="24" :items="columnSpans" :label="controlLabel('cols')" clearable />
+                        <EFormColumn>
+                            <span class="type-lead text-heading" v-html="controlLabel('rowProperties')"></span>
+                        </EFormColumn>
+                        <ESelect v-model="rowProperties.gap" cols="24" :items="gaps" :label="controlLabel('gap')"
+                            clearable />
                         <ECheckbox v-model="rowProperties.dense" cols="24" :label="controlLabel('dense')"
                             color="primary" />
                         <ECheckbox v-model="rowProperties.auto" cols="24" :label="controlLabel('auto')"
@@ -55,31 +63,6 @@
             </DocsComponentPlayground>
         </DocsSection>
 
-        <DocsSection :id="sections['row-modes'].key" :title="sections['row-modes'].title"
-            :description-html="sections['row-modes'].descriptionHtml">
-            <DocsComponentPlayground :tabs="tabsDesignTemplate" color="primary">
-                <template #panel-design>
-                    <ERow class="full-width" gap="sm">
-                        <ECol cols="12" md="4">
-                            <ECard outlined :title="gridLabel('rowModesDenseTitle')"
-                                :description="gridLabel('rowModesDenseDescription')" />
-                        </ECol>
-                        <ECol cols="12" md="4">
-                            <ECard outlined :title="gridLabel('rowModesEqualTitle')"
-                                :description="gridLabel('rowModesEqualDescription')" />
-                        </ECol>
-                        <ECol cols="12" md="4">
-                            <ECard outlined :title="gridLabel('rowModesNoGuttersTitle')"
-                                :description="gridLabel('rowModesNoGuttersDescription')" />
-                        </ECol>
-                    </ERow>
-                </template>
-                <template #panel-template>
-                    <CodePanel :code="gridCodeSnippets.rowModesTemplateCode" />
-                </template>
-            </DocsComponentPlayground>
-        </DocsSection>
-
         <DocsSection :id="sections['nested-layouts'].key" :title="sections['nested-layouts'].title"
             :description-html="sections['nested-layouts'].descriptionHtml">
             <DocsComponentPlayground :tabs="tabsDesignTemplate" color="primary">
@@ -97,7 +80,7 @@
                             </ERow>
                         </ECol>
                         <ECol cols="12" lg="4">
-                            <ECard outlined :title="gridLabel('nestedRailTitle')"
+                            <ECard outlined class="full-height" :title="gridLabel('nestedRailTitle')"
                                 :description="gridLabel('nestedRailDescription')" />
                         </ECol>
                     </ERow>
@@ -158,6 +141,16 @@ const rowProperties = ref({
     equal: false,
     noGutters: false,
 })
+watch(() => rowProperties.value.auto, (newValue) => {
+    if (newValue) {
+        rowProperties.value.equal = false;
+    }
+}, { deep: true })
+watch(() => rowProperties.value.equal, (newValue) => {
+    if (newValue) {
+        rowProperties.value.auto = false;
+    }
+}, { deep: true })
 
 const previewColumns = computed(() => ([
     { title: gridLabel('columnA'), description: gridLabel('columnDescription') },
