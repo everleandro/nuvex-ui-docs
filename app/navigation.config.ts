@@ -109,6 +109,7 @@ export const navigationGroups: NavigationGroupItem[] = [
       createLink('layout-app-shell', 'navigation.items.layout.app_shell', '/docs/component/layout/app-shell', 'layout', 'navigation.subgroups.layout'),
       createLink('layout-bar', 'navigation.items.layout.bar', '/docs/component/layout/bar', 'layout', 'navigation.subgroups.layout'),
       createLink('layout-drawer', 'navigation.items.layout.drawer', '/docs/component/layout/drawer', 'layout', 'navigation.subgroups.layout'),
+      createLink('layout-grid', 'navigation.items.layout.grid', '/docs/component/layout/grid', 'layout', 'navigation.subgroups.layout'),
       { kind: 'divider', id: 'layout-divider-separator' },
       { kind: 'header', id: 'feedback-overlays-header', titleKey: 'navigation.subgroups.feedback_overlays' },
       createLink('feedback-overlays-dialog', 'navigation.items.feedback_overlays.dialog', '/docs/component/feedback-overlays/dialog', 'feedback-overlays', 'navigation.subgroups.feedback_overlays'),
@@ -128,16 +129,8 @@ export const navigationGroups: NavigationGroupItem[] = [
   ]),
   createSimpleGroup('advanced', 'navigation.groups.advanced', 'advanced', [
     { id: 'plugin-api', titleKey: 'navigation.items.advanced.plugin_api', to: '/docs/advanced/plugin-api' },
-    { id: 'ssr', titleKey: 'navigation.items.advanced.ssr', to: '/docs/advanced/ssr' },
     { id: 'composables', titleKey: 'navigation.items.advanced.composables', to: '/docs/advanced/composables' },
     { id: 'directives', titleKey: 'navigation.items.advanced.directives', to: '/docs/advanced/directives' },
-    { id: 'extending-the-library', titleKey: 'navigation.items.advanced.extending_the_library', to: '/docs/advanced/extending-the-library' },
-  ]),
-  createSimpleGroup('community', 'navigation.groups.community', 'communityGroup', [
-    { id: 'changelog', titleKey: 'navigation.items.community.changelog', to: '/docs/community/changelog' },
-    { id: 'roadmap', titleKey: 'navigation.items.community.roadmap', to: '/docs/community/roadmap' },
-    { id: 'contributing', titleKey: 'navigation.items.community.contributing', to: '/docs/community/contributing' },
-    { id: 'sponsors', titleKey: 'navigation.items.community.sponsors', to: '/docs/community/sponsors' },
   ]),
 ];
 

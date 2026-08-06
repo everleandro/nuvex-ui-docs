@@ -43,6 +43,7 @@ const navigation = {
       app_shell: 'App shell',
       bar: 'Barra',
       drawer: 'Drawer',
+      grid: 'Grid',
       container: 'Contenedor',
       divider: 'Divisor',
       responsive_patterns: 'Patrones responsivos',
@@ -84,16 +85,13 @@ const navigation = {
     },
     advanced: {
       plugin_api: 'API de plugin',
-      ssr: 'SSR',
       composables: 'Composables',
       directives: 'Directivas',
-      extending_the_library: 'Extender la libreria',
     },
     community: {
       changelog: 'Changelog',
       roadmap: 'Roadmap',
       contributing: 'Contribuir',
-      sponsors: 'Sponsors',
     },
   },
 } as const

@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": {
+    "name": "Nuvex UI",
+    "repositoryUrl": "https://github.com/everleandro/nuvex-ui",
+    "packageName": "nuvex-ui"
+  },
+  "releasePolicy": {
+    "versioning": "semver",
+    "defaultBranch": "main",
+    "updateCadence": "weekly"
+  },
+  "unreleased": {
+    "since": "2026-08-06",
+    "label": "Unreleased",
+    "changes": [
+      {
+        "id": "advanced-local-nav-anchor-fix",
+        "type": "fixed",
+        "area": "docs",
+        "summary": "Fixed local right drawer section anchors in Advanced pages.",
+        "breaking": false,
+        "refs": {
+          "pr": 0
+        }
+      }
+    ]
+  },
+  "releases": [
+    {
+      "version": "2.6.0",
+      "date": "2026-08-01",
+      "status": "released",
+      "tag": "v2.6.0",
+      "links": {
+        "releaseNotesUrl": "https://github.com/everleandro/nuvex-ui/releases/tag/v2.6.0",
+        "compareUrl": "https://github.com/everleandro/nuvex-ui/compare/v2.5.0...v2.6.0",
+        "npmUrl": "https://www.npmjs.com/package/nuvex-ui/v/2.6.0"
+      },
+      "highlights": [
+        {
+          "id": "runtime-theme-improvements",
+          "title": "Runtime theming improvements",
+          "summary": "Improved theme switching consistency and token emission flow.",
+          "area": "theming",
+          "breaking": false
+        }
+      ],
+      "changes": [
+        {
+          "id": "theme-css-var-cleanup",
+          "type": "fixed",
+          "area": "theming",
+          "summary": "Resolved stale CSS variable cleanup when switching themes.",
+          "breaking": false,
+          "refs": {
+            "pr": 1201,
+            "issue": 1189
+          }
+        },
+        {
+          "id": "dialog-overlay-focus-adjustment",
+          "type": "changed",
+          "area": "components",
+          "summary": "Adjusted overlay focus behavior in dialog integration flows.",
+          "breaking": false,
+          "refs": {
+            "pr": 1210
+          }
+        }
+      ],
+      "migrations": []
+    }
+  ]
+}

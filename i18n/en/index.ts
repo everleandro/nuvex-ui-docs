@@ -33,6 +33,13 @@ import schedule from './pages/schedule'
 import appShell from './pages/app-shell'
 import bar from './pages/bar'
 import drawer from './pages/drawer'
+import grid from './pages/grid'
+import pluginApi from './pages/plugin-api'
+import directives from './pages/directives'
+import composables from './pages/composables'
+import changelog from './pages/changelog'
+import roadmap from './pages/roadmap'
+import contributing from './pages/contributing'
 
 const en = {
   common,
@@ -71,6 +78,13 @@ const en = {
     appShell,
     bar,
     drawer,
+    grid,
+    pluginApi,
+    directives,
+    composables,
+    changelog,
+    roadmap,
+    contributing,
   },
 } as const
 

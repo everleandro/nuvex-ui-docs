@@ -7,6 +7,10 @@ import type {
   DocsCssVariablesSectionKey,
   DocsDesignTokensSectionKey,
   DocsDisplayHelpersSectionKey,
+  DocsChangelogSectionKey,
+  DocsComposablesSectionKey,
+  DocsDirectivesSectionKey,
+  DocsContributingSectionKey,
   DocsFlexboxSectionKey,
   DocsElevationSectionKey,
   DocsIconConfigurationSectionKey,
@@ -14,7 +18,9 @@ import type {
   DocsInstallationSectionKey,
   DocsLightAndDarkThemesSectionKey,
   DocsNuxtIntegrationSectionKey,
+  DocsPluginApiSectionKey,
   DocsQuickStartSectionKey,
+  DocsRoadmapSectionKey,
   DocsRuntimeThemeApiSectionKey,
   DocsSecondaryNavItem,
   DocsSpacingSectionKey,
@@ -108,6 +114,30 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
     kind: 'workflow',
     messageKey: 'pages.iconConfiguration.iconConfiguration',
   },
+  '/docs/advanced/plugin-api': {
+    kind: 'workflow',
+    messageKey: 'pages.pluginApi.pluginApi',
+  },
+  '/docs/advanced/directives': {
+    kind: 'workflow',
+    messageKey: 'pages.directives.directives',
+  },
+  '/docs/advanced/composables': {
+    kind: 'workflow',
+    messageKey: 'pages.composables.composables',
+  },
+  '/docs/community/changelog': {
+    kind: 'workflow',
+    messageKey: 'pages.changelog.changelog',
+  },
+  '/docs/community/roadmap': {
+    kind: 'workflow',
+    messageKey: 'pages.roadmap.roadmap',
+  },
+  '/docs/community/contributing': {
+    kind: 'workflow',
+    messageKey: 'pages.contributing.contributing',
+  },
   '/docs/component/form-foundations/form': {
     kind: 'component',
     messageKey: 'pages.form.form',
@@ -180,6 +210,10 @@ const docsSecondaryNavResolvers: Record<string, DocsSecondaryNavContentResolver>
     kind: 'component',
     messageKey: 'pages.drawer.drawer',
   },
+  '/docs/component/layout/grid': {
+    kind: 'component',
+    messageKey: 'pages.grid.grid',
+  },
 }
 
 const toSectionNavItems = (content: DocsComponentPageContent): DocsSecondaryNavItem[] => {
@@ -189,22 +223,21 @@ const toSectionNavItems = (content: DocsComponentPageContent): DocsSecondaryNavI
   }))
 }
 
-const toEditorialSectionNavItems = <TSection extends { title: string }>(content: {
-  hero?: {
-    prerequisitesTitle?: string
-  }
-  sections: Record<string, TSection>
-}, introId?: string): DocsSecondaryNavItem[] => {
-  const items = Object.entries(content.sections).map(([id, section]) => ({
+const toEditorialSectionNavItems = <TSection extends { title: string }>(
+  sections: Record<string, TSection>,
+  prerequisitesTitle?: string,
+  introId?: string,
+): DocsSecondaryNavItem[] => {
+  const items = Object.entries(sections).map(([id, section]) => ({
     id,
     label: section.title,
   }))
 
-  if (content.hero?.prerequisitesTitle && introId) {
+  if (prerequisitesTitle && introId) {
     return [
       {
         id: introId,
-        label: content.hero.prerequisitesTitle,
+        label: prerequisitesTitle,
       },
       ...items,
     ]
@@ -225,19 +258,25 @@ export const useDocsSecondaryNavItems = (path: Ref<string> | ComputedRef<string>
     }
 
     if (resolver.kind === 'concept') {
+      const conceptContent = tm(resolver.messageKey) as DocsConceptPageContent<
+        DocsIntroductionSectionKey | DocsThemingOverviewSectionKey | DocsColorsSectionKey | DocsTypographySectionKey | DocsSpacingSectionKey | DocsFlexboxSectionKey | DocsDisplayHelpersSectionKey | DocsElevationSectionKey | DocsSurfacesSectionKey
+      >
+
       return toEditorialSectionNavItems(
-        tm(resolver.messageKey) as DocsConceptPageContent<
-          DocsIntroductionSectionKey | DocsThemingOverviewSectionKey | DocsColorsSectionKey | DocsTypographySectionKey | DocsSpacingSectionKey | DocsFlexboxSectionKey | DocsDisplayHelpersSectionKey | DocsElevationSectionKey | DocsSurfacesSectionKey
-        >,
+        conceptContent.sections,
+        undefined,
         resolver.introId,
       )
     }
 
     if (resolver.kind === 'workflow') {
+      const workflowContent = tm(resolver.messageKey) as DocsWorkflowPageContent<
+        DocsInstallationSectionKey | DocsQuickStartSectionKey | DocsNuxtIntegrationSectionKey | DocsPluginApiSectionKey | DocsDirectivesSectionKey | DocsComposablesSectionKey | DocsChangelogSectionKey | DocsRoadmapSectionKey | DocsContributingSectionKey | DocsIconConfigurationSectionKey | DocsRuntimeThemeApiSectionKey | DocsDesignTokensSectionKey | DocsCssVariablesSectionKey | DocsLightAndDarkThemesSectionKey | DocsCustomThemesSectionKey
+      >
+
       return toEditorialSectionNavItems(
-        tm(resolver.messageKey) as DocsWorkflowPageContent<
-          DocsInstallationSectionKey | DocsQuickStartSectionKey | DocsNuxtIntegrationSectionKey | DocsIconConfigurationSectionKey | DocsRuntimeThemeApiSectionKey | DocsDesignTokensSectionKey | DocsCssVariablesSectionKey | DocsLightAndDarkThemesSectionKey | DocsCustomThemesSectionKey
-        >,
+        workflowContent.sections,
+        workflowContent.hero?.prerequisitesTitle,
         resolver.introId,
       )
     }

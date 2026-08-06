@@ -205,6 +205,48 @@ export type DocsNuxtIntegrationSectionKey =
   | "common-pitfalls"
   | "next-steps";
 
+export type DocsPluginApiSectionKey =
+  | 'configure-locales-and-default-locale'
+  | 'override-components-registry'
+  | 'next-steps';
+
+export type DocsDirectivesSectionKey =
+  | 'overview'
+  | 'ripple'
+  | 'click-outside'
+  | 'focus-outside'
+  | 'next-steps';
+
+export type DocsComposablesSectionKey =
+  | 'overview'
+  | 'use-theme'
+  | 'use-overlay-service'
+  | 'use-breakpoint'
+  | 'compose-patterns';
+
+export type DocsChangelogSectionKey =
+  | 'release-policy'
+  | 'latest-release'
+  | 'release-history'
+  | 'migration-notes'
+  | 'next-steps';
+
+export type DocsRoadmapSectionKey =
+  | 'planning-principles'
+  | 'near-term'
+  | 'next-up'
+  | 'later'
+  | 'feedback-loop'
+  | 'next-steps';
+
+export type DocsContributingSectionKey =
+  | 'contribution-paths'
+  | 'local-setup'
+  | 'pull-request-flow'
+  | 'review-checklist'
+  | 'changelog-policy'
+  | 'next-steps';
+
 export type DocsRuntimeThemeApiSectionKey =
   | 'resolve-initial-theme'
   | 'inspect-theme-state'
