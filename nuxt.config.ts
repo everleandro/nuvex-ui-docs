@@ -79,6 +79,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    preset: 'vercel',
     // Compression settings
     prerender: {
       crawlLinks: false,
