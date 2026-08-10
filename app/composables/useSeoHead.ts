@@ -60,7 +60,7 @@ export function useSeoHead(config: UseSeoHeadConfig = {}) {
     { code: 'es', name: 'Español' },
   ]
 
-  const alternateHeadLinks = computed<{ rel: string; hreflang?: string; href: string }[]>(() => {
+  const alternateHeadLinks = computed<{ rel: 'alternate'; hreflang?: string; href: string }[]>(() => {
     const links = locales
       .map((value) => {
         const localizedPath = withLocalePrefix(route.path, value.code)
@@ -70,12 +70,12 @@ export function useSeoHead(config: UseSeoHeadConfig = {}) {
         }
 
         return {
-          rel: 'alternate',
+          rel: 'alternate' as const,
           hreflang: value.code,
           href: new URL(localizedPath, siteUrl.value).toString(),
         }
       })
-      .filter((value): value is { rel: string; hreflang?: string; href: string } => Boolean(value))
+      .filter((value): value is { rel: 'alternate'; hreflang?: string; href: string } => Boolean(value))
 
     // Add x-default hreflang pointing to the default locale (English)
     const defaultLocalePath = withLocalePrefix(route.path, 'en')
@@ -120,7 +120,7 @@ export function useSeoHead(config: UseSeoHeadConfig = {}) {
         meta: metaTags,
         link: [
           {
-            rel: 'canonical',
+            rel: 'canonical' as const,
             href: new URL(canonicalPath.value, siteUrl.value).toString(),
           },
           ...alternateHeadLinks.value,

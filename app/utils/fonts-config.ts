@@ -4,19 +4,11 @@
  * Preload critical fonts in layouts
  */
 
-export interface FontPreloadConfig {
-  href: string
-  rel: 'preload' | 'prefetch'
-  as: 'font'
-  type: string
-  crossorigin?: string
-}
+import type { Link } from '@unhead/vue'
 
-/**
- * Critical fonts to preload (render-blocking)
- * These should be loaded ASAP to prevent FOUT/FOIT
- */
-export const criticalFonts: FontPreloadConfig[] = [
+export type FontPreloadConfig = Link
+
+const criticalFonts: FontPreloadConfig[] = [
   {
     href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
     rel: 'preload',
@@ -26,11 +18,7 @@ export const criticalFonts: FontPreloadConfig[] = [
   },
 ]
 
-/**
- * Secondary fonts to prefetch (non-critical)
- * These can load after critical content
- */
-export const secondaryFonts: FontPreloadConfig[] = [
+const secondaryFonts: FontPreloadConfig[] = [
   {
     href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap',
     rel: 'prefetch',
@@ -40,17 +28,7 @@ export const secondaryFonts: FontPreloadConfig[] = [
   },
 ]
 
-/**
- * Generate <link> tags for font preloading
- * Use in useHead() meta configuration
- */
-export function getFontPreloadLinks(): Array<{
-  rel: string
-  href: string
-  as?: string
-  type?: string
-  crossorigin?: string
-}> {
+export function getFontPreloadLinks(): FontPreloadConfig[] {
   return [
     ...criticalFonts,
     ...secondaryFonts,
