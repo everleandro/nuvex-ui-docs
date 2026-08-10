@@ -39,6 +39,7 @@ import { EButton, useTheme } from 'nuvex-ui';
 import { useI18n } from 'vue-i18n'
 import { withLocalePrefix } from '~/utils/locale-path'
 import { useSeoHead } from '~/composables/useSeoHead'
+import { schemaOrganization, schemaWebSite, schemaToHeadScript, SiteDefaults } from '~/utils/schema'
 
 const { $icon } = useNuxtApp();
 const drawerModel = ref(true);
@@ -49,6 +50,8 @@ const { t, locale } = useI18n()
 const isHydrated = ref(false)
 
 const { getHeadObject } = useSeoHead()
+
+const siteUrl = computed(() => String(runtimeConfig.public.siteUrl || 'http://localhost:3000'))
 
 onMounted(() => {
   isHydrated.value = true
@@ -99,6 +102,9 @@ const toggleLanguage = async (localeCode: string) => {
 
 useHead(() => {
   const seoHead = getHeadObject()
+  const orgSchema = schemaOrganization(SiteDefaults.organizationNuvexUI(siteUrl.value))
+  const websiteSchema = schemaWebSite(SiteDefaults.websiteNuvexUIDocs(siteUrl.value))
+
   return {
     htmlAttrs: {
       lang: locale.value,
@@ -106,6 +112,10 @@ useHead(() => {
       style: `color-scheme: ${currentTheme.value === 'dark' ? 'dark' : 'light'};`,
     },
     ...seoHead,
+    script: [
+      schemaToHeadScript(orgSchema, 'schema-organization'),
+      schemaToHeadScript(websiteSchema, 'schema-website'),
+    ],
   }
 })
 </script>
