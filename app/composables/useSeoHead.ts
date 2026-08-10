@@ -77,6 +77,16 @@ export function useSeoHead(config: UseSeoHeadConfig = {}) {
       })
       .filter((value): value is { rel: string; hreflang?: string; href: string } => Boolean(value))
 
+    // Add x-default hreflang pointing to the default locale (English)
+    const defaultLocalePath = withLocalePrefix(route.path, 'en')
+    if (defaultLocalePath) {
+      links.push({
+        rel: 'alternate',
+        hreflang: 'x-default',
+        href: new URL(defaultLocalePath, siteUrl.value).toString(),
+      })
+    }
+
     return links
   })
 

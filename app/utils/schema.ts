@@ -43,6 +43,7 @@ export interface SchemaBreadcrumb {
     name: string
     item?: string
   }>
+  inLanguage?: string
 }
 
 export interface SchemaArticle {
@@ -70,6 +71,7 @@ export interface SchemaArticle {
     }
   }
   mainEntity?: SchemaArticle
+  inLanguage?: string
 }
 
 export interface SchemaSearchAction {
@@ -142,6 +144,7 @@ export function schemaWebSite(config: {
 /**
  * Generate BreadcrumbList schema
  * Used for docs hierarchy navigation (improves SERP appearance)
+ * For multilingual pages, include inLanguage parameter
  */
 export function schemaBreadcrumb(config: {
   items: Array<{
@@ -149,8 +152,9 @@ export function schemaBreadcrumb(config: {
     url?: string
     position: number
   }>
+  inLanguage?: string // Add 'en' or 'es' for multilingual support
 }): SchemaBreadcrumb {
-  return {
+  const schema: SchemaBreadcrumb = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: config.items.map((item) => ({
@@ -160,11 +164,18 @@ export function schemaBreadcrumb(config: {
       ...(item.url && { item: item.url }),
     })),
   }
+
+  if (config.inLanguage) {
+    schema.inLanguage = config.inLanguage
+  }
+
+  return schema
 }
 
 /**
  * Generate Article schema
  * Used for documentation pages to enable rich snippets in search results
+ * For multilingual pages, include the inLanguage parameter for proper indexing
  */
 export function schemaArticle(config: {
   headline: string
@@ -178,6 +189,7 @@ export function schemaArticle(config: {
   publisherName?: string
   publisherLogo?: string
   type?: 'Article' | 'TechArticle'
+  inLanguage?: string // Add 'en' or 'es' for multilingual support
 }): SchemaArticle {
   const type = config.type || 'Article'
 
@@ -220,6 +232,10 @@ export function schemaArticle(config: {
         },
       }),
     }
+  }
+
+  if (config.inLanguage) {
+    schema.inLanguage = config.inLanguage
   }
 
   return schema
