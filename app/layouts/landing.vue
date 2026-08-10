@@ -49,6 +49,8 @@
 import { EButton, useTheme } from 'nuvex-ui'
 import { useI18n } from 'vue-i18n'
 import { withLocalePrefix } from '~/utils/locale-path'
+import { useSeoHead } from '~/composables/useSeoHead'
+
 const { $icon } = useNuxtApp()
 
 const { currentTheme, toggleTheme } = useTheme()
@@ -56,6 +58,8 @@ const route = useRoute()
 const runtimeConfig = useRuntimeConfig()
 const { t, locale } = useI18n()
 const isHydrated = ref(false)
+
+const { getHeadObject } = useSeoHead()
 
 onMounted(() => {
     isHydrated.value = true
@@ -104,46 +108,17 @@ const toggleLanguage = async (localeCode: string) => {
     await navigateTo(targetPath)
 }
 
-const siteUrl = computed(() => String(runtimeConfig.public.siteUrl || 'http://localhost:3000'))
-
-const canonicalPath = computed(() => {
-    return withLocalePrefix(route.path, locale.value)
-})
-
-const alternateHeadLinks = computed<{ rel: string; hreflang: string; href: string }[]>(() => {
-    const links = locales
-        .map((value) => {
-            const localizedPath = withLocalePrefix(route.path, value.code)
-
-            if (!localizedPath) {
-                return null
-            }
-
-            return {
-                rel: 'alternate',
-                hreflang: value.code,
-                href: new URL(localizedPath, siteUrl.value).toString(),
-            }
-        })
-        .filter((value): value is { rel: string; hreflang: string; href: string } => Boolean(value))
-
-    return links
-})
-
-useHead(() => ({
+useHead(() => {
+  const seoHead = getHeadObject()
+  return {
     htmlAttrs: {
-        lang: locale.value,
-        'data-theme': currentTheme.value,
-        style: `color-scheme: ${currentTheme.value === 'dark' ? 'dark' : 'light'};`,
+      lang: locale.value,
+      'data-theme': currentTheme.value,
+      style: `color-scheme: ${currentTheme.value === 'dark' ? 'dark' : 'light'};`,
     },
-    link: [
-        {
-            rel: 'canonical',
-            href: new URL(canonicalPath.value, siteUrl.value).toString(),
-        },
-        ...alternateHeadLinks.value,
-    ],
-}))
+    ...seoHead,
+  }
+})
 </script>
 
 <style scoped>

@@ -80,6 +80,7 @@ export interface DocsEditorialPageBase<
   seo: {
     title: string;
     description: string;
+    og_image?: string;
   };
   hero: THero;
   sections: TSections;

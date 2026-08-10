@@ -99,11 +99,20 @@ definePageMeta({
 import { ETab, ETextfield } from 'nuvex-ui'
 import type { DocsConceptPageContent, DocsHomeSectionKey } from '~/types/docs'
 import { withLocalePrefix } from '~/utils/locale-path'
+import { useSeoHead } from '~/composables/useSeoHead'
+
 const { getAvatarByIndex } = useAvatars()
 const { locale } = useI18n()
 
 const editorialContent = useDocsI18nContent<DocsConceptPageContent<DocsHomeSectionKey>>('pages.home.home')
 const content = computed(() => editorialContent.value)
+
+// Use useSeoHead composable with page-specific content
+const { getHeadObject } = useSeoHead({
+  title: computed(() => content.value.seo.title),
+  description: computed(() => content.value.seo.description),
+  og_image: computed(() => content.value.seo.og_image),
+})
 
 const getHeroActionLabel = (key: string) => {
   const action = content.value.hero.actions?.find((entry) => entry.key === key)
@@ -181,9 +190,17 @@ const yourDesignSnippet = {
 ${scritpTag}`,
   language: 'html'
 }
-useSeoMeta({
-  title: computed(() => content.value.seo.title),
-  description: computed(() => content.value.seo.description),
+
+useHead(() => {
+  const seoHead = getHeadObject()
+  return {
+    meta: [
+      ...seoHead.meta,
+      // Keep title in meta for compatibility
+      { name: 'title', content: content.value.seo.title },
+    ],
+    link: seoHead.link,
+  }
 })
 </script>
 <style lang="scss">
