@@ -171,6 +171,7 @@
 
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n'
+import { useComponentPageSchema, BreadcrumbBuilders } from '~/composables/useComponentPageSchema'
 import { cardApiReference } from '~/api-reference/data-scheduling/card'
 import { cardApiReferenceEs } from '~/api-reference/data-scheduling/card-es'
 import { buildTemplateElementSnippet } from '~/utils/snippet-element'
@@ -200,6 +201,15 @@ const sections = computed(() => ({
 }))
 
 useSeoMeta({ title: computed(() => content.value.seo.title), description: computed(() => content.value.seo.description) })
+
+// Add Article and Breadcrumb schemas for rich snippets
+const { getHeadObject: getSchemaHead } = useComponentPageSchema({
+  title: computed(() => content.value.seo.title),
+  description: computed(() => content.value.seo.description),
+  breadcrumbSegments: BreadcrumbBuilders.component('Card'),
+})
+
+useHead(() => getSchemaHead())
 
 const colors = ['primary', 'secondary', 'success', 'warning']
 const elevations = ['none', 'xs', 'sm', 'md', 'lg', 'xl']

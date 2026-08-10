@@ -125,6 +125,7 @@
 <script setup lang="ts">
 import type { EForm } from 'nuvex-ui'
 import { useI18n } from 'vue-i18n'
+import { useComponentPageSchema, BreadcrumbBuilders } from '~/composables/useComponentPageSchema'
 import { checkboxApiReference } from '~/api-reference/forms/checkbox'
 import { checkboxApiReferenceEs } from '~/api-reference/forms/checkbox-es'
 import { checkboxCodeSnippets } from './checkbox.snippets'
@@ -176,6 +177,15 @@ useSeoMeta({
   title: computed(() => content.value.seo.title),
   description: computed(() => content.value.seo.description),
 })
+
+// Add Article and Breadcrumb schemas for rich snippets
+const { getHeadObject: getSchemaHead } = useComponentPageSchema({
+  title: computed(() => content.value.seo.title),
+  description: computed(() => content.value.seo.description),
+  breadcrumbSegments: BreadcrumbBuilders.component('Checkbox'),
+})
+
+useHead(() => getSchemaHead())
 
 const color = ref('primary')
 const colors = ['primary', 'secondary', 'blue', 'warning', 'purple']

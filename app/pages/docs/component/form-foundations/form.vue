@@ -183,6 +183,7 @@
 import type { EForm } from 'nuvex-ui'
 import { useI18n } from 'vue-i18n'
 import type { RouteLocationAsString } from 'vue-router'
+import { useComponentPageSchema, BreadcrumbBuilders } from '~/composables/useComponentPageSchema'
 import { formApiReference } from '~/api-reference/forms/form'
 import { formApiReferenceEs } from '~/api-reference/forms/form-es'
 import { formCodeSnippets } from './form-page.snippets'
@@ -275,6 +276,15 @@ useSeoMeta({
     title: computed(() => content.value.seo.title),
     description: computed(() => content.value.seo.description),
 })
+
+// Add Article and Breadcrumb schemas for rich snippets
+const { getHeadObject: getSchemaHead } = useComponentPageSchema({
+    title: computed(() => content.value.seo.title),
+    description: computed(() => content.value.seo.description),
+    breadcrumbSegments: BreadcrumbBuilders.component('Form'),
+})
+
+useHead(() => getSchemaHead())
 
 const { tabsDesignTemplate, tabsDesignTemplateTs } = useDocsPlaygroundTabSets()
 

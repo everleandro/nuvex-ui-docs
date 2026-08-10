@@ -185,6 +185,7 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
 import { withLocalePrefix } from '~/utils/locale-path'
+import { useComponentPageSchema, BreadcrumbBuilders } from '~/composables/useComponentPageSchema'
 import { buttonApiReference } from '@/api-reference/forms/button'
 import { buttonApiReferenceEs } from '@/api-reference/forms/button-es'
 import { createButtonPlaygroundLogic } from './button.logic'
@@ -238,6 +239,15 @@ useSeoMeta({
     title: computed(() => content.value.seo.title),
     description: computed(() => content.value.seo.description),
 })
+
+// Add Article and Breadcrumb schemas for rich snippets
+const { getHeadObject: getSchemaHead } = useComponentPageSchema({
+    title: computed(() => content.value.seo.title),
+    description: computed(() => content.value.seo.description),
+    breadcrumbSegments: BreadcrumbBuilders.component('Button'),
+})
+
+useHead(() => getSchemaHead())
 
 const {
     color,
