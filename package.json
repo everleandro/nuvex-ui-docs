@@ -11,6 +11,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/image": "^2.1.0",
     "@nuxtjs/i18n": "^10.4.0",
     "@nuxtjs/sitemap": "^8.3.4",
     "@types/prismjs": "^1.26.6",

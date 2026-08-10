@@ -51,6 +51,7 @@ import { useI18n } from 'vue-i18n'
 import { withLocalePrefix } from '~/utils/locale-path'
 import { useSeoHead } from '~/composables/useSeoHead'
 import { schemaOrganization, schemaWebSite, schemaToHeadScript, SiteDefaults } from '~/utils/schema'
+import { getFontPreloadLinks } from '~/utils/fonts-config'
 
 const { $icon } = useNuxtApp()
 
@@ -115,6 +116,7 @@ useHead(() => {
   const seoHead = getHeadObject()
   const orgSchema = schemaOrganization(SiteDefaults.organizationNuvexUI(siteUrl.value))
   const websiteSchema = schemaWebSite(SiteDefaults.websiteNuvexUIDocs(siteUrl.value))
+  const fontPreloadLinks = getFontPreloadLinks()
 
   return {
     htmlAttrs: {
@@ -123,6 +125,11 @@ useHead(() => {
       style: `color-scheme: ${currentTheme.value === 'dark' ? 'dark' : 'light'};`,
     },
     ...seoHead,
+    link: [
+      ...fontPreloadLinks,
+      // Existing links will be merged
+      ...(seoHead.link || []),
+    ],
     script: [
       schemaToHeadScript(orgSchema, 'schema-organization'),
       schemaToHeadScript(websiteSchema, 'schema-website'),
