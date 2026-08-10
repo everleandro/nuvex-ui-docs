@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/i18n'],
+  modules: ['@nuxtjs/i18n', '@nuxtjs/sitemap'],
   css: [
     'nuvex-ui/styles.css',
     'nuvex-ui/framework.scss',
@@ -29,4 +29,28 @@ export default defineNuxtConfig({
       redirectOn: 'root',
     },
   },
+  sitemap: {
+    // Auto-discover routes from file system
+    urls: async () => {
+      return []
+    },
+    sitemaps: {
+      pages: {
+        // Dynamic routes - will be auto-generated
+      },
+    },
+    defaults: {
+      // Default priority for all routes
+      priority: 0.8,
+      changefreq: 'weekly',
+    },
+    // Exclude patterns
+    exclude: [
+      '/playgrounds/**', // Exclude playgrounds - noindex applied
+      '/admin/**', // Exclude admin routes if any
+    ],
+    // Ensure trailing slashes
+    trailingSlash: false,
+  },
 })
+

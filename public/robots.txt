@@ -1,2 +1,11 @@
 User-Agent: *
-Disallow:
+Allow: /
+Disallow: /admin/
+Disallow: /playgrounds/
+
+# Sitemap reference for search engine discovery
+Sitemap: /sitemap.xml
+
+# Cache and crawl optimization
+Crawl-Delay: 0
+Request-Rate: 1/1s

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/i18n": "^10.4.0",
+    "@nuxtjs/sitemap": "^8.3.4",
     "@types/prismjs": "^1.26.6",
     "better-sqlite3": "^12.11.1",
     "nuvex-ui": "file:../drocket/nuvex-ui-1.0.0.tgz",
