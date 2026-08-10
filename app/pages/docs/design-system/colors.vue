@@ -6,7 +6,7 @@
       :description="backgroundHelpersSection.description" :description-html="backgroundHelpersSection.descriptionHtml">
       <DocsComponentPlayground :tabs="tabsDesignTemplate" color="primary">
         <template #panel-design>
-          <ERow dense class="flex-1">
+          <ERow dense class="flex-1 full-width">
             <ECol v-for="helper in semanticHelpersPreview" :key="helper.color" cols="6"
               :class="['e-elevation--sm p-4', helper.color]">
               <span class="type-subtitle">.{{ helper.color }}</span>

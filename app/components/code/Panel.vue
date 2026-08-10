@@ -46,10 +46,11 @@ onBeforeUnmount(() => {
     clearTimeout(timer)
   }
 })
+
 const prismBinding = computed(() => ({
   class: `language-${props.language}`,
   lineNumbers: props.lineNumbers,
-  code: highlightedCode.value,
+  code: highlightedCode.value
 }))
 </script>
 

@@ -1,16 +1,18 @@
 <template>
   <EApp>
     <EBar app clipped fixed outlined>
-      <EButton :icon="$icon.menu" @click="drawerModel = !drawerModel" />
-      <AppLogo class="mx-3" />
+      <EButton :icon="$icon.menu" text @click="drawerModel = !drawerModel" />
+      <NuxtLink :to="withLocalePrefix('/', locale)" aria-label="Nuvex UI home">
+        <AppLogo class="mx-3" />
+      </NuxtLink>
       <ESpacer />
-      <EButton :icon="$icon.themeDarkLight" :aria-label="themeToggleLabel" :title="themeToggleLabel"
-        @click="toggleTheme()" />
-      <EButton :icon="$icon.gitHub" />
+        <EButton :icon="themeIcon" text :aria-label="themeToggleLabel" :title="themeToggleLabel"
+                @click="toggleTheme()" />
+      <EButton :icon="$icon.gitHub" text/>
 
       <EMenu origin="bottom right" transition="scale">
         <template #activator="{ attrs }">
-          <EButton v-bind="attrs" :icon="$icon.lng" :aria-label="languageToggleLabel" :title="languageToggleLabel" />
+          <EButton v-bind="attrs" :icon="$icon.lng" :aria-label="languageToggleLabel" text :title="languageToggleLabel" />
         </template>
         <EList>
           <EListItem v-for="localeOption in locales" :key="localeOption.code"
@@ -24,7 +26,7 @@
     <AppSecondaryNav />
     <NuxtRouteAnnouncer />
     <EMain>
-      <EContainer class="p-4" max-width="980px">
+      <EContainer>
         <slot />
         <DocsPageFooter />
       </EContainer>
@@ -37,6 +39,7 @@ import { EButton, useTheme } from 'nuvex-ui';
 import { useI18n } from 'vue-i18n'
 import { withLocalePrefix } from '~/utils/locale-path'
 
+const { $icon } = useNuxtApp();
 const drawerModel = ref(true);
 const { currentTheme, toggleTheme } = useTheme();
 const route = useRoute()
@@ -48,6 +51,7 @@ onMounted(() => {
   isHydrated.value = true
 })
 
+const themeIcon = computed(() => (currentTheme.value === 'dark' ? $icon.light : $icon.dark))
 const themeToggleLabel = computed(() =>
   !isHydrated.value
     ? t('common.theme.toggle')

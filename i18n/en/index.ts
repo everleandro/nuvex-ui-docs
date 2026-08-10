@@ -2,6 +2,7 @@ import common from './common'
 import navigation from './navigation'
 import playground from './playground'
 import errors from './errors'
+import home from './pages/home'
 import introduction from './pages/introduction'
 import installation from './pages/installation'
 import nuxtIntegration from './pages/nuxt-integration'
@@ -47,6 +48,7 @@ const en = {
   playground,
   errors,
   pages: {
+    home,
     introduction,
     installation,
     nuxtIntegration,

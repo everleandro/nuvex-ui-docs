@@ -92,6 +92,8 @@ export interface DocsEditorialGridItem {
 }
 
 export interface DocsConceptHero extends DocsEditorialHeroBase {
+  eyebrow?: string;
+  pills?: string[];
   actions?: DocsEditorialActionLabel[];
 }
 
@@ -117,6 +119,13 @@ export type DocsIntroductionSectionKey =
   | "what-is-nuvex-ui"
   | "recommended-path"
   | "system-principles";
+
+export type DocsHomeSectionKey =
+  | 'entry-points'
+  | 'quick-start-showcase'
+  | 'theming-showcase'
+  | 'preview-canvas'
+  | 'recommended-flow';
 
 export type DocsThemingOverviewSectionKey =
   | "what-theming-covers"
