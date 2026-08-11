@@ -58,7 +58,7 @@ export function lazyLoadComponent<T extends Component>(
     onError(error, retry, fail) {
       // Log error but don't retry (avoid infinite loops)
       console.error(`Failed to load component from ${path}:`, error)
-      fail(error)
+      fail()
     },
   })
 }

@@ -1,5 +1,5 @@
 <template>
-    <EDrawer :model-value="isVisible" right width="240px" appearance="transparent">
+    <EDrawer :model-value="isVisible" class="d-none d-lg-block" right width="240px" appearance="transparent">
         <template #prepend>
             <div class="d-flex items-center gap-2 mt-4 mb-2">
                 <EIcon :icon="$icon.layersOutline" />

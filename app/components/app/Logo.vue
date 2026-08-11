@@ -56,7 +56,8 @@ const props = withDefaults(defineProps<{
 .nu-logo {
     --nu-logo-accent: var(--e-color-secondary);
     --nu-logo-neutral: var(--e-color-primary);
-    width: 150px;
+    max-width: 150px;
+    min-width: 100px;
 
     &--neutral {
         color: var(--nu-logo-neutral);

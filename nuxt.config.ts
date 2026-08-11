@@ -53,8 +53,6 @@ export default defineNuxtConfig({
       '/playgrounds/**', // Exclude playgrounds - noindex applied
       '/admin/**', // Exclude admin routes if any
     ],
-    // Ensure trailing slashes
-    trailingSlash: false,
   },
 
   // Phase 4: Performance Optimization
@@ -65,7 +63,7 @@ export default defineNuxtConfig({
       maxAge: 60 * 60 * 24 * 365, // 1 year for versioned images
     },
     // Enabled formats for responsive images
-    formats: ['webp', 'avif'],
+    format: ['webp', 'avif'],
     // Quality settings
     quality: 80,
     // Presets for common sizes
@@ -90,34 +88,30 @@ export default defineNuxtConfig({
       brotli: true,
       gzip: true,
     },
-    // Cache control for assets
-    headers: {
-      'Cache-Control': 'public, max-age=31536000, immutable',
-    },
   },
 
   // Build optimization
   build: {
     // Optimization flags
     transpile: ['nuvex-ui'],
-    // CSS extraction
-    cssSourceMap: false,
-    // Tree-shake unused code
-    terserOptions: {
-      compress: {
-        drop_console: false,
+  },
+
+  vite: {
+    build: {
+      terserOptions: {
+        compress: {
+          drop_console: false,
+        },
       },
     },
   },
 
   // Route rules for performance
   routeRules: {
-    // Cache static routes for 24 hours
-    '/**': { cache: { maxAge: 60 * 60 * 24 } },
     // Don't cache playgrounds
-    '/playgrounds/**': { noCache: true },
+    '/playgrounds/**': { cache: false },
     // Don't cache admin
-    '/admin/**': { noCache: true },
+    '/admin/**': { cache: false },
   },
 })
 

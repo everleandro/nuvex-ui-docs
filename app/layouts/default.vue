@@ -6,21 +6,25 @@
         <AppLogo class="mx-3" />
       </NuxtLink>
       <ESpacer />
+      <div class="d-flex gap-1">
         <EButton :icon="themeIcon" text :aria-label="themeToggleLabel" :title="themeToggleLabel"
-                @click="toggleTheme()" />
-      <EButton :icon="$icon.gitHub" text/>
+          @click="toggleTheme()" />
+        <EButton :icon="$icon.gitHub" text to="https://github.com/everleandro/nuvex-ui" target="_blank" rel="noreferrer"
+          aria-label="Open GitHub repository" title="Open GitHub repository" />
 
-      <EMenu origin="bottom right" transition="scale">
-        <template #activator="{ attrs }">
-          <EButton v-bind="attrs" :icon="$icon.lng" :aria-label="languageToggleLabel" text :title="languageToggleLabel" />
-        </template>
-        <EList>
-          <EListItem v-for="localeOption in locales" :key="localeOption.code"
-            :is-active="isCurrentLocale(localeOption.code)" @click="toggleLanguage(localeOption.code)">
-            {{ localeOption.name }}
-          </EListItem>
-        </EList>
-      </EMenu>
+        <EMenu origin="bottom right" transition="scale">
+          <template #activator="{ attrs }">
+            <EButton v-bind="attrs" :icon="$icon.lng" :aria-label="languageToggleLabel" text
+              :title="languageToggleLabel" />
+          </template>
+          <EList>
+            <EListItem v-for="localeOption in locales" :key="localeOption.code"
+              :is-active="isCurrentLocale(localeOption.code)" @click="toggleLanguage(localeOption.code)">
+              {{ localeOption.name }}
+            </EListItem>
+          </EList>
+        </EMenu>
+      </div>
     </EBar>
     <AppNavigationDrawer v-model="drawerModel" />
     <AppSecondaryNav />
