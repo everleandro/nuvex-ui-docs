@@ -3,7 +3,7 @@ import type { DocsLightAndDarkThemesSectionKey, DocsWorkflowPageContent } from '
 export const lightAndDarkThemesEditorialContent: DocsWorkflowPageContent<DocsLightAndDarkThemesSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Light and Dark Themes',
+    title: 'Light and Dark Themes | Nuvex UI Docs',
     description:
       'Understand the built-in light and dark themes in Nuvex UI, how the initial theme is resolved, and how to customize the baseline without creating a new theme variant.',
   },

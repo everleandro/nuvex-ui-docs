@@ -3,7 +3,7 @@ import type { DocsContributingSectionKey, DocsWorkflowPageContent } from '~/type
 export const contributingEditorialContent: DocsWorkflowPageContent<DocsContributingSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Contribuir',
+    title: 'Contribuir | Nuvex UI Docs',
     description:
       'Sigue un flujo guiado y repetible con ejemplos practicos de comandos y changelog.',
   },

@@ -3,7 +3,7 @@ import type { DocsConceptPageContent, DocsIntroductionSectionKey } from '~/types
 export const introductionEditorialContentEs: DocsConceptPageContent<DocsIntroductionSectionKey> = {
   kind: 'concept',
   seo: {
-    title: 'Introduccion',
+    title: 'Introduccion | Nuvex UI Docs',
     description:
       'Introduccion a Nuvex UI. Aprende que ofrece la libreria, como se organiza la documentacion y el mejor camino para empezar a construir.',
   },

@@ -175,6 +175,10 @@ const textHelpersCode = `<section class="surface-base pa-4">
 useSeoMeta({
   title: computed(() => content.value.seo.title),
   description: computed(() => content.value.seo.description),
+  ogTitle: computed(() => content.value.seo.title),
+  ogDescription: computed(() => content.value.seo.description),
+  twitterTitle: computed(() => content.value.seo.title),
+  twitterDescription: computed(() => content.value.seo.description),
 })
 </script>
 

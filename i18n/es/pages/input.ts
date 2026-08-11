@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const checkboxComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Checkbox',
+    title: 'Checkbox | Nuvex UI Docs',
     description: 'Documentacion del componente Checkbox de Nuvex UI con uso interactivo, variantes visuales, retain-color, valores personalizados, slot de label, validacion y props.',
   },
   hero: {
@@ -93,7 +93,7 @@ export const checkboxComponentContentEs: DocsComponentPageContent = {
 export const radioComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Radio',
+    title: 'Radio | Nuvex UI Docs',
     description: 'Documentacion del componente Radio Group de Nuvex UI con uso interactivo, layouts row y column, variantes visuales, seleccion obligatoria, slots, validacion y props para ERadioGroup y ERadio.',
   },
   hero: {
@@ -223,7 +223,7 @@ export const radioComponentContentEs: DocsComponentPageContent = {
 export const selectComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Select',
+    title: 'Select | Nuvex UI Docs',
     description: 'Documentacion del componente Select de Nuvex UI con playground, mapeo de items, chips, busqueda, carga asincrona y props.',
   },
   hero: {
@@ -316,7 +316,7 @@ export const selectComponentContentEs: DocsComponentPageContent = {
 export const switchComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Switch',
+    title: 'Switch | Nuvex UI Docs',
     description: 'Documentacion del componente Switch para Nuvex UI con uso interactivo, variantes, valores custom, carga async, slot de label, validacion y props.',
   },
   hero: {
@@ -417,7 +417,7 @@ export const switchComponentContentEs: DocsComponentPageContent = {
 export const datePickerComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Date Picker',
+    title: 'Date Picker | Nuvex UI Docs',
     description: 'Documentacion del componente Date Picker de Nuvex UI con uso interactivo, vistas controladas, fechas disabled/highlighted, integracion con dialog y props.',
   },
   hero: {
@@ -491,7 +491,7 @@ export const datePickerComponentContentEs: DocsComponentPageContent = {
 export const textFieldComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Textfield',
+    title: 'Textfield | Nuvex UI Docs',
     description:
       'Documentación del componente Textfield de Nuvex UI con playground, variantes y props.',
   },
@@ -580,7 +580,7 @@ export const textFieldComponentContentEs: DocsComponentPageContent = {
 export const textareaComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Textarea',
+    title: 'Textarea | Nuvex UI Docs',
     description: 'Documentacion del componente Textarea de Nuvex UI con patrones de uso, manejo de rows y longitud, validacion y props.',
   },
   hero: {

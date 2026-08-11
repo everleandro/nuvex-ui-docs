@@ -3,7 +3,7 @@ import type { DocsConceptPageContent, DocsElevationSectionKey } from '~/types/do
 export const elevationEditorialContentEs: DocsConceptPageContent<DocsElevationSectionKey> = {
   kind: 'concept',
   seo: {
-    title: 'Elevation',
+    title: 'Elevacion | Nuvex UI Docs',
     description:
       'Aprende los helpers publicos de elevation expuestos por Nuvex UI, inspecciona la escala de profundidad disponible y copia los nombres de clase usados para superponer superficies de forma consistente.',
   },

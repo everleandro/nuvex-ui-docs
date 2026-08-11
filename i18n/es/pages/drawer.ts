@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const drawerComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Drawer',
+    title: 'Panel lateral | Nuvex UI Docs',
     description: 'Documentación de Drawer en Nuvex UI con estado, dimensiones, superficies, slots y referencia API.',
   },
   hero: {

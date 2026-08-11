@@ -3,7 +3,7 @@ import type { DocsRuntimeThemeApiSectionKey, DocsWorkflowPageContent } from '~/t
 export const runtimeThemeApiEditorialContentEs: DocsWorkflowPageContent<DocsRuntimeThemeApiSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Runtime Theme API',
+    title: 'API de tema en runtime | Nuvex UI Docs',
     description:
       'Usa el contrato de theming runtime de Nuvex UI para inspeccionar, cambiar, persistir y extender el tema activo sin reconstruir el sistema por tu cuenta.',
   },

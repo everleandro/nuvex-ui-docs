@@ -3,7 +3,7 @@ import type { DocsRoadmapSectionKey, DocsWorkflowPageContent } from '~/types/doc
 export const roadmapEditorialContentEs: DocsWorkflowPageContent<DocsRoadmapSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Roadmap',
+    title: 'Hoja de ruta | Nuvex UI Docs',
     description:
       'Revisa prioridades cercanas y siguientes de Nuvex UI con alcance de planificacion estable y bucle de feedback.',
   },

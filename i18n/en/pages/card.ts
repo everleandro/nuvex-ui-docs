@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const cardComponentContent: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Card',
+    title: 'Card | Nuvex UI Docs',
     description: 'Card component documentation for Nuvex UI with surface variants, content anatomy, media placement, slots, composition patterns, accessibility, and API reference.',
   },
   hero: {

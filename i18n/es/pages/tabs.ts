@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const tabsComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Tabs',
+    title: 'Pestanas | Nuvex UI Docs',
     description: 'Documentacion de Tabs en Nuvex UI con seleccion, variantes visuales, alineacion, orientacion, paneles de contenido, teclado y referencia API.',
   },
   hero: {

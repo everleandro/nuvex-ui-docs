@@ -3,7 +3,7 @@ import type { DocsDirectivesSectionKey, DocsWorkflowPageContent } from '~/types/
 export const directivesEditorialContent: DocsWorkflowPageContent<DocsDirectivesSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Directives',
+    title: 'Directives | Nuvex UI Docs',
     description:
       'Apply NuvexUI directives to add ripple feedback, click outside behavior, and focus outside handling in interactive UI.',
   },

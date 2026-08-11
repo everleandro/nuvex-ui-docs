@@ -3,7 +3,7 @@ import type { DocsQuickStartSectionKey, DocsWorkflowPageContent } from '~/types/
 export const quickStartEditorialContent: DocsWorkflowPageContent<DocsQuickStartSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Quick Start',
+    title: 'Quick Start | Nuvex UI Docs',
     description:
       'Build the recommended initial application structure with Nuvex UI after installation using an app bar, a drawer, and a main content area.',
   },

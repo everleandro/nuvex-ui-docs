@@ -3,7 +3,7 @@ import type { DocsPluginApiSectionKey, DocsWorkflowPageContent } from '~/types/d
 export const pluginApiEditorialContentEs: DocsWorkflowPageContent<DocsPluginApiSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Plugin API',
+    title: 'API del plugin | Nuvex UI Docs',
     description:
       'Configura las opciones del plugin de NuvexUI enfocadas en internacionalizacion y estrategia de registro de componentes.',
   },

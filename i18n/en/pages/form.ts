@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const formComponentContent: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Form',
+    title: 'Form | Nuvex UI Docs',
     description:
       'Form component documentation for Nuvex UI with inherited field behavior, table layouts, form column composition, validation lifecycle, exposed methods, and props.',
   },

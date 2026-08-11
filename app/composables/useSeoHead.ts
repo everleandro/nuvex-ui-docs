@@ -15,6 +15,8 @@ export function useSeoHead(config: UseSeoHeadConfig = {}) {
   const route = useRoute()
   const runtimeConfig = useRuntimeConfig()
   const { locale } = useI18n()
+  const hasCustomTitle = Boolean(config.title)
+  const hasCustomDescription = Boolean(config.description)
 
   const siteUrl = computed(() => String(runtimeConfig.public.siteUrl || 'http://localhost:3000'))
 
@@ -105,16 +107,26 @@ export function useSeoHead(config: UseSeoHeadConfig = {}) {
     alternateHeadLinks,
     getHeadObject: () => {
       const metaTags: any[] = [
-        { property: 'og:title', content: title.value },
-        { property: 'og:description', content: description.value },
         { property: 'og:type', content: ogType.value },
         { property: 'og:url', content: pageUrl.value },
         { property: 'og:image', content: og_image.value },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: title.value },
-        { name: 'twitter:description', content: description.value },
         { name: 'twitter:image', content: og_image.value },
       ]
+
+      if (hasCustomTitle) {
+        metaTags.push(
+          { property: 'og:title', content: title.value },
+          { name: 'twitter:title', content: title.value },
+        )
+      }
+
+      if (hasCustomDescription) {
+        metaTags.push(
+          { property: 'og:description', content: description.value },
+          { name: 'twitter:description', content: description.value },
+        )
+      }
 
       return {
         meta: metaTags,

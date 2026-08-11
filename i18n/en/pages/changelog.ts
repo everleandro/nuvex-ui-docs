@@ -3,7 +3,7 @@ import type { DocsChangelogSectionKey, DocsWorkflowPageContent } from '~/types/d
 export const changelogEditorialContent: DocsWorkflowPageContent<DocsChangelogSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Changelog',
+    title: 'Changelog | Nuvex UI Docs',
     description:
       'Review release history, migration notes, and unreleased updates for Nuvex UI in a versioned format.',
   },

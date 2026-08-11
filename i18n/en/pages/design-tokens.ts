@@ -3,7 +3,7 @@ import type { DocsDesignTokensSectionKey, DocsWorkflowPageContent } from '~/type
 export const designTokensEditorialContent: DocsWorkflowPageContent<DocsDesignTokensSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Design Tokens',
+    title: 'Design Tokens | Nuvex UI Docs',
     description:
       'Reference the Sass token modules exposed by Nuvex UI and override them through assets/styles/variables.scss before framework.scss is compiled.',
   },

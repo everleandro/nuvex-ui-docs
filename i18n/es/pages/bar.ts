@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const barComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Barra',
+    title: 'Barra | Nuvex UI Docs',
     description: 'Documentación de Bar en Nuvex UI con estilos de superficie, composición de acciones, densidad y referencia API.',
   },
   hero: {

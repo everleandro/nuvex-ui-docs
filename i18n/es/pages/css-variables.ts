@@ -3,7 +3,7 @@ import type { DocsCssVariablesSectionKey, DocsWorkflowPageContent } from '~/type
 export const cssVariablesEditorialContentEs: DocsWorkflowPageContent<DocsCssVariablesSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'CSS Variables',
+    title: 'Variables CSS | Nuvex UI Docs',
     description:
       'Usa las CSS custom properties que Nuvex UI emite cuando compila framework.scss y deja los overrides de Sass tokens para los cambios que pertenecen al baseline del framework.',
   },

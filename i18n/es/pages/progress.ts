@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const progressComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Progress',
+    title: 'Progreso | Nuvex UI Docs',
     description: 'Documentación de Progress en Nuvex UI con modos determinado e indeterminado, manejo de valores, personalización visual, patrones de composición, accesibilidad y referencia API.',
   },
   hero: {

@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const gridComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Grid',
+    title: 'Cuadricula | Nuvex UI Docs',
     description: 'Documentación de Grid en Nuvex UI con uso interactivo, breakpoints responsivos, modos de fila, layouts anidados y referencia API para ERow y ECol.',
   },
   hero: {

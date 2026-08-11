@@ -3,7 +3,7 @@ import type { DocsConceptPageContent, DocsThemingOverviewSectionKey } from '~/ty
 export const themingOverviewEditorialContent: DocsConceptPageContent<DocsThemingOverviewSectionKey> = {
   kind: 'concept',
   seo: {
-    title: 'Theming Overview',
+    title: 'Theming Overview | Nuvex UI Docs',
     description:
       'Identify which theming layer you need to touch in Nuvex UI before moving into a specific implementation guide.',
   },

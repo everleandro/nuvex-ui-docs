@@ -3,7 +3,7 @@ import type { DocsInstallationSectionKey, DocsWorkflowPageContent } from '~/type
 export const installationEditorialContentEs: DocsWorkflowPageContent<DocsInstallationSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Instalacion',
+    title: 'Instalacion | Nuvex UI Docs',
     description:
       'Instala Nuvex UI, registra el plugin y carga los estilos base para dejar tu proyecto listo antes de pasar a componentes, theming o layout.',
   },

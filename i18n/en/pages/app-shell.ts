@@ -5,7 +5,7 @@ type AppShellSectionKey = 'structure' | 'base-template' | 'verify-structure' | '
 export const appShellWorkflowContent: DocsWorkflowPageContent<AppShellSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'App Shell',
+    title: 'App Shell | Nuvex UI Docs',
     description:
       'Set up the base structure of a Nuvex UI application with an app bar, navigation drawer, and main content.',
   },

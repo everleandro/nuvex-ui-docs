@@ -3,7 +3,7 @@ import type { DocsConceptPageContent, DocsTypographySectionKey } from '~/types/d
 export const typographyEditorialContentEs: DocsConceptPageContent<DocsTypographySectionKey> = {
   kind: 'concept',
   seo: {
-    title: 'Tipografia',
+    title: 'Tipografia | Nuvex UI Docs',
     description:
       'Referencia las clases publicas de tipografia expuestas por Nuvex UI, compara su jerarquia y copia el uso exacto de clase mostrado en cada ejemplo.',
   },

@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const menuComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Menu',
+    title: 'Menu | Nuvex UI Docs',
     description: 'Documentacion de Menu en Nuvex UI con activadores, posicionamiento, tamano, estado controlado, composicion, anidacion, accesibilidad y referencia API.',
   },
   hero: {

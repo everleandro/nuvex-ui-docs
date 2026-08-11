@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const cardComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Card',
+    title: 'Tarjeta | Nuvex UI Docs',
     description: 'Documentación de Card en Nuvex UI con variantes de superficie, anatomía de contenido, ubicación de media, slots, patrones de composición, accesibilidad y referencia API.',
   },
   hero: {

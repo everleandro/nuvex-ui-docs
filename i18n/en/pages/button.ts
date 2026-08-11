@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const buttonComponentContent: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Button',
+    title: 'Button | Nuvex UI Docs',
     description: 'Button component documentation for Nuvex UI, including playground, variants, icons, sizing, and props.',
   },
   hero: {

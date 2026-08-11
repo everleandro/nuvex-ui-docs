@@ -3,7 +3,7 @@ import type { DocsNuxtIntegrationSectionKey, DocsWorkflowPageContent } from '~/t
 export const nuxtIntegrationEditorialContent: DocsWorkflowPageContent<DocsNuxtIntegrationSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Nuxt Integration',
+    title: 'Nuxt Integration | Nuvex UI Docs',
     description:
       'Integrate Nuvex UI into Nuxt with SSR-safe theme persistence, correct style loading, and a plugin setup ready for deeper theming.',
   },

@@ -3,7 +3,7 @@ import type { DocsColorsSectionKey, DocsConceptPageContent } from '~/types/docs'
 export const colorsEditorialContentEs: DocsConceptPageContent<DocsColorsSectionKey> = {
   kind: 'concept',
   seo: {
-    title: 'Colores',
+    title: 'Colores | Nuvex UI Docs',
     description:
       'Consulta los tokens semanticos, tokens de superficie, paletas primitivas y helper classes que Nuvex UI usa para construir interfaces consistentes.',
   },

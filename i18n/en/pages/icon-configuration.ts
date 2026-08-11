@@ -3,7 +3,7 @@ import type { DocsIconConfigurationSectionKey, DocsWorkflowPageContent } from '~
 export const iconConfigurationEditorialContent: DocsWorkflowPageContent<DocsIconConfigurationSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Icon Configuration',
+    title: 'Icon Configuration | Nuvex UI Docs',
     description:
       'Configure a consistent icon strategy in Nuvex UI for application UI, internal component defaults, and external icon libraries.',
   },

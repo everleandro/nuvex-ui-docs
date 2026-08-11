@@ -3,7 +3,7 @@ import type { DocsComposablesSectionKey, DocsWorkflowPageContent } from '~/types
 export const composablesEditorialContent: DocsWorkflowPageContent<DocsComposablesSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Composables',
+    title: 'Composables | Nuvex UI Docs',
     description:
       'Use NuvexUI composables to drive runtime theme actions, overlay behavior, and breakpoint-aware UI state from app code.',
   },

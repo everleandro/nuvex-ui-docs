@@ -28,6 +28,8 @@
 import { useI18n } from 'vue-i18n'
 import { findOpenGroupIdsByPath, getNavigationGroupTitleKey, getNavigationItemTitleKey, navigationGroups } from '~/navigation.config';
 import { withLocalePrefix } from '~/utils/locale-path'
+import { useBreakpoint } from "nuvex-ui"
+const { viewport } = useBreakpoint()
 
 const props = defineProps({
     modelValue: {
@@ -47,11 +49,13 @@ const drawerModel = computed({
         emit('update:modelValue', value)
     },
 })
+const isLargeScreen = computed(() => viewport.lg || viewport.xl)
 
 watch(
     () => route.path,
     (path) => {
         nestedGroupModel.value = findOpenGroupIdsByPath(path)
+        !isLargeScreen.value && (drawerModel.value = false)
     },
     { immediate: true },
 )

@@ -3,7 +3,7 @@ import type { DocsConceptPageContent, DocsSurfacesSectionKey } from '~/types/doc
 export const surfacesEditorialContent: DocsConceptPageContent<DocsSurfacesSectionKey> = {
   kind: 'concept',
   seo: {
-    title: 'Surfaces',
+    title: 'Surfaces | Nuvex UI Docs',
     description:
       'Learn how Nuvex UI uses surface tokens to build structural hierarchy, preserve contrast, and keep layout decisions consistent across themes.',
   },

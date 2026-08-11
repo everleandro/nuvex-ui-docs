@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const scheduleComponentContent: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Schedule',
+    title: 'Schedule | Nuvex UI Docs',
     description: 'Schedule component documentation for Nuvex UI with calendar composition, slots, Dialog integration, accessibility, and API reference.',
   },
   hero: {

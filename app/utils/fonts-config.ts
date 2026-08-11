@@ -10,21 +10,24 @@ export type FontPreloadConfig = Link
 
 const criticalFonts: FontPreloadConfig[] = [
   {
-    href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
-    rel: 'preload',
-    as: 'font',
-    type: 'font/woff2',
+    href: 'https://fonts.googleapis.com',
+    rel: 'preconnect',
+  },
+  {
+    href: 'https://fonts.gstatic.com',
+    rel: 'preconnect',
     crossorigin: 'anonymous',
+  },
+  {
+    href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
+    rel: 'stylesheet',
   },
 ]
 
 const secondaryFonts: FontPreloadConfig[] = [
   {
     href: 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap',
-    rel: 'prefetch',
-    as: 'font',
-    type: 'font/woff2',
-    crossorigin: 'anonymous',
+    rel: 'stylesheet',
   },
 ]
 

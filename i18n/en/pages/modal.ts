@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const dialogComponentContent: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Dialog',
+    title: 'Dialog | Nuvex UI Docs',
     description: 'Dialog component documentation for Nuvex UI with controlled state, dismissal, persistent flows, sizing, fullscreen layouts, focus management, and API reference.',
   },
   hero: {

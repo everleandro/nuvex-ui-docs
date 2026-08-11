@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const formComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'Form',
+    title: 'Formulario | Nuvex UI Docs',
     description:
       'Documentacion del componente Form de Nuvex UI con herencia de comportamiento para fields, layout tipo tabla, composicion con form column, ciclo de validacion, metodos expuestos y props.',
   },

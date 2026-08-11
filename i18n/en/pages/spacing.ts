@@ -3,7 +3,7 @@ import type { DocsConceptPageContent, DocsSpacingSectionKey } from '~/types/docs
 export const spacingEditorialContent: DocsConceptPageContent<DocsSpacingSectionKey> = {
   kind: 'concept',
   seo: {
-    title: 'Spacing',
+    title: 'Spacing | Nuvex UI Docs',
     description:
       'Learn the public spacing helpers exposed by Nuvex UI, inspect their syntax, and preview margin and padding classes with the framework spacing scale.',
   },

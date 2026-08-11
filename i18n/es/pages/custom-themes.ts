@@ -3,7 +3,7 @@ import type { DocsCustomThemesSectionKey, DocsWorkflowPageContent } from '~/type
 export const customThemesEditorialContentEs: DocsWorkflowPageContent<DocsCustomThemesSectionKey> = {
   kind: 'workflow',
   seo: {
-    title: 'Custom Themes',
+    title: 'Temas personalizados | Nuvex UI Docs',
     description:
       'Crea y registra temas nombrados adicionales en Nuvex UI sin reemplazar el baseline built-in de light y dark.',
   },

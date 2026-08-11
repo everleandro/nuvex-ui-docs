@@ -3,7 +3,7 @@ import type { DocsComponentPageContent } from '~/types/docs'
 export const listComponentContentEs: DocsComponentPageContent = {
   kind: 'component',
   seo: {
-    title: 'List',
+    title: 'Lista | Nuvex UI Docs',
     description: 'Documentacion de List en Nuvex UI con seleccion, contenido de items, navegacion, grupos, slots, teclado y referencia API.',
   },
   hero: {
