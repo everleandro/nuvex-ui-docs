@@ -24,7 +24,10 @@
 
     <section class="docs-landing__dashboard-example d-flex justify-center pt-0">
       <ECard elevation="md" class="docs-landing__dashboard-frame-card">
-        <DocsPlaygroundFrame :path="dashboardPreviewSrc" :locale="locale" title="Landing dashboard example" />
+        <DocsPlaygroundFrame class="d-none d-lg-block" :path="dashboardPreviewSrc" :locale="locale"
+          title="Landing dashboard example" />
+        <img class="d-lg-none" src="~/assets/styles/images/example-dashboard.png" alt="Nuvex UI dashboard demo"
+          width="100%" loading="lazy" />
       </ECard>
     </section>
 

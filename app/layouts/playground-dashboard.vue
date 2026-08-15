@@ -8,8 +8,10 @@
       </div>
       <ESpacer />
       <div class="d-flex gap-1">
-        <EButton text :icon="$icon.cog" aria-label="Settings" />
-        <EButton text :icon="$icon.bellOutline" aria-label="Notifications" />
+        <!-- <EButton text :icon="$icon.cog" aria-label="Settings" /> -->
+        <EButton :icon="themeIcon" text :aria-label="themeToggleLabel" :title="themeToggleLabel"
+          @click="toggleTheme()" />
+        <!-- <EButton text :icon="$icon.bellOutline" aria-label="Notifications" /> -->
       </div>
     </EBar>
 
@@ -44,7 +46,10 @@
 <script setup lang="ts">
 const { getAvatarByIndex } = useAvatars()
 import { withLocalePrefix } from '~/utils/locale-path'
-const { locale } = useI18n()
+import { useTheme } from 'nuvex-ui'
+const { currentTheme, toggleTheme } = useTheme()
+const { $icon } = useNuxtApp()
+const { t, locale } = useI18n()
 useHead({ meta: [{ name: 'robots', content: 'noindex, nofollow' }] })
 
 const drawerOpen = ref(true)
@@ -52,5 +57,20 @@ const overview = computed(() => withLocalePrefix('/playgrounds/landing-dashboard
 const login = computed(() => withLocalePrefix('/playgrounds/landing-dashboard/login', locale.value))
 const customers = computed(() => withLocalePrefix('/playgrounds/landing-dashboard/customers', locale.value))
 const schedule = computed(() => withLocalePrefix('/playgrounds/landing-dashboard/schedule', locale.value))
+
+const isHydrated = ref(false);
+
+onMounted(() => {
+  isHydrated.value = true
+})
+
+const themeIcon = computed(() => (currentTheme.value === 'dark' ? $icon.light : $icon.dark))
+const themeToggleLabel = computed(() =>
+  !isHydrated.value
+    ? t('common.theme.toggle')
+    : currentTheme.value === 'dark'
+      ? t('common.theme.toLight')
+      : t('common.theme.toDark'),
+);
 
 </script>
