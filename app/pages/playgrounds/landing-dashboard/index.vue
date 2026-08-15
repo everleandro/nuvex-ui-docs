@@ -277,10 +277,4 @@ const getSparklinePath = (values: number[], width = 120, height = 60, padding = 
   color: var(--e-color-text-muted);
   font-size: 0.8rem;
 }
-
-@media (max-width: 767px) {
-  .landing-dashboard__hero {
-    flex-direction: column;
-  }
-}
 </style>

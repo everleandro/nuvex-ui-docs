@@ -1,13 +1,13 @@
 <template>
     <section class="landing-dashboard__view">
-        <ERow class=" py-4 mb-2">
+        <ERow gap="8" class="landing-dashboard__hero py-4 mb-2">
             <ECol class="flex-1-1-0 d-flex items-center">
                 <div class="d-flex flex-column gap-1">
                     <p class="landing-dashboard__eyebrow type-caption">Schedule</p>
                     <h3 class="mb-0">Weekly agenda for the studio</h3>
                 </div>
             </ECol>
-            <ECol cols="auto">
+            <ECol cols="7" sm="auto">
                 <ETextfield id="schedule-date" :model-value="formatDate(scheduleDate)" :append-icon="$icon.calendar"
                     input-align="end" input-readonly @click="dialogOpen = true" />
             </ECol>

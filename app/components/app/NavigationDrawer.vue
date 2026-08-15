@@ -55,9 +55,18 @@ watch(
     () => route.path,
     (path) => {
         nestedGroupModel.value = findOpenGroupIdsByPath(path)
-        !isLargeScreen.value && (drawerModel.value = false)
+        console.log('isLargeScreen.value', isLargeScreen.value)
     },
-    { immediate: true },
+    { immediate: true, flush: 'post' },
+)
+watch(
+    () => [route.path, isLargeScreen.value],
+    ([path, largeScreen]) => {
+        if (!largeScreen) {
+            drawerModel.value = false
+        }
+    },
+    { flush: 'post' }
 )
 
 </script>
@@ -75,10 +84,11 @@ watch(
 
 .docs-navigation-drawer {
     @include mixins.xs {
-        padding-top: 0!important;
+        padding-top: 0 !important;
     }
+
     @include mixins.sm {
-        padding-top: 0!important;
+        padding-top: 0 !important;
     }
 }
 </style>

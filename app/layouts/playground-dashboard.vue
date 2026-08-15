@@ -15,7 +15,7 @@
       </div>
     </EBar>
 
-    <EDrawer v-model="drawerOpen" nav class="landing-dashboard__drawer">
+    <EDrawer v-model="drawerOpen" fixed nav class="landing-dashboard__drawer">
       <template #prepend>
         <EListItem :prepend-avatar="getAvatarByIndex(5)?.avatarSrc" title="Ever Santiesteban"
           subtitle="Q3 Product Team" />
@@ -46,11 +46,30 @@
 <script setup lang="ts">
 const { getAvatarByIndex } = useAvatars()
 import { withLocalePrefix } from '~/utils/locale-path'
-import { useTheme } from 'nuvex-ui'
+import { useTheme, useBreakpoint } from 'nuvex-ui'
 const { currentTheme, toggleTheme } = useTheme()
 const { $icon } = useNuxtApp()
 const { t, locale } = useI18n()
-useHead({ meta: [{ name: 'robots', content: 'noindex, nofollow' }] })
+const route = useRoute()
+const { viewport } = useBreakpoint()
+const isLargeScreen = computed(() => viewport.lg || viewport.xl)
+watch(
+  () => [route.path, isLargeScreen.value],
+  ([path, largeScreen]) => {
+    if (!largeScreen) {
+      drawerOpen.value = false
+    }
+  },
+  { flush: 'post' }
+)
+
+useHead(() => ({
+  meta: [{ name: 'robots', content: 'noindex, nofollow' }],
+  htmlAttrs: {
+    'data-theme': currentTheme.value,
+    style: `color-scheme: ${currentTheme.value === 'dark' ? 'dark' : 'light'};`,
+  },
+}))
 
 const drawerOpen = ref(true)
 const overview = computed(() => withLocalePrefix('/playgrounds/landing-dashboard', locale.value))
@@ -58,7 +77,7 @@ const login = computed(() => withLocalePrefix('/playgrounds/landing-dashboard/lo
 const customers = computed(() => withLocalePrefix('/playgrounds/landing-dashboard/customers', locale.value))
 const schedule = computed(() => withLocalePrefix('/playgrounds/landing-dashboard/schedule', locale.value))
 
-const isHydrated = ref(false);
+const isHydrated = ref(false)
 
 onMounted(() => {
   isHydrated.value = true
@@ -71,6 +90,21 @@ const themeToggleLabel = computed(() =>
     : currentTheme.value === 'dark'
       ? t('common.theme.toLight')
       : t('common.theme.toDark'),
-);
+)
+
 
 </script>
+<style lang="scss">
+@use 'nuvex-ui/mixin.scss' as mixins;
+
+.landing-dashboard {
+  &__hero {
+    h3 {
+      @include mixins.xs {
+        font-size: 16px;
+        line-height: 16px;
+      }
+    }
+  }
+}
+</style>
