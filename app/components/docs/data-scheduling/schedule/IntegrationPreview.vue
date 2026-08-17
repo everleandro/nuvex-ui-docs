@@ -24,9 +24,9 @@
 import type { ScheduleEvent, ScheduleSlotEvent } from 'nuvex-ui'
 import { useScheduleResources } from './schedule.resources'
 
-const { labels, spaces, events: resourceEvents } = useScheduleResources({ spaceCount: 1, eventCount: 1 })
+const { labels, spaces, events: resourceEvents } = useScheduleResources({ spaceCount: 1, eventCount: 4 })
 
-const date = ref(new Date(2026, 7, 3))
+const date = ref(new Date())
 const events = ref<ScheduleEvent[]>([])
 watch(resourceEvents, (localizedEvents) => {
   events.value = localizedEvents.map(event => ({ ...event }))

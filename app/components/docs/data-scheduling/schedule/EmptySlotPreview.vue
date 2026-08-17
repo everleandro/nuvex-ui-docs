@@ -17,9 +17,9 @@
 import type { ScheduleSlotEvent } from 'nuvex-ui'
 import { useScheduleResources } from './schedule.resources'
 
-const { labels, spaces } = useScheduleResources({ spaceCount: 1, eventCount: 0 })
+const { labels, spaces } = useScheduleResources({ spaceCount: 1, eventCount: 4 })
 
-const date = ref(new Date(2026, 7, 3))
+const date = ref(new Date())
 const feedback = ref(labels.value.chooseSlot)
 const formatTime = (value: Date | string) => new Intl.DateTimeFormat(undefined, {
   hour: '2-digit',

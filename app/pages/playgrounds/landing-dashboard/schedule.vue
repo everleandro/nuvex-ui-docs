@@ -31,7 +31,7 @@
 definePageMeta({
     layout: 'playground-dashboard',
 })
-const scheduleDate = ref(new Date(2026, 7, 3))
+const scheduleDate = ref(new Date())
 const dialogOpen = ref(false)
 const formatDate = (value: Date) => {
     return new Intl.DateTimeFormat('en-US', {
@@ -39,6 +39,13 @@ const formatDate = (value: Date) => {
         month: 'long',
         year: 'numeric',
     }).format(value)
+}
+const relativeDate = (dayOffset: number, hour: number, minute = 0) => {
+    const date = new Date();
+    date.setHours(0, 0, 0, 0);
+    date.setDate(date.getDate() + dayOffset);
+    date.setHours(hour, minute, 0, 0);
+    return date;
 }
 import { ScheduleView } from 'nuvex-ui'
 import type { ScheduleEvent, ScheduleSpace } from 'nuvex-ui'
@@ -61,8 +68,8 @@ const events = ref<ScheduleEvent[]>([
     {
         id: 'planning',
         entityId: 'studio-a',
-        start: new Date(2026, 7, 3, 9, 0),
-        end: new Date(2026, 7, 3, 10, 30),
+        start: relativeDate(0, 9, 0),
+        end: relativeDate(0, 10, 30),
         color: 'primary',
         name: 'Planning',
         subtitle: '09:00 - 10:30',
@@ -71,8 +78,8 @@ const events = ref<ScheduleEvent[]>([
     {
         id: 'review',
         entityId: 'studio-b',
-        start: new Date(2026, 7, 3, 11, 0),
-        end: new Date(2026, 7, 3, 12, 0),
+        start: relativeDate(0, 11, 0),
+        end: relativeDate(0, 12, 0),
         color: 'secondary',
         name: 'Client review',
         subtitle: '11:00 - 12:00',
@@ -81,28 +88,28 @@ const events = ref<ScheduleEvent[]>([
     {
         id: 'design',
         entityId: 'studio-c',
-        start: new Date(2026, 7, 4, 9, 30),
-        end: new Date(2026, 7, 4, 10, 30),
+        start: relativeDate(0, 13, 0),
+        end: relativeDate(0, 14, 0),
         color: 'success',
         name: 'Design sync',
-        subtitle: '09:30 - 10:30',
+        subtitle: '13:00 - 14:00',
         footer: 'Design • Creative',
     },
     {
         id: 'shoot',
         entityId: 'studio-d',
-        start: new Date(2026, 7, 4, 13, 0),
-        end: new Date(2026, 7, 4, 15, 0),
+        start: relativeDate(0, 15, 0),
+        end: relativeDate(0, 17, 0),
         color: 'warning',
         name: 'Launch prep',
-        subtitle: '13:00 - 15:00',
+        subtitle: '15:00 - 17:00',
         footer: 'Marketing • Campaign',
     },
     {
         id: 'check-in',
         entityId: 'studio-b',
-        start: new Date(2026, 7, 5, 10, 0),
-        end: new Date(2026, 7, 5, 11, 0),
+        start: relativeDate(0, 10, 0),
+        end: relativeDate(0, 11, 0),
         color: 'primary',
         name: 'Check-in',
         subtitle: '10:00 - 11:00',
@@ -111,8 +118,8 @@ const events = ref<ScheduleEvent[]>([
     {
         id: 'strategy',
         entityId: 'studio-c',
-        start: new Date(2026, 7, 6, 11, 0),
-        end: new Date(2026, 7, 6, 12, 30),
+        start: relativeDate(1, 11, 0),
+        end: relativeDate(1, 12, 30),
         color: 'secondary',
         name: 'Workshop',
         subtitle: '11:00 - 12:30',
@@ -121,8 +128,8 @@ const events = ref<ScheduleEvent[]>([
     {
         id: 'onboarding',
         entityId: 'studio-d',
-        start: new Date(2026, 7, 7, 14, 0),
-        end: new Date(2026, 7, 7, 15, 30),
+        start: relativeDate(1, 14, 0),
+        end: relativeDate(1, 15, 30),
         color: 'success',
         name: 'Onboarding',
         subtitle: '14:00 - 15:30',
@@ -131,8 +138,8 @@ const events = ref<ScheduleEvent[]>([
     {
         id: 'qa',
         entityId: 'studio-a',
-        start: new Date(2026, 7, 7, 10, 0),
-        end: new Date(2026, 7, 7, 11, 0),
+        start: relativeDate(-1, 10, 0),
+        end: relativeDate(-1, 11, 0),
         color: 'warning',
         name: 'QA review',
         subtitle: '10:00 - 11:00',
@@ -141,8 +148,8 @@ const events = ref<ScheduleEvent[]>([
     {
         id: 'launch',
         entityId: 'studio-b',
-        start: new Date(2026, 7, 6, 14, 0),
-        end: new Date(2026, 7, 6, 15, 30),
+        start: relativeDate(2, 14, 0),
+        end: relativeDate(2, 15, 30),
         color: 'primary',
         name: 'Rehearsal',
         subtitle: '14:00 - 15:30',

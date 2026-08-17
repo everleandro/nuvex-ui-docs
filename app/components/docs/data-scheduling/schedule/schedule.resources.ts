@@ -63,7 +63,7 @@ const getRelativeDate = (dayOffset: number, hour: number, minute = 0) => {
 export const getScheduleEvents = (
   labels: ScheduleEventContentMap,
   locale: string,
-  count = 9,
+  count = 18,
 ): ScheduleEvent[] => {
   const createEvent = (
     event: Omit<ScheduleEvent, "name" | "subtitle" | "footer">,
@@ -75,99 +75,40 @@ export const getScheduleEvents = (
     footer: content.footer,
   });
 
+  const eventSeries = [
+    { id: "planning", entityId: "studio-a", dayOffset: 0, startHour: 9, startMinute: 0, endHour: 10, endMinute: 30, color: "teal-200", label: labels.planning },
+    { id: "research", entityId: "studio-a", dayOffset: -2, startHour: 11, startMinute: 0, endHour: 12, endMinute: 0, color: "green-200", label: labels.research },
+    { id: "design-review", entityId: "studio-a", dayOffset: 2, startHour: 14, startMinute: 0, endHour: 16, endMinute: 0, color: "lime-200", label: labels.designReview },
+    { id: "handoff", entityId: "studio-a", dayOffset: -5, startHour: 10, startMinute: 0, endHour: 11, endMinute: 0, color: "orange-200", label: labels.handoff },
+    { id: "customer-interview", entityId: "studio-a", dayOffset: 6, startHour: 13, startMinute: 0, endHour: 14, endMinute: 0, color: "amber-200", label: labels.customerInterview },
+    { id: "roadmap-review", entityId: "review-room", dayOffset: 3, startHour: 10, startMinute: 0, endHour: 11, endMinute: 30, color: "neutral-200", label: labels.roadmapReview },
+    { id: "architecture-sync", entityId: "studio-b", dayOffset: -4, startHour: 15, startMinute: 0, endHour: 16, endMinute: 0, color: "purple-200", label: labels.architectureSync },
+    { id: "usability-test", entityId: "review-room", dayOffset: 7, startHour: 9, startMinute: 30, endHour: 11, endMinute: 0, color: "brown-200", label: labels.usabilityTest },
+    { id: "release-planning", entityId: "studio-b", dayOffset: 5, startHour: 14, startMinute: 0, endHour: 15, endMinute: 30, color: "blue-200", label: labels.releasePlanning },
+    { id: "planning-2", entityId: "studio-a", dayOffset: 0, startHour: 8, startMinute: 0, endHour: 9, endMinute: 0, color: "teal-200", label: labels.planning },
+    { id: "research-2", entityId: "studio-a", dayOffset: 0, startHour: 15, startMinute: 30, endHour: 16, endMinute: 30, color: "green-200", label: labels.research },
+    { id: "design-review-2", entityId: "studio-a", dayOffset: 1, startHour: 11, startMinute: 0, endHour: 12, endMinute: 30, color: "lime-200", label: labels.designReview },
+    { id: "handoff-2", entityId: "studio-b", dayOffset: -1, startHour: 14, startMinute: 0, endHour: 15, endMinute: 0, color: "orange-200", label: labels.handoff },
+    { id: "customer-interview-2", entityId: "studio-b", dayOffset: 4, startHour: 9, startMinute: 30, endHour: 10, endMinute: 30, color: "amber-200", label: labels.customerInterview },
+    { id: "roadmap-review-2", entityId: "review-room", dayOffset: -6, startHour: 13, startMinute: 0, endHour: 14, endMinute: 30, color: "neutral-200", label: labels.roadmapReview },
+    { id: "architecture-sync-2", entityId: "studio-b", dayOffset: -3, startHour: 10, startMinute: 0, endHour: 11, endMinute: 0, color: "purple-200", label: labels.architectureSync },
+    { id: "usability-test-2", entityId: "review-room", dayOffset: 1, startHour: 15, startMinute: 0, endHour: 16, endMinute: 30, color: "brown-200", label: labels.usabilityTest },
+    { id: "release-planning-2", entityId: "studio-a", dayOffset: 7, startHour: 16, startMinute: 0, endHour: 17, endMinute: 30, color: "blue-200", label: labels.releasePlanning },
+  ];
+
   return take(
-    [
+    eventSeries.map(({ id, entityId, dayOffset, startHour, startMinute, endHour, endMinute, color, label }) =>
       createEvent(
         {
-          id: "planning",
-          entityId: "studio-a",
-          start: getRelativeDate(0, 9, 0),
-          end: getRelativeDate(0, 10, 30),
-          color: "teal-200",
+          id,
+          entityId,
+          start: getRelativeDate(dayOffset, startHour, startMinute),
+          end: getRelativeDate(dayOffset, endHour, endMinute),
+          color,
         },
-        labels.planning,
+        label,
       ),
-      createEvent(
-        {
-          id: "research",
-          entityId: "studio-a",
-          start: getRelativeDate(1, 15, 0),
-          end: getRelativeDate(1, 16, 0),
-          color: "green-200",
-        },
-        labels.research,
-      ),
-      createEvent(
-        {
-          id: "design-review",
-          entityId: "studio-a",
-          start: getRelativeDate(2, 11, 0),
-          end: getRelativeDate(2, 13, 0),
-          color: "lime-200",
-        },
-        labels.designReview,
-      ),
-      createEvent(
-        {
-          id: "handoff",
-          entityId: "studio-a",
-          start: getRelativeDate(-1, 10, 0),
-          end: getRelativeDate(-1, 11, 0),
-          color: "orange-200",
-        },
-        labels.handoff,
-      ),
-      createEvent(
-        {
-          id: "customer-interview",
-          entityId: "studio-a",
-          start: getRelativeDate(0, 13, 0),
-          end: getRelativeDate(0, 14, 0),
-          color: "amber-200",
-        },
-        labels.customerInterview,
-      ),
-      createEvent(
-        {
-          id: "roadmap-review",
-          entityId: "review-room",
-          start: getRelativeDate(1, 14, 0),
-          end: getRelativeDate(1, 15, 30),
-          color: "neutral-200",
-        },
-        labels.roadmapReview,
-      ),
-      createEvent(
-        {
-          id: "architecture-sync",
-          entityId: "studio-b",
-          start: getRelativeDate(2, 10, 0),
-          end: getRelativeDate(2, 11, 0),
-          color: "purple-200",
-        },
-        labels.architectureSync,
-      ),
-      createEvent(
-        {
-          id: "usability-test",
-          entityId: "review-room",
-          start: getRelativeDate(-2, 9, 30),
-          end: getRelativeDate(-2, 11, 0),
-          color: "brown-200",
-        },
-        labels.usabilityTest,
-      ),
-      createEvent(
-        {
-          id: "release-planning",
-          entityId: "studio-b",
-          start: getRelativeDate(3, 14, 0),
-          end: getRelativeDate(3, 15, 30),
-          color: "blue-200",
-        },
-        labels.releasePlanning,
-      ),
-    ],
+    ),
     count,
   );
 };

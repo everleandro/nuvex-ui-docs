@@ -18,7 +18,7 @@
 <script setup lang="ts">
 import { useScheduleResources } from './schedule.resources'
 
-const date = ref(new Date(2026, 7, 3))
+const date = ref(new Date())
 const { spaces, events: scheduleEvents } = useScheduleResources({ spaceCount: 1, eventCount: 9 })
 const events = computed(() => scheduleEvents.value.filter(({ id }) => (
   id === 'planning' || id === 'customer-interview'

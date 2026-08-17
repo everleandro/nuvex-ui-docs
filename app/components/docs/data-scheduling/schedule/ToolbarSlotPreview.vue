@@ -20,8 +20,8 @@
 <script setup lang="ts">
 import { useScheduleResources } from './schedule.resources'
 
-const date = ref(new Date(2026, 7, 3))
-const { spaces, events } = useScheduleResources({ spaceCount: 1, eventCount: 1 })
+const date = ref(new Date())
+const { spaces, events } = useScheduleResources({ spaceCount: 1, eventCount: 4 })
 const formatDate = (value: Date) => new Intl.DateTimeFormat(undefined, {
   weekday: 'long',
   month: 'short',

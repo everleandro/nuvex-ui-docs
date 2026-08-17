@@ -8,8 +8,8 @@
 import { CalendarScale } from 'nuvex-ui'
 import { useScheduleResources } from './schedule.resources'
 
-const { spaces, events } = useScheduleResources({ spaceCount: 1, eventCount: 2 })
+const { spaces, events } = useScheduleResources({ spaceCount: 1, eventCount: 10 })
 
-const date = ref(new Date(2026, 7, 3))
+const date = ref(new Date())
 const scale = ref(CalendarScale.Week)
 </script>
