@@ -52,6 +52,14 @@ export const getScheduleSpaces = (
     count,
   );
 
+const getRelativeDate = (dayOffset: number, hour: number, minute = 0) => {
+  const date = new Date();
+  date.setHours(0, 0, 0, 0);
+  date.setDate(date.getDate() + dayOffset);
+  date.setHours(hour, minute, 0, 0);
+  return date;
+};
+
 export const getScheduleEvents = (
   labels: ScheduleEventContentMap,
   locale: string,
@@ -73,8 +81,8 @@ export const getScheduleEvents = (
         {
           id: "planning",
           entityId: "studio-a",
-          start: new Date(2026, 7, 3, 1),
-          end: new Date(2026, 7, 3, 2, 30),
+          start: getRelativeDate(0, 9, 0),
+          end: getRelativeDate(0, 10, 30),
           color: "teal-200",
         },
         labels.planning,
@@ -83,8 +91,8 @@ export const getScheduleEvents = (
         {
           id: "research",
           entityId: "studio-a",
-          start: new Date(2026, 7, 6, 3),
-          end: new Date(2026, 7, 6, 4),
+          start: getRelativeDate(1, 15, 0),
+          end: getRelativeDate(1, 16, 0),
           color: "green-200",
         },
         labels.research,
@@ -93,8 +101,8 @@ export const getScheduleEvents = (
         {
           id: "design-review",
           entityId: "studio-a",
-          start: new Date(2026, 7, 5, 14),
-          end: new Date(2026, 7, 5, 16),
+          start: getRelativeDate(2, 11, 0),
+          end: getRelativeDate(2, 13, 0),
           color: "lime-200",
         },
         labels.designReview,
@@ -103,8 +111,8 @@ export const getScheduleEvents = (
         {
           id: "handoff",
           entityId: "studio-a",
-          start: new Date(2026, 7, 7, 10),
-          end: new Date(2026, 7, 7, 11),
+          start: getRelativeDate(-1, 10, 0),
+          end: getRelativeDate(-1, 11, 0),
           color: "orange-200",
         },
         labels.handoff,
@@ -113,8 +121,8 @@ export const getScheduleEvents = (
         {
           id: "customer-interview",
           entityId: "studio-a",
-          start: new Date(2026, 7, 3, 11),
-          end: new Date(2026, 7, 3, 12),
+          start: getRelativeDate(0, 13, 0),
+          end: getRelativeDate(0, 14, 0),
           color: "amber-200",
         },
         labels.customerInterview,
@@ -123,8 +131,8 @@ export const getScheduleEvents = (
         {
           id: "roadmap-review",
           entityId: "review-room",
-          start: new Date(2026, 7, 4, 14),
-          end: new Date(2026, 7, 4, 15, 30),
+          start: getRelativeDate(1, 14, 0),
+          end: getRelativeDate(1, 15, 30),
           color: "neutral-200",
         },
         labels.roadmapReview,
@@ -133,8 +141,8 @@ export const getScheduleEvents = (
         {
           id: "architecture-sync",
           entityId: "studio-b",
-          start: new Date(2026, 7, 5, 10),
-          end: new Date(2026, 7, 5, 11),
+          start: getRelativeDate(2, 10, 0),
+          end: getRelativeDate(2, 11, 0),
           color: "purple-200",
         },
         labels.architectureSync,
@@ -143,8 +151,8 @@ export const getScheduleEvents = (
         {
           id: "usability-test",
           entityId: "review-room",
-          start: new Date(2026, 7, 6, 9, 30),
-          end: new Date(2026, 7, 6, 11),
+          start: getRelativeDate(-2, 9, 30),
+          end: getRelativeDate(-2, 11, 0),
           color: "brown-200",
         },
         labels.usabilityTest,
@@ -153,8 +161,8 @@ export const getScheduleEvents = (
         {
           id: "release-planning",
           entityId: "studio-b",
-          start: new Date(2026, 7, 7, 14),
-          end: new Date(2026, 7, 7, 15, 30),
+          start: getRelativeDate(3, 14, 0),
+          end: getRelativeDate(3, 15, 30),
           color: "blue-200",
         },
         labels.releasePlanning,
