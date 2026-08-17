@@ -6,7 +6,7 @@ export const homeEditorialContent: DocsConceptPageContent<DocsHomeSectionKey> = 
     title: 'Nuvex UI Docs',
     description:
       'Landing page for Nuvex UI documentation. Start with installation, jump into components, and preview the kind of product surfaces the framework can support.',
-    og_image: '/og-image-home.png',
+    og_image: '/media.png',
   },
   hero: {
     eyebrow: 'Nuvex UI',

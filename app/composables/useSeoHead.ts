@@ -35,11 +35,11 @@ export function useSeoHead(config: UseSeoHeadConfig = {}) {
 
   const og_image = computed(() => {
     if (!config.og_image) {
-      return `${siteUrl.value}/og-image-default.png`
+      return `${siteUrl.value}/media.png`
     }
     const img = typeof config.og_image === 'string' ? config.og_image : config.og_image.value
     if (!img) {
-      return `${siteUrl.value}/og-image-default.png`
+      return `${siteUrl.value}/media.png`
     }
     // Return full URL if it starts with http, otherwise prepend siteUrl
     return img.startsWith('http') ? img : `${siteUrl.value}${img.startsWith('/') ? img : '/' + img}`
@@ -62,8 +62,10 @@ export function useSeoHead(config: UseSeoHeadConfig = {}) {
     { code: 'es', name: 'Español' },
   ]
 
-  const alternateHeadLinks = computed<{ rel: 'alternate'; hreflang?: string; href: string }[]>(() => {
-    const links = locales
+  type AlternateHeadLink = { rel: 'alternate'; hreflang: string; href: string }
+
+  const alternateHeadLinks = computed<AlternateHeadLink[]>(() => {
+    const links: AlternateHeadLink[] = locales
       .map((value) => {
         const localizedPath = withLocalePrefix(route.path, value.code)
 
@@ -77,7 +79,7 @@ export function useSeoHead(config: UseSeoHeadConfig = {}) {
           href: new URL(localizedPath, siteUrl.value).toString(),
         }
       })
-      .filter((value): value is { rel: 'alternate'; hreflang?: string; href: string } => Boolean(value))
+      .filter((value): value is AlternateHeadLink => value !== null)
 
     // Add x-default hreflang pointing to the default locale (English)
     const defaultLocalePath = withLocalePrefix(route.path, 'en')
@@ -107,11 +109,21 @@ export function useSeoHead(config: UseSeoHeadConfig = {}) {
     alternateHeadLinks,
     getHeadObject: () => {
       const metaTags: any[] = [
+        { name: 'description', content: description.value },
+        { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
+        { name: 'theme-color', content: '#8b7cf6' },
         { property: 'og:type', content: ogType.value },
+        { property: 'og:site_name', content: 'Nuvex UI' },
+        { property: 'og:locale', content: locale.value === 'es' ? 'es_ES' : 'en_US' },
         { property: 'og:url', content: pageUrl.value },
         { property: 'og:image', content: og_image.value },
+        { property: 'og:image:secure_url', content: og_image.value },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' },
+        { property: 'og:image:alt', content: 'Nuvex UI documentation preview' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:image', content: og_image.value },
+        { name: 'twitter:image:alt', content: 'Nuvex UI documentation preview' },
       ]
 
       if (hasCustomTitle) {
@@ -129,6 +141,7 @@ export function useSeoHead(config: UseSeoHeadConfig = {}) {
       }
 
       return {
+        title: title.value,
         meta: metaTags,
         link: [
           {
