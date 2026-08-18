@@ -130,7 +130,7 @@ const handleValidationInvalid = () => {
     methodsTemplateCode: `<ECard title="Programmatic form control" :subtitle="methodsFeedback" elevation="sm" style="width: 560px;">
     <EForm ref="methodsFormRef" v-model="methodsState.isValid" :color="color">
         <ETextfield v-model="methodsModel.name" label="Name" :rules="[requiredRule]" />
-        <ETextfield v-model="methodsModel.email" label="Email" :rules="[requiredRule]" />
+        <ETextfield v-model="methodsModel.email" label="Email" :rules="[requiredRule,emailRule]" />
         <EFormColumn cols="12" class="d-flex gap-2">
             <ESpacer />
             <EButton color="primary" @click="runValidate">Run validate()</EButton>

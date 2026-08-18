@@ -312,8 +312,8 @@ export function stringifySchema(schema: any): string {
  */
 export function schemaToHeadScript(schema: any, id?: string) {
   return {
-    type: 'application/ld+json',
-    children: stringifySchema(schema),
+    type: 'application/ld+json' as const,
+    innerHTML: stringifySchema(schema),
     ...(id && { id }),
   }
 }

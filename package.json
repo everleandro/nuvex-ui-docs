@@ -15,7 +15,7 @@
     "@nuxtjs/i18n": "^10.4.0",
     "@nuxtjs/sitemap": "^8.3.4",
     "@types/prismjs": "^1.26.6",
-    "nuvex-ui": "^1.0.6",
+    "nuvex-ui": "^1.0.7",
     "nuxt": "^4.5.2",
     "prismjs": "^1.30.0",
     "vue": "^3.5.35",

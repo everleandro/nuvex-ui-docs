@@ -58,7 +58,7 @@
             </DocsComponentPlayground>
         </DocsSection>
 
-        <DocsSection :id="sections['table-layout'].key" :title="sections['table-layout'].title"
+        <!-- <DocsSection :id="sections['table-layout'].key" :title="sections['table-layout'].title"
             :description-html="sections['table-layout'].descriptionHtml">
             <DocsComponentPlayground :tabs="tabsDesignTemplateTs" :color="color">
                 <template #panel-design>
@@ -82,7 +82,7 @@
                     <CodePanel :code="tableTsCode" language="ts" />
                 </template>
             </DocsComponentPlayground>
-        </DocsSection>
+        </DocsSection> -->
 
         <DocsSection :id="sections['form-column'].key" :title="sections['form-column'].title"
             :description-html="sections['form-column'].descriptionHtml">
@@ -128,7 +128,8 @@
                                 :label="validationText.policyLabel"
                                 :rules="[(value: boolean) => value === true || validationText.policyMessage]" />
                             <EFormColumn cols="12">
-                                <EButton color="primary" block type="submit" :disabled="!validationState.isValid">{{ validationText.submitLabel }}</EButton>
+                                <EButton color="primary" block type="submit" :disabled="!validationState.isValid">{{
+                                    validationText.submitLabel }}</EButton>
                             </EFormColumn>
                         </EForm>
                     </ECard>
@@ -152,7 +153,7 @@
                         style="width: 560px;">
                         <EForm ref="methodsFormRef" v-model="methodsState.isValid" :color="color">
                             <ETextfield v-model="methodsModel.name" label="Name" :rules="[requiredRule]" />
-                            <ETextfield v-model="methodsModel.email" label="Email" :rules="[requiredRule]" />
+                            <ETextfield v-model="methodsModel.email" label="Email" :rules="[requiredRule, emailRule]" />
                             <EFormColumn cols="12" class="d-flex gap-2">
                                 <ESpacer />
                                 <EButton color="primary" @click="runValidate">{{ methodsText.validateAction }}</EButton>
@@ -187,6 +188,7 @@ import { useComponentPageSchema, BreadcrumbBuilders } from '~/composables/useCom
 import { formApiReference } from '~/api-reference/forms/form'
 import { formApiReferenceEs } from '~/api-reference/forms/form-es'
 import { formCodeSnippets } from './form-page.snippets'
+const { emailRule, requiredRule } = useValidationRules()
 
 type FormSectionKey =
     | 'usage'
@@ -426,10 +428,6 @@ const methodsModel = reactive({
 })
 
 const methodsFormRef = ref<EForm | null>(null)
-
-const requiredRule = (value: unknown) => {
-    return !!value || validationText.value.requiredMessage
-}
 
 const validationFeedback = computed(() => {
     if (validationState.submitState === 'idle') return validationText.value.idleFeedback
