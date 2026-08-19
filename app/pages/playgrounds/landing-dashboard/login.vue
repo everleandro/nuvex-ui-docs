@@ -41,3 +41,6 @@ const submitForm = async () => {
     }
 }
 </script>
+<style lang="scss">
+@use "@/assets/styles/landing-dashboard.scss";
+</style>

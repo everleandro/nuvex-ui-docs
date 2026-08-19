@@ -96,6 +96,7 @@ const themeToggleLabel = computed(() =>
 </script>
 <style lang="scss">
 @use 'nuvex-ui/mixin.scss' as mixins;
+@use "@/assets/styles/landing-dashboard.scss";
 
 .landing-dashboard {
   &__hero {
