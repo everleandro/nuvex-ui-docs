@@ -1,48 +1,54 @@
 .landing-dashboard__theme {
-    /* Tema claro */
-    --e-color-primary: #8b7cf6;
-    --e-color-primary-strong: #7a67ef;
-    --e-color-primary-soft: #f1edff;
-    --e-color-primary-subtle: #dcd3ff;
-    --e-color-primary-deep: #5b4ad5;
-    --e-color-primary-contrast: #f8f7ff;
+    /* Tema claro — paleta Material Design Green */
+    --e-color-primary: #2e7d32;
+    --e-color-primary-strong: #256b29;
+    --e-color-primary-soft: #e8f5e9;
+    --e-color-primary-subtle: #a5d6a7;
+    --e-color-primary-deep: #1b5e20;
+    --e-color-primary-contrast: #f1fbf2;
 
-    --e-color-secondary: #4ecdc4;
-    --e-color-secondary-strong: #2bb7ae;
-    --e-color-secondary-soft: #dafaf7;
-    --e-color-secondary-contrast: #062e2c;
+    --e-color-secondary: #7b1fa2;
+    --e-color-secondary-strong: #6a1b9a;
+    --e-color-secondary-soft: #f3e5f5;
+    --e-color-secondary-contrast: #2a0845;
 
-    --e-color-accent: #ffb86c;
-    --e-color-accent-strong: #f29d48;
-    --e-color-accent-soft: #fff1df;
-    --e-color-accent-contrast: #442a0e;
+    --e-color-accent: #f57c00;
+    --e-color-accent-strong: #e65100;
+    --e-color-accent-soft: #fff3e0;
+    --e-color-accent-contrast: #4a2100;
 
-    --e-color-surface-canvas: #f7f5ff;
+    --e-color-surface-canvas: #f2f7f2;
     --e-color-surface-base: #ffffff;
-    --e-color-surface-raised: #fbfaff;
-    --e-color-surface-subtle: #f1eefc;
-    --e-color-surface-muted: #e9e3ff;
+    --e-color-surface-raised: #e8f2ea;
+    --e-color-surface-subtle: #dcede0;
+    --e-color-surface-muted: #cde3d1;
 
-    --e-color-border: #ddd5ff;
-    --e-color-border-strong: #c7befd;
+    /* Bar/Drawer no heredan surface-base por defecto en nuvex-ui; los fijamos
+       explícitamente para que muestren el tinte en vez de blanco puro. */
+    --e-bar-bg: var(--e-color-surface-raised);
+    --e-drawer-bg: var(--e-color-surface-raised);
+    --e-drawer-floating-bg: var(--e-color-surface-raised);
 
-    --e-color-text: #1f1b2d;
-    --e-color-text-muted: #5d5873;
-    --e-color-text-soft: #7e7995;
+    --e-color-border: #cfe3d1;
+    --e-color-border-strong: #b7d2ba;
 
-    --e-color-success: #2bb673;
-    --e-color-success-soft: #eafaf2;
-    --e-color-warning: #f3a63d;
-    --e-color-warning-soft: #fff4de;
-    --e-color-danger: #eb5b7d;
-    --e-color-danger-soft: #ffe9ef;
-    --e-color-info: #4f9cff;
-    --e-color-info-soft: #ebf4ff;
+    --e-color-text: #1b3a26;
+    --e-color-text-muted: #4b5f55;
+    --e-color-text-soft: #6c8078;
 
-    --e-color-shadow-soft: rgba(98, 75, 192, 0.12);
-    --e-color-shadow-strong: rgba(35, 26, 69, 0.18);
-    --e-color-highlight: rgba(139, 124, 246, 0.12);
-    --e-color-focus-ring: rgba(123, 103, 239, 0.28);
+    --e-color-success: #2e9e5c;
+    --e-color-success-soft: #e6f7ed;
+    --e-color-warning: #ef6c00;
+    --e-color-warning-soft: #fff1e0;
+    --e-color-danger: #c62828;
+    --e-color-danger-soft: #fdeaea;
+    --e-color-info: #1976d2;
+    --e-color-info-soft: #e8f1fc;
+
+    --e-color-shadow-soft: rgba(27, 58, 38, 0.12);
+    --e-color-shadow-strong: rgba(13, 42, 24, 0.18);
+    --e-color-highlight: rgba(46, 125, 50, 0.12);
+    --e-color-focus-ring: rgba(46, 125, 50, 0.28);
 }
 
 html[data-theme='dark'] .landing-dashboard__theme {
