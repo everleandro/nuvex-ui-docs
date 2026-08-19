@@ -85,8 +85,8 @@ onBeforeUnmount(() => {
 .docs-playground-frame-shell {
   position: relative;
   width: 100%;
-  /* aspect-ratio: 16 / 10; */
-  min-height: var(--docs-playground-frame-height, 560px);
+  aspect-ratio: 16 / 10;
+  min-height: var(--docs-playground-frame-height, 100%);
   overflow: hidden;
   border-radius: inherit;
   background: var(--e-color-surface-canvas);
@@ -123,7 +123,7 @@ onBeforeUnmount(() => {
 .docs-playground-frame {
   display: block;
   width: 100%;
-  height: var(--docs-playground-frame-height, 560px);
+  height: var(--docs-playground-frame-height, 100%);
   border: 0;
   background: var(--e-color-surface-canvas);
   opacity: 0;
